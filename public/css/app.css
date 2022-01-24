@@ -1,0 +1,16 @@
+.minHeightCarousel {
+    min-height: 400px;
+}
+
+.gradientContainerTop {
+    height: 100px;
+    background-color: #1d2f3f;
+    background-image: linear-gradient(0deg, #1d2f3f 0%, #6d8896 50%, #ffffff 100%);
+}
+
+.gradientContainerBottom {
+    height: 100px;
+    background-color: #1d2f3f;
+    background-image: linear-gradient(180deg, #1d2f3f 0%, #6d8896 50%, #ffffff 100%);
+
+}
