@@ -4,33 +4,6 @@
 
 {% block body %}
 
-    <div class="container-fluid px-5">
-        <nav class="navbar navbar-expand-md navbar-light">
-            <a href="#" class="navbar-brand"
-            ><img src="{{ asset('img/logo/adriaticante.png') }}" alt="logo" width="180" height="45"
-                /></a>
-            <button
-                    class="navbar-toggler border-0"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#toggleMobileMenu"
-                    aria-controls="toggleMobileMenu"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-            >
-                <img src="{{ asset('img/icon/menu.png') }}" alt="menu" height="30" />
-            </button>
-            <div class="collapse navbar-collapse" id="toggleMobileMenu">
-                <ul class="navbar-nav ms-auto text-center">
-                    <li><a href="#" class="nav-link">PROPERTIES</a></li>
-                    <li><a href="#" class="nav-link">ABOUT US</a></li>
-                    <li><a href="#" class="nav-link">CONTACT</a></li>
-                    <button class="btn btn-dark rounded-0 ms-2">SIGN IN</button>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
     <!-- CAROUSEL -->
 
     <div
@@ -308,11 +281,60 @@
 
     <div class="container-fluid gradientContainerBottom"></div>
 
-    <!-- SUITE -->
+    <!-- NEWSLETTER -->
 
-    <div class="container-fluid">
-        <div-container>
-            <p>ok</p>
-        </div-container>
+    <div class="container-fluid my-5">
+        <div class="container">
+            <div class="text-center py-5">
+                <h1 class="display-4">NEWSLETTER</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div
+                    class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 text-center"
+            >
+                <form>
+                    <div class="mb-3">
+                        <input
+                                type="email"
+                                class="form-control"
+                                id="exampleInputEmail1"
+                                aria-describedby="emailHelp"
+                                placeholder="EMAIL"
+                        />
+                    </div>
+
+                    <div
+                            class="col-sm-10 offset-sm-1 col-xxl-8 offset-xxl-2 form-check"
+                    >
+                        <input
+                                type="checkbox"
+                                class="form-check-input"
+                                id="exampleCheck1"
+                        />
+                        <label class="form-check-label fontNewsletter" for="exampleCheck1"
+                        >You agree to receive our latest blog posts</label
+                        >
+                    </div>
+                    <div
+                            class="col-sm-10 offset-sm-1 col-xxl-8 offset-xxl-2 form-check"
+                    >
+                        <input
+                                type="checkbox"
+                                class="form-check-input"
+                                id="exampleCheck1"
+                        />
+                        <label class="form-check-label fontNewsletter" for="exampleCheck1"
+                        >You agree to receive advertisements from our partners</label
+                        >
+                    </div>
+                    <button type="submit" class="btn btn-dark rounded-0 mt-3">
+                        SIGN UP
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
+
+
 {% endblock %}
