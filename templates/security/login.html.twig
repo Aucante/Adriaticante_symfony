@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+
+
+    <section
+            class="vh-100 bg-image"
+            style="background-image: url({{ asset('img/img/adriaticXL.jpg') }})"
+    >
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div
+                        class="row d-flex justify-content-center align-items-center h-100"
+                >
+                    <div class="col-12 col-md-9 col-lg-8">
+                        <div class="card rounded-0">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">
+                                    Sign In
+                                </h2>
+
+                                <form method="post">
+                                    {% if error %}
+                                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    {% endif %}
+
+                                    {% if app.user %}
+                                        <div class="mb-3">
+                                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                        </div>
+                                    {% endif %}
+
+
+                                    <label for="inputUsername">Username</label>
+                                    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control mb-3" autocomplete="username" required autofocus>
+                                    <label for="inputPassword">Password</label>
+                                    <input type="password" name="password" id="inputPassword" class="form-control mb-5" autocomplete="current-password" required>
+
+                                    <input type="hidden" name="_csrf_token"
+                                           value="{{ csrf_token('authenticate') }}"
+                                    >
+
+                                    {#
+                                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                    See https://symfony.com/doc/current/security/remember_me.html
+
+                                    <div class="checkbox mb-3">
+                                        <label>
+                                            <input type="checkbox" name="_remember_me"> Remember me
+                                        </label>
+                                    </div>
+                                    #}
+
+                                    <div class="text-center">
+                                        <button class="btn btn-lg btn-dark rounded-0" type="submit">
+                                            Sign in
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <div class="text-center mt-4">
+                                    <img src="{{ asset('img/logo/adriaticante.png') }}" alt="logo" height="50" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+{% endblock %}
