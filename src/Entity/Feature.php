@@ -67,6 +67,11 @@ class Feature
      */
     private $feature10;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Property::class, mappedBy="features", cascade={"persist", "remove"})
+     */
+    private $property;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -188,6 +193,23 @@ class Feature
     public function setFeature10(?string $feature10): self
     {
         $this->feature10 = $feature10;
+
+        return $this;
+    }
+
+    public function getProperty(): ?Property
+    {
+        return $this->property;
+    }
+
+    public function setProperty(Property $property): self
+    {
+        // set the owning side of the relation if necessary
+        if ($property->getFeatures() !== $this) {
+            $property->setFeatures($this);
+        }
+
+        $this->property = $property;
 
         return $this;
     }

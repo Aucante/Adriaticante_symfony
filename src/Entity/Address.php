@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AddressRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,22 @@ class Address
      * @ORM\Column(type="integer")
      */
     private $phone;
+
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="address")
+     */
+    private $users;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Property::class, mappedBy="address", cascade={"persist", "remove"})
+     */
+    private $property;
+
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -157,4 +175,57 @@ class Address
 
         return $this;
     }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setAddress($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getAddress() === $this) {
+                $user->setAddress(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getProperty(): ?Property
+    {
+        return $this->property;
+    }
+
+    public function setProperty(?Property $property): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($property === null && $this->property !== null) {
+            $this->property->setAddress(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($property !== null && $property->getAddress() !== $this) {
+            $property->setAddress($this);
+        }
+
+        $this->property = $property;
+
+        return $this;
+    }
+
 }

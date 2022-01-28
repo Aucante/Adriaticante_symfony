@@ -67,6 +67,11 @@ class File
      */
     private $file10;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Property::class, mappedBy="files", cascade={"persist", "remove"})
+     */
+    private $property;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -188,6 +193,23 @@ class File
     public function setFile10(?string $file10): self
     {
         $this->file10 = $file10;
+
+        return $this;
+    }
+
+    public function getProperty(): ?Property
+    {
+        return $this->property;
+    }
+
+    public function setProperty(Property $property): self
+    {
+        // set the owning side of the relation if necessary
+        if ($property->getFiles() !== $this) {
+            $property->setFiles($this);
+        }
+
+        $this->property = $property;
 
         return $this;
     }

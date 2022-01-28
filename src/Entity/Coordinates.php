@@ -27,6 +27,11 @@ class Coordinates
      */
     private $longitude;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Property::class, mappedBy="coordinates", cascade={"persist", "remove"})
+     */
+    private $property;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,28 @@ class Coordinates
     public function setLongitude(int $longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getProperty(): ?Property
+    {
+        return $this->property;
+    }
+
+    public function setProperty(?Property $property): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($property === null && $this->property !== null) {
+            $this->property->setCoordinates(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($property !== null && $property->getCoordinates() !== $this) {
+            $property->setCoordinates($this);
+        }
+
+        $this->property = $property;
 
         return $this;
     }
