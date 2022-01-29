@@ -127,4 +127,13 @@
     background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(143, 211, 244, 0.5))
 }
 
+/* LAST PROPERTIES */
+
+.backCarousel {
+    background-color: black;
+}
+
+
+
+
 /* End Sign In */
