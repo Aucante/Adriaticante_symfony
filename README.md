@@ -18,5 +18,5 @@ symfony console doctrine:fixtures/load
 ## Tests unitaires
 
 php bin/phpunit
-php bin/phpunit --testdox 
+php bin/phpunit --testdox (more precision)
 
