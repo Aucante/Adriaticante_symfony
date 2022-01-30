@@ -132,7 +132,19 @@
 .backCarousel {
     background-color: black;
 }
+/* ABOUT */
 
+.backgroundAbout {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./../img/img/adriatic1.jpg');
+    height: 400px;
+}
+
+/* CONTACT */
+
+.backgroundContact {
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2)), url('./../img/img/contact1.jpg');
+    height: 400px;
+}
 
 
 
