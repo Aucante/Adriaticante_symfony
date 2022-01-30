@@ -2,6 +2,7 @@
 
 namespace App\Tests;
 
+use App\Entity\Property;
 use App\Entity\Type;
 use PHPUnit\Framework\TestCase;
 
@@ -20,6 +21,7 @@ class TypeUnitTest extends TestCase
     public function testIsFalse()
     {
         $type = new type();
+        $property = new Property();
 
         $type->setName('true');
 

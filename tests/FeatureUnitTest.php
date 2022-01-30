@@ -3,6 +3,7 @@
 namespace App\Tests;
 
 use App\Entity\Feature;
+use App\Entity\Property;
 use PHPUnit\Framework\TestCase;
 
 class FeatureUnitTest extends TestCase
@@ -10,6 +11,7 @@ class FeatureUnitTest extends TestCase
     public function testIsTrue()
     {
         $feature = new Feature();
+        $property = new Property();
 
         $feature->setFeature1('true');
         $feature->setFeature2('true');
@@ -21,6 +23,7 @@ class FeatureUnitTest extends TestCase
         $feature->setFeature8('true');
         $feature->setFeature9('true');
         $feature->setFeature10('true');
+        $feature->setProperty($property);
 
         $this->assertTrue($feature->getFeature1() === 'true');
         $this->assertTrue($feature->getFeature2() === 'true');
@@ -32,12 +35,14 @@ class FeatureUnitTest extends TestCase
         $this->assertTrue($feature->getFeature8() === 'true');
         $this->assertTrue($feature->getFeature9() === 'true');
         $this->assertTrue($feature->getFeature10() === 'true');
+        $this->assertTrue($feature->getProperty() === $property);
 
     }
 
     public function testIsFalse()
     {
         $feature = new Feature();
+        $property = new Property();
 
         $feature->setFeature1('true');
         $feature->setFeature2('true');
@@ -49,6 +54,7 @@ class FeatureUnitTest extends TestCase
         $feature->setFeature8('true');
         $feature->setFeature9('true');
         $feature->setFeature10('true');
+        $feature->setProperty($property);
 
         $this->assertFalse($feature->getFeature1() === 'false');
         $this->assertFalse($feature->getFeature2() === 'false');
@@ -60,6 +66,7 @@ class FeatureUnitTest extends TestCase
         $this->assertFalse($feature->getFeature8() === 'false');
         $this->assertFalse($feature->getFeature9() === 'false');
         $this->assertFalse($feature->getFeature10() === 'false');
+        $this->assertFalse($feature->getProperty() === new Property());
 
     }
 
@@ -68,6 +75,7 @@ class FeatureUnitTest extends TestCase
         $feature = new Feature();
 
         $this->assertEmpty($feature->getFeature1());
+        $this->assertEmpty($feature->getProperty());
 
     }
 }
