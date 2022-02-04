@@ -39,6 +39,10 @@
             {% endfor %}
             </div>
         </div>
+        <div class="d-flex justify-content-center">
+            {% do properties.setPageRange(2) %}
+            {{ knp_pagination_render(properties, 'base/pagination.html.twig') }}
+        </div>
     </div>
 
 {% endblock %}
