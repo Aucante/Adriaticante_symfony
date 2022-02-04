@@ -146,6 +146,12 @@
     height: 400px;
 }
 
+/* PROPERTIES */
+
+.cardProperty {
+    height: 180px;
+}
+
 
 
 /* End Sign In */

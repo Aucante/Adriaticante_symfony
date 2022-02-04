@@ -18,6 +18,11 @@ class Property
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $price;
@@ -87,9 +92,23 @@ class Property
      */
     private $type;
 
+
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     public function getPrice(): ?int
@@ -248,4 +267,6 @@ class Property
 
         return $this;
     }
+
+
 }

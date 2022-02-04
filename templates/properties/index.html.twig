@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PropertiesController!{% endblock %}
+
+{% block body %}
+
+    <div class="text-center my-5">
+        <h1 class="display-4">PROPERTIES</h1>
+    </div>
+
+    <div class="container-fluid my-5">
+
+        <div class="container">
+
+            <div class="row">
+            {% for property in properties %}
+                <div
+                        class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 my-4"
+                >
+                    <div class="card rounded-0">
+                        <img
+                                src="{{ property.files.file1 }}"
+                                class="card-img-top rounded-0"
+                                alt="..."
+                        />
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ property.name|upper }}</h5>
+                            <div class="cardProperty">
+                                <p class="card-text text-center pt-2">
+                                    {{ property.description|u.truncate(200, '...', false) }}
+                                </p>
+                            </div>
+                            <div class="text-center">
+                                <a href="#" class="btn btn-dark rounded-0">DISCOVER</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

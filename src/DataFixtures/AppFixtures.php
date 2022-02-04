@@ -111,9 +111,9 @@ class AppFixtures extends Fixture
             // FILE
 
             $file = new File();
-            $file->setFile1('./img/img/adriatic1/jpg');
-            $file->setFile2('./img/img/adriatic1/jpg');
-            $file->setFile3('./img/img/adriatic1/jpg');
+            $file->setFile1('img/img/adriatic1.jpg');
+            $file->setFile2('img/img/adriatic2.jpg');
+            $file->setFile3('img/img/contact.jpg');
             $manager->persist($file);
 
             // PROPERTY
@@ -131,7 +131,8 @@ class AppFixtures extends Fixture
                 ->setStatus($status1)
                 ->setAddress($addressProperty)
                 ->setFiles($file)
-                ->setUser($userProperty);
+                ->setUser($userProperty)
+                ->setName($faker->text(20));
 
             $manager->persist($property);
         }
