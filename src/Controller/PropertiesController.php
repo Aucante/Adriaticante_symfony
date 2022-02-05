@@ -27,9 +27,16 @@ class PropertiesController extends AbstractController
             $request->query->getInt('page', 1),
             8
         );
+        $properties->setCustomParameters([
+            'align' => 'center', # center|right (for template: twitter_bootstrap_v4_pagination and foundation_v6_pagination)
+            'size' => '', # small|large (for template: twitter_bootstrap_v4_pagination)
+            'rounded' => true,
+            'span_class' => 'whatever',
+        ]);
+
 
         return $this->render('properties/index.html.twig', [
-            'properties' => $properties,
+            'properties' => $properties
         ]);
     }
 }

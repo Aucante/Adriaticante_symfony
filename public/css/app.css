@@ -148,10 +148,17 @@
 
 /* PROPERTIES */
 
-.cardProperty {
-    height: 180px;
+.cardPropertyDescription {
+    height: 170px;
 }
 
+.cardPropertyTitle {
+    height: 50px;
+}
+
+.carouselProperties {
+    height: 180px;
+}
 
 
 /* End Sign In */

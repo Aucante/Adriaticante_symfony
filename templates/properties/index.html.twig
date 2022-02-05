@@ -15,7 +15,7 @@
             <div class="row">
             {% for property in properties %}
                 <div
-                        class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 my-4"
+                        class="col-10 offset-1 col-md-6 offset-md-0 col-xl-3 my-4"
                 >
                     <div class="card rounded-0">
                         <img
@@ -24,10 +24,19 @@
                                 alt="..."
                         />
                         <div class="card-body">
-                            <h5 class="card-title text-center">{{ property.name|upper }}</h5>
-                            <div class="cardProperty">
-                                <p class="card-text text-center pt-2">
-                                    {{ property.description|u.truncate(200, '...', false) }}
+                            <h5 class="card-title text-center cardPropertyTitle">{{ property.name|upper }}</h5>
+                            <div class="cardPropertyDescription">
+                                <p class="card-text">
+                                    Area : {{ property.area }} m2
+                                </p>
+                                <p class="card-text">
+                                    Rooms : {{ property.totalRooms }}
+                                </p>
+                                <p class="card-text">
+                                    Bedrooms : {{ property.totalBedrooms }}
+                                </p>
+                                <p class="card-text">
+                                    Bathrooms : {{ property.totalBathrooms }}
                                 </p>
                             </div>
                             <div class="text-center">
