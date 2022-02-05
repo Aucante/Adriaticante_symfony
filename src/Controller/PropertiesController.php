@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Property;
 use App\Repository\PropertyRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,6 +38,17 @@ class PropertiesController extends AbstractController
 
         return $this->render('properties/index.html.twig', [
             'properties' => $properties
+        ]);
+    }
+
+    /**
+     * @Route("/properties/{id}", name="properties_details")
+     */
+    public function details(Property $property): Response
+    {
+
+        return $this->render('properties/details.html.twig', [
+            'property' => $property
         ]);
     }
 }
