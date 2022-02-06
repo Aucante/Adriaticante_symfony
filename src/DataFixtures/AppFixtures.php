@@ -50,7 +50,8 @@ class AppFixtures extends Fixture
                     ->setLastname($faker->lastName())
                     ->setFirstname($faker->firstName())
                     ->setCompany($faker->company())
-                    ->setAddress($address);
+                    ->setAddress($address)
+                    ->setRoles(['ROLE_USER']);
 
             $password = $this->encoder->encodePassword($user, 'password');
             $user->setPassword($password);
@@ -95,7 +96,8 @@ class AppFixtures extends Fixture
                 ->setLastname($faker->lastName())
                 ->setFirstname($faker->firstName())
                 ->setCompany($faker->company())
-                ->setAddress($addressProperty);
+                ->setAddress($addressProperty)
+                ->setRoles(['ROLE_USER']);
 
             $password = $this->encoder->encodePassword($userProperty, 'password');
             $userProperty->setPassword($password);
