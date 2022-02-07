@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+
+
+    <section
+            class="vh-100 bg-image"
+            style="background-image: url({{ asset('img/img/adriaticXL.jpg') }})"
+    >
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div
+                        class="row d-flex justify-content-center align-items-center h-100"
+                >
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card rounded-0">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">
+                                    Create an account
+                                </h2>
+
+                                {{ form_start(registrationForm) }}
+
+                                {{ form_widget(registrationForm) }}
+                                <button type="submit" class="container text-center btn btn-dark rounded-0">Register
+                                </button>
+
+                                {{ form_end(registrationForm) }}
+                                <div class="text-center mt-4">
+                                    <img src="{{ asset('img/logo/adriaticante.png') }}" alt="logo" height="50" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
