@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PropertyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,29 +54,12 @@ class Property
      */
     private $totalBathrooms;
 
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Status::class, inversedBy="properties")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $status;
-
     /**
      * @ORM\OneToOne(targetEntity=Address::class, inversedBy="property", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $address;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Coordinates::class, inversedBy="property", cascade={"persist", "remove"})
-     */
-    private $coordinates;
-
-    /**
-     * @ORM\OneToOne(targetEntity=File::class, inversedBy="property", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $files;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="properties")
@@ -83,10 +68,30 @@ class Property
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="properties")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity=Feature::class, mappedBy="property")
+     */
+    private $features;
+
+    /**
+     * @ORM\OneToMany(targetEntity=File::class, mappedBy="property")
+     */
+    private $files;
+
+    /**
+     * @ORM\Column(type="string", length=255)
      */
     private $type;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status;
+
+    public function __construct()
+    {
+        $this->features = new ArrayCollection();
+        $this->files = new ArrayCollection();
+    }
 
 
 
@@ -180,19 +185,6 @@ class Property
     }
 
 
-
-    public function getStatus(): ?Status
-    {
-        return $this->status;
-    }
-
-    public function setStatus(?Status $status): self
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
     public function getAddress(): ?Address
     {
         return $this->address;
@@ -205,29 +197,6 @@ class Property
         return $this;
     }
 
-    public function getCoordinates(): ?Coordinates
-    {
-        return $this->coordinates;
-    }
-
-    public function setCoordinates(?Coordinates $coordinates): self
-    {
-        $this->coordinates = $coordinates;
-
-        return $this;
-    }
-
-    public function getFiles(): ?File
-    {
-        return $this->files;
-    }
-
-    public function setFiles(File $files): self
-    {
-        $this->files = $files;
-
-        return $this;
-    }
 
     public function getUser(): ?User
     {
@@ -241,14 +210,85 @@ class Property
         return $this;
     }
 
-    public function getType(): ?Type
+
+
+    /**
+     * @return Collection|Feature[]
+     */
+    public function getFeatures(): Collection
+    {
+        return $this->features;
+    }
+
+    public function addFeature(Feature $feature): self
+    {
+        if (!$this->features->contains($feature)) {
+            $this->features[] = $feature;
+            $feature->addProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFeature(Feature $feature): self
+    {
+        if ($this->features->removeElement($feature)) {
+            $feature->removeProperty($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|File[]
+     */
+    public function getFiles(): Collection
+    {
+        return $this->files;
+    }
+
+    public function addFile(File $file): self
+    {
+        if (!$this->files->contains($file)) {
+            $this->files[] = $file;
+            $file->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFile(File $file): self
+    {
+        if ($this->files->removeElement($file)) {
+            // set the owning side to null (unless already changed)
+            if ($file->getProperty() === $this) {
+                $file->setProperty(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(?Type $type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
