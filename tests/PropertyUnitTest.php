@@ -17,10 +17,7 @@ class PropertyUnitTest extends TestCase
     {
         $property = new Property();
         $type = new Type();
-        $status = new Status();
         $address = new Address();
-        $coordinates = new Coordinates();
-        $file = new File();
 
 
         $property->setPrice(1)
@@ -31,10 +28,7 @@ class PropertyUnitTest extends TestCase
             ->setTotalBedrooms(1)
             ->setTotalBathrooms(1)
             ->setType($type)
-            ->setStatus($status)
-            ->setAddress($address)
-            ->setCoordinates($coordinates)
-            ->setFiles($file);
+            ->setAddress($address);
 
         $this->assertTrue($property->getName() === 'true');
         $this->assertTrue($property->getPrice() === 1);
@@ -44,21 +38,14 @@ class PropertyUnitTest extends TestCase
         $this->assertTrue($property->getTotalBedrooms() === 1);
         $this->assertTrue($property->getTotalBathrooms() === 1);
         $this->assertTrue($property->getType() === $type);
-        $this->assertTrue($property->getStatus() === $status);
         $this->assertTrue($property->getAddress() === $address);
-        $this->assertTrue($property->getCoordinates() === $coordinates);
-        $this->assertTrue($property->getFiles() === $file);
     }
 
     public function testIsFalse()
     {
         $property = new Property();
-        $feature = new Feature();
         $type = new Type();
-        $status = new Status();
         $address = new Address();
-        $coordinates = new Coordinates();
-        $file = new File();
 
 
         $property->setPrice(1)
@@ -69,10 +56,7 @@ class PropertyUnitTest extends TestCase
             ->setTotalBedrooms(1)
             ->setTotalBathrooms(1)
             ->setType($type)
-            ->setStatus($status)
-            ->setAddress($address)
-            ->setCoordinates($coordinates)
-            ->setFiles($file);
+            ->setAddress($address);
 
         $this->assertFalse($property->getPrice() === 2);
         $this->assertFalse($property->getName() === 'false');
@@ -82,10 +66,8 @@ class PropertyUnitTest extends TestCase
         $this->assertFalse($property->getTotalBedrooms() === 2);
         $this->assertFalse($property->getTotalBathrooms() === 2);
         $this->assertFalse($property->getType() === new Type());
-        $this->assertFalse($property->getStatus() === new Status());
         $this->assertFalse($property->getAddress() === new Address());
-        $this->assertFalse($property->getCoordinates() === new Coordinates());
-        $this->assertFalse($property->getFiles() === new File());
+
     }
 
     public function testIsEmpty()
@@ -102,9 +84,6 @@ class PropertyUnitTest extends TestCase
         $this->assertEmpty($property->getTotalBedrooms());
         $this->assertEmpty($property->getTotalBathrooms());
         $this->assertEmpty($property->getType());
-        $this->assertEmpty($property->getStatus());
         $this->assertEmpty($property->getAddress());
-        $this->assertEmpty($property->getCoordinates());
-        $this->assertEmpty($property->getFiles());
     }
 }

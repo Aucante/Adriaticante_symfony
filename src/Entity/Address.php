@@ -69,6 +69,16 @@ class Address
      */
     private $property;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $longitude;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $latitude;
+
 
     public function __construct()
     {
@@ -224,6 +234,30 @@ class Address
         }
 
         $this->property = $property;
+
+        return $this;
+    }
+
+    public function getLongitude(): ?int
+    {
+        return $this->longitude;
+    }
+
+    public function setLongitude(?int $longitude): self
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?int
+    {
+        return $this->latitude;
+    }
+
+    public function setLatitude(?int $latitude): self
+    {
+        $this->latitude = $latitude;
 
         return $this;
     }
