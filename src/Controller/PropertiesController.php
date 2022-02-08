@@ -46,9 +46,13 @@ class PropertiesController extends AbstractController
      */
     public function details(Property $property): Response
     {
+        $price = $property->getPrice();
+        $area = $property->getArea();
+        $priceArea = $price / $area;
 
         return $this->render('properties/details.html.twig', [
-            'property' => $property
+            'property' => $property,
+            'priceArea' => $priceArea
         ]);
     }
 }
