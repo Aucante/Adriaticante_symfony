@@ -39,7 +39,9 @@ class AppFixtures extends Fixture
                     ->setCity($faker->city())
                     ->setStateZipCode($faker->numberBetween(100, 950) . '00')
                     ->setCountry($faker->country())
-                    ->setPhone('0' . $faker->numberBetween(600000001, 799999999));
+                    ->setPhone('0' . $faker->numberBetween(600000001, 799999999))
+                    ->setLongitude('0' . $faker->numberBetween(600000001, 799999999))
+                    ->setLatitude('0' . $faker->numberBetween(600000001, 799999999));
 
             $manager->persist($address);
 
@@ -59,20 +61,6 @@ class AppFixtures extends Fixture
             $manager->persist($user);
 
         }
-        // STATUS
-
-        $status1 = new Status();
-        $status1->setName('Available');
-        $manager->persist($status1);
-
-
-        // TYPE
-
-        $type1 = new Type();
-        $type1->setName('Flat');
-        $manager->persist($type1);
-
-
 
         // PROPERTY + ADDRESS
         for ($k = 0; $k < 10; $k++)
@@ -85,7 +73,9 @@ class AppFixtures extends Fixture
                 ->setCity($faker->city())
                 ->setStateZipCode($faker->numberBetween(100, 950) . '00')
                 ->setCountry($faker->country())
-                ->setPhone('0' . $faker->numberBetween(600000001, 799999999));
+                ->setPhone('0' . $faker->numberBetween(600000001, 799999999))
+                ->setLongitude('0' . $faker->numberBetween(600000001, 799999999))
+                ->setLatitude('0' . $faker->numberBetween(600000001, 799999999));
 
             $manager->persist($addressProperty);
 
@@ -110,13 +100,6 @@ class AppFixtures extends Fixture
             $feature->setName($faker->word());
             $manager->persist($feature);
 
-            // FILE
-
-            $file = new File();
-            $file->setFile1('img/img/adriatic1.jpg');
-            $file->setFile2('img/img/adriatic2.jpg');
-            $file->setFile3('img/img/contact.jpg');
-            $manager->persist($file);
 
             // PROPERTY
 
@@ -125,17 +108,34 @@ class AppFixtures extends Fixture
             $property->setPrice($faker->numberBetween(40000, 10000000))
                 ->setDescription($faker->text(500))
                 ->setArea($faker->numberBetween(10, 500))
+                ->setType($faker->word())
+                ->setStatus($faker->word())
                 ->setTotalRooms($faker->numberBetween(1, 10))
                 ->setTotalBedrooms($faker->numberBetween(0, 8))
                 ->setTotalBathrooms($faker->numberBetween(1, 4))
-                ->setType($type1)
-                ->setStatus($status1)
                 ->setAddress($addressProperty)
-                ->setFiles($file)
                 ->setUser($userProperty)
                 ->setName($faker->text(20));
 
+                for ($l = 0; $l < 5; $l++)
+                {
+                    $feature = new Feature();
+                    $feature->setName($faker->word());
+                    $manager->persist($feature);
+
+                    $property->addFeature($feature);
+                }
+
+
+
             $manager->persist($property);
+
+            // FILE
+
+            $file = new File();
+            $file->setName($faker->word());
+            $file->setProperty($property);
+            $manager->persist($file);
         }
 
         $manager->flush();

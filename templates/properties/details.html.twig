@@ -153,9 +153,9 @@
             <div class="row border-bottom">
                 <div>
                     <div>
-                        <p class="fs-5">Price : 100 000€</p>
-                        <p class="fs-5">Area : 100 m2</p>
-                        <p class="fs-5">Price/Area : 1000 €/ m2</p>
+                        <p class="fs-5">Price : {{ property.price }} €</p>
+                        <p class="fs-5">Area : {{ property.area }} m2</p>
+                        <p class="fs-5">Price/Area : {{ priceArea|number_format(0) }} €/ m2</p>
                     </div>
                 </div>
             </div>
@@ -166,22 +166,11 @@
                 <h3 class="display-6">Features</h3>
             </div>
             <div class="row border-bottom">
+                {% for feature in property.features %}
                 <div class="col-4">
-                    <p>feature</p>
-                    <p>feature</p>
-                    <p>feature</p>
-                    <p>feature</p>
+                    <p>{{ feature.name }}</p>
                 </div>
-                <div class="col-4">
-                    <p>feature</p>
-                    <p>feature</p>
-                    <p>feature</p>
-                </div>
-                <div class="col-4">
-                    <p>feature</p>
-                    <p>feature</p>
-                    <p>feature</p>
-                </div>
+                {% endfor %}
             </div>
             <div class="my-5">
                 <h3 class="display-6">Description</h3>
