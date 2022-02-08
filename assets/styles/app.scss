@@ -1,5 +1,14 @@
-$primary: #c29938;
 
 // the ~ allows you to reference things in node_modules
 @import "./../../node_modules/bootstrap/scss/bootstrap.scss";
 
+$theme-colors: (
+        "primary":    $primary, //#ECEFF1
+        "secondary":  $secondary, //#263238
+        "success":    $success,
+        "info":       $info,
+        "warning":    $warning,
+        "danger":     $danger,
+        "light":      $light, //#CFD8DC
+        "dark":       $dark
+);

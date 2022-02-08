@@ -107,7 +107,7 @@ class AppFixtures extends Fixture
             // FEATURE
 
             $feature = new Feature();
-            $feature->setFeature1($faker->word());
+            $feature->setName($faker->word());
             $manager->persist($feature);
 
             // FILE
@@ -128,7 +128,6 @@ class AppFixtures extends Fixture
                 ->setTotalRooms($faker->numberBetween(1, 10))
                 ->setTotalBedrooms($faker->numberBetween(0, 8))
                 ->setTotalBathrooms($faker->numberBetween(1, 4))
-                ->setFeatures($feature)
                 ->setType($type1)
                 ->setStatus($status1)
                 ->setAddress($addressProperty)

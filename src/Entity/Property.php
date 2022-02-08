@@ -52,11 +52,7 @@ class Property
      */
     private $totalBathrooms;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Feature::class, inversedBy="property", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $features;
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Status::class, inversedBy="properties")
@@ -183,17 +179,6 @@ class Property
         return $this;
     }
 
-    public function getFeatures(): ?Feature
-    {
-        return $this->features;
-    }
-
-    public function setFeatures(Feature $features): self
-    {
-        $this->features = $features;
-
-        return $this;
-    }
 
 
     public function getStatus(): ?Status
