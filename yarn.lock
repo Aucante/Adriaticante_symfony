@@ -893,6 +893,11 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.6.tgz#d5e0706cf8c6acd8c6032f8d54070af261bbbb2f"
   integrity sha512-ws57AidsDvREKrZKYffXddNkyaF14iHNHm8VQnZH6t99E8gczjNN0GpvcGny0imC80yQ0tHz1xVUKk/KFQSUyA==
 
+"@fortawesome/fontawesome-free@^6.0.0-beta3":
+  version "6.0.0-beta3"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-6.0.0-beta3.tgz#120e4a158a0de983924ce151bc35f27de46398b7"
+  integrity sha512-4SqOuhC8tSLeQvbW1nDmq6T7+8vdSgHy/w7PRwCFzMQCbKuYFIir/3UuWsV1QblX1lt7SGlSgwbaCv9XhRt8HA==
+
 "@hotwired/stimulus-webpack-helpers@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@hotwired/stimulus-webpack-helpers/-/stimulus-webpack-helpers-1.0.1.tgz#4cd74487adeca576c9865ac2b9fe5cb20cef16dd"
@@ -3011,6 +3016,11 @@ klona@^2.0.4:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.5.tgz#d166574d90076395d9963aa7a928fabb8d76afbc"
   integrity sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==
+
+lightgallery.js@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/lightgallery.js/-/lightgallery.js-1.4.0.tgz#f4b43b01b2acce43bd7e6d8dbcf1d5541cd2fb03"
+  integrity sha512-TK7auNMSz0sPjotq/VtKH/fe8GPkVRlmFf8F3zVsbFccLJL4r3U1VON+IggyE8Wy04QwbFQxTIIMqL7blibGSA==
 
 lilconfig@^2.0.3:
   version "2.0.4"
