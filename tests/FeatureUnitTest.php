@@ -34,6 +34,23 @@ class FeatureUnitTest extends TestCase
         $feature = new Feature();
 
         $this->assertEmpty($feature->getName());
+        $this->assertEmpty($feature->getId());
 
     }
+
+    public function testAddGetRemoveProperty()
+    {
+        $feature = new Feature();
+        $property = new Property();
+
+        $this->assertEmpty($feature->getProperty());
+
+        $feature->addProperty($property);
+        $this->assertContains($property, $feature->getProperty());
+
+        $feature->removeProperty($property);
+        $this->assertEmpty($feature->getProperty());
+
+    }
+
 }

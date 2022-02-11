@@ -3,6 +3,8 @@
 namespace App\Tests;
 
 use App\Entity\Address;
+use App\Entity\Property;
+use App\Entity\User;
 use PHPUnit\Framework\TestCase;
 
 class AddressUnitTest extends TestCase
@@ -10,6 +12,7 @@ class AddressUnitTest extends TestCase
     public function testIsTrue()
     {
         $address = new Address();
+        $property = new Property();
 
         $address->setStreetNumber(1)
             ->setStreetAddressLine1('true')
@@ -18,7 +21,10 @@ class AddressUnitTest extends TestCase
             ->setStateZipCode(10000)
             ->setCountry('true')
             ->setCounty('true')
-            ->setPhone(0100000000);
+            ->setPhone(0100000000)
+            ->setProperty($property)
+            ->setLongitude(0)
+            ->setLatitude(0);
 
         $this->assertTrue($address->getStreetNumber() === 1);
         $this->assertTrue($address->getStreetAddressLine1() === 'true');
@@ -28,12 +34,16 @@ class AddressUnitTest extends TestCase
         $this->assertTrue($address->getCountry() === 'true');
         $this->assertTrue($address->getCounty() === 'true');
         $this->assertTrue($address->getPhone() === 0100000000);
+        $this->assertTrue($address->getProperty() === $property);
+        $this->assertTrue($address->getLongitude() === 0);
+        $this->assertTrue($address->getLatitude() === 0);
 
     }
 
     public function testIsFalse()
     {
         $address = new Address();
+        $property = new Property();
 
         $address->setStreetNumber(1)
             ->setStreetAddressLine1('true')
@@ -42,7 +52,10 @@ class AddressUnitTest extends TestCase
             ->setStateZipCode(10000)
             ->setCountry('true')
             ->setCounty('true')
-            ->setPhone(0100000000);
+            ->setPhone(0100000000)
+            ->setProperty($property)
+            ->setLongitude(0)
+            ->setLatitude(0);
 
         $this->assertFalse($address->getStreetNumber() === 2);
         $this->assertFalse($address->getStreetAddressLine1() === 'false');
@@ -52,6 +65,9 @@ class AddressUnitTest extends TestCase
         $this->assertFalse($address->getCountry() === 'false');
         $this->assertFalse($address->getCounty() === 'false');
         $this->assertFalse($address->getPhone() === 9900000000);
+        $this->assertFalse($address->getProperty() === new Property());
+        $this->assertFalse($address->getLongitude() === 1);
+        $this->assertFalse($address->getLatitude() === 1);
     }
 
     public function testIsEmpty()
@@ -66,5 +82,26 @@ class AddressUnitTest extends TestCase
         $this->assertEmpty($address->getCountry());
         $this->assertEmpty($address->getCounty());
         $this->assertEmpty($address->getPhone());
+        $this->assertEmpty($address->getId());
+        $this->assertEmpty($address->getProperty());
+        $this->assertEmpty($address->getLongitude());
+        $this->assertEmpty($address->getLatitude());
+
     }
+
+    public function testAddGetRemoveUsers()
+    {
+        $address = new Address();
+        $user = new User();
+
+        $this->assertEmpty($address->getUsers());
+
+        $address->addUser($user);
+        $this->assertContains($user, $address->getUsers());
+
+        $address->removeUser($user);
+        $this->assertEmpty($address->getUsers());
+
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Tests;
 
 use App\Entity\Address;
+use App\Entity\Property;
 use App\Entity\User;
 use PHPUnit\Framework\TestCase;
 
@@ -63,6 +64,22 @@ class UserUnitTest extends TestCase
         $this->assertEmpty($user->getFirstname());
         $this->assertEmpty($user->getCompany());
         $this->assertEmpty($user->getAddress());
+        $this->assertEmpty($user->getId());
+    }
+
+    public function testAddGetRemoveProperty()
+    {
+        $user = new User();
+        $property = new Property();
+
+        $this->assertEmpty($user->getProperties());
+
+        $user->addProperty($property);
+        $this->assertContains($property, $user->getProperties());
+
+        $user->removeProperty($property);
+        $this->assertEmpty($user->getProperties());
+
     }
 
 }
