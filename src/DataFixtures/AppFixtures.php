@@ -27,6 +27,77 @@ class AppFixtures extends Fixture
     {
         $faker = Factory::create('fr_FR');
 
+        // TEST 1 EXAMPLE
+
+        $address = new Address();
+
+        $address->setStreetNumber(1)
+            ->setStreetAddressLine1('rue de Trieste')
+            ->setCity('Trieste')
+            ->setStateZipCode(01000)
+            ->setCountry('Italy')
+            ->setPhone(0700000000)
+            ->setLongitude(0700000000)
+            ->setLatitude(0700000000);
+
+        $manager->persist($address);
+
+        //USER
+        $user = new User();
+        $user->setEmail('usertest@test.com')
+            ->setUsername('testusername')
+            ->setLastname('testlastname')
+            ->setFirstname('testfirstname')
+            ->setCompany('testcompany')
+            ->setAddress($address)
+            ->setRoles(['ROLE_USER']);
+
+        $password = $this->encoder->encodePassword($user, 'password');
+        $user->setPassword($password);
+
+        $manager->persist($user);
+
+
+        // PROPERTY
+
+        $property = new Property();
+
+        $property->setPrice($faker->numberBetween(40000, 10000000))
+            ->setDescription('testproperty')
+            ->setArea($faker->numberBetween(10, 500))
+            ->setType($faker->word())
+            ->setStatus($faker->word())
+            ->setTotalRooms($faker->numberBetween(1, 10))
+            ->setTotalBedrooms($faker->numberBetween(0, 8))
+            ->setTotalBathrooms($faker->numberBetween(1, 4))
+            ->setAddress($address)
+            ->setUser($user)
+            ->setName('testproperty');
+
+        $manager->persist($property);
+
+        for ($k = 0; $k < 3; $k++)
+        {
+            // FEATURE
+
+            $feature = new Feature();
+            $feature->setName('view');
+            $manager->persist($feature);
+            $property->addFeature($feature);
+
+            $manager->persist($feature);
+            $manager->persist($property);
+
+        }
+
+
+        // FILE
+
+        $file = new File();
+        $file->setName('file');
+        $file->setProperty($property);
+        $manager->persist($file);
+
 
 
         // ADDRESS
@@ -60,46 +131,6 @@ class AppFixtures extends Fixture
 
             $manager->persist($user);
 
-        }
-
-        // PROPERTY + ADDRESS
-        for ($k = 0; $k < 10; $k++)
-        {
-            // ADDRESS
-            $addressProperty = new Address();
-
-            $addressProperty->setStreetNumber($faker->numberBetween(1, 99))
-                ->setStreetAddressLine1($faker->streetAddress)
-                ->setCity($faker->city())
-                ->setStateZipCode($faker->numberBetween(100, 950) . '00')
-                ->setCountry($faker->country())
-                ->setPhone('0' . $faker->numberBetween(600000001, 799999999))
-                ->setLongitude('0' . $faker->numberBetween(600000001, 799999999))
-                ->setLatitude('0' . $faker->numberBetween(600000001, 799999999));
-
-            $manager->persist($addressProperty);
-
-            //USER
-            $userProperty = new User();
-            $userProperty->setEmail('user1' . $k .'@test.com')
-                ->setUsername($faker->userName())
-                ->setLastname($faker->lastName())
-                ->setFirstname($faker->firstName())
-                ->setCompany($faker->company())
-                ->setAddress($addressProperty)
-                ->setRoles(['ROLE_USER']);
-
-            $password = $this->encoder->encodePassword($userProperty, 'password');
-            $userProperty->setPassword($password);
-
-            $manager->persist($userProperty);
-
-            // FEATURE
-
-            $feature = new Feature();
-            $feature->setName($faker->word());
-            $manager->persist($feature);
-
 
             // PROPERTY
 
@@ -113,22 +144,26 @@ class AppFixtures extends Fixture
                 ->setTotalRooms($faker->numberBetween(1, 10))
                 ->setTotalBedrooms($faker->numberBetween(0, 8))
                 ->setTotalBathrooms($faker->numberBetween(1, 4))
-                ->setAddress($addressProperty)
-                ->setUser($userProperty)
+                ->setAddress($address)
+                ->setUser($user)
                 ->setName($faker->text(20));
 
-                for ($l = 0; $l < 5; $l++)
-                {
-                    $feature = new Feature();
-                    $feature->setName($faker->word());
-                    $manager->persist($feature);
-
-                    $property->addFeature($feature);
-                }
-
-
-
             $manager->persist($property);
+
+            for ($k = 0; $k < 3; $k++)
+            {
+                // FEATURE
+
+                $feature = new Feature();
+                $feature->setName($faker->word());
+                $manager->persist($feature);
+                $property->addFeature($feature);
+
+                $manager->persist($feature);
+                $manager->persist($property);
+
+            }
+
 
             // FILE
 
@@ -136,7 +171,11 @@ class AppFixtures extends Fixture
             $file->setName($faker->word());
             $file->setProperty($property);
             $manager->persist($file);
+
+
+
         }
+
 
         $manager->flush();
     }
