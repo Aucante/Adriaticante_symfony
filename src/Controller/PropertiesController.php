@@ -42,7 +42,7 @@ class PropertiesController extends AbstractController
     }
 
     /**
-     * @Route("/properties/{id}", name="properties_details")
+     * @Route("/properties/{name}", name="properties_details")
      */
     public function details(Property $property): Response
     {

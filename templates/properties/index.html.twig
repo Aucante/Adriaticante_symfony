@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="text-center my-5">
-        <h1 class="display-4">PROPERTIES</h1>
+        <h1 class="display-4">REAL ESTATE</h1>
     </div>
 
     <div class="container-fluid my-5">
@@ -24,7 +24,7 @@
                                 alt="..."
                         />
                         <div class="card-body">
-                            <h5 class="card-title text-center cardPropertyTitle">{{ property.name|upper }}</h5>
+                            <h2 class="card-title text-center cardPropertyTitle fs-4 display-6">{{ property.name|upper }}</h2>
                             <div class="cardPropertyDescription">
                                 <p class="card-text">
                                     Area : {{ property.area }} m2
@@ -40,7 +40,7 @@
                                 </p>
                             </div>
                             <div class="text-center">
-                                <a href="{{ path('properties_details', {'id': property.id}) }}" class="btn btn-primary rounded-0">DISCOVER</a>
+                                <a href="{{ path('properties_details', {'name': property.name}) }}" class="btn btn-primary rounded-0">DISCOVER</a>
                             </div>
                         </div>
                     </div>
