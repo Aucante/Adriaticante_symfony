@@ -19,7 +19,45 @@
                 <li><a href="{{ path('properties') }}" class="nav-link display-5 fs-6 fw-normal">REAL ESTATE</a></li>
                 <li><a href="{{ path('about') }}" class="nav-link display-5 fs-6 fw-normal">ABOUT US</a></li>
                 <li><a href="#" class="nav-link display-5 fs-6 fw-normal">CONTACT</a></li>
+                {% if is_granted('ROLE_USER') %}
+                <li>
+                    <div class="dropdown">
+                        <p
+                                class="nav-link dropdown-toggle display-5 fs-6 fw-normal"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                        >
+                            PROFILE
+                        </p>
+                        <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item fs-6 text-uppercase" href="#"
+                                >edit profil</a
+                                >
+                            </li>
+                            <li>
+                                <a class="dropdown-item fs-6 text-uppercase" href="#"
+                                >Consult ads</a
+                                >
+                            </li>
+                            <li>
+                                <a class="dropdown-item fs-6 text-uppercase" href="#"
+                                >contact</a
+                                >
+                            </li>
+                            <li>
+                                <a class="dropdown-item fs-6 text-danger text-uppercase" href="{{ path('app_logout') }}"
+                                >Logout</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                    <a href="{{ path('home') }}"><button class="btn btn-primary rounded-0 ms-2">POST</button></a>
+                {% else %}
                 <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 ms-2">SIGN IN</button></a>
+                {% endif %}
             </ul>
         </div>
     </nav>
