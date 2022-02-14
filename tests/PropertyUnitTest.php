@@ -26,7 +26,8 @@ class PropertyUnitTest extends TestCase
             ->setTotalBedrooms(1)
             ->setTotalBathrooms(1)
             ->setAddress($address)
-            ->setUser($user);
+            ->setUser($user)
+            ->setAdvertType('true');
 
         $this->assertTrue($property->getName() === 'true');
         $this->assertTrue($property->getPrice() === 1);
@@ -37,6 +38,7 @@ class PropertyUnitTest extends TestCase
         $this->assertTrue($property->getTotalBathrooms() === 1);
         $this->assertTrue($property->getAddress() === $address);
         $this->assertTrue($property->getUser() === $user);
+        $this->assertTrue($property->getAdvertType() === 'true');
     }
 
     public function testIsFalse()
@@ -54,7 +56,8 @@ class PropertyUnitTest extends TestCase
             ->setTotalBedrooms(1)
             ->setTotalBathrooms(1)
             ->setAddress($address)
-            ->setUser($user);
+            ->setUser($user)
+            ->setAdvertType('true');
 
         $this->assertFalse($property->getPrice() === 2);
         $this->assertFalse($property->getName() === 'false');
@@ -65,6 +68,7 @@ class PropertyUnitTest extends TestCase
         $this->assertFalse($property->getTotalBathrooms() === 2);
         $this->assertFalse($property->getAddress() === new Address());
         $this->assertFalse($property->getUser() === new User());
+        $this->assertFalse($property->getAdvertType() === 'false');
 
     }
 
@@ -84,6 +88,7 @@ class PropertyUnitTest extends TestCase
         $this->assertEmpty($property->getAddress());
         $this->assertEmpty($property->getId());
         $this->assertEmpty($property->getUser());
+        $this->assertEmpty($property->getAdvertType());
     }
 
     public function testAddGetRemoveFeature()

@@ -87,6 +87,11 @@ class Property
      */
     private $status;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $advertType;
+
     public function __construct()
     {
         $this->features = new ArrayCollection();
@@ -289,6 +294,18 @@ class Property
     public function setStatus(string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getAdvertType(): ?string
+    {
+        return $this->advertType;
+    }
+
+    public function setAdvertType(string $advertType): self
+    {
+        $this->advertType = $advertType;
 
         return $this;
     }
