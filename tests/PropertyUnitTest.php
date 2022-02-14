@@ -27,7 +27,10 @@ class PropertyUnitTest extends TestCase
             ->setTotalBathrooms(1)
             ->setAddress($address)
             ->setUser($user)
-            ->setAdvertType('true');
+            ->setAdvertType('true')
+            ->setLinkWebsite('true')
+            ->setPhoneContact(1)
+            ->setNameContact('true');
 
         $this->assertTrue($property->getName() === 'true');
         $this->assertTrue($property->getPrice() === 1);
@@ -39,6 +42,9 @@ class PropertyUnitTest extends TestCase
         $this->assertTrue($property->getAddress() === $address);
         $this->assertTrue($property->getUser() === $user);
         $this->assertTrue($property->getAdvertType() === 'true');
+        $this->assertTrue($property->getLinkWebsite() === 'true');
+        $this->assertTrue($property->getPhoneContact() === 1);
+        $this->assertTrue($property->getNameContact() === 'true');
     }
 
     public function testIsFalse()
@@ -57,7 +63,10 @@ class PropertyUnitTest extends TestCase
             ->setTotalBathrooms(1)
             ->setAddress($address)
             ->setUser($user)
-            ->setAdvertType('true');
+            ->setAdvertType('true')
+            ->setLinkWebsite('true')
+            ->setPhoneContact(1)
+            ->setNameContact('true');
 
         $this->assertFalse($property->getPrice() === 2);
         $this->assertFalse($property->getName() === 'false');
@@ -69,6 +78,9 @@ class PropertyUnitTest extends TestCase
         $this->assertFalse($property->getAddress() === new Address());
         $this->assertFalse($property->getUser() === new User());
         $this->assertFalse($property->getAdvertType() === 'false');
+        $this->assertFalse($property->getLinkWebsite() === 'false');
+        $this->assertFalse($property->getPhoneContact() === 2);
+        $this->assertFalse($property->getNameContact() === 'false');
 
     }
 
@@ -89,6 +101,9 @@ class PropertyUnitTest extends TestCase
         $this->assertEmpty($property->getId());
         $this->assertEmpty($property->getUser());
         $this->assertEmpty($property->getAdvertType());
+        $this->assertEmpty($property->getLinkWebsite());
+        $this->assertEmpty($property->getPhoneContact());
+        $this->assertEmpty($property->getNameContact());
     }
 
     public function testAddGetRemoveFeature()

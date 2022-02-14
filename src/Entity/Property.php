@@ -92,6 +92,21 @@ class Property
      */
     private $advertType;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkWebsite;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $phoneContact;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nameContact;
+
     public function __construct()
     {
         $this->features = new ArrayCollection();
@@ -306,6 +321,42 @@ class Property
     public function setAdvertType(string $advertType): self
     {
         $this->advertType = $advertType;
+
+        return $this;
+    }
+
+    public function getLinkWebsite(): ?string
+    {
+        return $this->linkWebsite;
+    }
+
+    public function setLinkWebsite(?string $linkWebsite): self
+    {
+        $this->linkWebsite = $linkWebsite;
+
+        return $this;
+    }
+
+    public function getPhoneContact(): ?int
+    {
+        return $this->phoneContact;
+    }
+
+    public function setPhoneContact(int $phoneContact): self
+    {
+        $this->phoneContact = $phoneContact;
+
+        return $this;
+    }
+
+    public function getNameContact(): ?string
+    {
+        return $this->nameContact;
+    }
+
+    public function setNameContact(string $nameContact): self
+    {
+        $this->nameContact = $nameContact;
 
         return $this;
     }
