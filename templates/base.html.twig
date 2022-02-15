@@ -21,6 +21,14 @@
             {% include('base/nav.html.twig') %}
         </header>
 
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="text-center border-bottom bg-secondary display-6 py-2 fs-5 flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
 
         {% block body %}{% endblock %}
 

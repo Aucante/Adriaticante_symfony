@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="col-10 offset-1 my-5 col-xl-6 offset-xl-3">
+        <div class="text-center my-5 border-bottom">
+            <h1 class="display-4 text-uppercase">New real estate</h1>
+        </div>
+        {{ form_start(propertyForm) }}
+
+        <div class="row">
+            <div class="col-md-4 offset-md-4">{{ form_row(propertyForm.advertType) }}</div>
+        </div>
+        <div class="text-center my-5 border-bottom">
+            <h2 class="display-6">Real Estate Informations</h2>
+        </div>
+        <div class="row">
+            <div>{{ form_row(propertyForm.name) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-6">{{ form_row(propertyForm.price) }}</div>
+            <div class="col-6">{{ form_row(propertyForm.area) }}</div>
+        </div>
+        <div class="row">
+            <div>{{ form_row(propertyForm.description) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-6">{{ form_row(propertyForm.type) }}</div>
+            <div class="col-6">{{ form_row(propertyForm.totalRooms) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-6">{{ form_row(propertyForm.totalBathrooms) }}</div>
+            <div class="col-6">{{ form_row(propertyForm.totalBedrooms) }}</div>
+        </div>
+        <div class="text-center my-5 border-bottom">
+            <h2 class="display-6">Agency Informations</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">{{ form_row(propertyForm.linkWebsite) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">{{ form_row(propertyForm.phoneContact) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">{{ form_row(propertyForm.nameContact) }}</div>
+        </div>
+
+        <button type="submit" class="col-md-8 offset-md-2 container text-center btn btn-primary rounded-0 my-4 text-uppercase">Following
+        </button>
+        {{ form_end(propertyForm) }}
+    </div>
+
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
