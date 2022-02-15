@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="col-10 offset-1 my-5 col-xl-6 offset-xl-3">
+        <div class="text-center my-5 border-bottom">
+            <h1 class="display-4 text-uppercase">add features</h1>
+        </div>
+        <div>{{ property.name }}</div>
+
+        <a href="{{ path('properties_add_files', {'id': property.id}) }}">
+            <button type="submit" class="col-md-8 offset-md-2 container text-center btn btn-primary rounded-0 my-4 text-uppercase">Following
+            </button>
+        </a>
+    </div>
+
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

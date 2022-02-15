@@ -82,14 +82,34 @@ class PropertiesController extends AbstractController
             $entityManager->persist($property);
             $entityManager->flush();
 
-            $this->addFlash('success', 'The information was saved correctly');
-            return $this->redirectToRoute('properties_create');
+            $this->addFlash('success', 'The real estate informations were saved correctly.');
+            return $this->redirectToRoute('properties_add_features', ['id' => $property->getId()]);
         }
 
 
 
         return $this->render('properties/create.html.twig', [
             'propertyForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/addfeatures-realestate/{id}", name="properties_add_features")
+     */
+    public function addFeatures(Property $property): Response
+    {
+        return $this->render('properties/addFeatures.html.twig', [
+            'property' => $property
+        ]);
+    }
+
+    /**
+     * @Route("/addfiles-realestate/{id}", name="properties_add_files")
+     */
+    public function addFiles(Property $property): Response
+    {
+        return $this->render('properties/addFiles.html.twig', [
+            'property' => $property
         ]);
     }
 }
