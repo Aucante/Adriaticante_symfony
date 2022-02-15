@@ -6,6 +6,7 @@ use App\Repository\PropertyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
@@ -20,43 +21,54 @@ class Property
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Please provide a title")
+     * @Assert\Length(min=5, max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Assert\NotBlank(message="Please provide a price")
      * @ORM\Column(type="integer")
      */
     private $price;
 
     /**
+     * @Assert\NotBlank(message="Please provide a description")
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
+     * @Assert\NotBlank(message="Please provide a area")
      * @ORM\Column(type="integer")
      */
     private $area;
 
     /**
+     * @Assert\NotBlank(message="Please provide the number of rooms")
+     * @Assert\Range(min="0", max="14", notInRangeMessage="Please provide a value in the range")
      * @ORM\Column(type="integer")
      */
     private $totalRooms;
 
     /**
+     * @Assert\NotBlank(message="Please provide the number of bedrooms")
+     * @Assert\Range(min="0", max="9", notInRangeMessage="Please provide a value in the range")
      * @ORM\Column(type="integer")
      */
     private $totalBedrooms;
 
     /**
+     * @Assert\NotBlank(message="Please provide the number of bathrooms")
+     * @Assert\Range(min="0", max="9", notInRangeMessage="Please provide a value in the range")
      * @ORM\Column(type="integer")
      */
     private $totalBathrooms;
 
     /**
      * @ORM\OneToOne(targetEntity=Address::class, inversedBy="property", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $address;
 
@@ -78,6 +90,8 @@ class Property
     private $files;
 
     /**
+     * @Assert\NotBlank(message="Please provide the type")
+     * @Assert\Choice(choices={"Villa", "House", "Penthouse", "Apartment", "Condo", "New Developments", "Chalets", "Commercial space"})
      * @ORM\Column(type="string", length=255)
      */
     private $type;
@@ -88,21 +102,29 @@ class Property
     private $status;
 
     /**
+     * @Assert\NotBlank(message="Please provide the type of the advert")
+     * @Assert\Choice(choices={"Purchase", "Daily Rental", "Monthly Rental"})
      * @ORM\Column(type="string", length=255)
      */
     private $advertType;
 
     /**
+     * @Assert\NotBlank(message="Please provide the website link")
+     * @Assert\Length(min=8, max=255)
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $linkWebsite;
 
     /**
+     * @Assert\NotBlank(message="Please provide the phone number")
+     * @Assert\Length(min=5, max=14)
      * @ORM\Column(type="integer")
      */
     private $phoneContact;
 
     /**
+     * @Assert\NotBlank(message="Please provide the name")
+     * @Assert\Length(min=2, max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $nameContact;
