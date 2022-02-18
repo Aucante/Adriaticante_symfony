@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\File;
 use App\Entity\Property;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -29,5 +30,6 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Real Estate', 'fas fa-list', Property::class);
+        yield MenuItem::linkToCrud('File', 'fas fa-list', File::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\File;
 use App\Entity\Property;
 use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
@@ -9,9 +10,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Proxies\__CG__\App\Entity\Status;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use function PHPUnit\Framework\directoryExists;
 
 class PropertiesController extends AbstractController
 {
@@ -108,8 +113,36 @@ class PropertiesController extends AbstractController
      */
     public function addFiles(Property $property): Response
     {
+
         return $this->render('properties/addFiles.html.twig', [
             'property' => $property
         ]);
     }
+
+    /**
+     * @Route("/addPhotos-realestate/{id}", name="properties_add_photos")
+     */
+    public function addPhotos(Request $request, Property $property, KernelInterface $kernel, EntityManagerInterface $entityManager): Response
+    {
+
+        foreach ($request->files as $currentFile)
+        {
+            /** @var $currentFile UploadedFile */
+            $fileName = $property->getId() . uniqid('_', true) . '.' . $currentFile->getClientOriginalExtension();
+            $res = $currentFile->move($kernel->getProjectDir() . '/public/upload/properties', $fileName);
+            $file = new File();
+            $file->setProperty($property)
+                ->setName($fileName);
+
+            $entityManager->persist($file);
+
+        }
+        $entityManager->flush();
+
+        return new JsonResponse([
+            'success' => true
+        ]);
+    }
+
+
 }

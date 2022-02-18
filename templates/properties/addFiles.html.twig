@@ -7,6 +7,10 @@
             <h1 class="display-4 text-uppercase">add pictures</h1>
         </div>
         <div>{{ property.id }}</div>
+        <form action="{{ path('properties_add_photos', {'id' : property.id}) }}"
+              class="dropzone"
+              id="my-form"></form>
+        <div id="output"></div>
 
         <a href="#">
             <button type="submit" class="col-md-8 offset-md-2 container text-center btn btn-primary rounded-0 my-4 text-uppercase">Validate
@@ -15,6 +19,18 @@
     </div>
 
 
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('addFileProperty') }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('addFileProperty') }}
 {% endblock %}
 
 {% block title %}

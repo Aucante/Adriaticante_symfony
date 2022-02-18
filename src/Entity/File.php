@@ -22,6 +22,7 @@ class File
      */
     private $name;
 
+
     /**
      * @ORM\ManyToOne(targetEntity=Property::class, inversedBy="files")
      * @ORM\JoinColumn(nullable=false)
@@ -46,6 +47,8 @@ class File
 
         return $this;
     }
+
+
 
     public function getProperty(): ?Property
     {
