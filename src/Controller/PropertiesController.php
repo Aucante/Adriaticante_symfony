@@ -129,7 +129,7 @@ class PropertiesController extends AbstractController
         {
             /** @var $currentFile UploadedFile */
             $fileName = $property->getId() . uniqid('_', true) . '.' . $currentFile->getClientOriginalExtension();
-            $res = $currentFile->move($kernel->getProjectDir() . '/public/upload/properties', $fileName);
+            $currentFile->move($kernel->getProjectDir() . '/public/upload/properties', $fileName);
             $file = new File();
             $file->setProperty($property)
                 ->setName($fileName);
@@ -143,6 +143,8 @@ class PropertiesController extends AbstractController
             'success' => true
         ]);
     }
+
+
 
 
 }
