@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <div class="container h-100">
+        <div
+                class="row d-flex justify-content-center align-items-center h-100"
+        >
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card rounded-0">
+                    <div class="card-body p-5">
+                        <h2 class="text-uppercase text-center mb-5">
+                            Profile
+                        </h2>
+
+                        {{ form_start(profileForm) }}
+
+                        {{ form_widget(profileForm) }}
+                        <button type="submit" class="container text-center btn btn-primary rounded-0">Register
+                        </button>
+
+                        {{ form_end(profileForm) }}
+                        <div class="text-center mt-4">
+                            <img src="{{ asset('img/logo/adriaticante.png') }}" alt="logo" height="50" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
