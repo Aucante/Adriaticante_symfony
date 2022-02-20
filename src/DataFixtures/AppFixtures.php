@@ -50,7 +50,8 @@ class AppFixtures extends Fixture
             ->setFirstname('testfirstname')
             ->setCompany('testcompany')
             ->setAddress($address)
-            ->setRoles(['ROLE_USER']);
+            ->setRoles(['ROLE_USER'])
+            ->setFile('test');
 
         $password = $this->encoder->encodePassword($user, 'password');
         $user->setPassword($password);
@@ -72,7 +73,10 @@ class AppFixtures extends Fixture
             ->setTotalBathrooms($faker->numberBetween(1, 4))
             ->setAddress($address)
             ->setUser($user)
-            ->setName('testproperty');
+            ->setName('testproperty')
+            ->setAdvertType($faker->word())
+            ->setPhoneContact(0)
+            ->setNameContact($faker->word());
 
         $manager->persist($property);
 
@@ -124,7 +128,8 @@ class AppFixtures extends Fixture
                     ->setFirstname($faker->firstName())
                     ->setCompany($faker->company())
                     ->setAddress($address)
-                    ->setRoles(['ROLE_USER']);
+                    ->setRoles(['ROLE_USER'])
+                    ->setFile('test');
 
             $password = $this->encoder->encodePassword($user, 'password');
             $user->setPassword($password);
@@ -146,7 +151,10 @@ class AppFixtures extends Fixture
                 ->setTotalBathrooms($faker->numberBetween(1, 4))
                 ->setAddress($address)
                 ->setUser($user)
-                ->setName($faker->text(20));
+                ->setName($faker->text(20))
+                ->setAdvertType($faker->word())
+                ->setPhoneContact(0)
+                ->setNameContact($faker->word());
 
             $manager->persist($property);
 
