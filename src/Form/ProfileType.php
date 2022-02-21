@@ -4,9 +4,11 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\Dropzone\Form\DropzoneType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProfileType extends AbstractType
 {
@@ -16,8 +18,8 @@ class ProfileType extends AbstractType
             ->add('lastname')
             ->add('firstname')
             ->add('company')
-            ->add('file', DropzoneType::class, array(
-                'data_class' => null
+            ->add('imageFile', VichImageType::class, array(
+                'mapped'=>false
             ))
         ;
     }
