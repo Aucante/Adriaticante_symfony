@@ -29,11 +29,11 @@ class UserController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'The profile was updated.');
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('profile');
         }
 
         return $this->render('user/profile.html.twig', [
-            'profileForm' => $profileForm->createView()
+            'profileForm' => $profileForm->createView(),
         ]);
     }
 }
