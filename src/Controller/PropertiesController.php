@@ -113,6 +113,22 @@ class PropertiesController extends AbstractController
     }
 
     /**
+     * @Route("/delete-realestate/{id}", name="properties_delete")
+     */
+    public function delete(
+        Property $property,
+        EntityManagerInterface $entityManager
+    ): Response
+    {
+        $entityManager->remove($property);
+        $entityManager->flush();
+        $this->addFlash('success', 'Real estate deleted.');
+        return $this->redirectToRoute('user_properties');
+
+
+    }
+
+    /**
      * @Route("/update-realestate/{id}", name="properties_update")
      */
     public function update(
