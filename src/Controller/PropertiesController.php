@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class PropertiesController extends AbstractController
 {
@@ -47,8 +48,25 @@ class PropertiesController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/properties/{name}", name="properties_details")
+     * @Route("/my-properties", name="user_properties")
+     */
+    public function userProperties(
+        PropertyRepository $propertyRepository
+    ): Response
+    {
+        $user = $this->getUser();
+
+        $userProperties = $propertyRepository->findUserProperties($user);
+
+        return $this->render('properties/userProperties.html.twig', [
+            'userProperties' => $userProperties
+        ]);
+    }
+
+    /**
+     * @Route("/properties/{id}", name="properties_details")
      */
     public function details(Property $property): Response
     {
@@ -119,26 +137,7 @@ class PropertiesController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/addfeatures-realestate/{id}", name="properties_add_features")
-     */
-    public function addFeatures(Property $property): Response
-    {
-        return $this->render('properties/addFeatures.html.twig', [
-            'property' => $property
-        ]);
-    }
 
-    /**
-     * @Route("/addfiles-realestate/{id}", name="properties_add_files")
-     */
-    public function addFiles(Property $property): Response
-    {
-
-        return $this->render('properties/addFiles.html.twig', [
-            'property' => $property
-        ]);
-    }
 
     /**
      * @Route("/addPhotos-realestate/{id}", name="properties_add_photos")
