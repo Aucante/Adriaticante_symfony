@@ -129,10 +129,19 @@ class Property
      */
     private $nameContact;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Asset::class, mappedBy="property", orphanRemoval=true, cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Count(min=1)
+     * @Assert\Valid()
+     */
+    private $assets;
+
     public function __construct()
     {
         $this->features = new ArrayCollection();
         $this->files = new ArrayCollection();
+        $this->assets = new ArrayCollection();
     }
 
 
@@ -379,6 +388,36 @@ class Property
     public function setNameContact(string $nameContact): self
     {
         $this->nameContact = $nameContact;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Asset[]
+     */
+    public function getAssets(): Collection
+    {
+        return $this->assets;
+    }
+
+    public function addAsset(Asset $asset): self
+    {
+        if (!$this->assets->contains($asset)) {
+            $this->assets[] = $asset;
+            $asset->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAsset(Asset $asset): self
+    {
+        if ($this->assets->removeElement($asset)) {
+            // set the owning side to null (unless already changed)
+            if ($asset->getProperty() === $this) {
+                $asset->setProperty(null);
+            }
+        }
 
         return $this;
     }

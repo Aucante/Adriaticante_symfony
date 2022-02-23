@@ -89,10 +89,33 @@ class PropertiesController extends AbstractController
             return $this->redirectToRoute('properties_add_features', ['id' => $property->getId()]);
         }
 
-
-
         return $this->render('properties/create.html.twig', [
-            'propertyForm' => $form->createView()
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/update-realestate/{id}", name="properties_update")
+     */
+    public function update(
+        Request $request,
+        Property $property
+    ): Response
+    {
+
+        $form = $this->createForm(PropertyType::class, $property);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'The real estate informations were updated correctly.');
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('properties/update.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 

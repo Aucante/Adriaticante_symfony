@@ -2,9 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\Feature;
+use App\Entity\Asset;
 use App\Entity\Property;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -92,6 +96,14 @@ class PropertyType extends AbstractType
             ->add('linkWebsite', UrlType::class)
             ->add('phoneContact', TelType::class)
             ->add('nameContact', TextType::class)
+            ->add('assets', CollectionType::class, [
+                'entry_type' => AssetType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'required' => false,
+                'error_bubbling' => false
+            ])
         ;
     }
 
