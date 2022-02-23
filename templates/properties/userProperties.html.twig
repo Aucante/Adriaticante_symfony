@@ -23,7 +23,7 @@
                     <td>{{ property.area }}</td>
                     <td>{{ property.nameContact }}</td>
                     <td><a href="{{ path('properties_details', {'id': property.id}) }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">Check</button></a></td>
-                    <td><a href="#"><button class="btn btn-danger rounded-0 ms-2 text-uppercase">Delete</button></a></td>
+                    <td><a href="{{ path('properties_delete', {'id': property.id}) }}"><button class="btn btn-danger rounded-0 ms-2 text-uppercase">Delete</button></a></td>
                 </tr>
             {% endfor %}
             </tbody>
