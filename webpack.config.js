@@ -22,6 +22,8 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('addFileProperty', './assets/add-file-property.js')
+    .addEntry('addFeature', './assets/add-feature.js')
+    .addEntry('addAsset', './assets/add-asset.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
