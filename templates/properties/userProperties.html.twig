@@ -10,8 +10,6 @@
             <tr class="text-uppercase">
                 <th>Real Estate</th>
                 <th>Price</th>
-                <th>Area</th>
-                <th>Contact</th>
                 <th colspan="2">Action</th>
             </tr>
             </thead>
@@ -20,14 +18,40 @@
                 <tr>
                     <th>{{ property.name }}</th>
                     <td>{{ property.price }}</td>
-                    <td>{{ property.area }}</td>
-                    <td>{{ property.nameContact }}</td>
                     <td><a href="{{ path('properties_details', {'id': property.id}) }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">Check</button></a></td>
                     <td><a href="{{ path('properties_delete', {'id': property.id}) }}"><button class="btn btn-danger rounded-0 ms-2 text-uppercase">Delete</button></a></td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+    </div>
+
+    <div class="container">
+        {% for property in userProperties %}
+        <div class="row align-items-center border-bottom py-3 my-5">
+            <div class="col-4">
+                <img
+                        src="{{ asset('img/img/triesteM.jpg') }}"
+                        class="img-fluid"
+                        style="min-height: 80px"
+                />
+            </div>
+            <div class="col-6">
+                <div>
+                    <p class="text-uppercase my-2">{{ property.name }}</p>
+                    <p class="text-uppercase my-2">{{ property.price }} €</p>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="text-center my-2">
+                    <button class="btn btn-primary rounded-0 text-uppercase">check</button>
+                </div>
+                <div class="text-center my-2">
+                    <button class="btn btn-danger rounded-0 text-uppercase">delete</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 {% endblock %}
 
