@@ -9,6 +9,7 @@ use App\Repository\PropertyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -104,7 +105,7 @@ class PropertiesController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'The real estate informations were saved correctly.');
-            return $this->redirectToRoute('properties_add_features', ['id' => $property->getId()]);
+            return $this->redirectToRoute('properties_add_photos_vue', ['id' => $property->getId()]);
         }
 
         return $this->render('properties/create.html.twig', [
@@ -153,7 +154,19 @@ class PropertiesController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/addPhotos-realestate-vue/{id}", name="properties_add_photos_vue")
+     */
+    public function addPhotosVue(
+        Request $request,
+        Property $property
+    ): Response
+    {
+        return $this->render('properties/addFiles.html.twig', [
+            'property' => $property
+        ]);
 
+    }
 
     /**
      * @Route("/addPhotos-realestate/{id}", name="properties_add_photos")
@@ -161,23 +174,31 @@ class PropertiesController extends AbstractController
     public function addPhotos(Request $request, Property $property, KernelInterface $kernel, EntityManagerInterface $entityManager): Response
     {
 
+
         foreach ($request->files as $currentFile)
         {
             /** @var $currentFile UploadedFile */
-            $fileName = $property->getId() . uniqid('_', true) . '.' . $currentFile->getClientOriginalExtension();
-            $currentFile->move($kernel->getProjectDir() . '/public/upload/properties', $fileName);
-            $file = new File();
-            $file->setProperty($property)
-                ->setName($fileName);
+            $fileName = $property->getName() . uniqid('_', true) . '.' . $currentFile->getClientOriginalExtension();
+            if ($fileName)
+            {
+                try {
+                    $currentFile->move($kernel->getProjectDir() . '/public/uploads/properties', $fileName);
+                    $file = new File();
+                    $file->setProperty($property)
+                        ->setName($fileName);
 
-            $entityManager->persist($file);
-
+                    $entityManager->persist($file);
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                    $this->addFlash('error', 'Upload failed.');
+                    return $this->redirectToRoute('properties_add_photos_vue', ['id' => $property->getId()]);
+                }
+            }
         }
         $entityManager->flush();
 
-        return new JsonResponse([
-            'success' => true
-        ]);
+        $this->addFlash('success', 'Upload successful.');
+        return $this->redirectToRoute('user_properties');
     }
 
 

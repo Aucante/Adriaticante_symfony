@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\UX\Dropzone\Form\DropzoneType;
 
 class PropertyType extends AbstractType
 {
@@ -98,6 +99,14 @@ class PropertyType extends AbstractType
             ->add('nameContact', TextType::class)
             ->add('assets', CollectionType::class, [
                 'entry_type' => AssetType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'required' => false,
+                'error_bubbling' => false
+            ])
+            ->add('files', CollectionType::class, [
+                'entry_type' => FileType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
