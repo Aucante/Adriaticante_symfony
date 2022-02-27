@@ -51,7 +51,7 @@ class AppFixtures extends Fixture
             ->setCompany('testcompany')
             ->setAddress($address)
             ->setRoles(['ROLE_USER'])
-            ->setFile('test')
+            ->setFile('adriatic.jpg')
             ->setUpdatedAt(new \DateTimeImmutable());
 
         $password = $this->encoder->encodePassword($user, 'password');
@@ -130,7 +130,7 @@ class AppFixtures extends Fixture
                     ->setCompany($faker->company())
                     ->setAddress($address)
                     ->setRoles(['ROLE_USER'])
-                    ->setFile('test')
+                    ->setFile('adriatic.jpg')
                    ->setUpdatedAt(new \DateTimeImmutable());
 
             $password = $this->encoder->encodePassword($user, 'password');

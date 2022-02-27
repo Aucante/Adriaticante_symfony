@@ -17,10 +17,11 @@ class ProfileType extends AbstractType
             ->add('lastname')
             ->add('firstname')
             ->add('company')
-            ->add('imageFile', FileType::class, [
+            ->add('file', FileType::class, [
                 'label' => 'File',
 
                 // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
 
                 // make it optional so you don't have to re-upload the PDF file
                 // every time you edit the Product details
@@ -35,10 +36,10 @@ class ProfileType extends AbstractType
                             'image/jpeg',
                             'image/jpg',
                         ],
-                        'mimeTypesMessage' => 'jpg or jpeg',
+                        'mimeTypesMessage' => 'jpeg or jpg',
                     ])
                 ],
-            ]);
+            ])
         ;
     }
 
