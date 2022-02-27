@@ -52,7 +52,7 @@ class AppFixtures extends Fixture
             ->setAddress($address)
             ->setRoles(['ROLE_USER'])
             ->setFile('test')
-            ->setUpdatedAt(new \DateTime());
+            ->setUpdatedAt(new \DateTimeImmutable());
 
         $password = $this->encoder->encodePassword($user, 'password');
         $user->setPassword($password);
@@ -99,7 +99,7 @@ class AppFixtures extends Fixture
         // FILE
 
         $file = new File();
-        $file->setName('file');
+        $file->setName('adriaticante.png');
         $file->setProperty($property);
         $manager->persist($file);
 
@@ -131,7 +131,7 @@ class AppFixtures extends Fixture
                     ->setAddress($address)
                     ->setRoles(['ROLE_USER'])
                     ->setFile('test')
-                   ->setUpdatedAt(new \DateTime());
+                   ->setUpdatedAt(new \DateTimeImmutable());
 
             $password = $this->encoder->encodePassword($user, 'password');
             $user->setPassword($password);
@@ -160,7 +160,7 @@ class AppFixtures extends Fixture
 
             $manager->persist($property);
 
-            for ($k = 0; $k < 3; $k++)
+            for ($k = 0; $k < 5; $k++)
             {
                 // FEATURE
 
@@ -172,15 +172,14 @@ class AppFixtures extends Fixture
                 $manager->persist($feature);
                 $manager->persist($property);
 
+                // FILE
+
+                $file = new File();
+                $file->setName('adriatic.jpg');
+                $file->setProperty($property);
+                $manager->persist($file);
             }
 
-
-            // FILE
-
-            $file = new File();
-            $file->setName($faker->word());
-            $file->setProperty($property);
-            $manager->persist($file);
 
 
 
