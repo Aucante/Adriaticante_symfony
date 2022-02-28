@@ -3,46 +3,101 @@
 {% block title %}Hello UserController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <div class="container h-100">
-        <div
-                class="row d-flex justify-content-center align-items-center h-100"
-        >
-            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div class="card rounded-0">
-                    <div class="card-body p-5">
-                        <h2 class="text-uppercase text-center mb-5">
-                            Profile
-                        </h2>
-
-                        {{ form_start(profileForm) }}
-
-                        {{ form_widget(profileForm) }}
-                        <button type="submit" class="container text-center btn btn-primary rounded-0">Register
-                        </button>
-
-                        {{ form_end(profileForm) }}
-                        <div class="text-center mt-4">
-                            <img src="{{ asset('img/logo/adriaticante.png') }}" alt="logo" height="50" />
-                        </div>
-                        <div>
-                            <div class="ratio ratio-16x9">
-                                <img
-                                        src="{{ asset('uploads/user/' ~ user.file) }}"
-                                        class="imageProperty img-thumbnail rounded-0"
-                                        alt="..."
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-4 offset-4 my-4">
+                <img
+                        src="{{ asset('uploads/user/' ~ user.file) }}"
+                        class="rounded-3 figure-img img-fluid"
+                        alt="..."
+                />
             </div>
         </div>
+        <div class="text-center">
+            <div class="text-center my-4">
+                <h1 class="display-5">Identity</h1>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">Company</div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.company }}</div>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">Username</div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.username }}</div>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">Email</div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.email }}</div>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="text-center my-4">
+                <h1 class="display-5">Your contact agency</h1>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">Lastname</div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.lastname }}</div>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">Firstname</div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.firstname }}</div>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="text-center my-4">
+                <h1 class="display-5">Your address</h1>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">Street number</div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.streetnumber }}</div>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">
+                    Street address line 1
+                </div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.streetaddressline1 }}</div>
+            </div><div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">
+                    Street address line 2
+                </div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.streetaddressline2 }}</div>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">City</div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.city }}</div>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">Zip Code</div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.statezipcode }}</div>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">County</div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.county }}</div>
+            </div>
+            <div class="row my-1">
+                <div class="col-5 display-6 fs-5 border py-4 my-1">Country</div>
+                <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.country }}</div>
+            </div>
+        </div>
+        <div class="text-center my-5">
+            <a href="{{ path('profile_update') }}">
+                <button class="btn btn-dark btn-lg rounded-0 ms-2 mt-2 text-uppercase">
+                    EDIT Profile
+                </button>
+            </a>
+        </div>
     </div>
-</div>
+
 {% endblock %}
