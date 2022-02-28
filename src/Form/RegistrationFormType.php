@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\UX\Dropzone\Form\DropzoneType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -52,7 +53,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('file', FileType::class, [
+            ->add('file', DropzoneType::class, [
                 'label' => 'File',
 
                 // unmapped means that this field is not associated to any entity property

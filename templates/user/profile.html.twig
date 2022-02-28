@@ -15,7 +15,7 @@
         </div>
         <div class="text-center">
             <div class="text-center my-4">
-                <h1 class="display-5">Identity</h1>
+                <h2 class="display-5">Identity</h2>
             </div>
             <div class="row my-1">
                 <div class="col-5 display-6 fs-5 border py-4 my-1">Company</div>
@@ -35,7 +35,7 @@
         </div>
         <div class="text-center">
             <div class="text-center my-4">
-                <h1 class="display-5">Your contact agency</h1>
+                <h2 class="display-5">Your contact agency</h2>
             </div>
             <div class="row my-1">
                 <div class="col-5 display-6 fs-5 border py-4 my-1">Lastname</div>
@@ -48,9 +48,11 @@
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.firstname }}</div>
             </div>
         </div>
+
+        {% if user.address is not null %}
         <div class="text-center">
             <div class="text-center my-4">
-                <h1 class="display-5">Your address</h1>
+                <h2 class="display-5">Your address</h2>
             </div>
             <div class="row my-1">
                 <div class="col-5 display-6 fs-5 border py-4 my-1">Street number</div>
@@ -91,6 +93,7 @@
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.country }}</div>
             </div>
         </div>
+        {% endif %}
         <div class="text-center my-5">
             <a href="{{ path('profile_update') }}">
                 <button class="btn btn-dark btn-lg rounded-0 ms-2 mt-2 text-uppercase">

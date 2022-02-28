@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\UX\Dropzone\Form\DropzoneType;
 
 class ProfileType extends AbstractType
 {
@@ -17,7 +18,7 @@ class ProfileType extends AbstractType
             ->add('lastname')
             ->add('firstname')
             ->add('company')
-            ->add('file', FileType::class, [
+            ->add('file', DropzoneType::class, [
                 'label' => 'File',
 
                 // unmapped means that this field is not associated to any entity property
@@ -40,6 +41,7 @@ class ProfileType extends AbstractType
                     ])
                 ],
             ])
+            ->add('address', AddressType::class)
         ;
     }
 
