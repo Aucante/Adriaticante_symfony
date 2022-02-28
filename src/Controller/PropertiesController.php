@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\File;
 use App\Entity\Property;
+use App\Form\ContactType;
 use App\Form\PropertyType;
+use App\Notification\ContactNotification;
 use App\Repository\PropertyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -69,15 +72,32 @@ class PropertiesController extends AbstractController
     /**
      * @Route("/properties/{id}", name="properties_details")
      */
-    public function details(Property $property): Response
+    public function details(
+        Request $request,
+        Property $property,
+        ContactNotification $contactNotification
+    ): Response
     {
+        $contact = new Contact();
+        $contact->setProperty($property);
+        $contactForm = $this->createForm(ContactType::class, $contact);
+        $contactForm->handleRequest($request);
+
         $price = $property->getPrice();
         $area = $property->getArea();
         $priceArea = $price / $area;
 
+        if ($contactForm->isSubmitted() && $contactForm->isValid())
+        {
+            $contactNotification->notify($contact);
+            $this->addFlash('success', 'Email sent');
+            $this->redirectToRoute('properties_details', ['id' => $property->getId()]);
+        }
+
         return $this->render('properties/details.html.twig', [
             'property' => $property,
-            'priceArea' => $priceArea
+            'priceArea' => $priceArea,
+            'contactForm' => $contactForm->createView()
         ]);
     }
 
