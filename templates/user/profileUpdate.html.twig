@@ -3,46 +3,80 @@
 {% block title %}Hello UserController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <div class="container h-100">
-        <div
-                class="row d-flex justify-content-center align-items-center h-100"
-        >
-            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div class="card rounded-0">
-                    <div class="card-body p-5">
-                        <h2 class="text-uppercase text-center mb-5">
-                            Profile
-                        </h2>
-
-                        {{ form_start(profileForm) }}
-
-                        {{ form_widget(profileForm) }}
-                        <button type="submit" class="container text-center btn btn-primary rounded-0">Register
-                        </button>
-
-                        {{ form_end(profileForm) }}
-                        <div class="text-center mt-4">
-                            <img src="{{ asset('img/logo/adriaticante.png') }}" alt="logo" height="50" />
-                        </div>
-                        <div>
-                            <div class="ratio ratio-16x9">
-                                <img
-                                        src="{{ asset('uploads/user/' ~ user.file) }}"
-                                        class="imageProperty img-thumbnail rounded-0"
-                                        alt="..."
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container text-center">
+        <div class="text-center py-5">
+            <h1 class="display-4">EDIT PROFIL</h1>
+        </div>
+        <div class="row">
+            <div class="col-4 offset-4 mb-5">
+                <img
+                        src="{{ asset('uploads/user/' ~ user.file) }}"
+                        class="rounded-3 figure-img img-fluid"
+                        alt="..."
+                />
             </div>
         </div>
+        <div class="my-4">
+            <h2 class="display-5">Identity</h2>
+        </div>
+        {{ form_start(profileForm) }}
+        <div class="row">
+            <div class="col-md-6 offset-md-3 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.company) }}</div>
+            </div>
+        </div><div class="row">
+            <div class="col-md-6 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.lastname) }}</div>
+            </div>
+            <div class="col-md-6 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.firstname) }}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.file) }}</div>
+            </div>
+        </div>
+        <div class="my-4">
+            <h2 class="display-5">Address</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-xl-3 offset-xl-3 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.address.street_number) }}</div>
+            </div>
+            <div class="col-md-6 col-xl-3 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.address.street_address_line_1) }}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-xl-3 offset-xl-3 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.address.street_address_line_2) }}</div>
+            </div>
+            <div class="col-md-6 col-xl-3  display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.address.city) }}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-xl-3 offset-xl-3 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.address.state_zip_code) }}</div>
+            </div>
+            <div class="col-md-6 col-xl-3 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.address.country) }}</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-xl-3 offset-xl-3 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.address.county) }}</div>
+            </div>
+            <div class="col-md-6 col-xl-3 display-6 text-uppercase fs-5 py-4 my-1">
+                <div>{{ form_row(profileForm.address.phone) }}</div>
+            </div>
+        </div>
+            <button type="submit" class="btn btn-dark btn-lg rounded-0 my-4 text-uppercase">
+                EDIT Profile
+            </button>
+            {{ form_end(profileForm) }}
     </div>
-</div>
+
+
 {% endblock %}
