@@ -104,8 +104,31 @@
                 </div>
             </div>
             <div class="my-5">
-                <button class="btn btn-primary rounded-0">CONTACT</button>
+                <button onclick="toggle()" class="btn btn-primary rounded-0">CONTACT</button>
             </div>
+
+            <!-- FORM -->
+            <div id="contactForm" class="mt-4" style="display: none">
+                {{ form_start(contactForm) }}
+                <div class="row">
+                    <div class="col-6">{{ form_row(contactForm.firstname) }}</div>
+                    <div class="col-6">{{ form_row(contactForm.lastname) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">{{ form_row(contactForm.email) }}</div>
+                    <div class="col-6">{{ form_row(contactForm.phone) }}</div>
+                </div><div class="row">
+                    <div class="col-12">{{ form_row(contactForm.message) }}</div>
+                </div>
+
+
+                <div class="form-group">
+                    <button class="btn btn-primary rounded-0 text-uppercase">Send</button>
+                </div>
+                {{ form_end(contactForm) }}
+            </div>
+
+
             <div class="my-5">
                 <h3 class="display-6">Features</h3>
             </div>
@@ -144,8 +167,19 @@
     </div>
 
 
-{% endblock %}
 
+<script>
+    function toggle() {
+        const x = document.getElementById('contactForm');
+
+        if(x.style.display === "none") {
+            x.style.display = "block";
+        }else {
+            x.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}
 {% block title %}
 
 {% endblock %}
