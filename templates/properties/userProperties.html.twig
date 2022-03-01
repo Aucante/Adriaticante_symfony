@@ -17,7 +17,7 @@
             {% for property in userProperties %}
                 <tr>
                     <th>{{ property.name }}</th>
-                    <td>{{ property.price }}</td>
+                    <td>{{ property.price }} €</td>
                     <td><a href="{{ path('properties_details', {'id': property.id}) }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">Check</button></a></td>
                     <td><a href="{{ path('properties_delete', {'id': property.id}) }}"><button class="btn btn-danger rounded-0 ms-2 text-uppercase">Delete</button></a></td>
                 </tr>
@@ -32,8 +32,8 @@
             <div class="col-4">
                 <img
                         src="{{ asset('uploads/properties/' ~ property.files.last.name) }}"
-                        class="img-fluid"
-                        style="min-height: 80px"
+                        class="ratio ratio-16x9 img-fluid"
+                        style=""
                         alt=""/>
             </div>
             <div class="col-6">

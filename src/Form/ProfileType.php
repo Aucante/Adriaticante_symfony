@@ -19,7 +19,7 @@ class ProfileType extends AbstractType
             ->add('firstname')
             ->add('company')
             ->add('file', DropzoneType::class, [
-                'label' => 'File',
+                'label' => 'Profile Picture',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
