@@ -19,10 +19,10 @@ class ProfileType extends AbstractType
             ->add('firstname')
             ->add('company')
             ->add('file', DropzoneType::class, [
-                'label' => 'Profile Picture',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
+                'label' => false,
 
                 // make it optional so you don't have to re-upload the PDF file
                 // every time you edit the Product details
