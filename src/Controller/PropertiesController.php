@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Entity\File;
 use App\Entity\Property;
+use App\Entity\PropertySearch;
 use App\Form\ContactType;
+use App\Form\PropertySearchType;
 use App\Form\PropertyType;
 use App\Notification\ContactNotification;
 use App\Repository\PropertyRepository;
@@ -32,6 +34,10 @@ class PropertiesController extends AbstractController
         Request $request
     ): Response
     {
+        $search = new PropertySearch();
+        $formSearch = $this->createForm(PropertySearchType::class, $search);
+        $formSearch->handleRequest($request);
+
         $data = $propertyRepository->findAll();
 
         $properties = $paginator->paginate(
@@ -48,7 +54,8 @@ class PropertiesController extends AbstractController
 
 
         return $this->render('properties/index.html.twig', [
-            'properties' => $properties
+            'properties' => $properties,
+            'formSearch' => $formSearch->createView()
         ]);
     }
 

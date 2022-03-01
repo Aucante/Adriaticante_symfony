@@ -8,6 +8,28 @@
         <h1 class="display-4">REAL ESTATE</h1>
     </div>
 
+    <div class="container">
+        {{ form_start(formSearch) }}
+        <div class="row">
+
+            <div class="col-2">
+                {{ form_row(formSearch.minArea) }}
+            </div>
+            <div class="col-2">
+                {{ form_row(formSearch.maxPrice) }}
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-2">
+
+            </div>
+            <button type="submit" class="col-2 offset-md-1 container text-center btn btn-primary rounded-0 my-4 text-uppercase">Filter
+            </button>
+        </div>
+            {{ form_end(formSearch) }}
+    </div>
+
     <div class="container-fluid my-5">
 
         <div class="container">
