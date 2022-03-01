@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+
+    <div class="container my-4">
+        <div class="row align-items-center">
+            <div class="col-sm-6 col-md-4">
+                <h1 class="display-4 text-uppercase">Contact</h1>
+                <p class="py-3">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio
+                    accusantium maxime recusandae minus eveniet consequuntur tempora
+                    nisi id, aliquam eos consequatur, impedit distinctio hic unde iste,
+                    animi amet tempore.
+                </p>
+            </div>
+            <div class="col-md-6 offset-md-2">
+                <img src="{{ asset('img/img/adriaticM.jpg') }}" class="img-fluid" alt="..." />
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-secondary" style="height: 400px;">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row align-items-center text-center">
+            <div class="col-md-4"><i class="fa-solid fa-key fa-7x"></i><p class="display-6 fs-4 my-5">+3360102030405</p></div>
+            <div class="col-md-4"><i class="fa-solid fa-key fa-7x"></i><p class="display-6 fs-4 my-5">adriaticante@contact.com</p></div>
+            <div class="col-md-4"><i class="fa-solid fa-key fa-7x"></i><p class="display-6 fs-4 my-5">Trieste</p></div>
+        </div>
+    </div>
+
+{% endblock %}
