@@ -148,6 +148,13 @@
     height: 400px;
 }
 
+/* NEWSLETTER */
+
+.backgroundNewsletter {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./../img/img/property7.jpg');
+    height: 400px;
+}
+
 /* PROPERTIES */
 
 .cardPropertyDescription {
