@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Feature;
 use App\Entity\Asset;
 use App\Entity\Property;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -112,6 +113,16 @@ class PropertyType extends AbstractType
                 'by_reference' => false,
                 'required' => false,
                 'error_bubbling' => false
+            ])
+            ->add('captcha', CaptchaType::class, [
+                'label' => false,
+                'quality' => 150,
+                'keep_value'=> false,
+                'invalid_message' => 'The code is not correct.',
+                'distortion' => false,
+                'interpolation' => false,
+                'width' => 200,
+                'height' => 50,
             ])
         ;
     }
