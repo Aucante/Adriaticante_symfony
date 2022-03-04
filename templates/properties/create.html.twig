@@ -4,11 +4,11 @@
 
     <div class="col-10 offset-1 my-5 col-xl-6 offset-xl-3">
         <div class="text-center my-5 border-bottom">
-            <h1 class="display-4 text-uppercase">New real estate</h1>
+            <h1 class="display-4 text-uppercase">{% trans %}New real estate{% endtrans%}</h1>
         </div>
         {{ form_start(form) }}
             {{ include('properties/_form.html.twig', {form: form}) }}
-        <button type="submit" class="col-md-10 offset-md-1 container text-center btn btn-primary rounded-0 my-4 text-uppercase">Create
+        <button type="submit" class="col-md-10 offset-md-1 container text-center btn btn-primary rounded-0 my-4 text-uppercase">{% trans %}Create{% endtrans%}
         </button>
         {{ form_end(form, { render_rest: false }) }}
     </div>

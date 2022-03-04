@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PropertiesController!{% endblock %}
+{% block title %}Real estate{% endblock %}
 
 {% block body %}
 
     <div class="text-center my-5">
-        <h1 class="display-4">REAL ESTATE</h1>
+        <h1 class="display-4">{% trans %}Real estate{% endtrans%}</h1>
     </div>
 
     <div class="container">
@@ -24,7 +24,7 @@
             <div class="col-2">
 
             </div>
-            <button type="submit" class="col-2 offset-md-1 container text-center btn btn-primary rounded-0 my-4 text-uppercase">Filter
+            <button type="submit" class="col-2 offset-md-1 container text-center btn btn-primary rounded-0 my-4 text-uppercase">{% trans %}Filter{% endtrans%}
             </button>
         </div>
             {{ form_end(formSearch) }}
@@ -50,20 +50,20 @@
                             <h2 class="card-title text-center cardPropertyTitle fs-4 display-6">{{ property.name|upper }}</h2>
                             <div class="cardPropertyDescription">
                                 <p class="card-text">
-                                    Area : {{ property.area }} m2
+                                    {% trans %}Area{% endtrans%} : {{ property.area }} {% trans %}sq2{% endtrans%}
                                 </p>
                                 <p class="card-text">
-                                    Rooms : {{ property.totalRooms }}
+                                    {% trans %}Rooms{% endtrans%} : {{ property.totalRooms }}
                                 </p>
                                 <p class="card-text">
-                                    Bedrooms : {{ property.totalBedrooms }}
+                                    {% trans %}Bedrooms{% endtrans%} : {{ property.totalBedrooms }}
                                 </p>
                                 <p class="card-text">
-                                    Bathrooms : {{ property.totalBathrooms }}
+                                    {% trans %}Bathrooms{% endtrans%} : {{ property.totalBathrooms }}
                                 </p>
                             </div>
                             <div class="text-center">
-                                <a href="{{ path('properties_details', {'id': property.id}) }}" class="btn btn-primary rounded-0">DISCOVER</a>
+                                <a href="{{ path('properties_details', {'id': property.id}) }}" class="btn btn-primary rounded-0">{% trans %}Discover{% endtrans%}</a>
                             </div>
                         </div>
                     </div>

@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class PropertiesController extends AbstractController
 {
@@ -82,7 +82,8 @@ class PropertiesController extends AbstractController
     public function details(
         Request $request,
         Property $property,
-        ContactNotification $contactNotification
+        ContactNotification $contactNotification,
+        TranslatorInterface $translator
     ): Response
     {
         $contact = new Contact();
@@ -97,7 +98,8 @@ class PropertiesController extends AbstractController
         if ($contactForm->isSubmitted() && $contactForm->isValid())
         {
             $contactNotification->notify($contact);
-            $this->addFlash('success', 'Email sent');
+            $messageFlash = $translator->trans('Email has been sent successfully.');
+            $this->addFlash('success', $messageFlash);
             $this->redirectToRoute('properties_details', ['id' => $property->getId()]);
         }
 
