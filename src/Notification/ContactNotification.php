@@ -2,6 +2,8 @@
 namespace App\Notification;
 
 use App\Entity\Contact;
+use App\Entity\User;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
@@ -15,13 +17,18 @@ class ContactNotification {
     }
 
 
-    public function notify(Contact $contact): void
+    public function notify(Contact $contact, User $user): void
     {
-        $email = new Email();
-        $email->from('adriaticante@contact.com')
-            ->to('Papercut@user.com')
-            ->subject('new message : ' . $contact->getMessage() . $contact->getProperty()->getId())
-            ->html('<p>ok</p>');
+        $email = (new TemplatedEmail());
+        $email->from($contact->getEmail())
+            ->to($user->getEmail())
+            ->subject('new message : ' . $contact->getProperty()->getName())
+            ->htmlTemplate('emails/contact_property.html.twig')
+            ->context([
+                'property' => $contact->getProperty()->getName(),
+                'mail' => $contact->getEmail(),
+                'message' => $contact->getMessage()
+            ]);
         $this->mailer->send($email);
     }
 }
