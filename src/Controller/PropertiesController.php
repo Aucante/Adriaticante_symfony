@@ -40,6 +40,8 @@ class PropertiesController extends AbstractController
 
         $data = $propertyRepository->findAll();
 
+
+
         $properties = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
@@ -95,9 +97,11 @@ class PropertiesController extends AbstractController
         $area = $property->getArea();
         $priceArea = $price / $area;
 
+        $user = $property->getUser();
+
         if ($contactForm->isSubmitted() && $contactForm->isValid())
         {
-            $contactNotification->notify($contact);
+            $contactNotification->notify($contact, $user);
             $messageFlash = $translator->trans('Email has been sent successfully.');
             $this->addFlash('success', $messageFlash);
             $this->redirectToRoute('properties_details', ['id' => $property->getId()]);
