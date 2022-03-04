@@ -5,7 +5,7 @@
     <div class="col-md-4 offset-md-4">{{ form_row(form.advertType) }}</div>
 </div>
 <div class="text-center my-5 border-bottom">
-    <h2 class="display-6">Real Estate Informations</h2>
+    <h2 class="display-6">{% trans %}Real estate Informations{% endtrans%}</h2>
 </div>
 <div class="row">
     <div>{{ form_row(form.name) }}</div>
@@ -27,10 +27,10 @@
 </div>
 
 <div class="text-center my-5 border-bottom">
-    <h2 class="display-6">Assets</h2>
+    <h2 class="display-6">{% trans %}Assets{% endtrans%}</h2>
 </div>
 <div class="row">
-    <button type="button" class="col-md-6 offset-md-3 container text-center btn btn-primary rounded-0 my-4 text-uppercase btn-new" data-collection="#assets">Add Feature
+    <button type="button" class="col-md-6 offset-md-3 container text-center btn btn-primary rounded-0 my-4 text-uppercase btn-new" data-collection="#assets">{% trans %}Add Features{% endtrans%}
     </button>
     {{ form_errors(form.assets) }}
 </div>
@@ -48,7 +48,7 @@
 </div>
 
 <div class="text-center my-5 border-bottom">
-    <h2 class="display-6">Agency Informations</h2>
+    <h2 class="display-6">{% trans %}Agency Informations{% endtrans%}</h2>
 </div>
 <div class="row">
     <div class="col-md-8 offset-md-2">{{ form_row(form.linkWebsite) }}</div>
@@ -60,13 +60,13 @@
     <div class="col-md-8 offset-md-2">{{ form_row(form.nameContact) }}</div>
 </div>
 <div class="text-center my-5 border-bottom">
-    <h2 class="display-6">Captcha</h2>
+    <h2 class="display-6">{% trans %}Captcha{% endtrans%}</h2>
 </div>
 <div class="row">
     <div class="col-8 col-md-4 offset-2 offset-md-4 text-center">{{ form_row(form.captcha) }}</div>
 </div>
 <div class="text-center my-5 border-bottom">
-    <h2 class="display-6">Upload Files</h2>
+    <h2 class="display-6">{% trans %}Upload File{% endtrans%}</h2>
 </div>
 <div class="text-center my-5 border-bottom">
 

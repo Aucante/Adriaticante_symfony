@@ -15,35 +15,35 @@
         </div>
         <div class="text-center">
             <div class="text-center my-4">
-                <h2 class="display-5">Identity</h2>
+                <h2 class="display-5">{% trans %}Identity{% endtrans%}</h2>
             </div>
             <div class="row my-1">
-                <div class="col-5 display-6 fs-5 border py-4 my-1">Company</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}Company{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.company }}</div>
             </div>
             <div class="row my-1">
-                <div class="col-5 display-6 fs-5 border py-4 my-1">Username</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}Username{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.username }}</div>
             </div>
             <div class="row my-1">
-                <div class="col-5 display-6 fs-5 border py-4 my-1">Email</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}Email{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.email }}</div>
             </div>
         </div>
         <div class="text-center">
             <div class="text-center my-4">
-                <h2 class="display-5">Your contact agency</h2>
+                <h2 class="display-5">{% trans %}Your contact agency{% endtrans%}</h2>
             </div>
             <div class="row my-1">
-                <div class="col-5 display-6 fs-5 border py-4 my-1">Lastname</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}Lastname{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.lastname }}</div>
             </div>
             <div class="row my-1">
-                <div class="col-5 display-6 fs-5 border py-4 my-1">Firstname</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}Firstname{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.firstname }}</div>
             </div>
@@ -52,43 +52,43 @@
         {% if user.address is not null %}
         <div class="text-center">
             <div class="text-center my-4">
-                <h2 class="display-5">Your address</h2>
+                <h2 class="display-5">{% trans %}Your address{% endtrans%}</h2>
             </div>
             <div class="row my-1">
-                <div class="col-5 display-6 fs-5 border py-4 my-1">Street number</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}Street number{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.streetnumber }}</div>
             </div>
             <div class="row my-1">
                 <div class="col-5 display-6 fs-5 border py-4 my-1">
-                    Street address line 1
+                    {% trans %}Street address line 1{% endtrans%}
                 </div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.streetaddressline1 }}</div>
             </div><div class="row my-1">
                 <div class="col-5 display-6 fs-5 border py-4 my-1">
-                    Street address line 2
+                    {% trans %}Street address line 2{% endtrans%}
                 </div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.streetaddressline2 }}</div>
             </div>
             <div class="row my-1">
-                <div class="col-5 display-6 fs-5 border py-4 my-1">City</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}City{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.city }}</div>
             </div>
             <div class="row my-1">
-                <div class="col-5 display-6 fs-5 border py-4 my-1">Zip Code</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}Zip Code{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.statezipcode }}</div>
             </div>
             <div class="row my-1">
-                <div class="col-5 display-6 fs-5 border py-4 my-1">County</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}County{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.county }}</div>
             </div>
             <div class="row my-1">
-                <div class="col-5 display-6 fs-5 border py-4 my-1">Country</div>
+                <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}Country{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.address.country }}</div>
             </div>
@@ -97,7 +97,7 @@
         <div class="text-center my-5">
             <a href="{{ path('profile_update') }}">
                 <button class="btn btn-dark btn-lg rounded-0 ms-2 mt-2 text-uppercase">
-                    EDIT Profile
+                    {% trans %}Edit Profile{% endtrans%}
                 </button>
             </a>
         </div>

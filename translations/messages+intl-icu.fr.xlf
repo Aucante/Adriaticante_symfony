@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="UOXuVIM" resname="Email has been sent successfully.">
+        <source>Email has been sent successfully.</source>
+        <target>Email envoyé avec succès.</target>
+      </trans-unit>
+      <trans-unit id="k8kchR5" resname="Price">
+        <source>Price</source>
+        <target>Prix</target>
+      </trans-unit>
+      <trans-unit id="Ak3CBNe" resname="Area">
+        <source>Area</source>
+        <target>Surface</target>
+      </trans-unit>
+      <trans-unit id="cISMz_V" resname="sq2">
+        <source>sq2</source>
+        <target>m2</target>
+      </trans-unit>
+      <trans-unit id="ViMvpAF" resname="Price/Area">
+        <source>Price/Area</source>
+        <target>Prix/m2</target>
+      </trans-unit>
+      <trans-unit id="rFX0BpM" resname="€/ sq2">
+        <source>€/ sq2</source>
+        <target>€/ m2</target>
+      </trans-unit>
+      <trans-unit id="EzqMEtE" resname="Real estate">
+        <source>Real estate</source>
+        <target>Biens immobiliers</target>
+      </trans-unit>
+      <trans-unit id="tLWAqa2" resname="About us">
+        <source>About us</source>
+        <target>A propos</target>
+      </trans-unit>
+      <trans-unit id="K1w9JnI" resname="Contact">
+        <source>Contact</source>
+        <target>Contactez-nous</target>
+      </trans-unit>
+      <trans-unit id="1pajW90" resname="Profile">
+        <source>Profile</source>
+        <target>Profil</target>
+      </trans-unit>
+      <trans-unit id="vrjc.vC" resname="My real estate">
+        <source>My real estate</source>
+        <target>Mes propriétés</target>
+      </trans-unit>
+      <trans-unit id="0FJ_Sz1" resname="Logout">
+        <source>Logout</source>
+        <target>Déconnexion</target>
+      </trans-unit>
+      <trans-unit id="uEjWZ7v" resname="New real estate">
+        <source>New real estate</source>
+        <target>Nouvelle annonce</target>
+      </trans-unit>
+      <trans-unit id="v9QCsvb" resname="Sign in">
+        <source>Sign in</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="9vRoj.I" resname="Send">
+        <source>Send</source>
+        <target>Envoyer</target>
+      </trans-unit>
+      <trans-unit id="VpfQPa7" resname="Features">
+        <source>Features</source>
+        <target>Caractéristiques</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="OZGoA3B" resname="More properties ?">
+        <source>More properties ?</source>
+        <target>Plus de biens immobiliers ?</target>
+      </trans-unit>
+      <trans-unit id="CQruTLW" resname="Our services">
+        <source>Our services</source>
+        <target>Nos services</target>
+      </trans-unit>
+      <trans-unit id="Aa.0pE." resname="Our heritage">
+        <source>Our heritage</source>
+        <target>Notre heritage</target>
+      </trans-unit>
+      <trans-unit id="IbanmDI" resname="Development">
+        <source>Development</source>
+        <target>Développement</target>
+      </trans-unit>
+      <trans-unit id="j69_x6s" resname="Countries">
+        <source>Countries</source>
+        <target>Pays</target>
+      </trans-unit>
+      <trans-unit id="lWl9FEl" resname="Cities">
+        <source>Cities</source>
+        <target>Villes</target>
+      </trans-unit>
+      <trans-unit id="O4eX9kj" resname="Agencies">
+        <source>Agencies</source>
+        <target>Agences</target>
+      </trans-unit>
+      <trans-unit id="UiaVT_r" resname="Real Estate">
+        <source>Real Estate</source>
+        <target>Bien immobiliers</target>
+      </trans-unit>
+      <trans-unit id="XYxxq8U" resname="About Us">
+        <source>About Us</source>
+        <target>A propos</target>
+      </trans-unit>
+      <trans-unit id="_aTfG5c" resname="Find out more">
+        <source>Find out more</source>
+        <target>En savoir plus</target>
+      </trans-unit>
+      <trans-unit id="Tvyg0Qx" resname="About">
+        <source>About</source>
+        <target>A propos</target>
+      </trans-unit>
+      <trans-unit id="0jiTg1n" resname="Need for support ?">
+        <source>Need for support ?</source>
+        <target>Besoin d'aide ?</target>
+      </trans-unit>
+      <trans-unit id="R6rzG4P" resname="Contact us">
+        <source>Contact us</source>
+        <target>Contactez-nous</target>
+      </trans-unit>
+      <trans-unit id="QP0tOMB" resname="Last Properties">
+        <source>Last Properties</source>
+        <target>Dernières annonces</target>
+      </trans-unit>
+      <trans-unit id="aH82Ddt" resname="Discover last properties">
+        <source>Discover last properties</source>
+        <target>Découvrez les dernières annonces</target>
+      </trans-unit>
+      <trans-unit id="1KM9W3i" resname="Discover">
+        <source>Discover</source>
+        <target>Découvrez</target>
+      </trans-unit>
+      <trans-unit id="cyjT_Cm" resname="Croatia">
+        <source>Croatia</source>
+        <target>Croatie</target>
+      </trans-unit>
+      <trans-unit id="VgWef7T" resname="Slovenia">
+        <source>Slovenia</source>
+        <target>Slovénie</target>
+      </trans-unit>
+      <trans-unit id="Wpz2csi" resname="Italy">
+        <source>Italy</source>
+        <target>Italie</target>
+      </trans-unit>
+      <trans-unit id="erWX4bX" resname="Montenegro">
+        <source>Montenegro</source>
+        <target>Montenegro</target>
+      </trans-unit>
+      <trans-unit id="w51kbxB" resname="Explorer">
+        <source>Explorer</source>
+        <target>Explorer</target>
+      </trans-unit>
+      <trans-unit id="HnEC6n0" resname="Add pictures">
+        <source>Add pictures</source>
+        <target>Ajouter des photos</target>
+      </trans-unit>
+      <trans-unit id="QGEau92" resname="Validate">
+        <source>Validate</source>
+        <target>Validation</target>
+      </trans-unit>
+      <trans-unit id="R1lJisK" resname="Create">
+        <source>Create</source>
+        <target>Création</target>
+      </trans-unit>
+      <trans-unit id="Y44kn0o" resname="Filter">
+        <source>Filter</source>
+        <target>Filtrer</target>
+      </trans-unit>
+      <trans-unit id="vTL2ztt" resname="Rooms">
+        <source>Rooms</source>
+        <target>Pièces</target>
+      </trans-unit>
+      <trans-unit id="JHfzFD0" resname="Bedrooms">
+        <source>Bedrooms</source>
+        <target>Chambres</target>
+      </trans-unit>
+      <trans-unit id="x.GRxNK" resname="Bathrooms">
+        <source>Bathrooms</source>
+        <target>Salles de bains</target>
+      </trans-unit>
+      <trans-unit id=".1SY4TZ" resname="Updated real estate">
+        <source>Updated real estate</source>
+        <target>Modifier l'annonce</target>
+      </trans-unit>
+      <trans-unit id="wcEAnT8" resname="Update">
+        <source>Update</source>
+        <target>Modifier</target>
+      </trans-unit>
+      <trans-unit id="1LHqVwj" resname="Overview">
+        <source>Overview</source>
+        <target>Vue générale</target>
+      </trans-unit>
+      <trans-unit id="nWCEHgp" resname="Check">
+        <source>Check</source>
+        <target>Vérifier</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Effacer</target>
+      </trans-unit>
+      <trans-unit id="w4EvxKy" resname="Remove">
+        <source>Remove</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="BNe8.aJ" resname="Real estate Informations">
+        <source>Real estate Informations</source>
+        <target>Informations immobilières</target>
+      </trans-unit>
+      <trans-unit id="vRJzHXv" resname="Assets">
+        <source>Assets</source>
+        <target>Caractéristiques</target>
+      </trans-unit>
+      <trans-unit id="vHSKL6_" resname="Add Features">
+        <source>Add Features</source>
+        <target>Ajouter caractéristique</target>
+      </trans-unit>
+      <trans-unit id="NXcER02" resname="Agency Informations">
+        <source>Agency Informations</source>
+        <target>Informations de l'agence</target>
+      </trans-unit>
+      <trans-unit id="pTUXSt3" resname="Captcha">
+        <source>Captcha</source>
+        <target>Captcha</target>
+      </trans-unit>
+      <trans-unit id="JkZTNm2" resname="Upload File">
+        <source>Upload File</source>
+        <target>Télécharger fichier</target>
+      </trans-unit>
+      <trans-unit id="hgM.daT" resname="Create an account">
+        <source>Create an account</source>
+        <target>Créer un compte</target>
+      </trans-unit>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
+        <target>S'inscrire</target>
+      </trans-unit>
+      <trans-unit id="acVpEs4" resname="You are logged in as">
+        <source>You are logged in as</source>
+        <target>Vous êtes connecté(e) en tant que</target>
+      </trans-unit>
+      <trans-unit id="47ienTP" resname="Username">
+        <source>Username</source>
+        <target>Pseudo</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="vMC8yRQ" resname="Sign In">
+        <source>Sign In</source>
+        <target>Connexion</target>
+      </trans-unit>
+      <trans-unit id="1ASnJ2l" resname="Don't you have an account ?">
+        <source>Don't you have an account ?</source>
+        <target>Aucun compte ?</target>
+      </trans-unit>
+      <trans-unit id="JikDho6" resname="Sign up here">
+        <source>Sign up here</source>
+        <target>S'inscrire ici</target>
+      </trans-unit>
+      <trans-unit id="mZ8j.Ne" resname="Identity">
+        <source>Identity</source>
+        <target>Identité</target>
+      </trans-unit>
+      <trans-unit id="3kdDyHl" resname="Company">
+        <source>Company</source>
+        <target>Société</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="tPhGjxK" resname="Your contact agency">
+        <source>Your contact agency</source>
+        <target>Contact en agence</target>
+      </trans-unit>
+      <trans-unit id="htiPHRy" resname="Lastname">
+        <source>Lastname</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="ZHz6kbI" resname="Firstname">
+        <source>Firstname</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="qn64xMn" resname="Your address">
+        <source>Your address</source>
+        <target>Votre addresse</target>
+      </trans-unit>
+      <trans-unit id="LZiB.BI" resname="Street number">
+        <source>Street number</source>
+        <target>Numéro de rue</target>
+      </trans-unit>
+      <trans-unit id="1W4NZ0j" resname="Street address line 1">
+        <source>Street address line 1</source>
+        <target>Rue</target>
+      </trans-unit>
+      <trans-unit id="kF8ums5" resname="Street address line 2">
+        <source>Street address line 2</source>
+        <target>Complément rue</target>
+      </trans-unit>
+      <trans-unit id=".DP3Mkb" resname="City">
+        <source>City</source>
+        <target>Ville</target>
+      </trans-unit>
+      <trans-unit id="qPymx3y" resname="Zip Code">
+        <source>Zip Code</source>
+        <target>Code postal</target>
+      </trans-unit>
+      <trans-unit id="E2yH3sR" resname="County">
+        <source>County</source>
+        <target>Région</target>
+      </trans-unit>
+      <trans-unit id="cB0CHQj" resname="Country">
+        <source>Country</source>
+        <target>Pays</target>
+      </trans-unit>
+      <trans-unit id=".sKsD0z" resname="Edit Profile">
+        <source>Edit Profile</source>
+        <target>Modifier Profil</target>
+      </trans-unit>
+      <trans-unit id="p6zE664" resname="Profile picture">
+        <source>Profile picture</source>
+        <target>Photo de profil</target>
+      </trans-unit>
+      <trans-unit id="Vu_PIJV" resname="Address">
+        <source>Address</source>
+        <target>Adresse</target>
+      </trans-unit>
+      <trans-unit id="Ef_TmZ1" resname="Do you want edit your address ? Click here">
+        <source>Do you want edit your address ? Click here</source>
+        <target>Vous souhaitez modifier votre adresse ? Cliquez-ici</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

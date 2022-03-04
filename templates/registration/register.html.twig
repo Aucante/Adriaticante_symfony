@@ -19,13 +19,13 @@
                         <div class="card rounded-0">
                             <div class="card-body p-5">
                                 <h2 class="text-uppercase text-center mb-5">
-                                    Create an account
+                                    {% trans %}Create an account{% endtrans%}
                                 </h2>
 
                                 {{ form_start(registrationForm) }}
 
                                 {{ form_widget(registrationForm) }}
-                                <button type="submit" class="container text-center btn btn-primary rounded-0">Register
+                                <button type="submit" class="container text-center btn btn-primary rounded-0">{% trans %}Register{% endtrans%}
                                 </button>
 
                                 {{ form_end(registrationForm) }}

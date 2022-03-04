@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container text-center">
         <div class="text-center py-5">
-            <h1 class="display-4">EDIT PROFIL</h1>
+            <h1 class="display-4">{% trans %}Edit Profile{% endtrans%}</h1>
         </div>
         <div class="row">
             <div class="col-4 offset-4 mb-5">
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="my-2">
-            <h2 class="display-5">Identity</h2>
+            <h2 class="display-5">{% trans %}Identity{% endtrans%}</h2>
         </div>
         {{ form_start(profileForm) }}
         <div class="row">
@@ -37,15 +37,15 @@
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3 display-6 text-uppercase fs-5 py-4 my-1">
-                <p onclick="toggleDropzone()" class="text-uppercase">Profile picture &nbsp;<i class="fa-solid fa-pen-to-square"></i></p>
+                <p onclick="toggleDropzone()" class="text-uppercase">{% trans %}Profile picture{% endtrans%} &nbsp;<i class="fa-solid fa-pen-to-square"></i></p>
                 <div id="dropzoneForm" style="display: none">{{ form_row(profileForm.file) }}</div>
             </div>
         </div>
         <div class="my-4">
-                    <p class="display-5">Address</p>
+                    <p class="display-5">{% trans %}Address{% endtrans%}</p>
         </div>
         <div class="my-4">
-            <p onclick="toggleAddress()" class="display-5 fs-5">Do you want edit your address ? Click here &nbsp;<i class="fa-solid fa-pen-to-square"></i></p>
+            <p onclick="toggleAddress()" class="display-5 fs-5">{% trans %}Do you want edit your address ? Click here{% endtrans%} &nbsp;<i class="fa-solid fa-pen-to-square"></i></p>
         </div>
         <div id="addressForm" style="display: none">
             <div class="row">
@@ -82,7 +82,7 @@
             </div>
         </div>
         <button type="submit" class="btn btn-dark btn-lg rounded-0 my-4 text-uppercase">
-            EDIT Profile
+            {% trans %}Edit Profile{% endtrans%}
         </button>
             {{ form_end(profileForm) }}
     </div>
