@@ -6,16 +6,14 @@
 
 
 
-    <section
-            class="vh-100 bg-image"
-            style="background-image: url({{ asset('img/img/adriaticXL.jpg') }})"
+    <section class="my-5"
     >
-        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="mask d-flex align-items-center">
             <div class="container h-100">
                 <div
-                        class="row d-flex justify-content-center align-items-center h-100"
+                        class="row d-flex justify-content-center align-items-center"
                 >
-                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="col-12">
                         <div class="card rounded-0">
                             <div class="card-body p-5">
                                 <h2 class="text-uppercase text-center mb-5">
@@ -24,8 +22,46 @@
 
                                 {{ form_start(registrationForm) }}
 
-                                {{ form_widget(registrationForm) }}
-                                <button type="submit" class="container text-center btn btn-primary rounded-0">{% trans %}Register{% endtrans%}
+                                <div class="row">
+                                    <div class="col-md-6 offset-md-3">
+                                        {{ form_row(registrationForm.company) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{ form_row(registrationForm.email) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form_row(registrationForm.username) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{ form_row(registrationForm.lastname) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form_row(registrationForm.firstname) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{ form_row(registrationForm.plainPassword.first) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form_row(registrationForm.plainPassword.second) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        {{ form_row(registrationForm.agreeTerms) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        {{ form_row(registrationForm.file) }}
+                                    </div>
+                                </div>
+                                <button type="submit" class="container text-center btn btn-primary rounded-0 text-uppercase">{% trans %}Register{% endtrans%}
                                 </button>
 
                                 {{ form_end(registrationForm) }}
