@@ -42,6 +42,7 @@ class PropertyType extends AbstractType
                     '8' => 8,
                     '9' => 9,
                 ],
+                'label' => 'property.total_rooms.label'
             ])
             ->add('totalBedrooms', ChoiceType::class, [
                 'choices'  => [
@@ -131,6 +132,7 @@ class PropertyType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Property::class,
+            'translation_domain' => 'form'
         ]);
     }
 }

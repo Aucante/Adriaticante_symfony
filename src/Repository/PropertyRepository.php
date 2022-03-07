@@ -21,14 +21,7 @@ class PropertyRepository extends ServiceEntityRepository
         parent::__construct($registry, Property::class);
     }
 
-    /**
-     * @return Query
-     */
-    public function findAllVisibleQuery(PropertySearch $search): \Doctrine\ORM\Query
-    {
-        $query = $this->findAllVisibleQuery();
-        return $query->getQuery();
-    }
+
 
     /**
      * @return Property[]
