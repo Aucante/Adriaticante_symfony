@@ -6,10 +6,9 @@
 
 
     <section
-            class="vh-100 bg-image"
-            style="background-image: url({{ asset('img/img/adriaticXL.jpg') }})"
+            class="my-5"
     >
-        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="mask d-flex align-items-center">
             <div class="container h-100">
                 <div
                         class="row d-flex justify-content-center align-items-center h-100"
@@ -41,18 +40,14 @@
                                     <input type="hidden" name="_csrf_token"
                                            value="{{ csrf_token('authenticate') }}"
                                     >
-
-                                    {#
-                                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                                    See https://symfony.com/doc/current/security/remember_me.html
-
-                                    <div class="checkbox mb-3">
-                                        <label>
-                                            <input type="checkbox" name="_remember_me"> Remember me
-                                        </label>
+                                    <div class="text-center mb-5">
+                                        <p class="text-center mt-5 mb-0">
+                                            {% trans %}Have you forgot your password ?{% endtrans%}
+                                            <a href="{{ path('app_forgot_password_request') }}" class="fw-bold text-body"
+                                            >{% trans %}Click here{% endtrans%}</a
+                                            >
+                                        </p>
                                     </div>
-                                    #}
-
                                     <div class="text-center">
                                         <button class="btn btn-primary rounded-0 text-uppercase" type="submit">
                                             {% trans %}Sign In{% endtrans%}
