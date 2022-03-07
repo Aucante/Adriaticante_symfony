@@ -5,9 +5,153 @@
             <tool tool-id="symfony" tool-name="Symfony"/>
         </header>
         <body>
-            <trans-unit id="UOXuVIM" resname="property.total_rooms.label">
+            <!-- Property Type -->
+            <trans-unit id="UOXuVIM" resname="property.name.label">
+                <source>property.name.label</source>
+                <target>Titre</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIN" resname="property.price.label">
+                <source>property.price.label</source>
+                <target>Prix - €</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIO" resname="property.description.label">
+                <source>property.description.label</source>
+                <target>Description</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIP" resname="property.area.label">
+                <source>property.area.label</source>
+                <target>Surface</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIQ" resname="property.total_rooms.label">
                 <source>property.total_rooms.label</source>
-                <target>Nombre de chambres total</target>
+                <target>Nombre de pièces</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIR" resname="property.total_bedrooms.label">
+                <source>property.total_bedrooms.label</source>
+                <target>Nombre de chambres</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIS" resname="property.total_bathrooms.label">
+                <source>property.total_bathrooms.label</source>
+                <target>Nombre de salles de bains</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIT" resname="property.area.label">
+                <source>property.area.label</source>
+                <target>Surface - m2</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIU" resname="property.type.label">
+                <source>property.type.label</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIV" resname="property.advert_type.label">
+                <source>property.advert_type.label</source>
+                <target>Type d'annonce</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIW" resname="property.link_website.label">
+                <source>property.link_website.label</source>
+                <target>Lien de l'annonce</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIX" resname="property.phone_contact.label">
+                <source>property.phone_contact.label</source>
+                <target>Numéro de téléphone</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIY" resname="property.name_contact.label">
+                <source>property.name_contact.label</source>
+                <target>Nom du contact</target>
+            </trans-unit>
+            <trans-unit id="UOXuVIZ" resname="property.assets.label">
+                <source>property.assets.label</source>
+                <target>Caractéristiques</target>
+            </trans-unit>
+            <!-- Contact Type -->
+            <trans-unit id="AOXuVIV" resname="contact.firstname.label">
+                <source>contact.firstname.label</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="BOXuVIW" resname="contact.lastname.label">
+                <source>contact.lastname.label</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="COXuVIX" resname="contact.phone.label">
+                <source>contact.phone.label</source>
+                <target>Numéro de téléphone</target>
+            </trans-unit>
+            <trans-unit id="DOXuVIY" resname="contact.email.label">
+                <source>contact.email.label</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="EOXuVIZ" resname="contact.message.label">
+                <source>contact.message.label</source>
+                <target>Message</target>
+            </trans-unit>
+            <!-- registration Type -->
+            <trans-unit id="AOsuVIV" resname="registration.firstname.label">
+                <source>registration.firstname.label</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="BOsuVIW" resname="registration.lastname.label">
+                <source>registration.lastname.label</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="COsuVIs" resname="registration.username.label">
+                <source>registration.username.label</source>
+                <target>Pseudo</target>
+            </trans-unit>
+            <trans-unit id="DOsuVIY" resname="registration.email.label">
+                <source>registration.email.label</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="EOsuVIZ" resname="registration.company.label">
+                <source>registration.company.label</source>
+                <target>Société</target>
+            </trans-unit>
+            <trans-unit id="EQsuVIZ" resname="registration.file.label">
+                <source>registration.file.label</source>
+                <target>Photo Logo</target>
+            </trans-unit>
+            <trans-unit id="EQauVIZ" resname="registration.password.label">
+                <source>registration.password.label</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="EQzuVIZ" resname="registration.password_repeat.label">
+                <source>registration.password_repeat.label</source>
+                <target>Confirmation mot de passe</target>
+            </trans-unit>
+            <trans-unit id="EQkuVIZ" resname="registration.agree_terms.label">
+                <source>registration.agree_terms.label</source>
+                <target>TODO Vous confirmez les règles RGPD etc</target>
+            </trans-unit>
+            <!-- Address Type -->
+            <trans-unit id="AOsuIII" resname="address.street_number.label">
+                <source>address.street_number.label</source>
+                <target>Numéro de rue</target>
+            </trans-unit>
+            <trans-unit id="BOsuIIW" resname="address.street_address_line_1.label">
+                <source>address.street_address_line_1.label</source>
+                <target>Nom de rue</target>
+            </trans-unit>
+            <trans-unit id="COsuIIs" resname="address.street_address_line_2.label">
+                <source>address.street_address_line_2.label</source>
+                <target>Complément adresse</target>
+            </trans-unit>
+            <trans-unit id="DOsuIIY" resname="address.city.label">
+                <source>address.city.label</source>
+                <target>Ville</target>
+            </trans-unit>
+            <trans-unit id="EOsuIIZ" resname="address.state_zip_code.label">
+                <source>address.state_zip_code.label</source>
+                <target>Code postal</target>
+            </trans-unit>
+            <trans-unit id="EQsuIIZ" resname="address.country.label">
+                <source>address.country.label</source>
+                <target>Pays</target>
+            </trans-unit>
+            <trans-unit id="EQauIIZ" resname="address.county.label">
+                <source>address.county.label</source>
+                <target>Région</target>
+            </trans-unit>
+            <trans-unit id="EQzuIIZ" resname="address.phone.label">
+                <source>address.phone.label</source>
+                <target>Numéro de téléphone</target>
             </trans-unit>
         </body>
     </file>

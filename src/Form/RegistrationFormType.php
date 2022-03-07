@@ -24,18 +24,28 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('company', TextType::class)
-            ->add('email', EmailType::class)
-            ->add('username', TextType::class)
-            ->add('lastname', TextType::class)
-            ->add('firstname', TextType::class)
+            ->add('company', TextType::class, [
+                'label' => 'registration.company.label'
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'registration.email.label'
+            ])
+            ->add('username', TextType::class, [
+                'label' => 'registration.username.label'
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'registration.lastname.label'
+            ])
+            ->add('firstname', TextType::class, [
+                'label' => 'registration.firstname.label'
+            ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => ['label' => 'registration.password.label'],
+                'second_options' => ['label' => 'registration.password_repeat.label'],
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
@@ -57,9 +67,10 @@ class RegistrationFormType extends AbstractType
                         'message' => 'You should agree to our terms.',
                     ]),
                 ],
+                'label' => 'registration.agree_terms.label',
             ])
             ->add('file', DropzoneType::class, [
-                'label' => 'File',
+                'label' => 'registration.file.label',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
@@ -80,6 +91,7 @@ class RegistrationFormType extends AbstractType
                         'mimeTypesMessage' => 'jpeg or jpg',
                     ])
                 ],
+
             ])
         ;
     }
@@ -88,6 +100,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'translation_domain' => 'form'
         ]);
     }
 }

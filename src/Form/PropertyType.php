@@ -25,10 +25,18 @@ class PropertyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('price', IntegerType::class)
-            ->add('description', TextareaType::class)
-            ->add('area', IntegerType::class)
+            ->add('name', TextType::class, [
+                'label' => 'property.name.label'
+            ])
+            ->add('price', IntegerType::class, [
+                'label' => 'property.price.label'
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'property.description.label'
+            ])
+            ->add('area', IntegerType::class, [
+                'label' => 'property.area.label'
+            ])
             ->add('totalRooms', ChoiceType::class, [
                 'choices'  => [
                     '0' => 0,
@@ -57,6 +65,7 @@ class PropertyType extends AbstractType
                     '8' => 8,
                     '9' => 9,
                 ],
+                'label' => 'property.total_bedrooms.label'
             ])
             ->add('totalBathrooms', ChoiceType::class, [
                 'choices'  => [
@@ -76,6 +85,7 @@ class PropertyType extends AbstractType
                     '13' => 13,
                     '14' => 14,
                 ],
+                'label' => 'property.total_bathrooms.label'
             ])
             ->add('type', ChoiceType::class, [
                 'choices'  => [
@@ -88,6 +98,7 @@ class PropertyType extends AbstractType
                     'Chalets' => 'Chalets',
                     'Commercial space' => 'Commercial space',
                 ],
+                'label' => 'property.type.label'
             ])
             ->add('advertType', ChoiceType::class, [
                 'choices'  => [
@@ -95,17 +106,25 @@ class PropertyType extends AbstractType
                     'Daily Rental' => 'Daily Rental',
                     'Monthly Rental' => 'Monthly Rental',
                 ],
+                'label' => 'property.advert_type.label'
             ])
-            ->add('linkWebsite', UrlType::class)
-            ->add('phoneContact', TelType::class)
-            ->add('nameContact', TextType::class)
+            ->add('linkWebsite', UrlType::class, [
+                'label' => 'property.link_website.label'
+            ])
+            ->add('phoneContact', TelType::class, [
+                'label' => 'property.phone_contact.label'
+            ])
+            ->add('nameContact', TextType::class, [
+                'label' => 'property.name_contact.label'
+            ])
             ->add('assets', CollectionType::class, [
                 'entry_type' => AssetType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
                 'required' => false,
-                'error_bubbling' => false
+                'error_bubbling' => false,
+                'label' => 'property.assets.label'
             ])
             ->add('files', CollectionType::class, [
                 'entry_type' => FileType::class,
