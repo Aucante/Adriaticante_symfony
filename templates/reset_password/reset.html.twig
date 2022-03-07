@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reset your password{% endblock %}
+
+{% block body %}
+<div class="text-center my-5">
+    <h1 class="display-4 text-uppercase">{% trans %}Reset your password{% endtrans%}</h1>
+</div>
+
+<div class="container">
+    {{ form_start(resetForm) }}
+    <div class="col-md-8 offset-md-2 col-xl-6 offset-xl-3 text-center my-5">
+        <div> {{ form_row(resetForm.plainPassword) }}</div>
+        <div>
+            <p class="display-6 fs-5 my-4">
+                {% trans %}Enter your email address and we will send you a
+                    link to reset your password.{% endtrans%}
+            </p>
+        </div>
+
+        <button class="btn btn-primary rounded-0 text-uppercase">{% trans %}Reset password{% endtrans%}</button>
+    </div>
+    {{ form_end(resetForm) }}
+</div>
+{% endblock %}
