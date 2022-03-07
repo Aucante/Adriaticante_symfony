@@ -79,10 +79,6 @@ class Property
      */
     private $user;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Feature::class, mappedBy="property")
-     */
-    private $features;
 
     /**
      * @ORM\OneToMany(targetEntity=File::class, mappedBy="property")
@@ -262,33 +258,6 @@ class Property
     }
 
 
-
-    /**
-     * @return Collection|Feature[]
-     */
-    public function getFeatures(): Collection
-    {
-        return $this->features;
-    }
-
-    public function addFeature(Feature $feature): self
-    {
-        if (!$this->features->contains($feature)) {
-            $this->features[] = $feature;
-            $feature->addProperty($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFeature(Feature $feature): self
-    {
-        if ($this->features->removeElement($feature)) {
-            $feature->removeProperty($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|File[]

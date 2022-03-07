@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Address;
+use App\Entity\Asset;
 use App\Entity\Feature;
 use App\Entity\File;
 use App\Entity\Property;
@@ -83,14 +84,14 @@ class AppFixtures extends Fixture
 
         for ($k = 0; $k < 3; $k++)
         {
-            // FEATURE
+            // asset
 
-            $feature = new Feature();
-            $feature->setName('view');
-            $manager->persist($feature);
-            $property->addFeature($feature);
+            $asset = new Asset();
+            $asset->setName('view');
+            $manager->persist($asset);
+            $property->addasset($asset);
 
-            $manager->persist($feature);
+            $manager->persist($asset);
             $manager->persist($property);
 
         }
@@ -162,14 +163,14 @@ class AppFixtures extends Fixture
 
             for ($k = 0; $k < 5; $k++)
             {
-                // FEATURE
+                // asset
 
-                $feature = new Feature();
-                $feature->setName($faker->word());
-                $manager->persist($feature);
-                $property->addFeature($feature);
+                $asset = new Asset();
+                $asset->setName($faker->word());
+                $manager->persist($asset);
+                $property->addasset($asset);
 
-                $manager->persist($feature);
+                $manager->persist($asset);
                 $manager->persist($property);
 
                 // FILE
