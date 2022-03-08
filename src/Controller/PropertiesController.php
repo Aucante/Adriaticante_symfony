@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Contact;
 use App\Entity\File;
 use App\Entity\Property;
@@ -34,14 +35,13 @@ class PropertiesController extends AbstractController
         Request $request
     ): Response
     {
-        $search = new PropertySearch();
+
+        // Filter search
+        $search = new SearchData();
         $formSearch = $this->createForm(PropertySearchType::class, $search);
         $formSearch->handleRequest($request);
 
-        $data = $propertyRepository->findAll();
-
-
-
+        $data = $propertyRepository->findSearch($search);
         $properties = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
