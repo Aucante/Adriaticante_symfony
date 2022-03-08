@@ -9,25 +9,7 @@
     </div>
 
     <div class="container">
-        {{ form_start(formSearch) }}
-        <div class="row">
-
-            <div class="col-2">
-                {{ form_row(formSearch.minArea) }}
-            </div>
-            <div class="col-2">
-                {{ form_row(formSearch.maxPrice) }}
-            </div>
-            <div class="col-2">
-
-            </div>
-            <div class="col-2">
-
-            </div>
-            <button type="submit" class="col-2 offset-md-1 container text-center btn btn-primary rounded-0 my-4 text-uppercase">{% trans %}Filter{% endtrans%}
-            </button>
-        </div>
-            {{ form_end(formSearch) }}
+        {% include 'properties/_filter.html.twig' with {formSearch: formSearch} only %}
     </div>
 
     <div class="container-fluid my-5">
@@ -59,7 +41,7 @@
                                     {% trans %}Bedrooms{% endtrans%} : {{ property.totalBedrooms }}
                                 </p>
                                 <p class="card-text">
-                                    {% trans %}Bathrooms{% endtrans%} : {{ property.totalBathrooms }}
+                                    {% trans %}Price{% endtrans%} : {{ property.price }} €
                                 </p>
                             </div>
                             <div class="text-center">

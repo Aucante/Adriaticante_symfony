@@ -1,0 +1,27 @@
+ {{ form_start(formSearch) }}
+    <div class="row">
+
+        <div class="col-2">
+            {{ form_row(formSearch.q) }}
+        </div>
+        <div class="col-2">
+            {{ form_row(formSearch.minPrice) }}
+        </div>
+        <div class="col-2">
+            {{ form_row(formSearch.maxPrice) }}
+        </div>
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+            <button type="submit" class="offset-md-1 container text-center btn btn-primary rounded-0 text-uppercase">{% trans %}Filter{% endtrans%}
+            </button>
+        </div>
+
+    </div>
+    {{ form_end(formSearch) }}
+
+

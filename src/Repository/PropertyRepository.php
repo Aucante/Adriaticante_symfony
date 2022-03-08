@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\Property;
 use App\Entity\PropertySearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -48,32 +49,37 @@ class PropertyRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    // /**
-    //  * @return Property[] Returns an array of Property objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Call properties with filter
+     * @return Property[]
+     */
+    public function findSearch(SearchData $search): array
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('p');
 
-    /*
-    public function findOneBySomeField($value): ?Property
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        if (!empty($search->q))
+        {
+            $query = $query
+                ->andWhere('p.name LIKE :q')
+                ->setParameter('q', "%{$search->q}%");
+        }
+
+        if (!empty($search->minPrice))
+        {
+            $query = $query
+                ->andWhere('p.price >= :min')
+                ->setParameter('min', $search->minPrice);
+        }
+
+        if (!empty($search->maxPrice))
+        {
+            $query = $query
+                ->andWhere('p.price <= :max')
+                ->setParameter('max', $search->maxPrice);
+        }
+
+        return $query->getQuery()->getResult();
     }
-    */
 }
