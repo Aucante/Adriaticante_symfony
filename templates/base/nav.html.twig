@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="toggleMobileMenu">
             <ul class="navbar-nav ms-auto text-center">
                 <li><a href="{{ path('properties') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase">{% trans %}Real estate{% endtrans%}</a></li>
-                <li><a href="{{ path('about') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase">{% trans %}About us{% endtrans%}</a></li>
+                <li><a href="{{ path('about') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase">{% trans %}About{% endtrans%}</a></li>
                 <li><a href="{{ path('contact') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase">{% trans %}Contact{% endtrans%}</a></li>
 
                 {% if is_granted('ROLE_USER') %}
@@ -31,7 +31,7 @@
                         >
                             {% trans %}Profile{% endtrans%}
                         </p>
-                        <ul class="dropdown-menu text-center text-uppercase" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu text-uppercase" aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <a class="dropdown-item fs-6" href="{{ path('profile') }}"
                                 >{% trans %}Profile{% endtrans%}</a
@@ -55,13 +55,14 @@
                 <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}Sign in{% endtrans%}</button></a>
                 {% endif %}
                 <li>
-                    <div class="dropdown">
+                    <div class="dropdown me-2" style="width: 15px">
                         <a
                                 href="#"
-                                class="nav-link dropdown-toggle"
+                                class="nav-link dropdown-toggle rounded-0"
                                 id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
+                                style="width: 15px"
                         >
                             {% for locale in locales %}
                                 {% if locale == app.request.locale %}
@@ -69,7 +70,7 @@
                                 {% endif %}
                             {% endfor %}
                         </a>
-                        <ul class="dropdown-menu text-center text-uppercase" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu rounded-0" aria-labelledby="dropdownMenuButton1">
                             {% for locale in locales %}
                                 {% if locale != app.request.locale %}
                             <li>
