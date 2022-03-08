@@ -21,18 +21,74 @@ class PropertySearchType extends AbstractType
                     'placeholder' => 'Research'
                 ]
             ])
-            ->add('maxPrice', IntegerType::class, [
+            ->add('priceMax', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Price max'
                 ]
             ])
-            ->add('minPrice', IntegerType::class, [
+            ->add('priceMin', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Price min'
+                ]
+            ])
+            ->add('areaMax', IntegerType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Area max'
+                ]
+            ])
+            ->add('areaMin', IntegerType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'Area min'
+                ]
+            ])
+            ->add('roomsMax', IntegerType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'rooms max'
+                ]
+            ])
+            ->add('roomsMin', IntegerType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'rooms min'
+                ]
+            ])
+            ->add('bedroomsMax', IntegerType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'bedrooms max'
+                ]
+            ])
+            ->add('bedroomsMin', IntegerType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'bedrooms min'
+                ]
+            ])
+            ->add('bathroomsMax', IntegerType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'bathrooms max'
+                ]
+            ])
+            ->add('bathroomsMin', IntegerType::class, [
+                'label' => false,
+                'required' => false,
+                'attr' => [
+                    'placeholder' => 'bathrooms min'
                 ]
             ])
         ;

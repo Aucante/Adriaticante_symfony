@@ -1,27 +1,130 @@
  {{ form_start(formSearch) }}
-    <div class="row">
-
-        <div class="col-2">
-            {{ form_row(formSearch.q) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                {{ form_row(formSearch.q) }}
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="offset-md-1 container text-center btn btn-primary rounded-0 text-uppercase">{% trans %}Search{% endtrans%}
+                </button>
+            </div>
         </div>
-        <div class="col-2">
-            {{ form_row(formSearch.minPrice) }}
+        <div class="row border-bottom my-3">
+            <div onclick="toggleFilter()" class="text-center">
+                <p id="open" class="display-6 fs-5" style="display: block"><i class="fa-regular fa-square-plus"></i>&nbsp; {% trans %}FILTER{% endtrans %}</p>
+                <p id="close" class="display-6 fs-5" style="display: none"><i class="fa-solid fa-xmark"></i>&nbsp; {% trans %}FILTER{% endtrans %}</p>
+            </div>
         </div>
-        <div class="col-2">
-            {{ form_row(formSearch.maxPrice) }}
+    </div>
+    <div id="more-filter" class="container" style="display: none">
+        <div class="row my-3">
+            <div class="col-md-6">
+                <div class="row">
+                    <p class="display-6 fs-6 text-center text-uppercase">
+                        Price
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(formSearch.priceMin) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(formSearch.priceMax) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <p class="display-6 fs-6 text-center text-uppercase">
+                        Area
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(formSearch.areaMin) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(formSearch.areaMax) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <p class="display-6 fs-6 text-center text-uppercase">
+                        Room
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(formSearch.roomsMin) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(formSearch.roomsMax) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <p class="display-6 fs-6 text-center text-uppercase">
+                        Bedroom
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(formSearch.bedroomsMin) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(formSearch.bedroomsMax) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <p class="display-6 fs-6 text-center text-uppercase">
+                        Bathroom
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form_row(formSearch.bathroomsMin) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(formSearch.bathroomsMax) }}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-2">
-
-        </div>
-        <div class="col-2">
-
-        </div>
-        <div class="col-2">
-            <button type="submit" class="offset-md-1 container text-center btn btn-primary rounded-0 text-uppercase">{% trans %}Filter{% endtrans%}
+        <div class="row border-top">
+            <button type="submit" class="text-center btn btn-primary rounded-0 text-uppercase my-3">{% trans %}Filter{% endtrans%}
             </button>
         </div>
-
     </div>
     {{ form_end(formSearch) }}
 
 
+ <script>
+     function toggleFilter() {
+         const x = document.getElementById('more-filter');
+         const y = document.getElementById('open');
+         const z = document.getElementById('close');
+
+         if(x.style.display === "none") {
+             x.style.display = "block";
+         }else {
+             x.style.display = "none";
+         }
+
+         if(y.style.display === "block") {
+             y.style.display = "none";
+         }else {
+             y.style.display = "block";
+         }
+
+         if(z.style.display === "none") {
+             z.style.display = "block";
+         }else {
+             z.style.display = "none";
+         }
+
+     }
+ </script>
