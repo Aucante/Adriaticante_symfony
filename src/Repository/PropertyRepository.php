@@ -66,18 +66,74 @@ class PropertyRepository extends ServiceEntityRepository
                 ->setParameter('q', "%{$search->q}%");
         }
 
-        if (!empty($search->minPrice))
+        if (!empty($search->priceMin))
         {
             $query = $query
                 ->andWhere('p.price >= :min')
-                ->setParameter('min', $search->minPrice);
+                ->setParameter('min', $search->priceMin);
         }
 
-        if (!empty($search->maxPrice))
+        if (!empty($search->priceMax))
         {
             $query = $query
                 ->andWhere('p.price <= :max')
-                ->setParameter('max', $search->maxPrice);
+                ->setParameter('max', $search->priceMax);
+        }
+
+        if (!empty($search->areaMin))
+        {
+            $query = $query
+                ->andWhere('p.area >= :min')
+                ->setParameter('min', $search->areaMin);
+        }
+
+        if (!empty($search->areaMax))
+        {
+            $query = $query
+                ->andWhere('p.area <= :max')
+                ->setParameter('max', $search->areaMax);
+        }
+
+        if (!empty($search->roomsMin))
+        {
+            $query = $query
+                ->andWhere('p.totalRooms >= :min')
+                ->setParameter('min', $search->roomsMin);
+        }
+
+        if (!empty($search->roomsMax))
+        {
+            $query = $query
+                ->andWhere('p.totalRooms <= :max')
+                ->setParameter('max', $search->roomsMax);
+        }
+
+        if (!empty($search->bedroomsMin))
+        {
+            $query = $query
+                ->andWhere('p.totalBedrooms >= :min')
+                ->setParameter('min', $search->bedroomsMin);
+        }
+
+        if (!empty($search->bedroomsMax))
+        {
+            $query = $query
+                ->andWhere('p.totalBedrooms <= :max')
+                ->setParameter('max', $search->bedroomsMax);
+        }
+
+        if (!empty($search->bathroomsMin))
+        {
+            $query = $query
+                ->andWhere('p.totalBathrooms >= :min')
+                ->setParameter('min', $search->bathroomsMin);
+        }
+
+        if (!empty($search->bathroomsMax))
+        {
+            $query = $query
+                ->andWhere('p.totalBathrooms <= :max')
+                ->setParameter('max', $search->bathroomsMax);
         }
 
         return $query->getQuery()->getResult();
