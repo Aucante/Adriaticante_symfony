@@ -25,11 +25,12 @@
     <div class="col-6">{{ form_row(form.totalBathrooms) }}</div>
     <div class="col-6">{{ form_row(form.totalBedrooms) }}</div>
 </div>
-
+<!-- Asset -->
 <div class="text-center my-5 border-bottom">
     <h2 class="display-6">{% trans %}Assets{% endtrans%}</h2>
 </div>
 <div class="row">
+    <p class="text-center display-6 fs-5">Click the button for each new feature</p>
     <button type="button" class="col-md-6 offset-md-3 container text-center btn btn-primary rounded-0 my-4 text-uppercase btn-new" data-collection="#assets">{% trans %}Add Features{% endtrans%}
     </button>
     {{ form_errors(form.assets) }}

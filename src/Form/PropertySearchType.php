@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Data\SearchData;
+use App\Entity\Asset;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,71 +28,178 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Price max'
+                    'placeholder' => 'Max'
                 ]
             ])
             ->add('priceMin', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Price min'
+                    'placeholder' => 'Min'
                 ]
             ])
             ->add('areaMax', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Area max'
+                    'placeholder' => 'Max'
                 ]
             ])
             ->add('areaMin', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Area min'
+                    'placeholder' => 'Min'
                 ]
             ])
-            ->add('roomsMax', IntegerType::class, [
+            ->add('roomsMax', ChoiceType::class, [
+                'label' => false,
+                'required' => false,
+                'placeholder' => 'Max',
+                'choices'  => [
+                    '0' => '0',
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10',
+                    '11' => '11',
+                    '12' => '12',
+                    '13' => '13',
+                    '14' => '14',
+                    '15' => '15',
+                ],
+            ])
+            ->add('roomsMin', ChoiceType::class, [
+                'label' => false,
+                'required' => false,
+                'placeholder' => 'Min',
+                'choices'  => [
+                    '0' => '0',
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10',
+                    '11' => '11',
+                    '12' => '12',
+                    '13' => '13',
+                    '14' => '14',
+                    '15' => '15',
+                ],
+            ])
+            ->add('bedroomsMax', ChoiceType::class, [
+                'label' => false,
+                'required' => false,
+                'placeholder' => 'Max',
+                'choices'  => [
+                    '0' => '0',
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10',
+                ],
+            ])
+            ->add('bedroomsMin', ChoiceType::class, [
+                'label' => false,
+                'required' => false,
+                'placeholder' => 'Min',
+                'choices'  => [
+                    '0' => '0',
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10',
+                ],
+            ])
+            ->add('bathroomsMax', ChoiceType::class, [
+                'label' => false,
+                'required' => false,
+                'placeholder' => 'Max',
+                'choices'  => [
+                    '0' => '0',
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10',
+                ],
+            ])
+            ->add('bathroomsMin', ChoiceType::class, [
+                'label' => false,
+                'required' => false,
+                'placeholder' => 'Min',
+                'choices'  => [
+                    '0' => '0',
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                    '6' => '6',
+                    '7' => '7',
+                    '8' => '8',
+                    '9' => '9',
+                    '10' => '10',
+                ],
+            ])
+            ->add('type', ChoiceType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'rooms max'
-                ]
+                    'placeholder' => 'type'
+                ],
+                'choices'  => [
+                    'Purchase' => 'Purchase',
+                    'Daily Rental' => 'Daily Rental',
+                    'Monthly Rental' => 'Monthly Rental',
+                ],
             ])
-            ->add('roomsMin', IntegerType::class, [
+            ->add('advertType', ChoiceType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'rooms min'
-                ]
+                    'placeholder' => 'advertType'
+                ],
+                'choices'  => [
+                    'Purchase' => 'Purchase',
+                    'Daily Rental' => 'Daily Rental',
+                    'Monthly Rental' => 'Monthly Rental',
+                ],
             ])
-            ->add('bedroomsMax', IntegerType::class, [
+            ->add('assets', EntityType::class, [
                 'label' => false,
                 'required' => false,
-                'attr' => [
-                    'placeholder' => 'bedrooms max'
-                ]
-            ])
-            ->add('bedroomsMin', IntegerType::class, [
-                'label' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'bedrooms min'
-                ]
-            ])
-            ->add('bathroomsMax', IntegerType::class, [
-                'label' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'bathrooms max'
-                ]
-            ])
-            ->add('bathroomsMin', IntegerType::class, [
-                'label' => false,
-                'required' => false,
-                'attr' => [
-                    'placeholder' => 'bathrooms min'
-                ]
+                'class' => Asset::class,
+                'expanded' => true,
+                'multiple' => true,
             ])
         ;
     }

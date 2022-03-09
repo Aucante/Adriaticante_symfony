@@ -26,7 +26,7 @@ class PropertyType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'property.name.label'
+                'label' => 'property.name.label',
             ])
             ->add('price', IntegerType::class, [
                 'label' => 'property.price.label'

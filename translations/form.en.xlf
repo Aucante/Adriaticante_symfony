@@ -12,7 +12,7 @@
             </trans-unit>
             <trans-unit id="UOXuVIN" resname="property.price.label">
                 <source>property.price.label</source>
-                <target>Price - €</target>
+                <target>Price</target>
             </trans-unit>
             <trans-unit id="UOXuVIO" resname="property.description.label">
                 <source>property.description.label</source>
