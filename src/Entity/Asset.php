@@ -31,6 +31,11 @@ class Asset
      */
     private $property;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $icon;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -63,5 +68,17 @@ class Asset
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(string $icon): self
+    {
+        $this->icon = $icon;
+
+        return $this;
     }
 }

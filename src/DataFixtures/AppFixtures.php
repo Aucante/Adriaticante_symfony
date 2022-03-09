@@ -88,6 +88,7 @@ class AppFixtures extends Fixture
 
             $asset = new Asset();
             $asset->setName('view');
+            $asset->setIcon('string');
             $manager->persist($asset);
             $property->addasset($asset);
 
@@ -167,6 +168,7 @@ class AppFixtures extends Fixture
 
                 $asset = new Asset();
                 $asset->setName($faker->word());
+                $asset->setIcon($faker->word());
                 $manager->persist($asset);
                 $property->addasset($asset);
 
