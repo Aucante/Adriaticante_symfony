@@ -4,6 +4,8 @@
 namespace App\Data;
 
 
+use App\Entity\Asset;
+
 class SearchData
 {
     /**
@@ -60,5 +62,20 @@ class SearchData
      * @var null|integer
      */
     public ?int $bathroomsMax;
+
+    /**
+     * @var null|string
+     */
+    public ?string $type;
+
+    /**
+     * @var null|string
+     */
+    public ?string $advertType;
+
+    /**
+     * @var Asset[]
+     */
+    public array $assets = [];
 
 }

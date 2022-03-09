@@ -132,8 +132,29 @@ class PropertyRepository extends ServiceEntityRepository
         if (!empty($search->bathroomsMax))
         {
             $query = $query
-                ->andWhere('p.totalBathrooms <= :max')
+                ->andWhere('p.totalBathrooms >= :max')
                 ->setParameter('max', $search->bathroomsMax);
+        }
+
+        if (!empty($search->type))
+        {
+            $query = $query
+                ->andWhere('p.type LIKE :type')
+                ->setParameter('type', "%{$search->type}%");
+        }
+
+        if (!empty($search->advertType))
+        {
+            $query = $query
+                ->andWhere('p.name LIKE :advertType')
+                ->setParameter('advertType', "%{$search->advertType}%");
+        }
+
+        if (!empty($search->assets))
+        {
+            $query = $query
+                ->andWhere('a.id IN (:assets)')
+                ->setParameter('assets', $search->assets);
         }
 
         return $query->getQuery()->getResult();
