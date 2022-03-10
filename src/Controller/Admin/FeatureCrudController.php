@@ -2,20 +2,21 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Address;
+use App\Entity\Feature;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class AddressCrudController extends AbstractCrudController
+class FeatureCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Address::class;
+        return Feature::class;
     }
 
     public function configureActions(Actions $actions): Actions
@@ -27,17 +28,9 @@ class AddressCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            IntegerField::new('street_number'),
-            TextField::new(('street_address_line_1')),
-            TextField::new(('street_address_line_2')),
-            TextField::new(('city')),
-            IntegerField::new(('state_zip_code')),
-            TextField::new(('country')),
-            TextField::new(('county')),
-            IntegerField::new(('phone')),
-            IntegerField::new(('longitude')),
-            IntegerField::new(('latitude')),
+            IdField::new('id')->hideOnForm(),
+            TextField::new('name'),
+            CollectionField::new('property')
         ];
     }
 

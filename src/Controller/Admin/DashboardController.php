@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Address;
 use App\Entity\Asset;
+use App\Entity\Feature;
 use App\Entity\File;
 use App\Entity\Property;
 use App\Entity\User;
@@ -35,7 +36,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Real Estate', 'far fa-building', Property::class);
         yield MenuItem::linkToCrud('File', 'far fa-file', File::class);
         yield MenuItem::linkToCrud('Address', 'fas fa-globe-europe', Address::class);
-        yield MenuItem::linkToCrud('Asset', 'fas fa-sliders-h', Asset::class);
+        yield MenuItem::linkToCrud('Feature', 'fas fa-sliders-h', Feature::class);
         yield MenuItem::linkToCrud('User', 'fas fa-user', User::class);
     }
 }
