@@ -22,7 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('addFileProperty', './assets/add-file-property.js')
-    .addEntry('addAsset', './assets/add-asset.js')
+    .addEntry('addFeature', './assets/add-feature.js')
     .addEntry('togglePropertyContactForm', './assets/toggle-property-contact-form.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)

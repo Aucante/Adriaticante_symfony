@@ -126,18 +126,16 @@ class Property
     private $nameContact;
 
     /**
-     * @ORM\OneToMany(targetEntity=Asset::class, mappedBy="property", orphanRemoval=true, cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     * @Assert\Count(min=1)
-     * @Assert\Valid()
+     * @ORM\ManyToMany(targetEntity=Feature::class, mappedBy="property", cascade={"persist"})
      */
-    private $assets;
+    private $features;
+
+
 
     public function __construct()
     {
         $this->features = new ArrayCollection();
         $this->files = new ArrayCollection();
-        $this->assets = new ArrayCollection();
     }
 
 
@@ -362,30 +360,27 @@ class Property
     }
 
     /**
-     * @return Collection|Asset[]
+     * @return Collection|Feature[]
      */
-    public function getAssets(): Collection
+    public function getFeatures(): Collection
     {
-        return $this->assets;
+        return $this->features;
     }
 
-    public function addAsset(Asset $asset): self
+    public function addFeature(Feature $feature): self
     {
-        if (!$this->assets->contains($asset)) {
-            $this->assets[] = $asset;
-            $asset->setProperty($this);
+        if (!$this->features->contains($feature)) {
+            $this->features[] = $feature;
+            $feature->addProperty($this);
         }
 
         return $this;
     }
 
-    public function removeAsset(Asset $asset): self
+    public function removeFeature(Feature $feature): self
     {
-        if ($this->assets->removeElement($asset)) {
-            // set the owning side to null (unless already changed)
-            if ($asset->getProperty() === $this) {
-                $asset->setProperty(null);
-            }
+        if ($this->features->removeElement($feature)) {
+            $feature->removeProperty($this);
         }
 
         return $this;

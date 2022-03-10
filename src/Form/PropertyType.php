@@ -117,8 +117,8 @@ class PropertyType extends AbstractType
             ->add('nameContact', TextType::class, [
                 'label' => 'property.name_contact.label'
             ])
-            ->add('assets', CollectionType::class, [
-                'entry_type' => AssetType::class,
+            ->add('features', CollectionType::class, [
+                'entry_type' => FeatureType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,

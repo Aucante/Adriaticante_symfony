@@ -33,17 +33,17 @@
     <p class="text-center display-6 fs-5">Click the button for each new feature</p>
     <button type="button" class="col-md-6 offset-md-3 container text-center btn btn-primary rounded-0 my-4 text-uppercase btn-new" data-collection="#assets">{% trans %}Add Features{% endtrans%}
     </button>
-    {{ form_errors(form.assets) }}
+    {{ form_errors(form.features) }}
 </div>
 
 <div
         id="assets"
         class="row"
-        data-prototype="{{ include('properties/_asset.html.twig', {form: form.assets.vars.prototype})|e("html_attr") }}"
-        data-index="{{ form.assets|length > 0 ? form.assets|last.vars.name + 1 : 0 }}">
-    {% for asset in form.assets %}
+        data-prototype="{{ include('properties/_feature.html.twig', {form: form.features.vars.prototype})|e("html_attr") }}"
+        data-index="{{ form.features|length > 0 ? form.features|last.vars.name + 1 : 0 }}">
+    {% for feature in form.features %}
 
-            {{ include('properties/_asset.html.twig', {form: asset}) }}
+            {{ include('properties/_feature.html.twig', {form: feature}) }}
 
     {% endfor %}
 </div>
