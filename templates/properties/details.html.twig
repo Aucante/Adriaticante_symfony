@@ -133,9 +133,9 @@
                 <h3 class="display-6">{% trans %}Features{% endtrans%}</h3>
             </div>
             <div class="row border-bottom">
-                {% for asset in property.assets %}
+                {% for feature in property.features %}
                 <div class="col-4">
-                    <p>{{ asset.name }}</p>
+                    <p>{{ feature.name }}</p>
                 </div>
                 {% endfor %}
             </div>

@@ -82,20 +82,19 @@ class AppFixtures extends Fixture
 
         $manager->persist($property);
 
-        for ($k = 0; $k < 3; $k++)
-        {
-            // asset
 
-            $asset = new Asset();
-            $asset->setName('view');
-            $asset->setIcon('string');
-            $manager->persist($asset);
-            $property->addasset($asset);
+            // feature
 
-            $manager->persist($asset);
+            $feature = new feature();
+            $feature->setName('view');
+            $feature->setIcon('string');
+            $manager->persist($feature);
+            $property->addfeature($feature);
+
+            $manager->persist($feature);
             $manager->persist($property);
 
-        }
+
 
 
         // FILE
@@ -166,13 +165,13 @@ class AppFixtures extends Fixture
             {
                 // asset
 
-                $asset = new Asset();
-                $asset->setName($faker->word());
-                $asset->setIcon($faker->word());
-                $manager->persist($asset);
-                $property->addasset($asset);
+                $feature = new feature();
+                $feature->setName($faker->word());
+                $feature->setIcon($faker->word());
+                $manager->persist($feature);
+                $property->addfeature($feature);
 
-                $manager->persist($asset);
+                $manager->persist($feature);
                 $manager->persist($property);
 
                 // FILE

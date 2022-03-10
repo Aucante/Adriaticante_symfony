@@ -26,12 +26,6 @@ class Asset
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Property::class, inversedBy="assets")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $property;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $icon;
@@ -53,17 +47,6 @@ class Asset
         return $this;
     }
 
-    public function getProperty(): ?Property
-    {
-        return $this->property;
-    }
-
-    public function setProperty(?Property $property): self
-    {
-        $this->property = $property;
-
-        return $this;
-    }
 
     public function __toString()
     {
