@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Data\SearchData;
 use App\Entity\Asset;
+use App\Entity\Feature;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -197,7 +198,7 @@ class PropertySearchType extends AbstractType
             ->add('assets', EntityType::class, [
                 'label' => false,
                 'required' => false,
-                'class' => Asset::class,
+                'class' => Feature::class,
                 'expanded' => true,
                 'multiple' => true,
             ])

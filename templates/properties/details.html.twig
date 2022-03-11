@@ -106,6 +106,15 @@
             <div class="my-5">
                 <button onclick="toggle()" class="btn btn-primary rounded-0">CONTACT</button>
             </div>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div>
+                        <div class="text-{{ label }} border border-{{ label }} text-center rounded flash-{{ label }}">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
 
             <!-- FORM -->
             <div id="contactForm" class="mt-4" style="display: none">
@@ -123,7 +132,7 @@
 
 
                 <div class="form-group">
-                    <button class="btn btn-primary rounded-0 text-uppercase">{% trans %}Send{% endtrans%}</button>
+                    <button class="btn btn-primary rounded-0 text-uppercase">{% trans %}Send{% endtrans%}&ensp;<i class="fa-regular fa-paper-plane"></i></button>
                 </div>
                 {{ form_end(contactForm) }}
             </div>

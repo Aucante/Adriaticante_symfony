@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div>
+                <div class="text-{{ label }} border border-{{ label }} text-center rounded flash-{{ label }}">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
 
     <div class="col-10 offset-1 my-5 col-xl-6 offset-xl-3">
         <div class="text-center my-5 border-bottom">

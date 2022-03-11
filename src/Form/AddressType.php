@@ -18,27 +18,35 @@ class AddressType extends AbstractType
         $builder
             ->add('street_number', IntegerType::class, [
             'label' => 'address.street_number.label',
+                'required' => true
             ])
             ->add('street_address_line_1', TextType::class, [
                 'label' => 'address.street_address_line_1.label',
+                'required' => true
             ])
             ->add('street_address_line_2', TextType::class, [
                 'label' => 'address.street_address_line_2.label',
+                'required' => false
             ])
             ->add('city', TextType::class, [
                 'label' => 'address.city.label',
+                'required' => true
             ])
             ->add('state_zip_code', IntegerType::class, [
                 'label' => 'address.state_zip_code.label',
+                'required' => true
             ])
             ->add('country', CountryType::class, [
                 'label' => 'address.country.label',
+                'required' => true
             ])
             ->add('county', TextType::class, [
                 'label' => 'address.county.label',
+                'required' => false
             ])
             ->add('phone', TelType::class, [
                 'label' => 'address.phone.label',
+                'required' => true
             ])
         ;
     }

@@ -6,7 +6,6 @@ use App\Data\SearchData;
 use App\Entity\Contact;
 use App\Entity\File;
 use App\Entity\Property;
-use App\Entity\PropertySearch;
 use App\Form\ContactType;
 use App\Form\PropertySearchType;
 use App\Form\PropertyType;
@@ -17,7 +16,6 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -101,7 +99,7 @@ class PropertiesController extends AbstractController
 
         if ($contactForm->isSubmitted() && $contactForm->isValid())
         {
-            $contactNotification->notify($contact, $user);
+            $contactNotification->notifyPropertyPage($contact, $user);
             $messageFlash = $translator->trans('Email has been sent successfully.');
             $this->addFlash('success', $messageFlash);
             $this->redirectToRoute('properties_details', ['id' => $property->getId()]);
@@ -158,34 +156,8 @@ class PropertiesController extends AbstractController
         $entityManager->flush();
         $this->addFlash('success', 'Real estate deleted.');
         return $this->redirectToRoute('user_properties');
-
-
     }
 
-    /**
-     * @Route("/update-realestate/{id}", name="properties_update")
-     */
-    public function update(
-        Request $request,
-        Property $property
-    ): Response
-    {
-
-        $form = $this->createForm(PropertyType::class, $property);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
-            $this->getDoctrine()->getManager()->flush();
-
-            $this->addFlash('success', 'The real estate informations were updated correctly.');
-            return $this->redirectToRoute('home');
-        }
-
-        return $this->render('properties/update.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
 
     /**
      * @Route("/addPhotos-realestate-vue/{id}", name="properties_add_photos_vue")

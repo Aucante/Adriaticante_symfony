@@ -3,6 +3,15 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div>
+                <div class="text-{{ label }} border border-{{ label }} text-center rounded flash-{{ label }}">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
 
 
 
