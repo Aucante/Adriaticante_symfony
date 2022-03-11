@@ -22,17 +22,44 @@
         </div>
     </div>
 
-    <div class="container-fluid bg-secondary" style="height: 400px;">
-        <div class="row">
-            <div class="col"></div>
+    <div class="container-fluid bg-secondary py-5">
+
+        <!-- FORM -->
+        <div class="container">
+            {{ form_start(contactForm) }}
+            <div class="row">
+                <div class="col-6">{{ form_row(contactForm.firstname) }}</div>
+                <div class="col-6">{{ form_row(contactForm.lastname) }}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">{{ form_row(contactForm.email) }}</div>
+                <div class="col-6">{{ form_row(contactForm.phone) }}</div>
+            </div><div class="row">
+                <div class="col-12">{{ form_row(contactForm.message) }}</div>
+            </div>
+
+
+            <div class="form-group my-3">
+                <button class="btn btn-primary rounded-0 text-uppercase">{% trans %}Send Message {% endtrans%}&ensp;<i class="fa-regular fa-paper-plane"></i></button>
+            </div>
+            {{ form_end(contactForm) }}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div>
+                        <div class="text-{{ label }} border border-{{ label }} text-center rounded flash-{{ label }}">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
         </div>
     </div>
 
     <div class="container my-5">
         <div class="row align-items-center text-center">
-            <div class="col-md-4"><i class="fa-solid fa-mobile-screen-button fa-7x"></i><p class="display-6 fs-4 my-5">+3360102030405</p></div>
-            <div class="col-md-4"><i class="fa-solid fa-envelope fa-7x"></i><p class="display-6 fs-4 my-5">adriaticante@contact.com</p></div>
-            <div class="col-md-4"><i class="fa-solid fa-location-arrow fa-7x"></i><p class="display-6 fs-4 my-5">Trieste</p></div>
+            <div class="col-md-4"><i class="fa-solid fa-mobile-screen-button fa-5x"></i><p class="display-6 fs-4 my-5">+3360102030405</p></div>
+            <div class="col-md-4"><i class="fa-solid fa-envelope fa-5x"></i><p class="display-6 fs-4 my-5">adriaticante@contact.com</p></div>
+            <div class="col-md-4"><i class="fa-solid fa-location-arrow fa-5x"></i><p class="display-6 fs-4 my-5">Trieste</p></div>
         </div>
     </div>
 
