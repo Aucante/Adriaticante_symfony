@@ -164,30 +164,66 @@
                     </p>
                 </div>
             </div>
+            <div id="map" class="mt-5"></div>
             <div class="my-5">
                 <h3 class="display-6">{% trans %}More properties ?{% endtrans%}</h3>
             </div>
             <div class="my-5">
-                <button class="btn btn-primary rounded-0 me-2">{% trans %}Real estate{% endtrans%}</button>
-                <button class="btn btn-primary rounded-0 mx-2">{% trans %}Contact{% endtrans%}</button>
-                <button class="btn btn-primary rounded-0 mx-2">{% trans %}Our services{% endtrans%}</button>
+                <button class="btn btn-primary rounded-0 me-2 text-uppercase">{% trans %}Real estate{% endtrans%}</button>
+                <button class="btn btn-primary rounded-0 mx-2 text-uppercase">{% trans %}Contact{% endtrans%}</button>
+                <button class="btn btn-primary rounded-0 mx-2 text-uppercase">{% trans %}Our services{% endtrans%}</button>
             </div>
         </div>
     </div>
 
 
-
-<script>
-    function toggle() {
-        const x = document.getElementById('contactForm');
-
-        if(x.style.display === "none") {
-            x.style.display = "block";
-        }else {
-            x.style.display = "none";
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin="">
+    </script>
+    <script>
+        var cities = {
+            "Tivat": { "latitude": 42.431852, "longitude": 18.70714 },
+            "Brest": { "latitude": 48.383, "longitude": -4.500 },
+            "Quimper": { "latitude": 48.000, "longitude": -4.100 },
+            "Bayonne": { "latitude": 43.500, "longitude": -1.467 }
+        };
+        // Card initialization
+        var map = L.map('map').setView([42.431852, 18.70714], 13);
+        // Tile loaded
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 10,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiYWRyaWF0aWNhbnRlLXRlc3QiLCJhIjoiY2wwb2F5aDA4MGZ0YTNqcGtld3g4MzMxdyJ9.s6pkqD-kP_D62ukhRhmU5w'
+        }).addTo(map);
+        // Marker
+        for(city in cities)
+        {
+            var circle = L.circle([cities[city].latitude, cities[city].longitude], {
+                color: '#263238',
+                fillColor: '#263238',
+                fillOpacity: 0.5,
+                radius: 3000
+            }).addTo(map);
         }
-    }
-</script>
+
+        // CONTACT FORM
+
+        function toggle() {
+            const x = document.getElementById('contactForm');
+
+            if(x.style.display === "none") {
+                x.style.display = "block";
+            }else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
 {% endblock %}
 {% block title %}
 
