@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Address;
-use App\Entity\Asset;
 use App\Entity\Feature;
 use App\Entity\File;
 use App\Entity\Property;
@@ -21,7 +20,9 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return $this->render('admin/dashboard.html.twig');
+
+        return $this->render('admin/dashboard.html.twig', [
+        ]);
     }
 
     public function configureDashboard(): Dashboard
