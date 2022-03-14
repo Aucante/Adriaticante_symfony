@@ -10,6 +10,7 @@
                     data-bs-ride="carousel"
             >
                 <div class="carousel-indicators">
+                    {% for file in property.files %}
                     <button
                             type="button"
                             data-bs-target="#carouselExampleIndicators"
@@ -18,35 +19,17 @@
                             aria-current="true"
                             aria-label="Slide 1"
                     ></button>
-                    <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="1"
-                            aria-label="Slide 2"
-                    ></button>
-                    <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="2"
-                            aria-label="Slide 3"
-                    ></button>
+                    {% endfor %}
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active ratio ratio-16x9">
-                        <img
-                                    src="{{ asset('img/img/adriaticM.jpg') }}"
+                    {% for file in property.files %}
+                        <div class="carousel-item active ratio ratio-16x9">
+                            <img
+                                    src="{{ asset('uploads/properties/' ~ file.name) }}"
                                     class="d-block w-100"
                                     alt="adriatic"
-                        />
-                    </div>
-                    {% for file in property.files %}
-                    <div class="carousel-item ratio ratio-16x9">
-                        <img
-                                src="{{ asset('uploads/properties/' ~ file.name) }}"
-                                class="d-block w-100"
-                                alt="adriatic"
-                        />
-                    </div>
+                            />
+                        </div>
                     {% endfor %}
                 </div>
                 <button
@@ -76,7 +59,7 @@
                 {% for file in property.files %}
                 <div class="col-2 my-1">
                     <div class="ratio ratio-16x9" data-controller="lightbox">
-                        {% for file in property.files %}
+                        {% for file in property.files|sort|reverse %}
                             <a href="{{ asset('uploads/properties/' ~ file.name) }}">
                                 <img
                                         alt="{{ file.id }}"
