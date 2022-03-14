@@ -2,6 +2,9 @@ $primary: #263238;
 $secondary: #ECEFF1;
 // the ~ allows you to reference things in node_modules
 @import "./../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "./styles.scss";
+
+@import '~lightgallery/scss/lightgallery';
 
 $theme-colors: (
         "primary":    $primary, //#ECEFF1

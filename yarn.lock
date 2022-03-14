@@ -3046,10 +3046,10 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.5.tgz#d166574d90076395d9963aa7a928fabb8d76afbc"
   integrity sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ==
 
-lightgallery.js@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/lightgallery.js/-/lightgallery.js-1.4.0.tgz#f4b43b01b2acce43bd7e6d8dbcf1d5541cd2fb03"
-  integrity sha512-TK7auNMSz0sPjotq/VtKH/fe8GPkVRlmFf8F3zVsbFccLJL4r3U1VON+IggyE8Wy04QwbFQxTIIMqL7blibGSA==
+lightgallery@^2.3.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/lightgallery/-/lightgallery-2.4.0.tgz#b22b355bdbd48d3129e15c9d7d17e8e65bb2a17c"
+  integrity sha512-9i/E/w3yaqs56y3k6SWIUS3JTLpeDCZIVnIuNppzAmj5KjLGy5wrFisoDUD0HdxVUdX0wHG5mjvB4h0TXtyf/w==
 
 lilconfig@^2.0.3:
   version "2.0.4"
@@ -4361,6 +4361,13 @@ stackframe@^1.1.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
+
+stimulus-lightbox@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/stimulus-lightbox/-/stimulus-lightbox-3.0.0.tgz#acd2ae81422f1416e38cd0d1aa54300ac88c72a8"
+  integrity sha512-GDzUDMxSxNvO2UmA/WFLoNLiNl0xcCFt92+SKvL2Zt3uflGIBhQpvdykrTkgiLxCaXxhVW4ba/PwEmliDvcQBg==
+  dependencies:
+    lightgallery "^2.3.0"
 
 string-width@^4.2.3:
   version "4.2.3"
