@@ -184,78 +184,7 @@
 
     <!-- EXPLORER -->
 
-    <div class="container-fluid bg-secondary">
-        <div class="container">
-            <div class="text-center py-5">
-                <h2 class="display-4 text-uppercase">{% trans %}Explorer{% endtrans %}</h2>
-            </div>
-            <div class="align-items-center row mt-5">
-                <div
-                        class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-1 my-4"
-                >
-                    <div data-aos="fade-right" class="container text-center">
-
-                        <i class="fa-solid fa-building fa-7x"></i>
-                    </div>
-                </div>
-                <div
-                        class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 my-4"
-                >
-                    <div data-aos="fade-left" class="container text-center">
-                        <p class="fs-5">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-                            laboriosam perspiciatis iusto illum rem vel, alias adipisci
-                            quibusdam sit mollitia esse assumenda porro ipsam quis libero
-                            architecto hic, ducimus veritatis.
-                        </p>
-                    </div>
-                </div>
-                <div class="align-items-center row my-5">
-                    <div
-                            class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-1 my-4"
-                    >
-                        <div data-aos="fade-right" class="container text-center">
-                            <p class="fs-5">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-                                laboriosam perspiciatis iusto illum rem vel, alias adipisci
-                                quibusdam sit mollitia esse assumenda porro ipsam quis libero
-                                architecto hic, ducimus veritatis.
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                            class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 my-4"
-                    >
-                        <div data-aos="fade-left" class="container text-center">
-                            <i class="fa-solid fa-bed fa-7x"></i>
-                        </div>
-                    </div>
-
-                    <div class="align-items-center row mt-5">
-                        <div
-                                class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-1 my-4"
-                        >
-                            <div data-aos="fade-right" class="container text-center">
-                                <i class="fa-solid fa-key fa-7x"></i>
-                            </div>
-                        </div>
-                        <div
-                                class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 my-4"
-                        >
-                            <div data-aos="fade-left" class="container text-center">
-                                <p class="fs-5">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Atque laboriosam perspiciatis iusto illum rem vel, alias
-                                    adipisci quibusdam sit mollitia esse assumenda porro ipsam
-                                    quis libero architecto hic, ducimus veritatis.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include('home/components/_explorer.html.twig') %}
 
     <!-- GRADIENTCONTAINERBOTTON -->
 
@@ -263,22 +192,17 @@
 
     <!-- LAST PROPERTIES -->
 
-    {% include('home/components/lastProperties.html.twig') %}
+    {% include('home/components/_lastProperties.html.twig') %}
 
     <!-- ABOUT -->
 
-    {% include('home/components/about.html.twig') %}
+    {% include('home/components/_about.html.twig') %}
 
     <!-- CONTACT -->
 
-    {% include('home/components/contact.html.twig') %}
+    {% include('home/components/_contact.html.twig') %}
 
 
-
-    <!-- NEWSLETTER -->
-
-
-    {% include('home/components/newsletter.html.twig') %}
 
 
 
