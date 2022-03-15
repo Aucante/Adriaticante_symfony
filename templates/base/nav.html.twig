@@ -4,7 +4,7 @@
         ><img src="{{ asset('img/logo/adriaticante.png') }}" alt="logo" width="180" height="45"
             /></a>
         <button
-                class="navbar-toggler border-0"
+                class="navbar-toggler border-0 shadow-none"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#toggleMobileMenu"
@@ -15,7 +15,7 @@
             <img src="{{ asset('img/icon/menu.png') }}" alt="menu" height="30" />
         </button>
         <div class="collapse navbar-collapse" id="toggleMobileMenu">
-            <ul class="navbar-nav ms-auto text-center">
+            <ul class="d-flex align-items-center navbar-nav ms-auto text-center">
                 <li><a href="{{ path('properties') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase">{% trans %}Real estate{% endtrans%}</a></li>
                 <li><a href="{{ path('about') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase">{% trans %}About{% endtrans%}</a></li>
                 <li><a href="{{ path('contact') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase">{% trans %}Contact{% endtrans%}</a></li>
@@ -27,11 +27,12 @@
                                 class="nav-link dropdown-toggle display-5 fs-6 fw-normal text-uppercase"
                                 id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown"
+                                data-bs-display="static"
                                 aria-expanded="false"
                         >
                             {% trans %}Profile{% endtrans%}
                         </p>
-                        <ul class="dropdown-menu text-uppercase" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu text-uppercase mb-3 ms-1" aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <a class="dropdown-item fs-6" href="{{ path('profile') }}"
                                 >{% trans %}Profile{% endtrans%}</a
@@ -52,37 +53,40 @@
                 </li>
                     <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}New real estate{% endtrans%}</button></a>
                 {% else %}
-                <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}Sign in{% endtrans%}</button></a>
+                    <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}Sign in{% endtrans%}</button></a>
                 {% endif %}
-                <li>
-                    <div class="dropdown me-2" style="width: 15px">
-                        <a
-                                href="#"
-                                class="nav-link dropdown-toggle rounded-0"
-                                id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                style="width: 15px"
-                        >
-                            {% for locale in locales %}
-                                {% if locale == app.request.locale %}
+
+                <button type="button" class="btn btn-transparent shadow-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    {% for locale in locales %}
+                        {% if locale == app.request.locale %}
                             <img src="{{ asset('img/img/flag/'~locale~'.png') }}" style="height: 20px; width: 30px">
-                                {% endif %}
-                            {% endfor %}
-                        </a>
-                        <ul class="dropdown-menu rounded-0" aria-labelledby="dropdownMenuButton1">
-                            {% for locale in locales %}
-                                {% if locale != app.request.locale %}
-                            <li>
-                                <a class="dropdown-item" href="{{ path('change_locale', {'locale': locale}) }}"
-                                ><img src="{{ asset('img/img/flag/'~locale~'.png') }}" style="height: 20px" alt="{{ locale }}"></a
-                                >
-                            </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
+                        {% endif %}
+                    {% endfor %}
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content bg-secondary">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{% trans %}Languages{% endtrans %}</h5>
+                                <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <ul class="rounded-0 ps-0">
+                                    {% for locale in locales %}
+                                        {% if locale != app.request.locale %}
+                                            <button class="btn btn-secondary text-center">
+                                                <a class="dropdown-item" href="{{ path('change_locale', {'locale': locale}) }}"
+                                                ><img src="{{ asset('img/img/flag/'~locale~'.png') }}" style="height: 30px" alt="{{ locale }}"></a
+                                                >
+                                            </button>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </li>
+                </div>
             </ul>
         </div>
     </nav>
