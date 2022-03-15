@@ -78,7 +78,9 @@ class AppFixtures extends Fixture
             ->setName('testproperty')
             ->setAdvertType($faker->word())
             ->setPhoneContact(0)
-            ->setNameContact($faker->word());
+            ->setNameContact($faker->word())
+            ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())
+            ->setCreatedAt(new \DateTimeImmutable());
 
         $manager->persist($property);
 
@@ -87,7 +89,6 @@ class AppFixtures extends Fixture
 
             $feature = new feature();
             $feature->setName('view');
-            $feature->setIcon('string');
             $manager->persist($feature);
             $property->addfeature($feature);
 
@@ -157,7 +158,9 @@ class AppFixtures extends Fixture
                 ->setName($faker->text(20))
                 ->setAdvertType($faker->word())
                 ->setPhoneContact(0)
-                ->setNameContact($faker->word());
+                ->setNameContact($faker->word())
+                ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())
+                ->setCreatedAt(new \DateTimeImmutable());
 
             $manager->persist($property);
 
@@ -167,7 +170,6 @@ class AppFixtures extends Fixture
 
                 $feature = new feature();
                 $feature->setName($faker->word());
-                $feature->setIcon($faker->word());
                 $manager->persist($feature);
                 $property->addfeature($feature);
 

@@ -6,6 +6,7 @@ use App\Repository\PropertyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -129,6 +130,18 @@ class Property
      * @ORM\ManyToMany(targetEntity=Feature::class, mappedBy="property", cascade={"persist"})
      */
     private $features;
+
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $createdAt;
+
+    /**
+     * @var string
+     * @Gedmo\Slug(fields={"name", "area"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
 
 
 
@@ -382,6 +395,31 @@ class Property
         if ($this->features->removeElement($feature)) {
             $feature->removeProperty($this);
         }
+
+        return $this;
+    }
+
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

@@ -262,5 +262,12 @@ class Address
         return $this;
     }
 
+    public function __toString(): string
+    {
+        if(is_null($this->city)) {
+            return 'NULL';
+        }
+        return $this->city;
+    }
 
 }

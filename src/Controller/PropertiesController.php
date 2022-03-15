@@ -25,7 +25,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class PropertiesController extends AbstractController
 {
     /**
-     * @Route("/properties", name="properties")
+     * @Route("/real-estate", name="properties")
      */
     public function properties(
         PropertyRepository $propertyRepository,
@@ -61,7 +61,7 @@ class PropertiesController extends AbstractController
 
 
     /**
-     * @Route("/my-properties", name="user_properties")
+     * @Route("/user/real-estate", name="user_properties")
      */
     public function userProperties(
         PropertyRepository $propertyRepository
@@ -76,8 +76,42 @@ class PropertiesController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/properties/{id}", name="properties_details")
+     * @Route("/real-estate/create", name="properties_create")
+     */
+    public function create(
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response
+    {
+
+        $property = new Property();
+        $user = $this->getUser();
+
+        $form = $this->createForm(PropertyType::class, $property);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $property->setUser($user);
+            $property->setCreatedAt(new \DateTimeImmutable());
+            $property->setStatus('In Progress');
+
+            $entityManager->persist($property);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'The real estate informations were saved correctly.');
+            return $this->redirectToRoute('properties_add_photos_vue', ['id' => $property->getId()]);
+        }
+
+        return $this->render('properties/create.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/real-estate/{slug}", name="properties_details")
      */
     public function details(
         Request $request,
@@ -113,39 +147,7 @@ class PropertiesController extends AbstractController
     }
 
     /**
-     * @Route("/create-realestate", name="properties_create")
-     */
-    public function create(
-        Request $request,
-        EntityManagerInterface $entityManager
-    ): Response
-    {
-
-        $property = new Property();
-        $user = $this->getUser();
-
-        $form = $this->createForm(PropertyType::class, $property);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
-            $property->setUser($user);
-            $property->setStatus('In Progress');
-
-            $entityManager->persist($property);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'The real estate informations were saved correctly.');
-            return $this->redirectToRoute('properties_add_photos_vue', ['id' => $property->getId()]);
-        }
-
-        return $this->render('properties/create.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
-    /**
-     * @Route("/delete-realestate/{id}", name="properties_delete")
+     * @Route("/real-estate/delete/{slug}", name="properties_delete")
      */
     public function delete(
         Property $property,
