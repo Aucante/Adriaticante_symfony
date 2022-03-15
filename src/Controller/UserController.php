@@ -29,7 +29,7 @@ class UserController extends AbstractController
 
 
     /**
-     * @Route("/profile-edit", name="profile_update")
+     * @Route("/profile/edit", name="profile_update")
      */
     public function profileUpdate(
         Request $request,

@@ -18,8 +18,8 @@
                 <tr>
                     <th>{{ property.name }}</th>
                     <td>{{ property.price }} €</td>
-                    <td><a href="{{ path('properties_details', {'id': property.id}) }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}Check{% endtrans%}</button></a></td>
-                    <td><a href="{{ path('properties_delete', {'id': property.id}) }}"><button class="btn btn-danger rounded-0 ms-2 text-uppercase">{% trans %}Delete{% endtrans%}</button></a></td>
+                    <td><a href="{{ path('properties_details', {'slug': property.slug}) }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}Check{% endtrans%}</button></a></td>
+                    <td><a href="{{ path('properties_delete', {'slug': property.slug}) }}"><button class="btn btn-danger rounded-0 ms-2 text-uppercase">{% trans %}Delete{% endtrans%}</button></a></td>
                 </tr>
             {% endfor %}
             </tbody>
