@@ -19,7 +19,14 @@
                                 <h1 class="text-uppercase text-center mb-5">
                                     {% trans %}Sign in{% endtrans%}
                                 </h1>
-
+                                <div class="text-center border-bottom mb-4">
+                                    <p class="text-center pb-2 mb-0">
+                                        {% trans %}First time ?{% endtrans%}
+                                        <a href="{{ path('app_register') }}" class="fw-bold text-body text-uppercase"
+                                        ><u>{% trans %}Register here{% endtrans%}</u></a
+                                        >
+                                    </p>
+                                </div>
                                 <form method="post">
                                     {% if error %}
                                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -40,26 +47,21 @@
                                     <input type="hidden" name="_csrf_token"
                                            value="{{ csrf_token('authenticate') }}"
                                     >
-                                    <div class="text-center mb-5">
-                                        <p class="text-center mt-5 mb-0">
-                                            {% trans %}Have you forgot your password ?{% endtrans%}
-                                            <a href="{{ path('app_forgot_password_request') }}" class="fw-bold text-body"
-                                            >{% trans %}Click here{% endtrans%}</a
-                                            >
-                                        </p>
-                                    </div>
+
                                     <div class="text-center">
-                                        <button class="btn btn-primary rounded-0 text-uppercase" type="submit">
+                                        <button class="container btn btn-primary rounded-0 text-uppercase" type="submit">
                                             {% trans %}Sign In{% endtrans%}
                                         </button>
                                     </div>
+                                </form>
+                                <div class="text-center mb-5">
                                     <p class="text-center mt-5 mb-0">
-                                        {% trans %}Don't you have an account ?{% endtrans%}
-                                        <a href="{{ path('app_register') }}" class="fw-bold text-body"
-                                        ><u>{% trans %}Sign up here{% endtrans%}</u></a
+                                        {% trans %}Have you forgot your password ?{% endtrans%}
+                                        <a href="{{ path('app_forgot_password_request') }}" class="fw-bold text-body text-uppercase"
+                                        >{% trans %}Click here{% endtrans%}</a
                                         >
                                     </p>
-                                </form>
+                                </div>
 
                                 <div class="text-center mt-4">
                                     <img src="{{ asset('img/logo/adriaticante.png') }}" alt="logo" height="50" />

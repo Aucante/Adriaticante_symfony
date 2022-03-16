@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Profile Edit{% endblock %}
 
 {% block body %}
     <div class="container text-center">
@@ -12,7 +12,7 @@
                 <img
                         src="{{ asset('uploads/user/' ~ user.file) }}"
                         class="rounded-3 figure-img img-fluid"
-                        alt="..."
+                        alt="{{ user.company }}"
                 />
             </div>
         </div>
