@@ -138,7 +138,7 @@ class Property
 
     /**
      * @var string
-     * @Gedmo\Slug(fields={"name", "area"})
+     * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
