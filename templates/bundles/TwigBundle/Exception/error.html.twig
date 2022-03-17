@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-10 offset-1">
+                <h1 class="text-center display-2 my-5">Error</h1>
+                <div class="text-center my-5"><i class="fa-solid fa-gear fa-7x"></i></div>
+                <p class="text-center display-6 fs-4 my-5">
+                    Something went wrong. Try to refresh this page or feel free to contact us if the problem persists.
+                </p>
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-6 col-md-3 offset-md-3">
+                            <a href="{{ path('home') }}" class="fw-bold"
+                            >
+                                <button class="btn btn-primary rounded-0 ms-2 text-uppercase">homepage</button>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a href="{{ path('contact') }}" class="fw-bold"
+                            >
+                                <button class="btn btn-primary rounded-0 ms-2 text-uppercase">contact</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-10 offset-1">
+                <p class="text-center display-6 fs-6">Status code : {{ status_code }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -42,7 +42,13 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/profile-edit, roles: ROLE_USER }
+        - { path: ^/user/real-estate, roles: ROLE_USER }
+        - { path: ^/real-estate/create, roles: ROLE_USER }
+    role_hierarchy:
+        ROLE_USER: ROLE_USER
+        ROLE_ADMIN: ROLE_ADMIN
 
 when@test:
     security:
