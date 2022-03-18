@@ -97,43 +97,43 @@ class PropertyRepository extends ServiceEntityRepository
         if (!empty($search->roomsMin))
         {
             $query = $query
-                ->andWhere('p.totalRooms >= :min')
-                ->setParameter('min', $search->roomsMin);
+                ->andWhere('p.totalRooms >= :minRoom')
+                ->setParameter('minRoom', $search->roomsMin);
         }
 
         if (!empty($search->roomsMax))
         {
             $query = $query
-                ->andWhere('p.totalRooms <= :max')
-                ->setParameter('max', $search->roomsMax);
+                ->andWhere('p.totalRooms <= :maxRoom')
+                ->setParameter('maxRoom', $search->roomsMax);
         }
 
         if (!empty($search->bedroomsMin))
         {
             $query = $query
-                ->andWhere('p.totalBedrooms >= :min')
-                ->setParameter('min', $search->bedroomsMin);
+                ->andWhere('p.totalBedrooms >= :minBedroom')
+                ->setParameter('minBedroom', $search->bedroomsMin);
         }
 
         if (!empty($search->bedroomsMax))
         {
             $query = $query
-                ->andWhere('p.totalBedrooms <= :max')
-                ->setParameter('max', $search->bedroomsMax);
+                ->andWhere('p.totalBedrooms <= :maxBedroom')
+                ->setParameter('maxBedroom', $search->bedroomsMax);
         }
 
         if (!empty($search->bathroomsMin))
         {
             $query = $query
-                ->andWhere('p.totalBathrooms >= :min')
-                ->setParameter('min', $search->bathroomsMin);
+                ->andWhere('p.totalBathrooms >= :minBathroom')
+                ->setParameter('minBathroom', $search->bathroomsMin);
         }
 
         if (!empty($search->bathroomsMax))
         {
             $query = $query
-                ->andWhere('p.totalBathrooms >= :max')
-                ->setParameter('max', $search->bathroomsMax);
+                ->andWhere('p.totalBathrooms >= :maxBathroom')
+                ->setParameter('maxBathroom', $search->bathroomsMax);
         }
 
         if (!empty($search->type))

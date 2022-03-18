@@ -112,7 +112,9 @@ class PropertyType extends AbstractType
                 'label' => 'property.link_website.label'
             ])
             ->add('phoneContact', TelType::class, [
-                'label' => 'property.phone_contact.label'
+                'label' => 'property.phone_contact.label',
+                'row_attr' => ['data-controller' => 'intl'],
+                'attr' => ['data-intl-target' => 'input'],
             ])
             ->add('nameContact', TextType::class, [
                 'label' => 'property.name_contact.label'
