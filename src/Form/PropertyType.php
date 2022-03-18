@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\City;
 use App\Entity\Feature;
 use App\Entity\Asset;
 use App\Entity\Property;
@@ -145,6 +146,15 @@ class PropertyType extends AbstractType
                 'interpolation' => false,
                 'width' => 200,
                 'height' => 50,
+            ])
+            ->add('city', ChoiceType::class, [
+                'label' => 'City',
+                'placeholder' => 'Choose City',
+                'choices' => [
+                    'Tivat' => 'Tivat',
+                    'Dubrovnik' => 'Dubrovnik',
+                    'Trieste' => 'Trieste',
+                ]
             ])
         ;
     }

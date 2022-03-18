@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Address;
 use App\Entity\Asset;
+use App\Entity\City;
 use App\Entity\Feature;
 use App\Entity\File;
 use App\Entity\Property;
@@ -37,9 +38,7 @@ class AppFixtures extends Fixture
             ->setCity('Trieste')
             ->setStateZipCode(01000)
             ->setCountry('Italy')
-            ->setPhone(0700000000)
-            ->setLongitude(0700000000)
-            ->setLatitude(0700000000);
+            ->setPhone(0700000000);
 
         $manager->persist($address);
 
@@ -60,6 +59,14 @@ class AppFixtures extends Fixture
 
         $manager->persist($user);
 
+        //CITY
+
+        $city = new City();
+
+        $city->setName($faker->name())
+            ->setLatitude($faker->latitude())
+            ->setLongitude($faker->longitude());
+
 
         // PROPERTY
 
@@ -73,19 +80,19 @@ class AppFixtures extends Fixture
             ->setTotalRooms($faker->numberBetween(1, 10))
             ->setTotalBedrooms($faker->numberBetween(0, 8))
             ->setTotalBathrooms($faker->numberBetween(1, 4))
-            ->setAddress($address)
             ->setUser($user)
             ->setName('testproperty')
             ->setAdvertType($faker->word())
             ->setPhoneContact(0)
             ->setNameContact($faker->word())
             ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())
-            ->setCreatedAt(new \DateTimeImmutable());
+            ->setCreatedAt(new \DateTimeImmutable())
+            ->setCity($city);
 
         $manager->persist($property);
 
 
-            // feature
+            // FEATURE
 
             $feature = new feature();
             $feature->setName('view');
@@ -117,9 +124,7 @@ class AppFixtures extends Fixture
                     ->setCity($faker->city())
                     ->setStateZipCode($faker->numberBetween(100, 950) . '00')
                     ->setCountry($faker->country())
-                    ->setPhone('0' . $faker->numberBetween(600000001, 799999999))
-                    ->setLongitude('0' . $faker->numberBetween(600000001, 799999999))
-                    ->setLatitude('0' . $faker->numberBetween(600000001, 799999999));
+                    ->setPhone('0' . $faker->numberBetween(600000001, 799999999));
 
             $manager->persist($address);
 
@@ -141,6 +146,16 @@ class AppFixtures extends Fixture
             $manager->persist($user);
 
 
+            // CITY
+
+            $city = new City();
+
+            $city->setName($faker->city())
+                ->setLatitude($faker->latitude())
+                ->setLongitude($faker->longitude());
+
+
+
             // PROPERTY
 
             $property = new Property();
@@ -153,14 +168,14 @@ class AppFixtures extends Fixture
                 ->setTotalRooms($faker->numberBetween(1, 10))
                 ->setTotalBedrooms($faker->numberBetween(0, 8))
                 ->setTotalBathrooms($faker->numberBetween(1, 4))
-                ->setAddress($address)
                 ->setUser($user)
                 ->setName($faker->text(20))
                 ->setAdvertType($faker->word())
                 ->setPhoneContact(0)
                 ->setNameContact($faker->word())
                 ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())
-                ->setCreatedAt(new \DateTimeImmutable());
+                ->setCreatedAt(new \DateTimeImmutable())
+                ->setCity($city);
 
             $manager->persist($property);
 
