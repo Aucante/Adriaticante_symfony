@@ -64,20 +64,6 @@ class Address
      */
     private $users;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Property::class, mappedBy="address", cascade={"persist", "remove"})
-     */
-    private $property;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $longitude;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $latitude;
 
 
     public function __construct()
@@ -216,51 +202,7 @@ class Address
         return $this;
     }
 
-    public function getProperty(): ?Property
-    {
-        return $this->property;
-    }
 
-    public function setProperty(?Property $property): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($property === null && $this->property !== null) {
-            $this->property->setAddress(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($property !== null && $property->getAddress() !== $this) {
-            $property->setAddress($this);
-        }
-
-        $this->property = $property;
-
-        return $this;
-    }
-
-    public function getLongitude(): ?int
-    {
-        return $this->longitude;
-    }
-
-    public function setLongitude(?int $longitude): self
-    {
-        $this->longitude = $longitude;
-
-        return $this;
-    }
-
-    public function getLatitude(): ?int
-    {
-        return $this->latitude;
-    }
-
-    public function setLatitude(?int $latitude): self
-    {
-        $this->latitude = $latitude;
-
-        return $this;
-    }
 
     public function __toString(): string
     {

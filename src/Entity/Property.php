@@ -66,13 +66,7 @@ class Property
      * @ORM\Column(type="integer")
      */
     private $totalBathrooms;
-
-    /**
-     * @ORM\OneToOne(targetEntity=Address::class, inversedBy="property", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $address;
-
+    
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="properties")
@@ -142,6 +136,12 @@ class Property
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="property", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $city;
 
 
 
@@ -242,18 +242,6 @@ class Property
         return $this;
     }
 
-
-    public function getAddress(): ?Address
-    {
-        return $this->address;
-    }
-
-    public function setAddress(?Address $address): self
-    {
-        $this->address = $address;
-
-        return $this;
-    }
 
 
     public function getUser(): ?User
@@ -427,6 +415,18 @@ class Property
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getCity(): ?City
+    {
+        return $this->city;
+    }
+
+    public function setCity(?City $city): self
+    {
+        $this->city = $city;
+
+        return $this;
     }
 
 
