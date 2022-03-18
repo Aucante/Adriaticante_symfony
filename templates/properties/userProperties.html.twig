@@ -27,13 +27,15 @@
 
     <div class="container">
         {% for property in userProperties %}
-        <div class="row align-items-center border-bottom py-3 my-5">
+        <div class="row align-items-center border-bottom py-5">
             <div class="col-sm-4 col-xl-3">
+                {% if property.files.count != 0 %}
                 <img
                         src="{{ asset('uploads/properties/' ~ property.files.last) }}"
-                        class="ratio ratio-16x9 img-fluid"
+                        class="ratio ratio-16x9 img-fluid rounded-3"
                         style="height: 130px"
                         alt=""/>
+                {% endif %}
             </div>
             <div class="col-sm-6 offset-xl-1 text-center">
                 <div>

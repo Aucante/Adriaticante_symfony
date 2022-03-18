@@ -1,4 +1,5 @@
 import { startStimulusApp } from '@symfony/stimulus-bridge';
+import Lightbox from "stimulus-lightbox"
 
 // Registers Stimulus controllers from controllers.json and in the controllers/ directory
 export const app = startStimulusApp(require.context(
@@ -6,6 +7,8 @@ export const app = startStimulusApp(require.context(
     true,
     /\.(j|t)sx?$/
 ));
+
+app.register("lightbox", Lightbox)
 
 // register any custom, 3rd party controllers here
 // app.register('some_controller_name', SomeImportedController);
