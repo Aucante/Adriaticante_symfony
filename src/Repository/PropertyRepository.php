@@ -69,29 +69,29 @@ class PropertyRepository extends ServiceEntityRepository
         if (!empty($search->priceMin))
         {
             $query = $query
-                ->andWhere('p.price >= :min')
-                ->setParameter('min', $search->priceMin);
+                ->andWhere('p.price >= :minPrice')
+                ->setParameter('minPrice', $search->priceMin);
         }
 
         if (!empty($search->priceMax))
         {
             $query = $query
-                ->andWhere('p.price <= :max')
-                ->setParameter('max', $search->priceMax);
+                ->andWhere('p.price <= :maxPrice')
+                ->setParameter('maxPrice', $search->priceMax);
         }
 
         if (!empty($search->areaMin))
         {
             $query = $query
-                ->andWhere('p.area >= :min')
-                ->setParameter('min', $search->areaMin);
+                ->andWhere('p.area >= :minArea')
+                ->setParameter('minArea', $search->areaMin);
         }
 
         if (!empty($search->areaMax))
         {
             $query = $query
-                ->andWhere('p.area <= :max')
-                ->setParameter('max', $search->areaMax);
+                ->andWhere('p.area <= :maxArea')
+                ->setParameter('maxArea', $search->areaMax);
         }
 
         if (!empty($search->roomsMin))
