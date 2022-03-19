@@ -16,8 +16,8 @@
                 <tbody class="text-uppercase">
                 {% for property in userProperties %}
                     <tr>
-                        <th>{{ property.name }}</th>
-                        <th>{{ property.price }}€</th>
+                        <th class="pt-3">{{ property.name }}</th>
+                        <th class="pt-3">{{ property.price }}€</th>
                         <td><a href="{{ path('properties_details', {'slug': property.slug}) }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}More{% endtrans%}</button></a></td>
                     </tr>
                 {% endfor %}
@@ -25,35 +25,37 @@
             </table>
     </div>
 
-    <div class="container">
-        {% for property in userProperties %}
-        <div class="row align-items-center border-bottom py-5">
-            <div class="col-sm-4 col-xl-3">
-                {% if property.files.count != 0 %}
-                <img
-                        src="{{ asset('uploads/properties/' ~ property.files.last) }}"
-                        class="ratio ratio-16x9 img-fluid rounded-3"
-                        style="height: 130px"
-                        alt=""/>
-                {% endif %}
-            </div>
-            <div class="col-sm-6 offset-xl-1 text-center">
-                <div>
-                    <p class="text-uppercase my-2">{{ property.name }}</p>
-                    <p class="text-uppercase my-2">{{ property.price }} €</p>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="text-center my-2">
-                    <a href="{{ path('properties_details', {'slug': property.slug}) }}"><button class="container btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}Check{% endtrans%}</button></a>
-                </div>
-                <div class="text-center my-2">
-                    <a href="{{ path('properties_delete', {'slug': property.slug}) }}"><button class="container btn btn-danger rounded-0 ms-2 text-uppercase">{% trans %}Delete{% endtrans%}</button></a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+   <div class="container">
+       <div class="col-10 offset-1">
+           {% for property in userProperties %}
+               <div class="row align-items-center border-bottom py-5">
+                   <div class="col-md-4 col-xl-3">
+                       {% if property.files.count != 0 %}
+                           <img
+                                   src="{{ asset('uploads/properties/' ~ property.files.last) }}"
+                                   class="ratio ratio-16x9 img-fluid rounded-3"
+                                   style="height: 130px"
+                                   alt=""/>
+                       {% endif %}
+                   </div>
+                   <div class="col-md-6 offset-xl-1 text-center">
+                       <div>
+                           <p class="text-uppercase my-2">{{ property.name }}</p>
+                           <p class="text-uppercase my-2">{{ property.price }} €</p>
+                       </div>
+                   </div>
+                   <div class="col-md-2">
+                       <div class="text-center my-2">
+                           <a href="{{ path('properties_details', {'slug': property.slug}) }}"><button class="container btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}Check{% endtrans%}</button></a>
+                       </div>
+                       <div class="text-center my-2">
+                           <a href="{{ path('properties_delete', {'slug': property.slug}) }}"><button class="container btn btn-danger rounded-0 ms-2 text-uppercase">{% trans %}Delete{% endtrans%}</button></a>
+                       </div>
+                   </div>
+               </div>
+           {% endfor %}
+       </div>
+   </div>
 {% endblock %}
 
 {% block title %}

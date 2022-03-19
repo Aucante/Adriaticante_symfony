@@ -5,6 +5,7 @@ namespace App\Data;
 
 
 use App\Entity\Asset;
+use App\Entity\City;
 
 class SearchData
 {
@@ -72,6 +73,11 @@ class SearchData
      * @var null|string
      */
     public ?string $advertType;
+
+    /**
+     * @var City
+     */
+    public City $city;
 
     /**
      * @var Asset[]

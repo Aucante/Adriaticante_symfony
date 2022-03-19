@@ -150,6 +150,14 @@ class PropertyRepository extends ServiceEntityRepository
                 ->setParameter('advertType', "%{$search->advertType}%");
         }
 
+        if (!empty($search->city))
+        {
+            $query = $query
+                ->andWhere('c.id LIKE :city')
+                ->setParameter('city', "%{$search->city}%");
+        }
+
+
         if (!empty($search->assets))
         {
             $query = $query

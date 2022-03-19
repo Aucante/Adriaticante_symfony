@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Data\SearchData;
 use App\Entity\Asset;
+use App\Entity\City;
 use App\Entity\Feature;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -194,6 +195,12 @@ class PropertySearchType extends AbstractType
                     'Daily Rental' => 'Daily Rental',
                     'Monthly Rental' => 'Monthly Rental',
                 ],
+            ])
+            ->add('city', EntityType::class, [
+                'class' => City::class,
+                'label' => false,
+                'placeholder' => '',
+                'required' => false
             ])
             ->add('assets', EntityType::class, [
                 'label' => false,

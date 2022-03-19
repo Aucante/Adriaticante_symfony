@@ -9,6 +9,7 @@ use App\Entity\Property;
 use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -147,14 +148,10 @@ class PropertyType extends AbstractType
                 'width' => 200,
                 'height' => 50,
             ])
-            ->add('city', ChoiceType::class, [
-                'label' => 'City',
+            ->add('city', EntityType::class, [
+                'class' => City::class,
+                'label' => 'property.city.label',
                 'placeholder' => 'Choose City',
-                'choices' => [
-                    'Tivat' => 'Tivat',
-                    'Dubrovnik' => 'Dubrovnik',
-                    'Trieste' => 'Trieste',
-                ]
             ])
         ;
     }
