@@ -95,7 +95,7 @@ class AppFixtures extends Fixture
             // FEATURE
 
             $feature = new feature();
-            $feature->setName('view');
+            $feature->setName('balcony');
             $manager->persist($feature);
             $property->addfeature($feature);
 

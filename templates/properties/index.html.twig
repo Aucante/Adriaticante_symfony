@@ -31,6 +31,11 @@
                         <div class="card-body">
                             <h2 class="card-title text-center cardPropertyTitle fs-4 display-6">{{ property.name|upper }}</h2>
                             <div class="cardPropertyDescription">
+                                <p style="color: red">
+                                    {% for f in property.features %}
+                                        {{ f.name }}
+                                    {% endfor %}
+                                </p>
                                 <p class="card-text">
                                     {% trans %}Area{% endtrans%} : {{ property.area }} {% trans %}sq2{% endtrans%}
                                 </p>
