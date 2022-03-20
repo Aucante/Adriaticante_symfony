@@ -57,7 +57,8 @@ class PropertyRepository extends ServiceEntityRepository
     {
         $query = $this
             ->createQueryBuilder('p')
-            ->select('p');
+            ->select('f', 'p')
+            ->join('p.features', 'f');
 
         if (!empty($search->q))
         {
@@ -153,16 +154,16 @@ class PropertyRepository extends ServiceEntityRepository
         if (!empty($search->city))
         {
             $query = $query
-                ->andWhere('c.id LIKE :city')
-                ->setParameter('city', "%{$search->city}%");
+                ->andWhere('p.city = :city')
+                ->setParameter('city', $search->city);
         }
 
 
-        if (!empty($search->assets))
+        if (!empty($search->features))
         {
             $query = $query
-                ->andWhere('a.id IN (:assets)')
-                ->setParameter('assets', $search->assets);
+                ->andWhere('f.id IN (:features)')
+                ->setParameter('features', $search->features);
         }
 
         return $query->getQuery()->getResult();

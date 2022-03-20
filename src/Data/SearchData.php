@@ -4,8 +4,8 @@
 namespace App\Data;
 
 
-use App\Entity\Asset;
 use App\Entity\City;
+use App\Entity\Feature;
 
 class SearchData
 {
@@ -80,8 +80,8 @@ class SearchData
     public City $city;
 
     /**
-     * @var Asset[]
+     * @var Feature[]
      */
-    public array $assets = [];
+    public array $features = [];
 
 }

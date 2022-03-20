@@ -99,6 +99,7 @@ class PropertiesController extends AbstractController
             $property->setStatus('In Progress');
 
             $entityManager->persist($property);
+
             $entityManager->flush();
 
             $this->addFlash('success', 'The real estate informations were saved correctly.');
