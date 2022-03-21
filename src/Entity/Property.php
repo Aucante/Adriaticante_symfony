@@ -69,14 +69,14 @@ class Property
     
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="properties")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="property")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
 
     /**
-     * @ORM\OneToMany(targetEntity=File::class, mappedBy="property")
+     * @ORM\OneToMany(targetEntity=File::class, mappedBy="property", cascade={"persist"}, orphanRemoval=true)
      */
     private $files;
 

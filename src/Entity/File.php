@@ -48,8 +48,6 @@ class File
         return $this;
     }
 
-
-
     public function getProperty(): ?Property
     {
         return $this->property;

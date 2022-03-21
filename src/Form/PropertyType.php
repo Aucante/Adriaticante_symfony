@@ -3,24 +3,20 @@
 namespace App\Form;
 
 use App\Entity\City;
-use App\Entity\Feature;
-use App\Entity\Asset;
 use App\Entity\Property;
 use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\UX\Dropzone\Form\DropzoneType;
 
 class PropertyType extends AbstractType
 {
@@ -130,14 +126,6 @@ class PropertyType extends AbstractType
                 'error_bubbling' => false,
                 'label' => 'property.assets.label'
             ])
-            ->add('files', CollectionType::class, [
-                'entry_type' => FileType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-                'required' => false,
-                'error_bubbling' => false
-            ])
             ->add('captcha', CaptchaType::class, [
                 'label' => false,
                 'quality' => 150,
@@ -152,6 +140,10 @@ class PropertyType extends AbstractType
                 'class' => City::class,
                 'label' => 'property.city.label',
                 'placeholder' => 'Choose City',
+            ])
+            ->add('files', FileType::class, [
+                'multiple' => true,
+                'mapped' => false,
             ])
         ;
     }

@@ -9,7 +9,7 @@
     </div>
 
     <div class="container">
-        {% include 'properties/_filter.html.twig' with {formSearch: formSearch} only %}
+        {% include 'property/_filter.html.twig' with {formSearch: formSearch} only %}
     </div>
 
     <div class="container-fluid my-5">
@@ -23,7 +23,7 @@
                 >
                     <div class="card rounded-0">
                         <img
-                                src="{{ asset('uploads/properties/' ~ property.files.last.name) }}"
+                                src="{{ asset('uploads/property/' ~ property.files.last.name) }}"
                                 class="card-img-top rounded-0"
                                 style="height: 200px"
                                 alt="..."
