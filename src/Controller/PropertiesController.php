@@ -25,7 +25,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class PropertiesController extends AbstractController
 {
     /**
-     * @Route("/real-estate", name="properties")
+     * @Route("/real-estate", name="property")
      */
     public function properties(
         PropertyRepository $propertyRepository,
@@ -53,8 +53,8 @@ class PropertiesController extends AbstractController
         ]);
 
 
-        return $this->render('properties/index.html.twig', [
-            'properties' => $properties,
+        return $this->render('property/index.html.twig', [
+            'property' => $properties,
             'formSearch' => $formSearch->createView()
         ]);
     }
@@ -71,7 +71,7 @@ class PropertiesController extends AbstractController
 
         $userProperties = $propertyRepository->findUserProperties($user);
 
-        return $this->render('properties/userProperties.html.twig', [
+        return $this->render('property/userProperties.html.twig', [
             'userProperties' => $userProperties
         ]);
     }
@@ -98,15 +98,33 @@ class PropertiesController extends AbstractController
             $property->setCreatedAt(new \DateTimeImmutable());
             $property->setStatus('In Progress');
 
-            $entityManager->persist($property);
+            // Recuperate Files
+            $images = $form->get('files')->getData();
 
+            foreach ($images as $image)
+            {
+                // Generate new image name
+                $imageFile = md5($property->getName() . uniqid()) . '.' . $image->guessExtension();
+
+                // Copy image in upload folder
+                $image->move(
+                    $this->getParameter('file_property_directory'),
+                    $imageFile
+                );
+
+                // Persist file in database
+                $file = new File();
+                $file->setName($imageFile);
+                $property->addFile($file);
+            }
+            $entityManager->persist($property);
             $entityManager->flush();
 
             $this->addFlash('success', 'The real estate informations were saved correctly.');
-            return $this->redirectToRoute('properties_add_photos_vue', ['id' => $property->getId()]);
+            return $this->redirectToRoute('user_properties');
         }
 
-        return $this->render('properties/create.html.twig', [
+        return $this->render('property/create.html.twig', [
             'form' => $form->createView()
         ]);
     }
@@ -140,7 +158,7 @@ class PropertiesController extends AbstractController
             $this->redirectToRoute('properties_details', ['id' => $property->getId()]);
         }
 
-        return $this->render('properties/details.html.twig', [
+        return $this->render('property/details.html.twig', [
             'property' => $property,
             'priceArea' => $priceArea,
             'contactForm' => $contactForm->createView()
@@ -170,7 +188,7 @@ class PropertiesController extends AbstractController
         Property $property
     ): Response
     {
-        return $this->render('properties/addFiles.html.twig', [
+        return $this->render('property/addFiles.html.twig', [
             'property' => $property
         ]);
 
@@ -190,7 +208,7 @@ class PropertiesController extends AbstractController
             if ($fileName)
             {
                 try {
-                    $currentFile->move($kernel->getProjectDir() . '/public/uploads/properties', $fileName);
+                    $currentFile->move($kernel->getProjectDir() . '/public/uploads/property', $fileName);
                     $file = new File();
                     $file->setProperty($property)
                         ->setName($fileName);

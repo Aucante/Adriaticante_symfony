@@ -19,11 +19,12 @@
 </div>
 <div class="row">
     <div class="col-6">{{ form_row(form.type) }}</div>
-    <div class="col-6">{{ form_row(form.totalRooms) }}</div>
+    <div class="col-6">{{ form_row(form.city) }}</div>
 </div>
 <div class="row">
-    <div class="col-6">{{ form_row(form.totalBathrooms) }}</div>
-    <div class="col-6">{{ form_row(form.totalBedrooms) }}</div>
+    <div class="col-4">{{ form_row(form.totalRooms) }}</div>
+    <div class="col-4">{{ form_row(form.totalBathrooms) }}</div>
+    <div class="col-4">{{ form_row(form.totalBedrooms) }}</div>
 </div>
 <!-- Asset -->
 <div class="text-center my-5 border-bottom">
@@ -39,11 +40,11 @@
 <div
         id="assets"
         class="row"
-        data-prototype="{{ include('properties/_feature.html.twig', {form: form.features.vars.prototype})|e("html_attr") }}"
+        data-prototype="{{ include('property/_feature.html.twig', {form: form.features.vars.prototype})|e("html_attr") }}"
         data-index="{{ form.features|length > 0 ? form.features|last.vars.name + 1 : 0 }}">
     {% for feature in form.features %}
 
-            {{ include('properties/_feature.html.twig', {form: feature}) }}
+            {{ include('property/_feature.html.twig', {form: feature}) }}
 
     {% endfor %}
 </div>
@@ -55,13 +56,14 @@
     <div class="col-md-8 offset-md-2">{{ form_row(form.linkWebsite) }}</div>
 </div>
 <div class="row">
-    <div class="col-md-8 offset-md-2">{{ form_row(form.phoneContact) }}</div>
+    <div class="col-md-4 offset-md-2">{{ form_row(form.nameContact) }}</div>
+    <div class="col-md-4">{{ form_row(form.phoneContact) }}</div>
+</div>
+<div class="text-center my-5 border-bottom">
+    <h2 class="display-6">{% trans %}Upload Files{% endtrans%}</h2>
 </div>
 <div class="row">
-    <div class="col-md-8 offset-md-2">{{ form_row(form.nameContact) }}</div>
-</div>
-<div class="row">
-    <div class="col-md-8 offset-md-2">{{ form_row(form.city) }}</div>
+    <div class="col-md-8 offset-md-2">{{ form_row(form.files) }}</div>
 </div>
 <div class="text-center my-5 border-bottom">
     <h2 class="display-6">{% trans %}Captcha{% endtrans%}</h2>
@@ -69,10 +71,6 @@
 <div class="row">
     <div class="col-8 col-md-4 offset-2 offset-md-4 text-center">{{ form_row(form.captcha) }}</div>
 </div>
-<div class="text-center my-5 border-bottom">
-    <h2 class="display-6">{% trans %}Upload File{% endtrans%}</h2>
-</div>
-<div class="text-center my-5 border-bottom">
 
-
+<div class="text-center my-5 border-bottom">
 </div>

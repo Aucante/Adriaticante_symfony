@@ -10,7 +10,7 @@ class PropertiesFunctionalTest extends WebTestCase
     public function testShouldDisplayProperties(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/properties');
+        $crawler = $client->request('GET', '/property');
 
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertSelectorTextContains('h1', 'REAL ESTATE');
@@ -19,7 +19,7 @@ class PropertiesFunctionalTest extends WebTestCase
     public function testShouldDisplayOneProperties(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/properties/testproperty');
+        $crawler = $client->request('GET', '/property/testproperty');
 
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertSelectorTextContains('h1', 'TESTPROPERTY');

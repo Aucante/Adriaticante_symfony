@@ -50,7 +50,7 @@ class PropertyRepository extends ServiceEntityRepository
     }
 
     /**
-     * Call properties with filter
+     * Call property with filter
      * @return Property[]
      */
     public function findSearch(SearchData $search): array
