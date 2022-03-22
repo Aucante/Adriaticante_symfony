@@ -74,7 +74,7 @@ class PropertyCrudController extends AbstractCrudController
             IntegerField::new('phone_contact'),
             TextField::new('name_contact'),
             AssociationField::new('user'),
-            AssociationField::new('features'),
+            CollectionField::new('features'),
             SlugField::new('slug')->setTargetFieldName('name'),
             DateTimeField::new('createdAt')
         ];
