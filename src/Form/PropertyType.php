@@ -14,7 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -141,9 +140,14 @@ class PropertyType extends AbstractType
                 'label' => 'property.city.label',
                 'placeholder' => 'Choose City',
             ])
-            ->add('files', FileType::class, [
-                'multiple' => true,
-                'mapped' => false,
+            ->add('files', CollectionType::class, [
+                'entry_type' => FileType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'required' => false,
+                'error_bubbling' => false,
+                'label' => false
             ])
         ;
     }

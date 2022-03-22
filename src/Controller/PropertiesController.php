@@ -54,7 +54,7 @@ class PropertiesController extends AbstractController
 
 
         return $this->render('property/index.html.twig', [
-            'property' => $properties,
+            'properties' => $properties,
             'formSearch' => $formSearch->createView()
         ]);
     }
@@ -104,7 +104,7 @@ class PropertiesController extends AbstractController
             foreach ($images as $image)
             {
                 // Generate new image name
-                $imageFile = md5($property->getName() . uniqid()) . '.' . $image->guessExtension();
+                $imageFile = md5(uniqid()) . '.' . $image->guessExtension();
 
                 // Copy image in upload folder
                 $image->move(

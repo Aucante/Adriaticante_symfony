@@ -1,7 +1,7 @@
 <div class="container-fluid px-5">
     <nav class="navbar navbar-expand-md navbar-light">
         <a href="{{ path('home') }}" class="navbar-brand"
-        ><img src="{{ asset('img/logo/adriaticante.png') }}" alt="logo" width="180" height="45"
+        ><img src="{{ asset('img/logo/logo.png') }}" alt="logo" width="160" height="35"
             /></a>
         <button
                 class="navbar-toggler border-0 shadow-none"
@@ -16,9 +16,6 @@
         </button>
         <div class="collapse navbar-collapse" id="toggleMobileMenu">
             <ul class="d-flex align-items-center navbar-nav ms-auto text-center">
-                <li><a href="{{ path('property') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}Real estate{% endtrans%}</a></li>
-                <li><a href="{{ path('about') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}About{% endtrans%}</a></li>
-                <li><a href="{{ path('contact') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}Contact{% endtrans%}</a></li>
 
                 {% if is_granted('ROLE_USER') %}
                 <li>
@@ -30,7 +27,7 @@
                                 data-bs-display="static"
                                 aria-expanded="false"
                         >
-                            {% trans %}Profile{% endtrans%}
+                            {% trans %}Menu{% endtrans%}
                         </p>
                         <ul class="dropdown-menu text-uppercase mb-3 ms-1" aria-labelledby="dropdownMenuButton1">
                             <li>
@@ -44,6 +41,21 @@
                                 >
                             </li>
                             <li>
+                                <a class="dropdown-item fs-6" href="{{ path('property') }}"
+                                >{% trans %}Real Estate{% endtrans%}</a
+                                >
+                            </li>
+                            <li>
+                                <a class="dropdown-item fs-6" href="{{ path('about') }}"
+                                >{% trans %}About{% endtrans%}</a
+                                >
+                            </li>
+                            <li>
+                                <a class="dropdown-item fs-6" href="{{ path('contact') }}"
+                                >{% trans %}Contact{% endtrans%}</a
+                                >
+                            </li>
+                            <li>
                                 <a class="dropdown-item fs-6 text-danger" href="{{ path('app_logout') }}"
                                 >{% trans %}Logout{% endtrans%}</a
                                 >
@@ -51,8 +63,11 @@
                         </ul>
                     </div>
                 </li>
-                    <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new ad{% endtrans%}</button></a>
+                    <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button></a>
                 {% else %}
+                    <li><a href="{{ path('property') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}Real estate{% endtrans%}</a></li>
+                    <li><a href="{{ path('about') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}About{% endtrans%}</a></li>
+                    <li><a href="{{ path('contact') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}Contact{% endtrans%}</a></li>
                     <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}Sign in{% endtrans%}</button></a>
                 {% endif %}
 
