@@ -2,7 +2,7 @@
 
 namespace App\Tests;
 
-use App\Entity\File;
+use App\Entity\Image;
 use App\Entity\Property;
 use PHPUnit\Framework\TestCase;
 
@@ -10,7 +10,7 @@ class FileUnitTest extends TestCase
 {
     public function testIsTrue()
     {
-        $file = new File();
+        $file = new Image();
         $property = new Property();
 
         $file->setName('true')
@@ -23,7 +23,7 @@ class FileUnitTest extends TestCase
 
     public function testIsFalse()
     {
-        $file = new File();
+        $file = new Image();
         $property = new Property();
 
         $file->setName('true')
@@ -36,7 +36,7 @@ class FileUnitTest extends TestCase
 
     public function testIsEmpty()
     {
-        $file = new File();
+        $file = new Image();
 
         $this->assertEmpty($file->getName());
         $this->assertEmpty($file->getId());

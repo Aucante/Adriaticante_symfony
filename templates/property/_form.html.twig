@@ -64,19 +64,19 @@
 </div>
 <div class="row">
     <p class="text-center display-6 fs-5">Click the button for each new feature</p>
-    <button type="button" class="col-md-6 offset-md-3 container text-center btn btn-primary rounded-0 my-4 text-uppercase btn-new" data-collection="#files">{% trans %}Add Files{% endtrans%}
+    <button type="button" class="col-md-6 offset-md-3 container text-center btn btn-primary rounded-0 my-4 text-uppercase btn-new" data-collection="#images">{% trans %}Add images{% endtrans%}
     </button>
-    {{ form_errors(form.files) }}
+    {{ form_errors(form.images) }}
 </div>
 
 <div class="row">
     <div
-            id="files"
-            data-prototype="{{ include('property/_file.html.twig', {form: form.files.vars.prototype})|e("html_attr") }}"
-            data-index="{{ form.files|length > 0 ? form.files|last.vars.name + 1 : 0 }}">
-        {% for file in form.files %}
+            id="images"
+            data-prototype="{{ include('property/_image.html.twig', {form: form.images.vars.prototype})|e("html_attr") }}"
+            data-index="{{ form.images|length > 0 ? form.images|last.vars.name + 1 : 0 }}">
+        {% for image in form.images %}
 
-            {{ include('property/_file.html.twig', {form: file}) }}
+            {{ include('property/_image.html.twig', {form: image}) }}
 
         {% endfor %}
     </div>

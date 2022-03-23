@@ -76,9 +76,9 @@ class Property
 
 
     /**
-     * @ORM\OneToMany(targetEntity=File::class, mappedBy="property", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="property", cascade={"persist"}, orphanRemoval=true)
      */
-    private $files;
+    private $images;
 
     /**
      * @Assert\NotBlank(message="Please provide the type")
@@ -148,7 +148,7 @@ class Property
     public function __construct()
     {
         $this->features = new ArrayCollection();
-        $this->files = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
 
@@ -259,29 +259,29 @@ class Property
 
 
     /**
-     * @return Collection|File[]
+     * @return Collection|Image[]
      */
-    public function getFiles(): Collection
+    public function getImages(): Collection
     {
-        return $this->files;
+        return $this->images;
     }
 
-    public function addFile(File $file): self
+    public function addImage(Image $image): self
     {
-        if (!$this->files->contains($file)) {
-            $this->files[] = $file;
-            $file->setProperty($this);
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProperty($this);
         }
 
         return $this;
     }
 
-    public function removeFile(File $file): self
+    public function removeImage(Image $image): self
     {
-        if ($this->files->removeElement($file)) {
+        if ($this->images->removeElement($image)) {
             // set the owning side to null (unless already changed)
-            if ($file->getProperty() === $this) {
-                $file->setProperty(null);
+            if ($image->getProperty() === $this) {
+                $image->setProperty(null);
             }
         }
 

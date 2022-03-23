@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Data\SearchData;
 use App\Entity\Contact;
-use App\Entity\File;
+use App\Entity\Image;
 use App\Entity\Property;
 use App\Form\ContactType;
 use App\Form\PropertySearchType;
@@ -16,6 +16,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
@@ -99,23 +100,24 @@ class PropertiesController extends AbstractController
             $property->setStatus('In Progress');
 
             // Recuperate Files
-            $images = $form->get('files')->getData();
+            $files = $form->get('images')->getData();
 
-            foreach ($images as $image)
+            foreach ($files as $file)
             {
-                // Generate new image name
-                $imageFile = md5(uniqid()) . '.' . $image->guessExtension();
+                /** @var $file uploadedFile */
+                // Generate new files name
+                $fileUploaded = md5(uniqid()) . '.' . $file->guessClientExtension();
 
-                // Copy image in upload folder
-                $image->move(
+                // Copy file in upload folder
+                $file->move(
                     $this->getParameter('file_property_directory'),
-                    $imageFile
+                    $fileUploaded
                 );
 
                 // Persist file in database
-                $file = new File();
-                $file->setName($imageFile);
-                $property->addFile($file);
+                $image = new Image();
+                $image->setName($fileUploaded);
+                $property->addImage($image);
             }
             $entityManager->persist($property);
             $entityManager->flush();
@@ -209,7 +211,7 @@ class PropertiesController extends AbstractController
             {
                 try {
                     $currentFile->move($kernel->getProjectDir() . '/public/uploads/property', $fileName);
-                    $file = new File();
+                    $file = new Image();
                     $file->setProperty($property)
                         ->setName($fileName);
 

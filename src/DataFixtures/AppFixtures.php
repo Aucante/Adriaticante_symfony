@@ -6,7 +6,7 @@ use App\Entity\Address;
 use App\Entity\Asset;
 use App\Entity\City;
 use App\Entity\Feature;
-use App\Entity\File;
+use App\Entity\Image;
 use App\Entity\Property;
 use App\Entity\Status;
 use App\Entity\Type;
@@ -107,7 +107,7 @@ class AppFixtures extends Fixture
 
         // FILE
 
-        $file = new File();
+        $file = new Image();
         $file->setName('adriaticante.png');
         $file->setProperty($property);
         $manager->persist($file);
@@ -193,7 +193,7 @@ class AppFixtures extends Fixture
 
                 // FILE
 
-                $file = new File();
+                $file = new Image();
                 $file->setName('adriatic.jpg');
                 $file->setProperty($property);
                 $manager->persist($file);
