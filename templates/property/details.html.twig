@@ -10,7 +10,7 @@
                     data-bs-ride="carousel"
             >
                 <div class="carousel-indicators">
-                    {% for file in property.files %}
+                    {% for image in property.images %}
                     <button
                             type="button"
                             data-bs-target="#carouselExampleIndicators"
@@ -22,10 +22,10 @@
                     {% endfor %}
                 </div>
                 <div class="carousel-inner">
-                    {% for file in property.files %}
+                    {% for image in property.images %}
                         <div class="carousel-item active ratio ratio-16x9">
                             <img
-                                    src="{{ asset('uploads/property/' ~ file.name) }}"
+                                    src="{{ asset('uploads/property/' ~ image.name) }}"
                                     class="d-block w-100"
                                     alt="adriatic"
                             />
@@ -56,14 +56,14 @@
     <div class="container-fluid">
         <div class="container">
             <div class="row">
-                {% for file in property.files %}
+                {% for image in property.images %}
                 <div class="col-2 my-1">
                     <div class="ratio ratio-16x9" data-controller="lightbox">
-                        {% for file in property.files|sort|reverse %}
-                            <a href="{{ asset('uploads/property/' ~ file.name) }}">
+                        {% for image in property.images|sort|reverse %}
+                            <a href="{{ asset('uploads/property/' ~ image.name) }}">
                                 <img
-                                        alt="{{ file.id }}"
-                                        src="{{ asset('uploads/property/' ~ file.name) }}"
+                                        alt="{{ image.id }}"
+                                        src="{{ asset('uploads/property/' ~ image.name) }}"
                                         class="imageProperty img-thumbnail rounded-0"
                                 />
                             </a>

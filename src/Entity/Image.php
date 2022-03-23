@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\FileRepository;
+use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=FileRepository::class)
+ * @ORM\Entity(repositoryClass=ImageRepository::class)
  */
-class File
+class Image
 {
     /**
      * @ORM\Id

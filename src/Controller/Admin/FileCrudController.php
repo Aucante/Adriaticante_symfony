@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\File;
+use App\Entity\Image;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -15,7 +15,7 @@ class FileCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return File::class;
+        return Image::class;
     }
 
     public function configureActions(Actions $actions): Actions
