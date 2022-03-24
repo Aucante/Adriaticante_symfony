@@ -143,12 +143,18 @@ class Property
      */
     private $city;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Thread::class, mappedBy="property", orphanRemoval=true)
+     */
+    private $threads;
+
 
 
     public function __construct()
     {
         $this->features = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->threads = new ArrayCollection();
     }
 
 
@@ -425,6 +431,36 @@ class Property
     public function setCity(?City $city): self
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Thread[]
+     */
+    public function getThreads(): Collection
+    {
+        return $this->threads;
+    }
+
+    public function addThread(Thread $thread): self
+    {
+        if (!$this->threads->contains($thread)) {
+            $this->threads[] = $thread;
+            $thread->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeThread(Thread $thread): self
+    {
+        if ($this->threads->removeElement($thread)) {
+            // set the owning side to null (unless already changed)
+            if ($thread->getProperty() === $this) {
+                $thread->setProperty(null);
+            }
+        }
 
         return $this;
     }
