@@ -18,10 +18,9 @@ Encore
      * ENTRY CONFIG
      *
      * Each entry will result in one JavaScript file (e.g. app.js)
-     * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
+     * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
-    .addEntry('addFileProperty', './assets/add-file-property.js')
     .addEntry('addFeature', './assets/add-feature.js')
     .addEntry('togglePropertyContactForm', './assets/toggle-property-contact-form.js')
 
@@ -49,7 +48,7 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     .configureBabel((config) => {
-        config.plugins.push('@babel/plugin-proposal-class-property');
+        config.plugins.push('@babel/plugin-proposal-class-properties');
     })
 
     // enables @babel/preset-env polyfills
@@ -61,10 +60,6 @@ Encore
     // enables Sass/SCSS support
     .enableSassLoader()
 
-
-    .copyFiles({
-        from: './assets/img',
-    })
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 
