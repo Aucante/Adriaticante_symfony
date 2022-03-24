@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\City;
+use App\Entity\Feature;
 use App\Entity\Property;
 use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -16,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\UX\Dropzone\Form\DropzoneType;
 
 class PropertyType extends AbstractType
 {
@@ -116,14 +118,11 @@ class PropertyType extends AbstractType
             ->add('nameContact', TextType::class, [
                 'label' => 'property.name_contact.label'
             ])
-            ->add('features', CollectionType::class, [
-                'entry_type' => FeatureType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
+            ->add('features', EntityType::class, [
+                'label' => false,
                 'required' => false,
-                'error_bubbling' => false,
-                'label' => 'property.assets.label'
+                'class' => Feature::class,
+                'multiple' => true,
             ])
             ->add('captcha', CaptchaType::class, [
                 'label' => false,
@@ -141,13 +140,14 @@ class PropertyType extends AbstractType
                 'placeholder' => 'Choose City',
             ])
             ->add('images', CollectionType::class, [
-                'entry_type' => ImageType::class,
+                'entry_type' => DropzoneType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
-                'required' => false,
                 'error_bubbling' => false,
-                'label' => false
+                'required' => false,
+                'label' => false,
+                'mapped' => false
             ])
         ;
     }

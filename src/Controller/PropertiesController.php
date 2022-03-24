@@ -101,12 +101,12 @@ class PropertiesController extends AbstractController
 
             // Recuperate Files
             $files = $form->get('images')->getData();
-
+            dump($files);
             foreach ($files as $file)
             {
-                /** @var $file uploadedFile */
+                /** @var File $file */
                 // Generate new files name
-                $fileUploaded = md5(uniqid()) . '.' . $file->guessClientExtension();
+                $fileUploaded = md5(uniqid()) . '.' . $file->guessExtension();
 
                 // Copy file in upload folder
                 $file->move(
