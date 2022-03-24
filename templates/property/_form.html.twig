@@ -31,22 +31,7 @@
     <h2 class="display-6">{% trans %}Features{% endtrans%}</h2>
 </div>
 <div class="row">
-    <p class="text-center display-6 fs-5">Click the button for each new feature</p>
-    <button type="button" class="col-md-6 offset-md-3 container text-center btn btn-primary rounded-0 my-4 text-uppercase btn-new" data-collection="#assets">{% trans %}Add Features{% endtrans%}
-    </button>
-    {{ form_errors(form.features) }}
-</div>
-
-<div
-        id="assets"
-        class="row"
-        data-prototype="{{ include('property/_feature.html.twig', {form: form.features.vars.prototype})|e("html_attr") }}"
-        data-index="{{ form.features|length > 0 ? form.features|last.vars.name + 1 : 0 }}">
-    {% for feature in form.features %}
-
-            {{ include('property/_feature.html.twig', {form: feature}) }}
-
-    {% endfor %}
+    <div class="col-md-8 offset-md-2">{{ form_row(form.features) }}</div>
 </div>
 
 <div class="text-center my-5 border-bottom">
