@@ -4,45 +4,87 @@
 
 {% block body %}
     <div class="container my-4">
-        <div class="text-center my-5 border-bottom">
-            <h1 class="display-3">{% trans %}Thread{% endtrans%}</h1>
-        </div>
-        <div class="text-center my-4">
-            <a class="btn btn-primary text-uppercase rounded-0 shadow-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                {% trans %}Inbox{% endtrans%}
-            </a>
-        </div>
+        <div class="row">
+            <div class="col-xl-10 offset-xl-1">
+                <div class="text-center my-5 border-bottom">
+                    <h1 class="display-3">{% trans %}Thread{% endtrans%}</h1>
+                </div>
+                <div class="text-center mb-5">
+                    <a class="btn btn-primary text-uppercase rounded-0 shadow-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                        {% trans %}Inbox{% endtrans%}
+                    </a>
+                </div>
 
-
-
-
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title display-6" id="offcanvasExampleLabel">{% trans %}All Inboxes{% endtrans %}</h5>
-                <button type="button" class="btn-close text-reset shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center">
-                        {% trans %}Home{% endtrans %}
-                        {% if messageNotRead|length > 0 %}
-                            <span class="badge bg-secondary text-primary ms-1"><i class="fa-regular fa-bell"></i></span>
+                <div class="container border-top">
+                    {% for message in messages %}
+                        {% if app.user is same as message.sender %}
+                            <div class="row my-4">
+                                <div class="col-6 offset-6">
+                                    <div class="container bg-secondary">
+                                        <p>{{ message.message }}</p>
+                                        <p>{{ message.createdAt.format('d/m/Y') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="container bg-light">
+                                        <p>{{ message }}</p>
+                                        <p>{{ message.createdAt.format('d/m/Y') }}</p>
+                                    </div>
+                                </div>
+                            </div>
                         {% endif %}
-                    </li>
-                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                        {% trans %}Inbox{% endtrans %}
-                        {% if messageNotRead|length > 0 %}
-                            <span class="badge bg-secondary rounded-3 text-primary">{{ messageNotRead|length }}</span>
-                        {% endif %}
-                    </li>
-                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                        {% trans %}Sent{% endtrans %}
-                    </li>
-                </ul>
-                <div class="text-center">
-                    <button type="button" class="btn btn-sm btn-primary text-uppercase rounded-0 shadow-none my-4" data-bs-dismiss="offcanvas" aria-label="Close">
-                        {% trans %}Return{% endtrans %}
-                    </button>
+                    {% endfor %}
+                </div>
+
+                <div class="container border-top my-4">
+                    {{ form_start(answerForm) }}
+                    <div class="d-flex align-items-center row">
+                        <div class="col-8">
+                            {{ form_row(answerForm.message, {'value': ''}) }}
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="container btn btn-primary text-uppercase rounded-0 shadow-none">
+                                {% trans %}Send{% endtrans %}
+                            </button>
+                        </div>
+                    </div>
+                    {{ form_end(answerForm) }}
+                </div>
+
+
+
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title display-6" id="offcanvasExampleLabel">{% trans %}All Inboxes{% endtrans %}</h5>
+                        <button type="button" class="btn-close text-reset shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center">
+                                {% trans %}Home{% endtrans %}
+                                {% if messageNotRead|length > 0 %}
+                                    <span class="badge bg-secondary text-primary ms-1"><i class="fa-regular fa-bell"></i></span>
+                                {% endif %}
+                            </li>
+                            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                {% trans %}Inbox{% endtrans %}
+                                {% if messageNotRead|length > 0 %}
+                                    <span class="badge bg-secondary rounded-3 text-primary">{{ messageNotRead|length }}</span>
+                                {% endif %}
+                            </li>
+                            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                {% trans %}Sent{% endtrans %}
+                            </li>
+                        </ul>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-sm btn-primary text-uppercase rounded-0 shadow-none my-4" data-bs-dismiss="offcanvas" aria-label="Close">
+                                {% trans %}Return{% endtrans %}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
