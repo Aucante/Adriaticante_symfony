@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Message;
 use App\Form\MessageType;
+use App\Repository\MessageRepository;
+use App\Repository\ThreadRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,33 +16,30 @@ class MessageController extends AbstractController
     /**
      * @Route("/messages", name="messages")
      */
-    public function index(): Response
+    public function index(
+        MessageRepository $messageRepository
+    ): Response
     {
+        $user = $this->getUser();
+        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
+
         return $this->render('message/index.html.twig', [
-            'controller_name' => 'MessageController',
+            'messageNotRead' => $messagesNotRead
         ]);
     }
 
     /**
-     * @Route("/messages/new", name="messages_create")
+     * @Route("/thread/messages/{title}", name="messages_thread")
      */
-    public function create(
-        Request $request
+    public function showThread(
+        MessageRepository $messageRepository
     ): Response
     {
         $user = $this->getUser();
+        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
 
-        $message = new Message();
-        $form = $this->createForm(MessageType::class, $message);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
-
-        }
-
-        return $this->render('message/index.html.twig', [
-            'controller_name' => 'MessageController',
+        return $this->render('message/thread.html.twig', [
+            'messageNotRead' => $messagesNotRead
         ]);
     }
 }

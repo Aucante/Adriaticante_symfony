@@ -19,32 +19,30 @@ class MessageRepository extends ServiceEntityRepository
         parent::__construct($registry, Message::class);
     }
 
-    // /**
-    //  * @return Message[] Returns an array of Message objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Message[]
+     */
+    public function findSenderMessage($sender): array
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.id', 'DESC')
+            ->andWhere('t.sender = :sender')
+            ->setParameter('sender', $sender)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Message
+    /**
+     * @return Message[]
+     */
+    public function findRecipientMessageNotRead($recipient): array
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.id', 'DESC')
+            ->andWhere('t.recipient = :recipient')
+            ->andWhere('t.isRead = 0')
+            ->setParameter('recipient', $recipient)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
 }
