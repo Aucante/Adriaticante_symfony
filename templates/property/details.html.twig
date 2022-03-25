@@ -92,8 +92,8 @@
                     </div>
                 </div>
             </div>
-            <div class="my-5">
-                <button onclick="toggle()" class="btn btn-primary rounded-0">CONTACT</button>
+            <div class="my-4">
+                <button onclick="toggle()" class="btn btn-primary rounded-0 shadow-none">CONTACT</button>
             </div>
             {% for label, messages in app.flashes %}
                 {% for message in messages %}
@@ -106,24 +106,21 @@
             {% endfor %}
 
             <!-- FORM -->
-            <div id="contactForm" class="mt-4" style="display: none">
-                {{ form_start(contactForm) }}
+            <div id="contactForm" style="display: none">
+                {{ form_start(messageForm) }}
                 <div class="row">
-                    <div class="col-6">{{ form_row(contactForm.firstname) }}</div>
-                    <div class="col-6">{{ form_row(contactForm.lastname) }}</div>
+                    <div class="col-6 my-2">
+                        <label for="exampleFormControlInput1" class="form-label">Title</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Message from {{ app.user.username }} for {{ property.name }}" disabled>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">{{ form_row(contactForm.email) }}</div>
-                    <div class="col-6">{{ form_row(contactForm.phone) }}</div>
-                </div><div class="row">
-                    <div class="col-12">{{ form_row(contactForm.message) }}</div>
+                    <div class="col-6">{{ form_row(messageForm.message) }}</div>
                 </div>
-
-
                 <div class="form-group">
                     <button class="btn btn-primary rounded-0 text-uppercase">{% trans %}Send{% endtrans%}&ensp;<i class="fa-regular fa-paper-plane"></i></button>
                 </div>
-                {{ form_end(contactForm) }}
+                {{ form_end(messageForm) }}
             </div>
 
 

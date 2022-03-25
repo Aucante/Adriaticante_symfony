@@ -5,8 +5,11 @@ namespace App\Controller;
 use App\Data\SearchData;
 use App\Entity\Contact;
 use App\Entity\Image;
+use App\Entity\Message;
 use App\Entity\Property;
+use App\Entity\Thread;
 use App\Form\ContactType;
+use App\Form\MessageType;
 use App\Form\PropertySearchType;
 use App\Form\PropertyType;
 use App\Notification\ContactNotification;
@@ -137,33 +140,47 @@ class PropertiesController extends AbstractController
     public function details(
         Request $request,
         Property $property,
-        ContactNotification $contactNotification,
-        TranslatorInterface $translator
+        TranslatorInterface $translator,
+        EntityManagerInterface $entityManager
     ): Response
     {
-        $contact = new Contact();
-        $contact->setProperty($property);
-        $contactForm = $this->createForm(ContactType::class, $contact);
-        $contactForm->handleRequest($request);
-
         $price = $property->getPrice();
         $area = $property->getArea();
         $priceArea = $price / $area;
 
-        $user = $property->getUser();
+        $sender = $this->getUser();
+        $recipient = $property->getUser();
 
-        if ($contactForm->isSubmitted() && $contactForm->isValid())
+        $message = new Message();
+        $messageForm = $this->createForm(MessageType::class, $message);
+        $messageForm->handleRequest($request);
+
+        if ($messageForm->isSubmitted() && $messageForm->isValid())
         {
-            $contactNotification->notifyPropertyPage($contact, $user);
+            $title = 'Message for ' . $property->getSlug() . ' from ' . $sender->getUsername();
+
+            $thread = new Thread();
+            $thread->setTitle($title);
+            $thread->setSender($sender);
+            $thread->setProperty($property);
+
+            $message->setThread($thread);
+            $message->setSender($sender);
+            $message->setRecipient($recipient);
+
+            $entityManager->persist($thread);
+            $entityManager->persist($message);
+            $entityManager->flush();
+           // $contactNotification->notifyPropertyPage($contact, $user);
             $messageFlash = $translator->trans('Email has been sent successfully.');
             $this->addFlash('success', $messageFlash);
-            $this->redirectToRoute('properties_details', ['id' => $property->getId()]);
+            $this->redirectToRoute('properties_details', ['slug' => $property->getSlug()]);
         }
 
         return $this->render('property/details.html.twig', [
             'property' => $property,
             'priceArea' => $priceArea,
-            'contactForm' => $contactForm->createView()
+            'messageForm' => $messageForm->createView()
         ]);
     }
 
