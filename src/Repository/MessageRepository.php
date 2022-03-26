@@ -35,12 +35,40 @@ class MessageRepository extends ServiceEntityRepository
     /**
      * @return Message[]
      */
-    public function findRecipientMessageNotRead($recipient): array
+    public function findSenderThreadNotRead($sender): array
     {
         return $this->createQueryBuilder('t')
             ->orderBy('t.id', 'DESC')
-            ->andWhere('t.recipient = :recipient')
+            ->andWhere('t.sender = :sender')
             ->andWhere('t.isRead = 0')
+            ->setParameter('sender', $sender)
+            ->getQuery()
+            ->getResult();
+    }
+    /**
+     * @return Message[]
+     */
+    public function findSenderMessageNotRead($sender): array
+    {
+        return $this->createQueryBuilder('m')
+            ->orderBy('m.id', 'DESC')
+            ->andWhere('m.sender = :sender')
+            ->andWhere('m.isRead = 0')
+            ->setParameter('sender', $sender)
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    /**
+     * @return Message[]
+     */
+    public function findRecipientMessageNotRead($recipient): array
+    {
+        return $this->createQueryBuilder('m')
+            ->orderBy('m.id', 'DESC')
+            ->andWhere('m.recipient = :recipient')
+            ->andWhere('m.isRead = 0')
             ->setParameter('recipient', $recipient)
             ->getQuery()
             ->getResult();

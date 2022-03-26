@@ -56,6 +56,11 @@
                                 >
                             </li>
                             <li>
+                                <a class="dropdown-item fs-6" href="{{ path('messages') }}"
+                                >{% trans %}Messages{% endtrans%}</a
+                                >
+                            </li>
+                            <li>
                                 <a class="dropdown-item fs-6 text-danger" href="{{ path('app_logout') }}"
                                 >{% trans %}Logout{% endtrans%}</a
                                 >
@@ -63,21 +68,23 @@
                         </ul>
                     </div>
                 </li>
-                    <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button></a>
+                    <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase shadow-none"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button></a>
                 {% else %}
                     <li><a href="{{ path('property') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}Real estate{% endtrans%}</a></li>
                     <li><a href="{{ path('about') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}About{% endtrans%}</a></li>
                     <li><a href="{{ path('contact') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}Contact{% endtrans%}</a></li>
-                    <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}Sign in{% endtrans%}</button></a>
+                    <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase shadow-none">{% trans %}Sign in{% endtrans%}</button></a>
                 {% endif %}
 
-                <button type="button" class="btn btn-transparent shadow-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-transparent" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     {% for locale in locales %}
                         {% if locale == app.request.locale %}
                             <img src="{{ asset('img/img/flag/'~locale~'.png') }}" style="height: 20px; width: 30px">
                         {% endif %}
                     {% endfor %}
                 </button>
+
+
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-sm">

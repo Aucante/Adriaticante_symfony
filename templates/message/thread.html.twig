@@ -21,8 +21,25 @@
                             <div class="row my-4">
                                 <div class="col-6 offset-6">
                                     <div class="container bg-secondary">
-                                        <p>{{ message.message }}</p>
-                                        <p>{{ message.createdAt.format('d/m/Y') }}</p>
+                                        <div class="row border-bottom py-3">
+                                            <div class="col-2 col-md-1">
+                                                <img src="{{ asset('uploads/user/' ~ message.thread.property.user.file) }}" class="rounded-3" style="height: 30px; width: 30px">
+                                            </div>
+                                            <div class="col-8 col-md-9 display-6 fs-6 mx-2 pt-1">{{ message.thread.property.user.username }}</div>
+                                        </div>
+                                        <div class="row border-bottom py-2">
+                                            <div class="col">
+                                                {{ message.message }}
+                                            </div>
+                                        </div>
+                                        <div class="row pt-2">
+                                            <div class="col-8">
+                                                <p>{{ message.createdAt|format_datetime(locale="{{ locale }}") }}</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-end">{% if message.isRead %}<i class="fa-solid fa-check"></i><i class="fa-solid fa-check"></i>{% else %}<i class="fa-solid fa-check"></i>{% endif %}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -30,8 +47,25 @@
                             <div class="row my-4">
                                 <div class="col-6">
                                     <div class="container bg-light">
-                                        <p>{{ message }}</p>
-                                        <p>{{ message.createdAt.format('d/m/Y') }}</p>
+                                        <div class="row border-bottom py-3">
+                                            <div class="col-2 col-md-1">
+                                                <img src="{{ asset('uploads/user/' ~ message.thread.property.user.file) }}" class="rounded-3" style="height: 30px; width: 30px">
+                                            </div>
+                                            <div class="col-8 col-md-9 display-6 fs-6 mx-2 pt-1">{{ message.thread.property.user.username }}</div>
+                                        </div>
+                                        <div class="row border-bottom py-2">
+                                            <div class="col">
+                                                {{ message.message }}
+                                            </div>
+                                        </div>
+                                        <div class="row pt-2">
+                                            <div class="col-8">
+                                                <p>{{ message.createdAt|format_datetime(locale='en') }}</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <p class="text-end">{% if message.isRead %}<i class="fa-solid fa-check"></i><i class="fa-solid fa-check"></i>{% else %}<i class="fa-solid fa-check"></i>{% endif %}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -63,21 +97,27 @@
                     </div>
                     <div class="offcanvas-body">
                         <ul class="list-group">
-                            <li class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center">
-                                {% trans %}Home{% endtrans %}
-                                {% if messageNotRead|length > 0 %}
-                                    <span class="badge bg-secondary text-primary ms-1"><i class="fa-regular fa-bell"></i></span>
-                                {% endif %}
-                            </li>
-                            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                {% trans %}Inbox{% endtrans %}
-                                {% if messageNotRead|length > 0 %}
-                                    <span class="badge bg-secondary rounded-3 text-primary">{{ messageNotRead|length }}</span>
-                                {% endif %}
-                            </li>
-                            <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                {% trans %}Threads{% endtrans %}
-                            </li>
+                            <a href="{{ path('messages') }}">
+                                <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    {% trans %}Home{% endtrans %}
+                                    {% if messageNotRead|length > 0 %}
+                                        <span class="badge bg-secondary text-primary ms-1"><i class="fa-regular fa-bell"></i></span>
+                                    {% endif %}
+                                </li>
+                            </a>
+                            <a href="#">
+                                <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                    {% trans %}Inbox{% endtrans %}
+                                    {% if messageNotRead|length > 0 %}
+                                        <span class="badge bg-secondary rounded-3 text-primary">{{ messageNotRead|length }}</span>
+                                    {% endif %}
+                                </li>
+                            </a>
+                            <a href="{{ path('thread') }}">
+                                <li class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center">
+                                    {% trans %}Threads{% endtrans %}
+                                </li>
+                            </a>
                         </ul>
                         <div class="text-center">
                             <button type="button" class="btn btn-sm btn-primary text-uppercase rounded-0 shadow-none my-4" data-bs-dismiss="offcanvas" aria-label="Close">
