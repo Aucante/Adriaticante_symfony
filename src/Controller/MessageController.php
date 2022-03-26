@@ -32,6 +32,27 @@ class MessageController extends AbstractController
     }
 
     /**
+     * @Route("/threads", name="thread")
+     */
+    public function sent(
+        ThreadRepository $threadRepository,
+        MessageRepository $messageRepository
+    ): Response
+    {
+        $user = $this->getUser();
+
+        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
+
+        $threads = $threadRepository->findSenderThread($user);
+
+        return $this->render('message/sent.html.twig', [
+            'threads' => $threads,
+            'messageNotRead' => $messagesNotRead
+        ]);
+    }
+
+
+    /**
      * @Route("/thread/messages/{title}", name="messages_thread")
      */
     public function showThread(
@@ -42,10 +63,16 @@ class MessageController extends AbstractController
         TranslatorInterface $translator
     ): Response
     {
-        $recipient = $this->getUser();
-        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($recipient);
-
+        $user = $this->getUser();
+        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
         $messages = $thread->getMessages();
+
+        if ($this->getUser() === $thread->getSender())
+        {
+            $recipient = $thread->getProperty()->getUser();
+        }else{
+            $recipient = $thread->getSender();
+        }
 
         $answer = new Message();
         $answerForm = $this->createForm(MessageType::class, $answer);
@@ -54,13 +81,12 @@ class MessageController extends AbstractController
         if ($answerForm->isSubmitted() && $answerForm->isValid())
         {
             $answer->setThread($thread);
-            $answer->setSender($thread->getSender());
+            $answer->setSender($user);
             $answer->setRecipient($recipient);
             $entityManager->persist($answer);
             $entityManager->flush();
 
-
-            $messageFlash = $translator->trans('Your reply was sent successfully.');
+            $messageFlash = $translator->trans('Your message was sent successfully.');
             $this->addFlash('success', $messageFlash);
             $this->redirectToRoute('messages_thread', ['title' => $thread->getTitle()]);
 
@@ -69,6 +95,7 @@ class MessageController extends AbstractController
         return $this->render('message/thread.html.twig', [
             'messageNotRead' => $messagesNotRead,
             'messages' => $messages,
+            'thread' => $thread,
             'answerForm' => $answerForm->createView()
         ]);
     }
