@@ -3,44 +3,100 @@
 namespace App\Controller;
 
 use App\Entity\Message;
+use App\Entity\Thread;
 use App\Form\MessageType;
+use App\Repository\MessageRepository;
+use App\Repository\ThreadRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class MessageController extends AbstractController
 {
     /**
      * @Route("/messages", name="messages")
      */
-    public function index(): Response
+    public function index(
+        MessageRepository $messageRepository
+    ): Response
     {
+        $user = $this->getUser();
+        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
+
         return $this->render('message/index.html.twig', [
-            'controller_name' => 'MessageController',
+            'messageNotRead' => $messagesNotRead
         ]);
     }
 
     /**
-     * @Route("/messages/new", name="messages_create")
+     * @Route("/threads", name="thread")
      */
-    public function create(
-        Request $request
+    public function sent(
+        ThreadRepository $threadRepository,
+        MessageRepository $messageRepository
     ): Response
     {
         $user = $this->getUser();
 
-        $message = new Message();
-        $form = $this->createForm(MessageType::class, $message);
-        $form->handleRequest($request);
+        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
 
-        if($form->isSubmitted() && $form->isValid())
+        $threads = $threadRepository->findSenderThread($user);
+
+        return $this->render('message/sent.html.twig', [
+            'threads' => $threads,
+            'messageNotRead' => $messagesNotRead
+        ]);
+    }
+
+
+    /**
+     * @Route("/thread/messages/{title}", name="messages_thread")
+     */
+    public function showThread(
+        MessageRepository $messageRepository,
+        Thread $thread,
+        Request $request,
+        EntityManagerInterface $entityManager,
+        TranslatorInterface $translator
+    ): Response
+    {
+        $user = $this->getUser();
+        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
+        $messages = $thread->getMessages();
+
+        if ($this->getUser() === $thread->getSender())
         {
+            $recipient = $thread->getProperty()->getUser();
+        }else{
+            $recipient = $thread->getSender();
+        }
+
+        $answer = new Message();
+        $answerForm = $this->createForm(MessageType::class, $answer);
+        $answerForm->handleRequest($request);
+
+        if ($answerForm->isSubmitted() && $answerForm->isValid())
+        {
+            $answer->setThread($thread);
+            $answer->setSender($user);
+            $answer->setRecipient($recipient);
+            $entityManager->persist($answer);
+            $entityManager->flush();
+
+            $messageFlash = $translator->trans('Your message was sent successfully.');
+            $this->addFlash('success', $messageFlash);
+            $this->redirectToRoute('messages_thread', ['title' => $thread->getTitle()]);
 
         }
 
-        return $this->render('message/index.html.twig', [
-            'controller_name' => 'MessageController',
+        return $this->render('message/thread.html.twig', [
+            'messageNotRead' => $messagesNotRead,
+            'messages' => $messages,
+            'thread' => $thread,
+            'answerForm' => $answerForm->createView()
         ]);
     }
 }

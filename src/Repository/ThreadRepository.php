@@ -19,32 +19,35 @@ class ThreadRepository extends ServiceEntityRepository
         parent::__construct($registry, Thread::class);
     }
 
-    // /**
-    //  * @return Thread[] Returns an array of Thread objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Thread[]
+     */
+    public function findSenderThread($sender): array
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('t.id', 'DESC')
+            ->andWhere('t.sender = :sender')
+            ->setParameter('sender', $sender)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Thread
+
+    /**
+     * @return Thread[]
+     */
+    public function findRecipientThread($recipient): array
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
+            ->orderBy('t.id', 'DESC')
+            ->andWhere('t.recipient = :recipient')
+            ->setParameter('recipient', $recipient)
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getResult();
     }
-    */
+
+
+
+
+
 }

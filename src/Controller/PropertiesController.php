@@ -172,7 +172,7 @@ class PropertiesController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
            // $contactNotification->notifyPropertyPage($contact, $user);
-            $messageFlash = $translator->trans('Email has been sent successfully.');
+            $messageFlash = $translator->trans('Message has been sent successfully.');
             $this->addFlash('success', $messageFlash);
             $this->redirectToRoute('properties_details', ['slug' => $property->getSlug()]);
         }
