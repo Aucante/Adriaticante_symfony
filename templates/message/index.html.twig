@@ -47,21 +47,27 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center">
-                        {% trans %}Home{% endtrans %}
-                        {% if messageNotRead|length > 0 %}
-                           <span class="badge bg-secondary text-primary ms-1"><i class="fa-regular fa-bell"></i></span>
-                        {% endif %}
-                    </li>
-                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                        {% trans %}Inbox{% endtrans %}
-                        {% if messageNotRead|length > 0 %}
-                        <span class="badge bg-secondary rounded-3 text-primary">{{ messageNotRead|length }}</span>
-                        {% endif %}
-                    </li>
-                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                        {% trans %}Threads{% endtrans %}
-                    </li>
+                    <a href="{{ path('messages') }}">
+                        <li class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center">
+                            {% trans %}Home{% endtrans %}
+                            {% if messageNotRead|length > 0 %}
+                                <span class="badge bg-secondary text-primary ms-1"><i class="fa-regular fa-bell"></i></span>
+                            {% endif %}
+                        </li>
+                    </a>
+                    <a href="#">
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            {% trans %}Inbox{% endtrans %}
+                            {% if messageNotRead|length > 0 %}
+                                <span class="badge bg-secondary rounded-3 text-primary">{{ messageNotRead|length }}</span>
+                            {% endif %}
+                        </li>
+                    </a>
+                    <a href="{{ path('thread') }}">
+                        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            {% trans %}Threads{% endtrans %}
+                        </li>
+                    </a>
                 </ul>
                 <div class="text-center">
                     <button type="button" class="btn btn-sm btn-primary text-uppercase rounded-0 shadow-none my-4" data-bs-dismiss="offcanvas" aria-label="Close">

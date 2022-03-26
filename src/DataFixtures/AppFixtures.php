@@ -7,8 +7,10 @@ use App\Entity\Asset;
 use App\Entity\City;
 use App\Entity\Feature;
 use App\Entity\Image;
+use App\Entity\Message;
 use App\Entity\Property;
 use App\Entity\Status;
+use App\Entity\Thread;
 use App\Entity\Type;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -43,22 +45,39 @@ class AppFixtures extends Fixture
         $manager->persist($address);
 
         //USER
-        $user = new User();
-        $user->setEmail('usertest@test.com')
+        $user1 = new User();
+        $user1->setEmail('usertest@test.com')
             ->setUsername('testusername')
             ->setLastname('testlastname')
             ->setFirstname('testfirstname')
             ->setCompany('testcompany')
             ->setAddress($address)
             ->setRoles(['ROLE_USER'])
-            ->setFile('adriatic.jpg')
+            ->setFile('adriaticXS.jpg')
             ->setUpdatedAt(new \DateTimeImmutable());
 
-        $password = $this->encoder->encodePassword($user, 'password');
-        $user->setPassword($password);
+        $password = $this->encoder->encodePassword($user1, 'password');
+        $user1->setPassword($password);
 
-        $manager->persist($user);
+        $manager->persist($user1);
 
+
+        //USER
+        $user2 = new User();
+        $user2->setEmail('usertest2@test.com')
+            ->setUsername('testusername2')
+            ->setLastname('testlastname2')
+            ->setFirstname('testfirstname2')
+            ->setCompany('testcompany2')
+            ->setAddress($address)
+            ->setRoles(['ROLE_USER'])
+            ->setFile('adriaticXS.jpg')
+            ->setUpdatedAt(new \DateTimeImmutable());
+
+        $password = $this->encoder->encodePassword($user2, 'password');
+        $user2->setPassword($password);
+
+        $manager->persist($user2);
         //CITY
 
         $city = new City();
@@ -70,9 +89,9 @@ class AppFixtures extends Fixture
 
         // PROPERTY
 
-        $property = new Property();
+        $property1 = new Property();
 
-        $property->setPrice($faker->numberBetween(40000, 10000000))
+        $property1->setPrice($faker->numberBetween(40000, 10000000))
             ->setDescription('testproperty')
             ->setArea($faker->numberBetween(10, 500))
             ->setType($faker->word())
@@ -80,7 +99,7 @@ class AppFixtures extends Fixture
             ->setTotalRooms($faker->numberBetween(1, 10))
             ->setTotalBedrooms($faker->numberBetween(0, 8))
             ->setTotalBathrooms($faker->numberBetween(1, 4))
-            ->setUser($user)
+            ->setUser($user1)
             ->setName('testproperty')
             ->setAdvertType($faker->word())
             ->setPhoneContact(0)
@@ -89,7 +108,30 @@ class AppFixtures extends Fixture
             ->setCreatedAt(new \DateTimeImmutable())
             ->setCity($city);
 
-        $manager->persist($property);
+        $manager->persist($property1);
+
+        // PROPERTY
+
+        $property2 = new Property();
+
+        $property2->setPrice($faker->numberBetween(40000, 10000000))
+            ->setDescription('testproperty')
+            ->setArea($faker->numberBetween(10, 500))
+            ->setType($faker->word())
+            ->setStatus($faker->word())
+            ->setTotalRooms($faker->numberBetween(1, 10))
+            ->setTotalBedrooms($faker->numberBetween(0, 8))
+            ->setTotalBathrooms($faker->numberBetween(1, 4))
+            ->setUser($user2)
+            ->setName('testproperty')
+            ->setAdvertType($faker->word())
+            ->setPhoneContact(0)
+            ->setNameContact($faker->word())
+            ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())
+            ->setCreatedAt(new \DateTimeImmutable())
+            ->setCity($city);
+
+        $manager->persist($property2);
 
 
             // FEATURE
@@ -97,20 +139,58 @@ class AppFixtures extends Fixture
             $feature = new feature();
             $feature->setName('balcony');
             $manager->persist($feature);
-            $property->addfeature($feature);
+            $property1->addfeature($feature);
+            $property2->addfeature($feature);
 
             $manager->persist($feature);
-            $manager->persist($property);
+            $manager->persist($property1);
+            $manager->persist($property2);
+
+            // THREAD
+
+            $thread = new Thread();
+            $thread->setTitle($faker->word())
+                ->setSender($user1)
+                ->setProperty($property2);
+
+            $manager->persist($thread);
+
+            // MESSAGE
+
+            $message1 = new Message();
+            $message1->setSender($user1)
+                ->setRecipient($user2)
+                ->setMessage($faker->realText)
+                ->setThread($thread);
+
+            $manager->persist($message1);
+
+            $message2 = new Message();
+            $message2->setSender($user2)
+                ->setRecipient($user1)
+                ->setMessage($faker->realText)
+                ->setThread($thread);
+
+            $manager->persist($message2);
+
+
 
 
 
 
         // FILE
 
-        $file = new Image();
-        $file->setName('adriaticante.png');
-        $file->setProperty($property);
-        $manager->persist($file);
+        $file1 = new Image();
+        $file1->setName('adriaticante.png');
+        $file1->setProperty($property1);
+        $manager->persist($file1);
+
+        // FILE
+
+        $file2 = new Image();
+        $file2->setName('adriaticante.png');
+        $file2->setProperty($property2);
+        $manager->persist($file2);
 
 
 

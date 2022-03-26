@@ -24,7 +24,7 @@ class MessageController extends AbstractController
     ): Response
     {
         $user = $this->getUser();
-        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
+        $messagesNotRead = $messageRepository->findSenderThreadNotRead($user);
 
         return $this->render('message/index.html.twig', [
             'messageNotRead' => $messagesNotRead
@@ -41,7 +41,7 @@ class MessageController extends AbstractController
     {
         $user = $this->getUser();
 
-        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
+        $messagesNotRead = $messageRepository->findSenderThreadNotRead($user);
 
         $threads = $threadRepository->findSenderThread($user);
 
@@ -64,14 +64,15 @@ class MessageController extends AbstractController
     ): Response
     {
         $user = $this->getUser();
-        $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
         $messages = $thread->getMessages();
 
         if ($this->getUser() === $thread->getSender())
         {
             $recipient = $thread->getProperty()->getUser();
+            $messagesNotRead = $messageRepository->findSenderMessageNotRead($user);
         }else{
             $recipient = $thread->getSender();
+            $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
         }
 
         $answer = new Message();
