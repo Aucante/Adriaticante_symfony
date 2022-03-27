@@ -1,115 +1,89 @@
-<div class="container-fluid px-5">
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white">
-        <a href="{{ path('home') }}" class="navbar-brand"
-        ><img src="{{ asset('img/logo/logo.jpg') }}" alt="logo" width="200" height="50"
-            /></a>
-        <button
-                class="navbar-toggler border-0 shadow-none"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#toggleMobileMenu"
-                aria-controls="toggleMobileMenu"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
-            <img src="{{ asset('img/icon/menu.png') }}" alt="menu" height="30" />
-        </button>
-        <div class="collapse navbar-collapse" id="toggleMobileMenu">
-            <ul class="d-flex align-items-center navbar-nav ms-auto text-center">
 
-                {% if is_granted('ROLE_USER') %}
-                <li>
-                    <div class="dropdown">
-                        <p
-                                class="nav-link dropdown-toggle display-5 fs-6 fw-normal text-uppercase text-primary mt-3"
-                                id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown"
-                                data-bs-display="static"
-                                aria-expanded="false"
-                        >
-                            {% trans %}Menu{% endtrans%}
-                        </p>
-                        <ul class="dropdown-menu text-uppercase mb-3 ms-1" aria-labelledby="dropdownMenuButton1">
-                            <li>
-                                <a class="dropdown-item fs-6" href="{{ path('profile') }}"
-                                >{% trans %}Profile{% endtrans%}</a
-                                >
-                            </li>
-                            <li>
-                                <a class="dropdown-item fs-6" href="{{ path('user_properties') }}"
-                                >{% trans %}My real estate{% endtrans%}</a
-                                >
-                            </li>
-                            <li>
-                                <a class="dropdown-item fs-6" href="{{ path('property') }}"
-                                >{% trans %}Real Estate{% endtrans%}</a
-                                >
-                            </li>
-                            <li>
-                                <a class="dropdown-item fs-6" href="{{ path('about') }}"
-                                >{% trans %}About{% endtrans%}</a
-                                >
-                            </li>
-                            <li>
-                                <a class="dropdown-item fs-6" href="{{ path('contact') }}"
-                                >{% trans %}Contact{% endtrans%}</a
-                                >
-                            </li>
-                            <li>
-                                <a class="dropdown-item fs-6" href="{{ path('messages') }}"
-                                >{% trans %}Messages{% endtrans%}</a
-                                >
-                            </li>
-                            <li>
-                                <a class="dropdown-item fs-6 text-danger" href="{{ path('app_logout') }}"
-                                >{% trans %}Logout{% endtrans%}</a
-                                >
-                            </li>
-                        </ul>
+    <nav class="navbar navbar-light fixed-top bg-white">
+        <div class="container-fluid">
+            <div class="col-4">
+                <a href="{{ path('home') }}" class="navbar-brand"
+                ><img src="{{ asset('img/logo/logo.jpg') }}" alt="logo" width="200" height="50"
+                    /></a>
+            </div>
+            <div class="col-8">
+                <div class="text-end">
+                    <a
+                            class=""
+                            data-bs-toggle="offcanvas"
+                            href="#offcanvasNavbar"
+                            role="button"
+                            aria-controls="offcanvasNavbar"
+                    >
+                        <img src="{{ asset('img/icon/menu.png') }}" alt="menu" height="30" />
+                    </a>
+                    {% if is_granted('ROLE_USER') %}
+                        <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 text-uppercase shadow-none buttonNav"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button></a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 text-uppercase shadow-none buttonNav">{% trans %}Sign in{% endtrans%}</button></a>
+                    {% endif %}
+                </div>
+                <div
+                        class="offcanvas offcanvas-start"
+                        tabindex="-1"
+                        id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel"
+                >
+                    <div class="offcanvas-header">
+                        <img src="{{ asset('img/logo/logo.jpg') }}" alt="logo" width="200" height="50"
+                        />
+                        <button
+                                type="button"
+                                class="btn-close text-reset shadow-none"
+                                data-bs-dismiss="offcanvas"
+                                aria-label="Close"
+                        ></button>
                     </div>
-                </li>
-                    <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase shadow-none"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button></a>
-                {% else %}
-                    <li><a href="{{ path('property') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}Real estate{% endtrans%}</a></li>
-                    <li><a href="{{ path('about') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}About{% endtrans%}</a></li>
-                    <li><a href="{{ path('contact') }}" class="nav-link display-5 fs-6 fw-normal text-uppercase text-primary">{% trans %}Contact{% endtrans%}</a></li>
-                    <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 ms-2 text-uppercase shadow-none">{% trans %}Sign in{% endtrans%}</button></a>
-                {% endif %}
-
-                <button type="button" class="btn btn-transparent" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    {% for locale in locales %}
-                        {% if locale == app.request.locale %}
-                            <img src="{{ asset('img/img/flag/'~locale~'.png') }}" style="height: 20px; width: 30px">
+                    <div class="offcanvas-body">
+                        {% if is_granted('ROLE_USER') %}
+                            <ul class="list-group list-group-flush">
+                                <a class="fs-6" href="{{ path('profile') }}"><li class="list-group-item">{% trans %}Profile{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('user_properties') }}"><li class="list-group-item">{% trans %}My Real Estate{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('property') }}"><li class="list-group-item">{% trans %}Real Estate{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('about') }}"><li class="list-group-item">{% trans %}About{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('contact') }}"><li class="list-group-item">{% trans %}Contact{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('messages') }}"><li class="list-group-item">{% trans %}Messages{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('app_logout') }}"><li class="list-group-item text-danger">{% trans %}Logout{% endtrans%}</li></a>
+                            </ul>
+                            <div class="text-center">
+                                <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 mt-4 text-uppercase shadow-none"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button></a>
+                            </div>
+                        {% else %}
+                            <ul class="list-group list-group-flush">
+                                <a class="fs-6" href="{{ path('property') }}"><li class="list-group-item">{% trans %}Real Estate{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('about') }}"><li class="list-group-item">{% trans %}About{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('contact') }}"><li class="list-group-item">{% trans %}Contact{% endtrans%}</li></a>
+                            </ul>
+                            <div class="text-center">
+                                <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 mt-4 text-uppercase shadow-none">{% trans %}Sign in{% endtrans%}</button></a>
+                            </div>
                         {% endif %}
-                    {% endfor %}
-                </button>
 
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content bg-secondary">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">{% trans %}Languages{% endtrans %}</h5>
-                                <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body text-center">
-                                <ul class="rounded-0 ps-0">
-                                    {% for locale in locales %}
-                                        {% if locale != app.request.locale %}
-                                            <button class="btn btn-secondary text-center">
-                                                <a class="dropdown-item" href="{{ path('change_locale', {'locale': locale}) }}"
-                                                ><img src="{{ asset('img/img/flag/'~locale~'.png') }}" style="height: 30px" alt="{{ locale }}"></a
-                                                >
-                                            </button>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </div>
+                        <div class="dropdown text-center">
+                            <button class="btn btn-transparent mt-2 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% for locale in locales %}
+                                    {% if locale == app.request.locale %}
+                                        <img src="{{ asset('img/img/flag/'~locale~'.png') }}" style="height: 20px; width: 30px">
+                                    {% endif %}
+                                {% endfor %}
+                            </button>
+                            <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
+                                {% for locale in locales %}
+                                    {% if locale != app.request.locale %}
+                                        <li><a class="dropdown-item" href="{{ path('change_locale', {'locale': locale}) }}"
+                                            ><img src="{{ asset('img/img/flag/'~locale~'.png') }}" style="height: 30px" alt="{{ locale }}"></a
+                                            ></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </ul>
+            </div>
         </div>
     </nav>
-</div>
