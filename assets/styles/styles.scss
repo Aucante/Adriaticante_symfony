@@ -4,6 +4,15 @@
   }
 }
 
+
+@media only screen and (min-width: 991px) {
+    .borderItemContact {
+      border-right: 1px solid #000000;
+    }
+}
+
+
+
 a {
   text-decoration: none;
 }
@@ -17,18 +26,15 @@ a {
 }
 
 .gradientContainerTop {
-  height: 100px;
-  background-color: #eceff1;
-  background-image: linear-gradient(0deg, #eceff1 0%, #ffffff 53%);
-
+  height: 180px;
+  background-color: #e0f7fa;
+  background-image: linear-gradient(0deg, #e0f7fa 0%, #ffffff 100%);
 }
 
 .gradientContainerBottom {
-  height: 100px;
-  background-color: #eceff1;
-  background-image: linear-gradient(180deg, #eceff1 0%, #ffffff 53%);
-
-
+  height: 180px;
+  background-color: #e0f7fa;
+  background-image: linear-gradient(180deg, #e0f7fa 0%, #ffffff 100%);
 }
 
 .fontNewsletter {
