@@ -148,12 +148,12 @@ class AppFixtures extends Fixture
 
             // THREAD
 
-            $thread = new Thread();
-            $thread->setTitle($faker->word())
+            $thread1 = new Thread();
+            $thread1->setTitle($faker->word())
                 ->setSender($user1)
                 ->setProperty($property2);
 
-            $manager->persist($thread);
+            $manager->persist($thread1);
 
             // MESSAGE
 
@@ -161,7 +161,7 @@ class AppFixtures extends Fixture
             $message1->setSender($user1)
                 ->setRecipient($user2)
                 ->setMessage($faker->realText)
-                ->setThread($thread);
+                ->setThread($thread1);
 
             $manager->persist($message1);
 
@@ -169,7 +169,7 @@ class AppFixtures extends Fixture
             $message2->setSender($user2)
                 ->setRecipient($user1)
                 ->setMessage($faker->realText)
-                ->setThread($thread);
+                ->setThread($thread1);
 
             $manager->persist($message2);
 
@@ -279,8 +279,24 @@ class AppFixtures extends Fixture
                 $manager->persist($file);
             }
 
+            // THREAD
 
+            $thread = new Thread();
+            $thread->setTitle($faker->word())
+                ->setSender($user)
+                ->setProperty($property1);
 
+            $manager->persist($thread);
+
+            // MESSAGE
+
+            $message = new Message();
+            $message->setSender($user)
+                ->setRecipient($property1->getUser())
+                ->setMessage($faker->realText)
+                ->setThread($thread);
+
+            $manager->persist($message);
 
         }
 

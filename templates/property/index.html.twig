@@ -12,50 +12,51 @@
         {% include 'property/_filter.html.twig' with {formSearch: formSearch} only %}
     </div>
 
+    {% if properties.count > 0 %}
     <div class="container-fluid my-5">
 
         <div class="container">
 
             <div class="row">
-            {% for property in properties %}
-                <div
-                        class="col-10 offset-1 col-md-6 offset-md-0 col-xl-3 my-4"
-                >
-                    <div class="card rounded-0 shadow border-0">
-                        <img
-                                src="{{ asset('uploads/property/' ~ property.images.last.name) }}"
-                                class="card-img-top rounded-0"
-                                style="height: 200px"
-                                alt="..."
-                        />
-                        <div class="card-body">
-                            <h2 class="card-title text-center cardPropertyTitle fs-4 display-6">{{ property.name|upper }}</h2>
-                            <div class="cardPropertyDescription">
-                                <p style="color: red">
-                                    {% for f in property.features %}
-                                        {{ f.name }}
-                                    {% endfor %}
-                                </p>
-                                <p class="card-text">
-                                    {% trans %}Area{% endtrans%} : {{ property.area }} {% trans %}sq2{% endtrans%}
-                                </p>
-                                <p class="card-text">
-                                    {% trans %}Rooms{% endtrans%} : {{ property.totalRooms }}
-                                </p>
-                                <p class="card-text">
-                                    {% trans %}Bedrooms{% endtrans%} : {{ property.totalBedrooms }}
-                                </p>
-                                <p class="card-text">
-                                    {% trans %}Price{% endtrans%} : {{ property.price }} €
-                                </p>
-                            </div>
-                            <div class="text-center">
-                                <a href="{{ path('properties_details', {'slug': property.slug}) }}" class="btn btn-primary rounded-0 text-uppercase">{% trans %}Discover{% endtrans%}</a>
+                {% for property in properties %}
+                    <div
+                            class="col-10 offset-1 col-md-6 offset-md-0 col-xl-3 my-4"
+                    >
+                        <div class="card rounded-0 shadow border-0">
+                            <img
+                                    src="{{ asset('uploads/property/' ~ property.images.last.name) }}"
+                                    class="card-img-top rounded-0"
+                                    style="height: 200px"
+                                    alt="..."
+                            />
+                            <div class="card-body">
+                                <h2 class="card-title text-center cardPropertyTitle fs-4 display-6">{{ property.name|upper }}</h2>
+                                <div class="cardPropertyDescription">
+                                    <p style="color: red">
+                                        {% for f in property.features %}
+                                            {{ f.name }}
+                                        {% endfor %}
+                                    </p>
+                                    <p class="card-text">
+                                        {% trans %}Area{% endtrans%} : {{ property.area }} {% trans %}sq2{% endtrans%}
+                                    </p>
+                                    <p class="card-text">
+                                        {% trans %}Rooms{% endtrans%} : {{ property.totalRooms }}
+                                    </p>
+                                    <p class="card-text">
+                                        {% trans %}Bedrooms{% endtrans%} : {{ property.totalBedrooms }}
+                                    </p>
+                                    <p class="card-text">
+                                        {% trans %}Price{% endtrans%} : {{ property.price }} €
+                                    </p>
+                                </div>
+                                <div class="text-center">
+                                    <a href="{{ path('properties_details', {'slug': property.slug}) }}" class="btn btn-primary rounded-0 text-uppercase">{% trans %}Discover{% endtrans%}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
             </div>
         </div>
         <div class="d-flex justify-content-center">
@@ -63,5 +64,8 @@
             {{ knp_pagination_render(properties, 'base/pagination.html.twig') }}
         </div>
     </div>
+    {% else %}
+    <p class="display-6 fs-5 text-center my-5">No ads to display.</p>
+    {% endif %}
 
 {% endblock %}
