@@ -43,7 +43,7 @@ class MessageController extends AbstractController
 
         $messagesNotRead = $messageRepository->findSenderThreadNotRead($user);
 
-        $threads = $threadRepository->findSenderThread($user);
+        $threads = $threadRepository->findSenderAndRecipientThread($user);
 
         return $this->render('message/sent.html.twig', [
             'threads' => $threads,
@@ -65,6 +65,11 @@ class MessageController extends AbstractController
     {
         $user = $this->getUser();
         $messages = $thread->getMessages();
+
+        foreach ($messages as $message)
+        {
+            $message->setIsRead(true);
+        }
 
         if ($this->getUser() === $thread->getSender())
         {
@@ -92,6 +97,7 @@ class MessageController extends AbstractController
             $this->redirectToRoute('messages_thread', ['title' => $thread->getTitle()]);
 
         }
+        $entityManager->flush();
 
         return $this->render('message/thread.html.twig', [
             'messageNotRead' => $messagesNotRead,

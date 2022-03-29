@@ -46,8 +46,19 @@ class ThreadRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-
-
-
+    /**
+     * @return Thread[]
+     */
+    public function findSenderAndRecipientThread($user): array
+    {
+        return $this->createQueryBuilder('t')
+            ->innerJoin('t.property', 'p')
+            ->orderBy('t.id', 'DESC')
+            ->andWhere('p.user = :user')
+            ->orWhere('t.sender = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
 
 }
