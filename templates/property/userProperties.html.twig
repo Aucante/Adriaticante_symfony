@@ -25,58 +25,57 @@
             </table>
     </div>
 
-   <div class="container">
-       <div class="col-10 offset-1">
-           {% for property in userProperties %}
-               <div class="row align-items-center border-bottom py-5">
-                   <div class="col-md-4 col-xl-3">
-                       {% if property.images.count != 0 %}
-                           <img
-                                   src="{{ asset('uploads/property/' ~ property.images.last) }}"
-                                   class="ratio ratio-16x9 img-fluid rounded-3"
-                                   style="height: 130px"
-                                   alt=""/>
-                       {% endif %}
-                   </div>
-                   <div class="col-md-6 offset-xl-1 text-center">
-                       <div>
-                           <p class="text-uppercase my-2">{{ property.name }}</p>
-                           <p class="text-uppercase my-2">{{ property.price }} €</p>
-                       </div>
-                   </div>
-                   <div class="col-md-2">
-                       <div class="text-center my-2">
-                           <a href="{{ path('properties_details', {'slug': property.slug}) }}"><button class="container btn btn-primary rounded-0 ms-2 text-uppercase">{% trans %}Check{% endtrans%}</button></a>
-                       </div>
-                       <div class="text-center my-2">
-                           <!-- Button trigger modal -->
-                           <button type="button" class="container btn btn-danger rounded-0 ms-2 text-uppercase" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                               {% trans %}Delete{% endtrans%}
-                           </button>
+    <div class="container">
+        {% for property in userProperties %}
+        <div class="row my-4 border-bottom">
+            <div class="card border-0 mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ asset('uploads/property/' ~ property.images.last) }}" class="img-fluid rounded-3" alt="...">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text">{{ property.name }}</p>
+                            <p class="card-text"><small class="text-muted">{{ property.price }} €</small></p>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card-body">
+                            <div class="text-center my-2">
+                                <a href="{{ path('properties_details', {'slug': property.slug}) }}"><button class="container btn btn-primary rounded-0 text-uppercase">{% trans %}Check{% endtrans%}</button></a>
+                            </div>
+                            <div class="text-center my-2">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="container btn btn-danger rounded-0 text-uppercase" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    {% trans %}Delete{% endtrans%}
+                                </button>
 
-                           <!-- Modal -->
-                           <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                               <div class="modal-dialog">
-                                   <div class="modal-content">
-                                       <div class="modal-header">
-                                           <h5 class="modal-title" id="exampleModalLabel">DELETE AD</h5>
-                                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                       </div>
-                                       <div class="modal-body">
-                                           Are you sure you want to permanently delete this ad?
-                                       </div>
-                                       <div class="modal-footer">
-                                           <a href="{{ path('properties_delete', {'slug': property.slug}) }}"><button type="button" class="container btn btn-danger rounded-0 ms-2 text-uppercase">{% trans %}Delete{% endtrans%}</button></a>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           {% endfor %}
-       </div>
-   </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">DELETE AD</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to permanently delete this ad?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a href="{{ path('properties_delete', {'slug': property.slug}) }}"><button type="button" class="container btn btn-danger rounded-0 ms-2 text-uppercase">{% trans %}Delete{% endtrans%}</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}
 
 {% block title %}
