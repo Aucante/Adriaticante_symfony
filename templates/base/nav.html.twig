@@ -1,9 +1,9 @@
 
-    <nav class="navbar navbar-light fixed-top bg-white">
+    <nav class="navbar navbar-light fixed-top bg-white shadow-sm">
         <div class="container-fluid">
             <div class="col-4">
                 <a href="{{ path('home') }}" class="navbar-brand"
-                ><img src="{{ asset('img/logo/logo.jpg') }}" alt="logo" width="200" height="50"
+                ><img src="{{ asset('build/img/logo/logo.jpg') }}" alt="logo" width="200" height="50"
                     /></a>
             </div>
             <div class="col-8">
@@ -15,7 +15,7 @@
                             role="button"
                             aria-controls="offcanvasNavbar"
                     >
-                        <img src="{{ asset('img/icon/menuK.png') }}" alt="menu" height="40" />
+                        <img src="{{ asset('build/img/icon/MenuK.png') }}" alt="menu" height="40" />
                     </a>
                     {% if is_granted('ROLE_USER') %}
                         <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 text-uppercase shadow-none buttonNav"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button></a>
@@ -30,7 +30,7 @@
                         aria-labelledby="offcanvasNavbarLabel"
                 >
                     <div class="offcanvas-header">
-                        <img src="{{ asset('img/logo/logo.jpg') }}" alt="logo" width="200" height="50"
+                        <img src="{{ asset('build/img/logo/logo.jpg') }}" alt="logo" width="200" height="50"
                         />
                         <button
                                 type="button"
@@ -68,7 +68,7 @@
                             <button class="btn btn-transparent mt-2 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 {% for locale in locales %}
                                     {% if locale == app.request.locale %}
-                                        <img src="{{ asset('img/img/flag/'~locale~'.png') }}" style="height: 20px; width: 30px">
+                                        <img src="{{ asset('build/img/img/flag/'~locale~'.png') }}" style="height: 20px; width: 30px">
                                     {% endif %}
                                 {% endfor %}
                             </button>
@@ -76,7 +76,7 @@
                                 {% for locale in locales %}
                                     {% if locale != app.request.locale %}
                                         <li><a class="dropdown-item" href="{{ path('change_locale', {'locale': locale}) }}"
-                                            ><img src="{{ asset('img/img/flag/'~locale~'.png') }}" style="height: 30px" alt="{{ locale }}"></a
+                                            ><img src="{{ asset('build/img/img/flag/'~locale~'.png') }}" style="height: 30px" alt="{{ locale }}"></a
                                             ></li>
                                     {% endif %}
                                 {% endfor %}
