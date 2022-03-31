@@ -44,6 +44,24 @@ class AppFixtures extends Fixture
 
         $manager->persist($address);
 
+        // ADMIN
+
+        $admin = new User();
+        $admin->setEmail('admin@admin.com')
+            ->setUsername('admin')
+            ->setLastname('admin')
+            ->setFirstname('admin')
+            ->setCompany('admin')
+            ->setAddress($address)
+            ->setRoles(['ROLE_ADMIN'])
+            ->setFile('adriaticXS.jpg')
+            ->setUpdatedAt(new \DateTimeImmutable());
+
+        $password = $this->encoder->encodePassword($admin, 'password');
+        $admin->setPassword($password);
+
+        $manager->persist($admin);
+
         //USER
         $user1 = new User();
         $user1->setEmail('usertest@test.com')

@@ -47,6 +47,8 @@ security:
         - { path: ^/user/real-estate, roles: ROLE_USER }
         - { path: ^/real-estate/create, roles: ROLE_USER }
         - { path: ^/messages, roles: ROLE_USER }
+        - { path: ^/thread/messages/, roles: ROLE_USER }
+        - { path: ^/threads, roles: ROLE_USER }
     role_hierarchy:
         ROLE_USER: ROLE_USER
         ROLE_ADMIN: ROLE_ADMIN
