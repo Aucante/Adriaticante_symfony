@@ -39,6 +39,12 @@ class City
      */
     private $property;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="city")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $country;
+
     public function __construct()
     {
         $this->property = new ArrayCollection();
@@ -118,5 +124,17 @@ class City
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?Country $country): self
+    {
+        $this->country = $country;
+
+        return $this;
     }
 }
