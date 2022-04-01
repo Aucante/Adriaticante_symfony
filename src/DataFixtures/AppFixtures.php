@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Address;
 use App\Entity\Asset;
 use App\Entity\City;
+use App\Entity\Country;
 use App\Entity\Feature;
 use App\Entity\Image;
 use App\Entity\Message;
@@ -96,7 +97,7 @@ class AppFixtures extends Fixture
         $user2->setPassword($password);
 
         $manager->persist($user2);
-        //CITY
+        // CITY
 
         $city = new City();
 
@@ -104,6 +105,19 @@ class AppFixtures extends Fixture
             ->setLatitude($faker->latitude())
             ->setLongitude($faker->longitude());
 
+        // COUNTRY
+
+        $country = new Country();
+
+        $country->setName('Croatia')
+                ->addCity($city);
+
+        $country2 = new Country();
+
+        $country2->setName('Slovenia');
+
+        $manager->persist($country);
+        $manager->persist($country2);
 
         // PROPERTY
 
@@ -252,7 +266,9 @@ class AppFixtures extends Fixture
                 ->setLatitude($faker->latitude())
                 ->setLongitude($faker->longitude());
 
+            // COUNTRY
 
+            $country2->addCity($city);
 
             // PROPERTY
 
@@ -317,7 +333,6 @@ class AppFixtures extends Fixture
             $manager->persist($message);
 
         }
-
 
         $manager->flush();
     }

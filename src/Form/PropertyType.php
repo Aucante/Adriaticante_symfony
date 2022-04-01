@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\City;
+use App\Entity\Country;
 use App\Entity\Feature;
 use App\Entity\Property;
 use Gregwar\CaptchaBundle\Type\CaptchaType;
@@ -16,6 +17,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\Dropzone\Form\DropzoneType;
 
@@ -134,8 +138,14 @@ class PropertyType extends AbstractType
                 'width' => 200,
                 'height' => 50,
             ])
-            ->add('city', EntityType::class, [
-                'class' => City::class,
+            ->add('country', EntityType::class, [
+                'mapped' => false,
+                'class' => Country::class,
+                'choice_label' => 'name',
+                'placeholder' => 'Choose Country',
+                'label' => 'property.country.label'
+            ])
+            ->add('city', ChoiceType::class, [
                 'label' => 'property.city.label',
                 'placeholder' => 'Choose City',
             ])
@@ -150,6 +160,27 @@ class PropertyType extends AbstractType
                 'mapped' => false
             ])
         ;
+
+        $formModifier = function (FormInterface $form, Country $country = null) {
+            $cities = (null === $country) ? [] : $country->getCity();
+
+            $form->add('city', EntityType::class, [
+                'class' => City::class,
+                'choices' => $cities,
+                'choice_label' => 'name',
+                'placeholder' => 'Choose City',
+                'label' => 'property.city.label',
+            ]);
+        };
+
+        $builder->get('country')->addEventListener(
+            FormEvents::POST_SUBMIT,
+            function (FormEvent $event) use ($formModifier)
+            {
+                $country = $event->getForm()->getData();
+                $formModifier($event->getForm()->getParent(), $country);
+            }
+        );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
