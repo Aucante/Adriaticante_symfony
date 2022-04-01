@@ -183,7 +183,7 @@ class PropertySearchType extends AbstractType
                     'Purchase' => 'Purchase',
                     'Daily Rental' => 'Daily Rental',
                     'Monthly Rental' => 'Monthly Rental',
-                ],
+                ]
             ])
             ->add('advertType', ChoiceType::class, [
                 'label' => false,
@@ -196,11 +196,12 @@ class PropertySearchType extends AbstractType
                     'Daily Rental' => 'Daily Rental',
                     'Monthly Rental' => 'Monthly Rental',
                 ],
+                'placeholder' => 'Rent or Purchase'
             ])
             ->add('city', EntityType::class, [
                 'class' => City::class,
                 'label' => false,
-                'placeholder' => '',
+                'placeholder' => 'City',
                 'required' => false
             ])
             ->add('features', EntityType::class, [

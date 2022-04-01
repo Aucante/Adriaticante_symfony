@@ -17,18 +17,10 @@ a {
   text-decoration: none;
 }
 
-.carousel-inner {
-  max-height: 650px;
-  min-height: 500px;
-  img {
-    max-height: 650px;
-    min-height: 500px;
-  }
+.text-shadow {
+  text-shadow: white 20px 1px 10px;
 }
 
-.carousel-indicators img {
-  max-width: 170px;
-}
 
 
 /** MAP */
