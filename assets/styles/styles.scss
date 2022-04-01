@@ -17,6 +17,20 @@ a {
   text-decoration: none;
 }
 
+.carousel-inner {
+  max-height: 650px;
+  min-height: 500px;
+  img {
+    max-height: 650px;
+    min-height: 500px;
+  }
+}
+
+.carousel-indicators img {
+  max-width: 170px;
+}
+
+
 /** MAP */
 #map { height: 210px; }
 
