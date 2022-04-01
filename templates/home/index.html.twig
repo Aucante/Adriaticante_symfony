@@ -6,81 +6,71 @@
 
 {% block body %}
 
+
+
     <!-- CAROUSEL -->
 
-               <div
-                       id="carouselExampleIndicators"
-                       class="carousel slide minHeightCarousel"
-                       data-bs-ride="carousel"
-               >
-                   <div class="carousel-indicators ">
-                       <button
-                               type="button"
-                               data-bs-target="#carouselExampleIndicators"
-                               data-bs-slide-to="0"
-                               class="active"
-                               aria-current="true"
-                               aria-label="Slide 1"
-                       ></button>
-                       <button
-                               type="button"
-                               data-bs-target="#carouselExampleIndicators"
-                               data-bs-slide-to="1"
-                               aria-label="Slide 2"
-                       ></button>
-                       <button
-                               type="button"
-                               data-bs-target="#carouselExampleIndicators"
-                               data-bs-slide-to="2"
-                               aria-label="Slide 3"
-                       ></button>
-                   </div>
-                   <div class="carousel-inner">
-                       <div class="carousel-item active minHeightCarousel">
-                           <img
-                                   src="{{ asset('build/img/img/adriatic1.jpg') }}"
-                                   class="d-block w-100 minHeightCarousel"
-                                   alt="adriatic"
-                           />
-                       </div>
-                       <div class="carousel-item minHeightCarousel">
-                           <img
-                                   src="{{ asset('build/img/img/adriatic2.jpg') }}"
-                                   class="d-block w-100 minHeightCarousel"
-                                   alt="adriatic"
-                           />
-                       </div>
-                       <div class="carousel-item minHeightCarousel">
-                           <img
-                                   src="{{ asset('build/img/img/adriatic2.jpg') }}"
-                                   class="d-block w-100 minHeightCarousel"
-                                   alt="adriatic"
-                           />
-                       </div>
-                   </div>
-                   <button
-                           class="carousel-control-prev"
-                           type="button"
-                           data-bs-target="#carouselExampleIndicators"
-                           data-bs-slide="prev"
-                   >
-                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                       <span class="visually-hidden">Previous</span>
-                   </button>
-                   <button
-                           class="carousel-control-next"
-                           type="button"
-                           data-bs-target="#carouselExampleIndicators"
-                           data-bs-slide="next"
-                   >
-                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                       <span class="visually-hidden">Next</span>
-                   </button>
-               </div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ asset('build/img/img/carousel6XL.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block px-4 mb-5">
+                    <h1 class="display-5 text-shadow">Discover your future home</h1>
+                    {{ form_start(formSearch) }}
+                    <div class="row bg-white rounded-1 pt-4 pb-2 px-4">
+                        <div class="col-3">
+                            {{ form_row(formSearch.advertType) }}
+                        </div>
+                        <div class="col-3">
+                            {{ form_row(formSearch.type) }}
+                        </div>
+                        <div class="col-3">
+                            {{ form_row(formSearch.city) }}
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-primary container rounded-0 text-uppercase">{% trans %}Search{% endtrans%}</button>
+                        </div>
+                    </div>
+                    {{ form_end(formSearch, {render_rest: false}) }}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('build/img/img/carousel7XL.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block text-start px-4 mb-5">
+                    <h2 class="display-4 my- text-shadow">Sell your real estate</h2>
+                    {% if is_granted('ROLE_USER') %}
+                    <button class="btn btn-secondary rounded-0 text-uppercase my-1">{% trans %}New real estate{% endtrans%}</button>
+                    {% else %}
+                    <button class="btn btn-info btn-lg rounded-0 text-uppercase my-1">{% trans %}Register{% endtrans%}</button>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('build/img/img/carousel1XL.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block text-end px-4 mb-5">
+                    <h2 class="display-5 text-shadow">Communicate with your interlocutor</h2>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
 
     <!-- DISCOVER -->
     <div class="text-center my-5">
-        <h1 class="display-4 text-uppercase">{% trans %}Discover{% endtrans%}</h1>
+        <h2 class="display-4 text-uppercase">{% trans %}Discover{% endtrans%}</h2>
     </div>
     <div class="container-fluid my-5">
         <div class="container">
