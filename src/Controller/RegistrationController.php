@@ -18,10 +18,20 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class RegistrationController extends AbstractController
 {
+
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/registration", name="app_register")
      */
-    public function register(
+    public function registerChoice(): Response
+    {
+        return $this->render('registration/registerChoice.html.twig', [
+        ]);
+    }
+
+    /**
+     * @Route("/professional/register", name="app_register_professional")
+     */
+    public function registerProfessional(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
         UserAuthenticatorInterface $userAuthenticator,
@@ -69,6 +79,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+            $user->setProfessional(true);
             $user->setUpdatedAt(new \DateTimeImmutable());
             $user->setRoles((array)['ROLE_USER']);
 
@@ -85,7 +96,81 @@ class RegistrationController extends AbstractController
 
         }
 
-        return $this->render('registration/register.html.twig', [
+        return $this->render('registration/registerProfessional.html.twig', [
+            'registrationForm' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/particular/register", name="app_register_particular")
+     */
+    public function registerParticular(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        UserAuthenticatorInterface $userAuthenticator,
+        AppAuthenticator $authenticator,
+        EntityManagerInterface $entityManager,
+        SluggerInterface $slugger
+    ): Response
+    {
+        $user = new User();
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            /** @var UploadedFile $file */
+            $file = $form->get('file')->getData();
+            if ($file)
+            {
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $file->move(
+                        $this->getParameter('file_user_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $user->setFile($newFilename);
+            }
+
+
+
+            // encode the plain password
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+            $user->setProfessional(false);
+            $user->setCompany('N/A');
+            $user->setUpdatedAt(new \DateTimeImmutable());
+            $user->setRoles((array)['ROLE_USER']);
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+
+            return $userAuthenticator->authenticateUser(
+                $user,
+                $authenticator,
+                $request
+            );
+
+
+        }
+
+        return $this->render('registration/registerParticular.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }

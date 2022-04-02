@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register Particular{% endblock %}
+
+{% block body %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div>
+                <div class="text-{{ label }} border border-{{ label }} text-center rounded flash-{{ label }}">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+
+
+    <section class="my-5"
+    >
+        <div class="mask d-flex align-items-center">
+            <div class="container h-100">
+                <div
+                        class="row d-flex justify-content-center align-items-center"
+                >
+                    <div class="col-12">
+                        <div class="card rounded-0">
+                            <div class="card-body p-5">
+                                <h1 class="display-5 text-uppercase text-center mb-5">
+                                    {% trans %}Create an particular account{% endtrans%}
+                                </h1>
+
+                                {{ form_start(registrationForm) }}
+
+                                <div class="row">
+                                    <div class="col-md-6 offset-md-3">
+                                        {{ form_row(registrationForm.email) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{ form_row(registrationForm.lastname) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form_row(registrationForm.firstname) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{ form_row(registrationForm.plainPassword.first) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form_row(registrationForm.plainPassword.second) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        {{ form_row(registrationForm.agreeTerms) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div>
+                                        {{ form_row(registrationForm.file) }}
+                                    </div>
+                                </div>
+                                <div>
+                                    {{ form_row(registrationForm._token) }}
+                                </div>
+                                <button type="submit" class="container text-center btn btn-primary rounded-0 text-uppercase">{% trans %}Register{% endtrans%}
+                                </button>
+
+                                {{ form_end(registrationForm, {render_rest: false}) }}
+                                <div class="text-center mt-4">
+                                    <img src="{{ asset('build/img/logo/logo.jpg') }}" alt="logo" height="50" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -56,7 +56,8 @@ class AppFixtures extends Fixture
             ->setAddress($address)
             ->setRoles(['ROLE_ADMIN'])
             ->setFile('adriaticXS.jpg')
-            ->setUpdatedAt(new \DateTimeImmutable());
+            ->setUpdatedAt(new \DateTimeImmutable())
+            ->setProfessional(false);
 
         $password = $this->encoder->encodePassword($admin, 'password');
         $admin->setPassword($password);
@@ -73,7 +74,8 @@ class AppFixtures extends Fixture
             ->setAddress($address)
             ->setRoles(['ROLE_USER'])
             ->setFile('adriaticXS.jpg')
-            ->setUpdatedAt(new \DateTimeImmutable());
+            ->setUpdatedAt(new \DateTimeImmutable())
+            ->setProfessional(true);
 
         $password = $this->encoder->encodePassword($user1, 'password');
         $user1->setPassword($password);
@@ -91,7 +93,8 @@ class AppFixtures extends Fixture
             ->setAddress($address)
             ->setRoles(['ROLE_USER'])
             ->setFile('adriaticXS.jpg')
-            ->setUpdatedAt(new \DateTimeImmutable());
+            ->setUpdatedAt(new \DateTimeImmutable())
+            ->setProfessional(true);
 
         $password = $this->encoder->encodePassword($user2, 'password');
         $user2->setPassword($password);
@@ -250,7 +253,8 @@ class AppFixtures extends Fixture
                     ->setAddress($address)
                     ->setRoles(['ROLE_USER'])
                     ->setFile('adriatic.jpg')
-                   ->setUpdatedAt(new \DateTimeImmutable());
+                    ->setUpdatedAt(new \DateTimeImmutable())
+                    ->setProfessional(true);
 
             $password = $this->encoder->encodePassword($user, 'password');
             $user->setPassword($password);

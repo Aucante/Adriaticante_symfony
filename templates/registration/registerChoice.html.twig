@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register Particular{% endblock %}
+
+{% block body %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div>
+                <div class="text-{{ label }} border border-{{ label }} text-center rounded flash-{{ label }}">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+
+
+    <section class="my-5"
+    >
+        <div class="mask d-flex align-items-center">
+            <div class="container h-100">
+                <div
+                        class="row d-flex justify-content-center align-items-center"
+                >
+                    <div class="col-12">
+                        <div class="card rounded-0">
+                            <div class="card-body p-5">
+                                <h1 class="display-5 text-uppercase text-center mb-5">
+                                    {% trans %}Create an account{% endtrans%}
+                                </h1>
+                                <div class="container py-5">
+                                    <div class="row">
+                                        <div class="col-5"><a href="{{ path('app_register_particular') }}"><button class="btn btn-secondary btn-lg rounded-0 container text-uppercase py-5">Particular</button></a></div>
+                                        <div class="col-5 offset-2"><a href="{{ path('app_register_professional') }}"><button class="btn btn-primary btn-lg rounded-0 container text-uppercase py-5">Professional</button></a></div>
+                                    </div>
+                                </div>
+                                <div class="text-center my-4">
+                                    <img src="{{ asset('build/img/logo/logo.jpg') }}" alt="logo" height="50" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

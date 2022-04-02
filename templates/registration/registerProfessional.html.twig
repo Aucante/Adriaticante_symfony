@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register Professional{% endblock %}
 
 {% block body %}
     {% for label, messages in app.flashes %}
@@ -25,9 +25,9 @@
                     <div class="col-12">
                         <div class="card rounded-0">
                             <div class="card-body p-5">
-                                <h2 class="text-uppercase text-center mb-5">
-                                    {% trans %}Create an account{% endtrans%}
-                                </h2>
+                                <h1 class="display-5 text-uppercase text-center mb-5">
+                                    {% trans %}Create an professional account{% endtrans%}
+                                </h1>
 
                                 {{ form_start(registrationForm) }}
 
@@ -37,7 +37,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 offset-md-3">
                                         {{ form_row(registrationForm.email) }}
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
 
                                 {{ form_end(registrationForm) }}
                                 <div class="text-center mt-4">
-                                    <img src="{{ asset('img/logo/adriaticante.png') }}" alt="logo" height="50" />
+                                    <img src="{{ asset('build/img/logo/logo.jpg') }}" alt="logo" height="50" />
                                 </div>
                             </div>
                         </div>
