@@ -111,6 +111,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $received;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $professional;
+
 
     
 
@@ -429,6 +434,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $received->setRecipient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProfessional(): ?bool
+    {
+        return $this->professional;
+    }
+
+    public function setProfessional(bool $professional): self
+    {
+        $this->professional = $professional;
 
         return $this;
     }
