@@ -123,15 +123,15 @@
             <!-- Address Type -->
             <trans-unit id="AOsuIII" resname="address.street_number.label">
                 <source>address.street_number.label</source>
-                <target>Street_number</target>
+                <target>Street number</target>
             </trans-unit>
             <trans-unit id="BOsuIIW" resname="address.street_address_line_1.label">
                 <source>address.street_address_line_1.label</source>
-                <target>Street_address_line_1</target>
+                <target>Street address line 1</target>
             </trans-unit>
             <trans-unit id="COsuIIs" resname="address.street_address_line_2.label">
                 <source>address.street_address_line_2.label</source>
-                <target>Street_address_line_2</target>
+                <target>Street address line 2</target>
             </trans-unit>
             <trans-unit id="DOsuIIY" resname="address.city.label">
                 <source>address.city.label</source>

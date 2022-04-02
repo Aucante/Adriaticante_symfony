@@ -153,9 +153,10 @@ class RegistrationController extends AbstractController
                 )
             );
             $user->setProfessional(false);
-            $user->setCompany('N/A');
+            $user->setCompany('N/A'. ' ' . uniqid());
             $user->setUpdatedAt(new \DateTimeImmutable());
             $user->setRoles((array)['ROLE_USER']);
+            dump($user);
 
             $entityManager->persist($user);
             $entityManager->flush();
