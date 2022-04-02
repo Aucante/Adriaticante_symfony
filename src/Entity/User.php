@@ -29,8 +29,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
-     * @var string
-     * @Gedmo\Slug(fields={"company"})
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $username;
@@ -67,7 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $company;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Address::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Address::class, inversedBy="users", cascade={"persist"})
      */
     private $address;
 

@@ -23,50 +23,103 @@
                         class="row d-flex justify-content-center align-items-center"
                 >
                     <div class="col-12">
-                        <div class="card rounded-0">
+                        <div class="rounded-0">
                             <div class="card-body p-5">
-                                <h1 class="display-5 text-uppercase text-center mb-5">
+                                <h1 class="display-5 text-uppercase text-center pb-5 border-bottom">
                                     {% trans %}Create an particular account{% endtrans%}
                                 </h1>
 
                                 {{ form_start(registrationForm) }}
 
-                                <div class="row">
-                                    <div class="col-md-6 offset-md-3">
-                                        {{ form_row(registrationForm.email) }}
+
+                                <div>
+                                    <h2 class="display-6 text-uppercase text-center py-5 border-bottom">
+                                        {% trans %}Personal details{% endtrans%}
+                                    </h2>
+                                    <div class="row">
+                                        <div class="col-md-6 offset-md-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.email) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 offset-md-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.username) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-xl-3 offset-xl-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.lastname) }}</div>
+                                        </div>
+                                        <div class="col-md-6 col-xl-3  display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.firstname) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-xl-3 offset-xl-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.plainPassword.first) }}</div>
+                                        </div>
+                                        <div class="col-md-6 col-xl-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.plainPassword.second) }}</div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        {{ form_row(registrationForm.lastname) }}
+
+                                <div>
+                                    <h2 class="display-6 text-uppercase text-center py-5 border-bottom">
+                                        {% trans %}Address{% endtrans%}
+                                    </h2>
+                                    <div class="row">
+                                        <div class="col-md-6 col-xl-3 offset-xl-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.address.street_number) }}</div>
+                                        </div>
+                                        <div class="col-md-6 col-xl-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.address.street_address_line_1) }}</div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        {{ form_row(registrationForm.firstname) }}
+                                    <div class="row">
+                                        <div class="col-md-6 col-xl-3 offset-xl-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.address.street_address_line_2) }}</div>
+                                        </div>
+                                        <div class="col-md-6 col-xl-3  display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.address.city) }}</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        {{ form_row(registrationForm.plainPassword.first) }}
+                                    <div class="row">
+                                        <div class="col-md-6 col-xl-3 offset-xl-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.address.state_zip_code) }}</div>
+                                        </div>
+                                        <div class="col-md-6 col-xl-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.address.country) }}</div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        {{ form_row(registrationForm.plainPassword.second) }}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div>
-                                        {{ form_row(registrationForm.agreeTerms) }}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div>
-                                        {{ form_row(registrationForm.file) }}
+                                    <div class="row">
+                                        <div class="col-md-6 col-xl-3 offset-xl-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.address.county) }}</div>
+                                        </div>
+                                        <div class="col-md-6 col-xl-3 display-6 text-uppercase fs-6 py-4 my-1">
+                                            <div>{{ form_row(registrationForm.address.phone) }}</div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div>
-                                    {{ form_row(registrationForm._token) }}
+                                    <div class="row">
+                                        <div class="col-md-6 offset-md-3">
+                                            {{ form_row(registrationForm.file) }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 offset-md-3">
+                                            {{ form_row(registrationForm.agreeTerms) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 offset-md-3">
+                                        {{ form_row(registrationForm._token) }}
+                                    </div>
                                 </div>
-                                <button type="submit" class="container text-center btn btn-primary rounded-0 text-uppercase">{% trans %}Register{% endtrans%}
-                                </button>
+                                <div class="col-md-6 offset-md-3 my-4">
+                                    <button type="submit" class="container text-center btn btn-primary rounded-0 text-uppercase">{% trans %}Register{% endtrans%}
+                                    </button>
+                                </div>
 
                                 {{ form_end(registrationForm, {render_rest: false}) }}
                                 <div class="text-center mt-4">

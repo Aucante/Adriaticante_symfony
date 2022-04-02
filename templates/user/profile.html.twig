@@ -17,11 +17,13 @@
             <div class="text-center my-4">
                 <h2 class="display-5">{% trans %}Identity{% endtrans%}</h2>
             </div>
+            {% if user.professional %}
             <div class="row my-1">
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}Company{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{{ user.company }}</div>
             </div>
+            {% endif %}
             <div class="row my-1">
                 <div class="col-5 display-6 fs-5 border py-4 my-1">{% trans %}Username{% endtrans%}</div>
                 <div class="col-2 display-6 fs-4 py-4 my-1">:</div>
