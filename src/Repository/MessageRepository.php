@@ -74,4 +74,19 @@ class MessageRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+
+    public function updateRecipientMessageNotRead($thread, $recipient): int
+    {
+        return $this->createQueryBuilder('m')
+            ->update()
+            ->set('m.isRead', 1)
+            ->andWhere('m.recipient = :recipient')
+            ->andWhere('m.isRead = 0')
+            ->andWhere('m.thread = :thread')
+            ->setParameter('recipient', $recipient)
+            ->setParameter('thread', $thread)
+            ->getQuery()
+            ->getResult();
+    }
 }

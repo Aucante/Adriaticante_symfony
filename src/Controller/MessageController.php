@@ -64,12 +64,10 @@ class MessageController extends AbstractController
     ): Response
     {
         $user = $this->getUser();
-        $messages = $thread->getMessages();
 
-        foreach ($messages as $message)
-        {
-            $message->setIsRead(true);
-        }
+        $messageRepository->updateRecipientMessageNotRead($thread, $user);
+
+        $messages = $thread->getMessages();
 
         if ($this->getUser() === $thread->getSender())
         {
