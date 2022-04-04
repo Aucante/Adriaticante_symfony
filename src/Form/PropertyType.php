@@ -127,6 +127,9 @@ class PropertyType extends AbstractType
                 'required' => false,
                 'class' => Feature::class,
                 'multiple' => true,
+                'attr' => [
+                    'data-controller' => 'select2'
+                ]
             ])
             ->add('captcha', CaptchaType::class, [
                 'label' => false,
