@@ -208,8 +208,10 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'class' => Feature::class,
-                'expanded' => true,
                 'multiple' => true,
+                'attr' => [
+                    'data-controller' => 'select2'
+                ]
             ])
         ;
     }
