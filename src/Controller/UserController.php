@@ -3,12 +3,16 @@
 namespace App\Controller;
 
 use App\Form\ProfileType;
+use App\Service\ManagePictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class UserController extends AbstractController
 {
@@ -33,7 +37,9 @@ class UserController extends AbstractController
      */
     public function profileUpdate(
         Request $request,
-        EntityManagerInterface $entityManager): Response
+        EntityManagerInterface $entityManager,
+        ManagePictureService $managePictureService
+    ): Response
     {
         $user = $this->getUser();
 
@@ -42,7 +48,13 @@ class UserController extends AbstractController
 
         if ($profileForm->isSubmitted() && $profileForm->isValid())
         {
-            $entityManager->persist($user);
+            /** @var UploadedFile $file */
+            $file = $profileForm->get('file')->getData();
+            if ($file) {
+                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $managePictureService->addImageUser($originalFilename, $file, $user);
+            }
             $entityManager->flush();
 
             $this->addFlash('success', 'The profile was updated.');
