@@ -17,6 +17,7 @@ use App\Repository\PropertyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\File;
@@ -194,6 +195,13 @@ class PropertiesController extends AbstractController
     {
         $entityManager->remove($property);
         $entityManager->flush();
+        $filesToDelete = $property->getImages();
+        $fileSystem = new Filesystem();
+        foreach ($filesToDelete as $file)
+        {
+            $path = $this->getParameter('file_property_directory').$file->getName();
+            $fileSystem->remove($path);
+        }
         $this->addFlash('success', 'Real estate deleted.');
         return $this->redirectToRoute('user_properties');
     }

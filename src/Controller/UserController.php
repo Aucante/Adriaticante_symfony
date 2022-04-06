@@ -6,6 +6,7 @@ use App\Form\ProfileType;
 use App\Service\ManagePictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -51,8 +52,12 @@ class UserController extends AbstractController
             /** @var UploadedFile $file */
             $file = $profileForm->get('file')->getData();
             if ($file) {
+                $fileToDelete = $user->getFile();
+                $fileSystem = new Filesystem();
+                $path = $this->getParameter('file_user_directory').$fileToDelete;
+                $fileSystem->remove($path);
+
                 $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
                 $managePictureService->addImageUser($originalFilename, $file, $user);
             }
             $entityManager->flush();
