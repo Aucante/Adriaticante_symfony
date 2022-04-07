@@ -20,14 +20,17 @@ class MessageController extends AbstractController
      * @Route("/messages", name="messages")
      */
     public function index(
-        MessageRepository $messageRepository
+        MessageRepository $messageRepository,
+        ThreadRepository $threadRepository
     ): Response
     {
         $user = $this->getUser();
         $messagesNotRead = $messageRepository->findSenderThreadNotRead($user);
+        $threads = $threadRepository->findThreadNotRead($user);
 
         return $this->render('message/index.html.twig', [
-            'messageNotRead' => $messagesNotRead
+            'messageNotRead' => $messagesNotRead,
+            'threads' => $threads
         ]);
     }
 

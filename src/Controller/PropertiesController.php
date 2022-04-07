@@ -14,6 +14,7 @@ use App\Form\PropertySearchType;
 use App\Form\PropertyType;
 use App\Notification\ContactNotification;
 use App\Repository\PropertyRepository;
+use App\Repository\ThreadRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -142,7 +143,8 @@ class PropertiesController extends AbstractController
         Request $request,
         Property $property,
         TranslatorInterface $translator,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        ThreadRepository $threadRepository
     ): Response
     {
         $price = $property->getPrice();
@@ -159,18 +161,28 @@ class PropertiesController extends AbstractController
         if ($messageForm->isSubmitted() && $messageForm->isValid())
         {
             $title = 'Message for ' . $property->getSlug() . ' from ' . $sender->getUsername();
+            $thread = $threadRepository->findThreadWithTheseSenderAndRecipient($sender, $property->getId());
 
-            $thread = new Thread();
-            $thread->setTitle($title);
-            $thread->setSender($sender);
-            $thread->setProperty($property);
+            if ($thread !== null)
+            {
+                $message->setThread($thread);
+                $message->setSender($sender);
+                $message->setRecipient($recipient);
 
-            $message->setThread($thread);
-            $message->setSender($sender);
-            $message->setRecipient($recipient);
+                $entityManager->persist($message);
+            }else{
+                $thread = new Thread();
+                $thread->setTitle($title);
+                $thread->setSender($sender);
+                $thread->setProperty($property);
 
-            $entityManager->persist($thread);
-            $entityManager->persist($message);
+                $message->setThread($thread);
+                $message->setSender($sender);
+                $message->setRecipient($recipient);
+
+                $entityManager->persist($thread);
+                $entityManager->persist($message);
+            }
             $entityManager->flush();
            // $contactNotification->notifyPropertyPage($contact, $user);
             $messageFlash = $translator->trans('Message has been sent successfully.');

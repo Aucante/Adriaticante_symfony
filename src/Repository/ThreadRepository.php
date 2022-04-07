@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Thread;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -56,6 +57,39 @@ class ThreadRepository extends ServiceEntityRepository
             ->orderBy('t.id', 'DESC')
             ->andWhere('p.user = :user')
             ->orWhere('t.sender = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Thread|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findThreadWithTheseSenderAndRecipient(User $sender, int $idProperty): ?Thread
+    {
+        return $this->createQueryBuilder('t')
+            ->innerJoin('t.property', 'p')
+            ->where('t.sender = :sender')
+            ->andWhere('p.id = :idProperty')
+            ->setParameter('sender', $sender)
+            ->setParameter('idProperty', $idProperty)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    /**
+     * @return Thread[]
+     */
+    public function findThreadNotRead($user): array
+    {
+        return $this->createQueryBuilder('t')
+            ->innerJoin('t.property', 'p')
+            ->innerJoin('t.messages', 'm')
+            ->orderBy('t.id', 'DESC')
+            ->andWhere('t.sender = :user')
+            ->orWhere('p.user = :user')
+            ->andWhere('m.isRead = 0')
             ->setParameter('user', $user)
             ->getQuery()
             ->getResult();
