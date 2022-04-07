@@ -8,7 +8,7 @@
             <h1 class="display-3">{% trans %}Messages{% endtrans%}</h1>
         </div>
         <div class="text-center my-5">
-            <h2 class="display-6">{% trans %}You have{% endtrans%} {{ messageNotRead|length }} {% trans %}message{% endtrans %}{% if messageNotRead|length > 1 %}s{% endif %}.</h2>
+            <h2 class="display-6">{% trans %}You have{% endtrans%} {{ threads|length }} {% trans %}message{% endtrans %}{% if threads|length > 1 %}s{% endif %}.</h2>
         </div>
         <div class="text-center my-4">
             <a class="btn btn-primary text-uppercase rounded-0 shadow-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -16,20 +16,20 @@
             </a>
         </div>
 
-        {% for message in messageNotRead %}
+        {% for thread in threads %}
         <div class="row border-bottom">
             <div class="col-lg-10 offset-lg-1">
-                <a href="{{ path('messages_thread', {'title': message.thread.title}) }}">
+                <a href="{{ path('messages_thread', {'title': thread.title}) }}">
                     <div class="card my-3">
                         <div class="row g-0">
                             <div class="col-4">
-                                <img src="{{ asset('uploads/property/' ~ message.thread.property.images.last) }}" class="img-fluid rounded-start" alt="{{ message.thread.property.images.last }}">
+                                <img src="{{ asset('uploads/property/' ~ thread.property.images.last) }}" class="img-fluid rounded-start" alt="{{ thread.property.images.last }}">
                             </div>
                             <div class="col-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ message.thread.property.name }}</h5>
-                                    <p class="card-text">{{ message.thread.property.description|u.truncate(100, ' ...') }}</p>
-                                    <p class="card-text"><small class="text-muted">{{ message.createdAt.format('d/m/Y') }}</small></p>
+                                    <h5 class="card-title">{{ thread.property.name }}</h5>
+                                    <p class="card-text">{{ thread.property.description|u.truncate(100, ' ...') }}</p>
+                                    <p class="card-text"><small class="text-muted">{{ thread.messages.last.createdAt.format('d/m/Y') }}</small></p>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                     <a href="{{ path('messages') }}">
                         <li class="list-group-item list-group-item-action active d-flex justify-content-between align-items-center">
                             {% trans %}Home{% endtrans %}
-                            {% if messageNotRead|length > 0 %}
+                            {% if threads|length > 0 %}
                                 <span class="badge bg-secondary text-primary ms-1"><i class="fa-regular fa-bell"></i></span>
                             {% endif %}
                         </li>
@@ -58,8 +58,8 @@
                     <a href="#">
                         <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                             {% trans %}Inbox{% endtrans %}
-                            {% if messageNotRead|length > 0 %}
-                                <span class="badge bg-secondary rounded-3 text-primary">{{ messageNotRead|length }}</span>
+                            {% if threads|length > 0 %}
+                                <span class="badge bg-secondary rounded-3 text-primary">{{ threads|length }}</span>
                             {% endif %}
                         </li>
                     </a>

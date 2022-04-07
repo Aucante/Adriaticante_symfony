@@ -92,6 +92,7 @@
                     </div>
                 </div>
             </div>
+            {% if is_granted('ROLE_USER') and app.user is not same as property.user %}
             <div class="my-4">
                 <button onclick="toggle()" class="btn btn-primary rounded-0 shadow-none">CONTACT</button>
             </div>
@@ -132,6 +133,7 @@
 
                 {% endif %}
             </div>
+            {% endif %}
 
 
             <div class="my-5">
