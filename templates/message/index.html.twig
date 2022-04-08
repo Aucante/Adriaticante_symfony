@@ -8,7 +8,7 @@
             <h1 class="display-3">{% trans %}All Messages{% endtrans%}</h1>
         </div>
         <div class="text-center my-5">
-            <h2 class="display-6">{% trans %}You have{% endtrans%} {{ threads|length }} {% trans %}message{% endtrans %}{% if threads|length > 1 %}s{% endif %} not read.</h2>
+            <h2 class="display-6">{% trans %}You have{% endtrans%} {{ threads[1]|length }} {% trans %}message{% endtrans %}{% if threads[1]|length > 1 %}s{% endif %} not read.</h2>
         </div>
         <div class="text-center my-4">
             <a class="btn btn-primary text-uppercase rounded-0 shadow-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
