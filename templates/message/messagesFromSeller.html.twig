@@ -17,6 +17,9 @@
         </div>
 
         {% for thread in threads %}
+            {% set date = thread[2] %}
+            {% set countMessages = thread[1] %}
+            {% set thread = thread[0] %}
             <div class="row border-bottom">
                 <div class="col-lg-10 offset-lg-1">
                     <a href="{{ path('messages_thread', {'title': thread.title}) }}">
@@ -28,11 +31,11 @@
                                 <div class="col-8">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ thread.property.name }}</h5>
-                                        <p>ID : {{ thread.id }}</p>
+                                        <p>ID : {{ thread.id }}, Message read : {% if countMessages == 0 %}yes{% else %}no{% endif %}</p>
                                         <p>Purchaser : {{ thread.sender.username }}</p>
                                         <p>Owner : {{  thread.property.user.username }}</p>
                                         <p class="card-text">{{ thread.property.description|u.truncate(100, ' ...') }}</p>
-                                        <p class="card-text"><small class="text-muted">{{ thread.messages.last.createdAt.format('d/m/Y') }}</small></p>
+                                        <p class="card-text"><small class="text-muted">{{ date }}</small></p>
                                     </div>
                                 </div>
                             </div>
