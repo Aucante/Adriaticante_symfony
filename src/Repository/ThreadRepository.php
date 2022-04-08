@@ -23,7 +23,7 @@ class ThreadRepository extends ServiceEntityRepository
     /**
      * @return Thread[]
      */
-    public function findSenderThread($sender): array
+    public function findThreadAsSender(User $sender): array
     {
         return $this->createQueryBuilder('t')
             ->orderBy('t.id', 'DESC')
@@ -37,11 +37,12 @@ class ThreadRepository extends ServiceEntityRepository
     /**
      * @return Thread[]
      */
-    public function findRecipientThread($recipient): array
+    public function findThreadAsRecipient(User $recipient): array
     {
         return $this->createQueryBuilder('t')
+            ->innerJoin('t.property', 'p')
             ->orderBy('t.id', 'DESC')
-            ->andWhere('t.recipient = :recipient')
+            ->andWhere('p.user = :recipient')
             ->setParameter('recipient', $recipient)
             ->getQuery()
             ->getResult();
@@ -63,22 +64,6 @@ class ThreadRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Thread|null
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     */
-    public function findThreadWithTheseSenderAndRecipient(User $sender, int $idProperty): ?Thread
-    {
-        return $this->createQueryBuilder('t')
-            ->innerJoin('t.property', 'p')
-            ->where('t.sender = :sender')
-            ->andWhere('p.id = :idProperty')
-            ->setParameter('sender', $sender)
-            ->setParameter('idProperty', $idProperty)
-            ->getQuery()
-            ->getOneOrNullResult();
-    }
-
-    /**
      * @return Thread[]
      */
     public function findThreadNotRead($user): array
@@ -94,5 +79,22 @@ class ThreadRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @return Thread|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findThreadWithTheseSenderAndRecipient(User $sender, int $idProperty): ?Thread
+    {
+        return $this->createQueryBuilder('t')
+            ->innerJoin('t.property', 'p')
+            ->where('t.sender = :sender')
+            ->andWhere('p.id = :idProperty')
+            ->setParameter('sender', $sender)
+            ->setParameter('idProperty', $idProperty)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 
 }

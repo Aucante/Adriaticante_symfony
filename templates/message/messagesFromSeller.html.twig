@@ -5,10 +5,10 @@
 {% block body %}
     <div class="container my-4">
         <div class="text-center my-5 border-bottom">
-            <h1 class="display-3">{% trans %}All Messages{% endtrans%}</h1>
+            <h1 class="display-3">{% trans %}Messages from seller{% endtrans%}</h1>
         </div>
         <div class="text-center my-5">
-            <h2 class="display-6">{% trans %}You have{% endtrans%} {{ threads|length }} {% trans %}message{% endtrans %}{% if threads|length > 1 %}s{% endif %} not read.</h2>
+            <h2 class="display-6">{% trans %}You have{% endtrans%} {{ threads|length }} {% trans %}message{% endtrans %}{% if threads|length > 1 %}s{% endif %}.</h2>
         </div>
         <div class="text-center my-4">
             <a class="btn btn-primary text-uppercase rounded-0 shadow-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
@@ -17,29 +17,29 @@
         </div>
 
         {% for thread in threads %}
-        <div class="row border-bottom">
-            <div class="col-lg-10 offset-lg-1">
-                <a href="{{ path('messages_thread', {'title': thread.title}) }}">
-                    <div class="card my-3">
-                        <div class="row g-0">
-                            <div class="col-4">
-                                <img src="{{ asset('uploads/property/' ~ thread.property.images.last) }}" class="img-fluid rounded-start" alt="{{ thread.property.images.last }}">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ thread.property.name }}</h5>
-                                    <p>ID : {{ thread.id }}, Message read : {% if thread.messages.last.isRead %}yes{% else %}no{% endif %}</p>
-                                    <p>Purchaser : {{ thread.sender.username }}</p>
-                                    <p>Owner : {{  thread.property.user.username }}</p>
-                                    <p class="card-text">{{ thread.property.description|u.truncate(100, ' ...') }}</p>
-                                    <p class="card-text"><small class="text-muted">{{ thread.messages.last.createdAt.format('d/m/Y') }}</small></p>
+            <div class="row border-bottom">
+                <div class="col-lg-10 offset-lg-1">
+                    <a href="{{ path('messages_thread', {'title': thread.title}) }}">
+                        <div class="card my-3">
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <img src="{{ asset('uploads/property/' ~ thread.property.images.last) }}" class="img-fluid rounded-start" alt="{{ thread.property.images.last }}">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ thread.property.name }}</h5>
+                                        <p>ID : {{ thread.id }}</p>
+                                        <p>Purchaser : {{ thread.sender.username }}</p>
+                                        <p>Owner : {{  thread.property.user.username }}</p>
+                                        <p class="card-text">{{ thread.property.description|u.truncate(100, ' ...') }}</p>
+                                        <p class="card-text"><small class="text-muted">{{ thread.messages.last.createdAt.format('d/m/Y') }}</small></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
-        </div>
         {% endfor %}
 
 
