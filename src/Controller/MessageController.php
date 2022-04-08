@@ -20,39 +20,47 @@ class MessageController extends AbstractController
      * @Route("/messages", name="messages")
      */
     public function index(
-        MessageRepository $messageRepository,
         ThreadRepository $threadRepository
     ): Response
     {
         $user = $this->getUser();
-        $messagesNotRead = $messageRepository->findSenderThreadNotRead($user);
-        $threads = $threadRepository->findThreadNotRead($user);
+        $threads = $threadRepository->findSenderAndRecipientThread($user);
 
         return $this->render('message/index.html.twig', [
-            'messageNotRead' => $messagesNotRead,
             'threads' => $threads
         ]);
     }
 
     /**
-     * @Route("/threads", name="thread")
+     * @Route("/messages/from-seller", name="messages_from_seller")
      */
-    public function sent(
-        ThreadRepository $threadRepository,
-        MessageRepository $messageRepository
+    public function threadOnlyFromSeller(
+        ThreadRepository $threadRepository
     ): Response
     {
         $user = $this->getUser();
+        $threads = $threadRepository->findThreadAsSender($user);
 
-        $messagesNotRead = $messageRepository->findSenderThreadNotRead($user);
-
-        $threads = $threadRepository->findSenderAndRecipientThread($user);
-
-        return $this->render('message/sent.html.twig', [
-            'threads' => $threads,
-            'messageNotRead' => $messagesNotRead
+        return $this->render('message/messagesFromSeller.html.twig', [
+            'threads' => $threads
         ]);
     }
+
+    /**
+     * @Route("/messages/from-purchaser", name="messages_from_purchaser")
+     */
+    public function threadOnlyFromPurchaser(
+        ThreadRepository $threadRepository
+    ): Response
+    {
+        $user = $this->getUser();
+        $threads = $threadRepository->findThreadAsRecipient($user);
+
+        return $this->render('message/messagesFromPurchaser.html.twig', [
+            'threads' => $threads
+        ]);
+    }
+
 
 
     /**
