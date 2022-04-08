@@ -26,7 +26,15 @@ class ThreadRepository extends ServiceEntityRepository
     public function findThreadAsSender(User $sender): array
     {
         return $this->createQueryBuilder('t')
-            ->orderBy('t.id', 'DESC')
+            ->innerJoin('t.property', 'p')
+            // Recuperate messages not read
+            ->leftJoin('t.messages', 'm', 'WITH', 'm.isRead = 0 AND m.recipient = :sender')
+            ->leftJoin('t.messages', 'm2')
+            ->addSelect('case when COUNT(m) > 0 then 1 else 0 end')
+            ->addSelect('MAX(m2.createdAt)')
+            ->groupBy('t')
+            ->addOrderBy('case when COUNT(m) > 0 then 1 else 0 end', 'DESC')
+            ->addOrderBy('MAX(m2.createdAt)', 'DESC')
             ->andWhere('t.sender = :sender')
             ->setParameter('sender', $sender)
             ->getQuery()
@@ -41,7 +49,14 @@ class ThreadRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('t')
             ->innerJoin('t.property', 'p')
-            ->orderBy('t.id', 'DESC')
+            // Recuperate messages not read
+            ->leftJoin('t.messages', 'm', 'WITH', 'm.isRead = 0 AND m.recipient = :recipient')
+            ->leftJoin('t.messages', 'm2')
+            ->addSelect('case when COUNT(m) > 0 then 1 else 0 end')
+            ->addSelect('MAX(m2.createdAt)')
+            ->groupBy('t')
+            ->addOrderBy('case when COUNT(m) > 0 then 1 else 0 end', 'DESC')
+            ->addOrderBy('MAX(m2.createdAt)', 'DESC')
             ->andWhere('p.user = :recipient')
             ->setParameter('recipient', $recipient)
             ->getQuery()
@@ -55,7 +70,14 @@ class ThreadRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('t')
             ->innerJoin('t.property', 'p')
-            ->orderBy('t.id', 'DESC')
+            // Recuperate messages not read
+            ->leftJoin('t.messages', 'm', 'WITH', 'm.isRead = 0 AND m.recipient = :user')
+            ->leftJoin('t.messages', 'm2')
+            ->addSelect('case when COUNT(m) > 0 then 1 else 0 end')
+            ->addSelect('MAX(m2.createdAt)')
+            ->groupBy('t')
+            ->addOrderBy('case when COUNT(m) > 0 then 1 else 0 end', 'DESC')
+            ->addOrderBy('MAX(m2.createdAt)', 'DESC')
             ->andWhere('p.user = :user')
             ->orWhere('t.sender = :user')
             ->setParameter('user', $user)
