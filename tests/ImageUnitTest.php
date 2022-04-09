@@ -6,7 +6,7 @@ use App\Entity\Image;
 use App\Entity\Property;
 use PHPUnit\Framework\TestCase;
 
-class FileUnitTest extends TestCase
+class ImageUnitTest extends TestCase
 {
     public function testIsTrue()
     {
