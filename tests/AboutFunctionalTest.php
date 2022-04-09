@@ -13,7 +13,7 @@ class AboutFunctionalTest extends WebTestCase
         $crawler = $client->request('GET', '/about');
 
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        $this->assertSelectorTextContains('h1', 'ABOUT US');
-        $this->assertSelectorTextContains('h2', 'OUR HERITAGE');
+        $this->assertSelectorTextContains('h1', 'About us');
+        $this->assertSelectorTextContains('h2', 'Our heritage');
     }
 }

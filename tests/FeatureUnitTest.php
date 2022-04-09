@@ -14,9 +14,7 @@ class FeatureUnitTest extends TestCase
 
         $feature->setName('true');
 
-
         $this->assertTrue($feature->getName() === 'true');
-
     }
 
     public function testIsFalse()
@@ -26,7 +24,6 @@ class FeatureUnitTest extends TestCase
         $feature->setName('true');
 
         $this->assertFalse($feature->getName() === 'false');
-
     }
 
     public function testIsEmpty()
@@ -35,7 +32,7 @@ class FeatureUnitTest extends TestCase
 
         $this->assertEmpty($feature->getName());
         $this->assertEmpty($feature->getId());
-
+        $this->assertEmpty($feature->getProperty());
     }
 
     public function testAddGetRemoveProperty()
@@ -50,7 +47,6 @@ class FeatureUnitTest extends TestCase
 
         $feature->removeProperty($property);
         $this->assertEmpty($feature->getProperty());
-
     }
 
 }
