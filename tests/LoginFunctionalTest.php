@@ -16,20 +16,19 @@ class LoginFunctionalTest extends WebTestCase
         $this->assertSelectorTextContains('h1', 'SIGN IN');
     }
 
-    /*
+
 
     public function testVisitingWhileLoggedIn(): void
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/login');
 
-        $buttonCrawlerNode = $crawler->selectButton('SIGN IN');
+        $buttonCrawlerNode = $crawler->selectButton('Sign In');
 
         $form = $buttonCrawlerNode->form([
             'username' => 'testusername',
             'password' => 'password'
         ]);
-        dump($form);
 
         $client->submit($form);
 
@@ -37,8 +36,4 @@ class LoginFunctionalTest extends WebTestCase
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertSelectorTextContains('', 'You are logged in as testusername');
     }
-
-
-     */
-
 }

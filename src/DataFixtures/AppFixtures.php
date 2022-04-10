@@ -102,24 +102,31 @@ class AppFixtures extends Fixture
         $manager->persist($user2);
         // CITY
 
-        $city = new City();
+        $city1 = new City();
 
-        $city->setName($faker->name())
-            ->setLatitude($faker->latitude())
-            ->setLongitude($faker->longitude());
+        $city1->setName('Trieste')
+            ->setLatitude(42.430000)
+            ->setLongitude(18.700000);
+
+        $city2 = new City();
+
+        $city2->setName('Ljubljana')
+            ->setLatitude(46.056946)
+            ->setLongitude(14.505751);
 
         // COUNTRY
 
-        $country = new Country();
+        $country1 = new Country();
 
-        $country->setName('Croatia')
-                ->addCity($city);
+        $country1->setName('Italy')
+                ->addCity($city1);
 
         $country2 = new Country();
 
-        $country2->setName('Slovenia');
+        $country2->setName('Slovenia')
+            ->addCity($city2);
 
-        $manager->persist($country);
+        $manager->persist($country1);
         $manager->persist($country2);
 
         // PROPERTY
@@ -127,21 +134,21 @@ class AppFixtures extends Fixture
         $property1 = new Property();
 
         $property1->setPrice($faker->numberBetween(40000, 10000000))
-            ->setDescription('testproperty')
-            ->setArea($faker->numberBetween(10, 500))
-            ->setType($faker->word())
-            ->setStatus($faker->word())
-            ->setTotalRooms($faker->numberBetween(1, 10))
-            ->setTotalBedrooms($faker->numberBetween(0, 8))
-            ->setTotalBathrooms($faker->numberBetween(1, 4))
+            ->setDescription('testproperty1')
+            ->setArea(50)
+            ->setType('flat')
+            ->setStatus('status')
+            ->setTotalRooms(4)
+            ->setTotalBedrooms(2)
+            ->setTotalBathrooms(1)
             ->setUser($user1)
-            ->setName('testproperty')
-            ->setAdvertType($faker->word())
-            ->setPhoneContact(0)
-            ->setNameContact($faker->word())
-            ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())
+            ->setName('testproperty1')
+            ->setAdvertType('purchase')
+            ->setPhoneContact(0700000000)
+            ->setNameContact('Nom')
+            ->setSlug('test-property1')
             ->setCreatedAt(new \DateTimeImmutable())
-            ->setCity($city);
+            ->setCity($city1);
 
         $manager->persist($property1);
 
@@ -149,22 +156,22 @@ class AppFixtures extends Fixture
 
         $property2 = new Property();
 
-        $property2->setPrice($faker->numberBetween(40000, 10000000))
-            ->setDescription('testproperty')
-            ->setArea($faker->numberBetween(10, 500))
-            ->setType($faker->word())
-            ->setStatus($faker->word())
-            ->setTotalRooms($faker->numberBetween(1, 10))
-            ->setTotalBedrooms($faker->numberBetween(0, 8))
-            ->setTotalBathrooms($faker->numberBetween(1, 4))
-            ->setUser($user2)
-            ->setName('testproperty')
-            ->setAdvertType($faker->word())
-            ->setPhoneContact(0)
-            ->setNameContact($faker->word())
-            ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())
+        $property2->setPrice(200000)
+            ->setDescription('testproperty2')
+            ->setArea(100)
+            ->setType('villa')
+            ->setStatus('status')
+            ->setTotalRooms(4)
+            ->setTotalBedrooms(2)
+            ->setTotalBathrooms(1)
+            ->setUser($user1)
+            ->setName('testproperty2')
+            ->setAdvertType('purchase')
+            ->setPhoneContact(0600000000)
+            ->setNameContact('Nom')
+            ->setSlug('test-property2')
             ->setCreatedAt(new \DateTimeImmutable())
-            ->setCity($city);
+            ->setCity($city2);
 
         $manager->persist($property2);
 
@@ -184,7 +191,7 @@ class AppFixtures extends Fixture
             // THREAD
 
             $thread1 = new Thread();
-            $thread1->setTitle($faker->word())
+            $thread1->setTitle('contact1')
                 ->setSender($user1)
                 ->setProperty($property2);
 
@@ -195,7 +202,7 @@ class AppFixtures extends Fixture
             $message1 = new Message();
             $message1->setSender($user1)
                 ->setRecipient($user2)
-                ->setMessage($faker->realText)
+                ->setMessage('message1')
                 ->setThread($thread1);
 
             $manager->persist($message1);
@@ -203,7 +210,7 @@ class AppFixtures extends Fixture
             $message2 = new Message();
             $message2->setSender($user2)
                 ->setRecipient($user1)
-                ->setMessage($faker->realText)
+                ->setMessage('message2')
                 ->setThread($thread1);
 
             $manager->persist($message2);
