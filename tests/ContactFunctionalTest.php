@@ -5,14 +5,13 @@ namespace App\Tests;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
-class AboutFunctionalTest extends WebTestCase
+class ContactFunctionalTest extends WebTestCase
 {
-    public function testShouldDisplayAbout(): void
+    public function testShouldDisplayContact(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/about');
+        $crawler = $client->request('GET', '/contact');
 
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        $this->assertSelectorTextContains('h1', 'About us');
     }
 }
