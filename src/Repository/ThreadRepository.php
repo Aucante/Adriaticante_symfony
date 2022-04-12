@@ -92,11 +92,13 @@ class ThreadRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('t')
             ->innerJoin('t.property', 'p')
-            ->innerJoin('t.messages', 'm')
+            ->leftJoin('t.messages', 'm', 'WITH', 'm.isRead = 0 AND m.recipient = :user')
+            ->addSelect('case when COUNT(m) > 0 then 1 else 0 end')
             ->orderBy('t.id', 'DESC')
+            ->groupBy('t')
+            ->addOrderBy('case when COUNT(m) > 0 then 1 else 0 end', 'DESC')
             ->andWhere('t.sender = :user')
             ->orWhere('p.user = :user')
-            ->andWhere('m.isRead = 0')
             ->setParameter('user', $user)
             ->getQuery()
             ->getResult();

@@ -25,10 +25,12 @@ class MessageController extends AbstractController
     {
         $user = $this->getUser();
         $threads = $threadRepository->findSenderAndRecipientThread($user);
-        dump($threads);
+        $threadsNotRead = $threadRepository->findThreadNotRead($user);
+        dump($threadsNotRead);
 
         return $this->render('message/index.html.twig', [
-            'threads' => $threads
+            'threads' => $threads,
+            'threadsNotRead' => $threadsNotRead,
         ]);
     }
 
