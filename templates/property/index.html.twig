@@ -24,7 +24,7 @@
                     >
                         <div class="card rounded-0 shadow border-0">
                             <img
-                                    src="{{ asset('uploads/property/' ~ property.images.last.name) }}"
+                                    src="{{ asset('uploads/property/' ~ property.images.last.name)| imagine_filter('medium') }}"
                                     class="card-img-top rounded-0"
                                     style="height: 200px"
                                     alt="..."
