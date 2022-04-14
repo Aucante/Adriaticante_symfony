@@ -9,6 +9,11 @@ liip_imagine:
                 thumbnail:
                     size: [600, 330]
                     mode: outbound
+        carousel:
+            quality: 75
+            filters:
+                scale:
+                    dim: [ 1900, 700 ]
         scale:
             quality: 90
             filters:
