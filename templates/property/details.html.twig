@@ -25,7 +25,7 @@
                     {% for image in property.images %}
                         <div class="carousel-item active ratio ratio-16x9">
                             <img
-                                    src="{{ asset('uploads/property/' ~ image.name) }}"
+                                    src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('medium')  }}"
                                     class="d-block w-100"
                                     alt="adriatic"
                             />
@@ -63,7 +63,7 @@
                             <a href="{{ asset('uploads/property/' ~ image.name) }}">
                                 <img
                                         alt="{{ image.id }}"
-                                        src="{{ asset('uploads/property/' ~ image.name) }}"
+                                        src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('medium') }}"
                                         class="imageProperty img-thumbnail rounded-0"
                                 />
                             </a>

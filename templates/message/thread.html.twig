@@ -23,7 +23,7 @@
                                     <div class="container bg-secondary shadow">
                                         <div class="row border-bottom py-3">
                                             <div class="col-2 col-md-1">
-                                                <img src="{{ asset('uploads/user/' ~ message.sender.file) }}" class="rounded-3" style="height: 30px; width: 30px">
+                                                <img src="{{ asset('uploads/user/' ~ message.sender.file) | imagine_filter('icon')  }}" class="rounded-3" style="height: 30px; width: 30px">
                                             </div>
                                             <div class="col-8 col-md-9 display-6 fs-6 mx-2 pt-1">{{ message.sender.username }}</div>
                                         </div>
@@ -49,7 +49,7 @@
                                     <div class="container bg-light shadow">
                                         <div class="row border-bottom py-3">
                                             <div class="col-2 col-md-1">
-                                                <img src="{{ asset('uploads/user/' ~ message.sender.file) }}" class="rounded-3" style="height: 30px; width: 30px">
+                                                <img src="{{ asset('uploads/user/' ~ message.sender.file)| imagine_filter('medium')  }}" class="rounded-3" style="height: 30px; width: 30px">
                                             </div>
                                             <div class="col-8 col-md-9 display-6 fs-6 mx-2 pt-1">{{ message.sender.username }}</div>
                                         </div>
