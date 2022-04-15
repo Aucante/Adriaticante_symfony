@@ -30,6 +30,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Regex(
      * pattern = "/^[a-z0-9_-]{3,16}+$/i",
@@ -44,27 +45,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     /**
+     * @Assert\Regex(pattern="/^(?=.*[a-z])(?=.*\\d).{6,}$/i", message="The password is required to be minimum 6 chars in length and to include at least one letter and one number.")
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.")
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(min=2, max=25)
+     * @ORM\Column(type="string", length=25)
      */
     private $lastname;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(min=2, max=25)
      * @ORM\Column(type="string", length=255)
      */
     private $firstname;
 
     /**
+     * @Assert\Length(min=2, max=75)
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $company;
