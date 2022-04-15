@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Address;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -43,6 +44,27 @@ class AddressType extends AbstractType
             ->add('county', TextType::class, [
                 'label' => 'address.county.label',
                 'required' => false
+            ])
+            ->add('dialCode', ChoiceType::class, [
+                'label' => 'Code number',
+                'choices' => [
+                    '+33' => '+33 France',
+                    '+385' => '+385 Croatia',
+                    '+386' => '+386 Slovenia',
+                    '+382' => '+382 Montenegro',
+                    '+44' => '+44 UK',
+                    '+49' => '+49 Germany',
+                    '+41' => '+41 Switzerland',
+                    '+34' => '+34 Spain',
+                    '+351' => '+351 Portugal',
+                    '+31' => '+31 Netherlands',
+                    '+45' => '+45 Denmark',
+                    '+46' => '+46 Sweden',
+                    '+358' => '+358 Finland',
+                    '+32' => '+32 Belgium',
+                    '+381' => '+381 Serbia',
+                    '+1' => '+1 USA/Canada',
+                ]
             ])
             ->add('phone', TelType::class, [
                 'label' => 'address.phone.label',

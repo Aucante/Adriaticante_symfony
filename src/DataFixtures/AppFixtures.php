@@ -41,7 +41,8 @@ class AppFixtures extends Fixture
             ->setCity('Trieste')
             ->setStateZipCode(01000)
             ->setCountry('Italy')
-            ->setPhone(0700000000);
+            ->setDialCode("+33")
+            ->setPhone(700000000);
 
         $manager->persist($address);
 
@@ -144,6 +145,7 @@ class AppFixtures extends Fixture
             ->setUser($user1)
             ->setName('testproperty1')
             ->setAdvertType('purchase')
+            ->setDialCode('+33')
             ->setPhoneContact(0700000000)
             ->setNameContact('Nom')
             ->setSlug('test-property1')
@@ -167,6 +169,7 @@ class AppFixtures extends Fixture
             ->setUser($user1)
             ->setName('testproperty2')
             ->setAdvertType('purchase')
+            ->setDialCode('+33')
             ->setPhoneContact(0600000000)
             ->setNameContact('Nom')
             ->setSlug('test-property2')
@@ -246,6 +249,7 @@ class AppFixtures extends Fixture
                     ->setCity($faker->city())
                     ->setStateZipCode($faker->numberBetween(100, 950) . '00')
                     ->setCountry($faker->country())
+                    ->setDialCode("+3".$i)
                     ->setPhone('0' . $faker->numberBetween(600000001, 799999999));
 
             $manager->persist($address);
@@ -296,6 +300,7 @@ class AppFixtures extends Fixture
                 ->setUser($user)
                 ->setName($faker->text(20))
                 ->setAdvertType($faker->word())
+                ->setDialCode('+3'.$i)
                 ->setPhoneContact(0)
                 ->setNameContact($faker->word())
                 ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())

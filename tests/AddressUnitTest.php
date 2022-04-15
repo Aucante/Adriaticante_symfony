@@ -20,6 +20,7 @@ class AddressUnitTest extends TestCase
             ->setStateZipCode(10000)
             ->setCountry('true')
             ->setCounty('true')
+            ->setDialCode('true')
             ->setPhone(0100000000);
 
         $this->assertTrue($address->getStreetNumber() === 1);
@@ -29,6 +30,7 @@ class AddressUnitTest extends TestCase
         $this->assertTrue($address->getStateZipCode() === 10000);
         $this->assertTrue($address->getCountry() === 'true');
         $this->assertTrue($address->getCounty() === 'true');
+        $this->assertTrue($address->getDialCode() === 'true');
         $this->assertTrue($address->getPhone() === 0100000000);
 
     }
@@ -44,6 +46,7 @@ class AddressUnitTest extends TestCase
             ->setStateZipCode(10000)
             ->setCountry('true')
             ->setCounty('true')
+            ->setDialCode('true')
             ->setPhone(0100000000);
 
         $this->assertFalse($address->getStreetNumber() === 2);
@@ -53,6 +56,7 @@ class AddressUnitTest extends TestCase
         $this->assertFalse($address->getStateZipCode() === 99999);
         $this->assertFalse($address->getCountry() === 'false');
         $this->assertFalse($address->getCounty() === 'false');
+        $this->assertFalse($address->getDialCode() === 'false');
         $this->assertFalse($address->getPhone() === 9900000000);
     }
 
@@ -67,6 +71,7 @@ class AddressUnitTest extends TestCase
         $this->assertEmpty($address->getStateZipCode());
         $this->assertEmpty($address->getCountry());
         $this->assertEmpty($address->getCounty());
+        $this->assertEmpty($address->getDialCode());
         $this->assertEmpty($address->getPhone());
         $this->assertEmpty($address->getId());
 

@@ -106,7 +106,6 @@ class PropertiesController extends AbstractController
 
             // Recuperate Files
             $files = $form->get('images')->getData();
-            dump($files);
             foreach ($files as $file)
             {
                 /** @var File $file */

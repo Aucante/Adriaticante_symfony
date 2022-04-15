@@ -107,8 +107,15 @@ class Property
     private $linkWebsite;
 
     /**
+     * @Assert\NotBlank(message="Please provide a code country")
+     * @Assert\Length(min=2, max=15)
+     * @ORM\Column(type="string", length=255)
+     */
+    private $dialCode;
+
+    /**
      * @Assert\NotBlank(message="Please provide the phone number")
-     * @Assert\Length(min=5, max=14)
+     * @Assert\Length(min=7, max=10)
      * @ORM\Column(type="integer")
      */
     private $phoneContact;
@@ -147,6 +154,7 @@ class Property
      * @ORM\OneToMany(targetEntity=Thread::class, mappedBy="property", orphanRemoval=true)
      */
     private $threads;
+
 
 
 
@@ -342,6 +350,18 @@ class Property
         return $this;
     }
 
+    public function getDialCode(): ?string
+    {
+        return $this->dialCode;
+    }
+
+    public function setDialCode(string $dialCode): self
+    {
+        $this->dialCode = $dialCode;
+
+        return $this;
+    }
+
     public function getPhoneContact(): ?int
     {
         return $this->phoneContact;
@@ -465,6 +485,7 @@ class Property
     {
         return $this->name;
     }
+
 
 
 }

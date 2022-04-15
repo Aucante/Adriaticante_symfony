@@ -32,6 +32,7 @@ class PropertyUnitTest extends TestCase
             ->setType('true')
             ->setAdvertType('true')
             ->setLinkWebsite('true')
+            ->setDialCode('true')
             ->setPhoneContact(1)
             ->setNameContact('true')
             ->setCreatedAt($dateTime)
@@ -50,6 +51,7 @@ class PropertyUnitTest extends TestCase
         $this->assertTrue($property->getType() === 'true');
         $this->assertTrue($property->getAdvertType() === 'true');
         $this->assertTrue($property->getLinkWebsite() === 'true');
+        $this->assertTrue($property->getDialCode() === 'true');
         $this->assertTrue($property->getPhoneContact() === 1);
         $this->assertTrue($property->getNameContact() === 'true');
         $this->assertTrue($property->getCreatedAt() === $dateTime);
@@ -76,6 +78,7 @@ class PropertyUnitTest extends TestCase
             ->setType('true')
             ->setAdvertType('true')
             ->setLinkWebsite('true')
+            ->setDialCode('true')
             ->setPhoneContact(1)
             ->setNameContact('true')
             ->setCreatedAt($dateTime)
@@ -94,6 +97,7 @@ class PropertyUnitTest extends TestCase
         $this->assertFalse($property->getType() === 'false');
         $this->assertFalse($property->getAdvertType() === 'false');
         $this->assertFalse($property->getLinkWebsite() === 'false');
+        $this->assertFalse($property->getDialCode() === 'false');
         $this->assertFalse($property->getPhoneContact() === 2);
         $this->assertFalse($property->getNameContact() === 'false');
         $this->assertFalse($property->getCreatedAt() === new \DateTimeImmutable());
@@ -119,6 +123,7 @@ class PropertyUnitTest extends TestCase
         $this->assertEmpty($property->getType());
         $this->assertEmpty($property->getAdvertType());
         $this->assertEmpty($property->getLinkWebsite());
+        $this->assertEmpty($property->getDialCode());
         $this->assertEmpty($property->getPhoneContact());
         $this->assertEmpty($property->getNameContact());
         $this->assertEmpty($property->getCreatedAt());
