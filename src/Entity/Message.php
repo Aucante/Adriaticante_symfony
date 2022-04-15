@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MessageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MessageRepository::class)
@@ -18,6 +19,8 @@ class Message
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Please provide a code country")
+     * @Assert\Length(min=10, max=255, minMessage="The message must be at least {{ limit }} characters long", maxMessage="The message cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="text")
      */
     private $message;

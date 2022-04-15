@@ -21,41 +21,50 @@ class Address
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Please provide the street number")
+     * @Assert\Range(min="0", max="99999")
      * @ORM\Column(type="integer", nullable=false)
      */
     private $street_number;
 
     /**
+     * @Assert\Length(min=2, max=255)
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $street_address_line_1;
 
     /**
+     * @Assert\Length(min=2, max=255)
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $street_address_line_2;
 
     /**
+     * @Assert\Length(min=2, max=255)
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $city;
 
     /**
+     * @Assert\Range(min="0", max="99999")
      * @ORM\Column(type="integer", nullable=false)
      */
     private $state_zip_code;
 
     /**
+     * @Assert\Length(min=2, max=255, minMessage="The country must be at least {{ limit }} characters long", maxMessage="The country cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $country;
 
     /**
+     * @Assert\Length(min=2, max=255, minMessage="The county must be at least {{ limit }} characters long", maxMessage="The county cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $county;
 
     /**
+     *  @Assert\Length(min=2, max=20, minMessage="The country code must be at least {{ limit }} characters long", maxMessage="The country code cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="string", length=255)
      */
     private $dialCode;
@@ -63,7 +72,7 @@ class Address
 
     /**
      * @Assert\NotBlank(message="Please provide the phone number")
-     * @Assert\Length(min=7, max=10)
+     * @Assert\Length(min=2, max=20, minMessage="The phone number must be at least {{ limit }} characters long", maxMessage="The phone number cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="integer", nullable=false)
      */
     private $phone;

@@ -6,6 +6,7 @@ use App\Repository\CityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CityRepository::class)
@@ -20,16 +21,20 @@ class City
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Please provide the city's name.")
+     * @Assert\Length(min=2, max=50)
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Assert\Range(min=2, max=9999999999)
      * @ORM\Column(type="decimal", precision=10, scale=7)
      */
     private $latitude;
 
     /**
+     * @Assert\Range(min=2, max=9999999999)
      * @ORM\Column(type="decimal", precision=10, scale=7)
      */
     private $longitude;
