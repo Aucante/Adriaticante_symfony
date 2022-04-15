@@ -120,6 +120,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $professional;
 
 
+
     
 
     public function __construct()

@@ -42,9 +42,13 @@
     <div class="col-md-8 offset-md-2">{{ form_row(form.linkWebsite) }}</div>
 </div>
 <div class="row">
-    <div class="col-md-4 offset-md-2">{{ form_row(form.nameContact) }}</div>
-    <div class="col-md-4">{{ form_row(form.phoneContact) }}</div>
+    <div class="col-md-8 offset-md-2">{{ form_row(form.nameContact) }}</div>
 </div>
+<div class="row">
+    <div class="col-md-2 offset-md-2">{{ form_row(form.dialCode) }}</div>
+    <div class="col-md-6">{{ form_row(form.phoneContact) }}</div>
+</div>
+
 <div class="text-center my-5 border-bottom">
     <h2 class="display-6">{% trans %}Upload Files{% endtrans%}</h2>
 </div>

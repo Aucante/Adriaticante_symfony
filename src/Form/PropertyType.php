@@ -114,10 +114,31 @@ class PropertyType extends AbstractType
             ->add('linkWebsite', UrlType::class, [
                 'label' => 'property.link_website.label'
             ])
+            ->add('dialCode', ChoiceType::class, [
+                'label' => 'Code number',
+                'choices' => [
+                    '+33' => '+33 France',
+                    '+385' => '+385 Croatia',
+                    '+386' => '+386 Slovenia',
+                    '+382' => '+382 Montenegro',
+                    '+44' => '+44 UK',
+                    '+49' => '+49 Germany',
+                    '+41' => '+41 Switzerland',
+                    '+34' => '+34 Spain',
+                    '+351' => '+351 Portugal',
+                    '+31' => '+31 Netherlands',
+                    '+45' => '+45 Denmark',
+                    '+46' => '+46 Sweden',
+                    '+358' => '+358 Finland',
+                    '+32' => '+32 Belgium',
+                    '+381' => '+381 Serbia',
+                    '+1' => '+1 USA/Canada',
+                ]
+            ])
             ->add('phoneContact', TelType::class, [
                 'label' => 'property.phone_contact.label',
-                'row_attr' => ['data-controller' => 'intl'],
-                'attr' => ['data-intl-target' => 'input'],
+               // 'row_attr' => ['data-controller' => 'intl'],
+               // 'attr' => ['data-intl-target' => 'input'],
             ])
             ->add('nameContact', TextType::class, [
                 'label' => 'property.name_contact.label'
