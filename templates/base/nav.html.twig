@@ -1,4 +1,4 @@
-
+{% set total_thread_not_read = threads_not_read(app.user) %}
     <nav class="navbar navbar-light fixed-top bg-white shadow-sm" style="height: 80px;">
         <div class="container-fluid">
             <div class="col-4">
@@ -42,28 +42,64 @@
                     <div class="offcanvas-body">
                         {% if is_granted('ROLE_ADMIN') %}
                             <ul class="list-group list-group-flush">
-                                <a class="fs-6" href="{{ path('admin') }}"><li class="list-group-item list-group-item-action">{% trans %}Dashboard{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('app_logout') }}"><li class="list-group-item list-group-item-action text-danger">{% trans %}Logout{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('admin') }}">
+                                    <li class="list-group-item list-group-item-action">{% trans %}Dashboard{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('app_logout') }}">
+                                    <li class="list-group-item list-group-item-action text-danger">{% trans %}Logout{% endtrans%}</li>
+                                </a>
                             </ul>
                             <ul class="list-group list-group-flush mt-4">
-                                <a class="fs-6" href="{{ path('profile') }}"><li class="list-group-item list-group-item-action">{% trans %}Profile{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('user_properties') }}"><li class="list-group-item list-group-item-action">{% trans %}My Real Estate{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('property') }}"><li class="list-group-item list-group-item-action">{% trans %}Real Estate{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('about') }}"><li class="list-group-item list-group-item-action">{% trans %}About{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('contact') }}"><li class="list-group-item list-group-item-action">{% trans %}Contact{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('messages') }}"><li class="list-group-item d-flex justify-content-between align-items-center">{% trans %}Messages{% endtrans%}<span class="badge bg-primary rounded-3">2</span></li></a>
+                                <a class="fs-6" href="{{ path('profile') }}">
+                                    <li class="list-group-item list-group-item-action">{% trans %}Profile{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('user_properties') }}">
+                                    <li class="list-group-item list-group-item-action">{% trans %}My Real Estate{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('property') }}">
+                                    <li class="list-group-item list-group-item-action">{% trans %}Real Estate{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('about') }}">
+                                    <li class="list-group-item list-group-item-action">{% trans %}About{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('contact') }}">
+                                    <li class="list-group-item list-group-item-action">{% trans %}Contact{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('messages') }}">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {% trans %}Messages{% endtrans%}
+                                        {% if total_thread_not_read['totalNotRead']|length > 0 %}
+                                            <span class="badge bg-secondary rounded-3 text-primary">{{ total_thread_not_read['totalNotRead'] }}</span>
+                                        {% endif %}
+                                    </li></a>
                                 <div class="text-center">
-                                    <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 mt-4 text-uppercase shadow-none"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button></a>
+                                    <a href="{{ path('properties_create') }}">
+                                        <button class="btn btn-primary rounded-0 mt-4 text-uppercase shadow-none"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button>
+                                    </a>
                                 </div>
                             </ul>
                         {% elseif is_granted('ROLE_USER') %}
                             <ul class="list-group list-group-flush">
-                                <a class="fs-6" href="{{ path('profile') }}"><li class="list-group-item">{% trans %}Profile{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('user_properties') }}"><li class="list-group-item">{% trans %}My Real Estate{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('property') }}"><li class="list-group-item">{% trans %}Real Estate{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('about') }}"><li class="list-group-item">{% trans %}About{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('contact') }}"><li class="list-group-item">{% trans %}Contact{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('messages') }}"><li class="list-group-item d-flex justify-content-between align-items-center">{% trans %}Messages{% endtrans%}<span class="badge bg-primary rounded-3">1</span></li></a>
+                                <a class="fs-6" href="{{ path('profile') }}">
+                                    <li class="list-group-item">{% trans %}Profile{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('user_properties') }}">
+                                    <li class="list-group-item">{% trans %}My Real Estate{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('property') }}">
+                                    <li class="list-group-item">{% trans %}Real Estate{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('about') }}">
+                                    <li class="list-group-item">{% trans %}About{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('contact') }}">
+                                    <li class="list-group-item">{% trans %}Contact{% endtrans%}</li>
+                                </a>
+                                <a class="fs-6" href="{{ path('messages') }}">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">{% trans %}Messages{% endtrans%}{% if total_thread_not_read['totalNotRead']|length > 0 %}
+                                        <span class="badge bg-primary rounded-3">{{ total_thread_not_read['totalNotRead'] }}</span>
+                                        {% endif %}</li>
+                                </a>
                                 <a class="fs-6" href="{{ path('app_logout') }}"><li class="list-group-item text-danger">{% trans %}Logout{% endtrans%}</li></a>
                             </ul>
                             <div class="text-center">
