@@ -6,6 +6,7 @@ use App\Entity\City;
 use App\Entity\Country;
 use App\Entity\Feature;
 use App\Entity\Property;
+use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaV3Type;
 use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -152,16 +153,6 @@ class PropertyType extends AbstractType
                     'data-controller' => 'select2'
                 ]
             ])
-            ->add('captcha', CaptchaType::class, [
-                'label' => false,
-                'quality' => 150,
-                'keep_value'=> false,
-                'invalid_message' => 'The code is not correct.',
-                'distortion' => false,
-                'interpolation' => false,
-                'width' => 200,
-                'height' => 50,
-            ])
             ->add('country', EntityType::class, [
                 'mapped' => false,
                 'class' => Country::class,
@@ -183,6 +174,7 @@ class PropertyType extends AbstractType
                 'label' => false,
                 'mapped' => false
             ])
+            ->add('recaptcha', EWZRecaptchaV3Type::class)
         ;
 
         $formModifier = function (FormInterface $form, Country $country = null) {

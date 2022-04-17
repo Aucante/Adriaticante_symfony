@@ -8,6 +8,7 @@ parameters:
     file_user_directory: '%kernel.project_dir%/public/uploads/user/'
     app.locales: [en, fr]
     upload_dir: '/uploads/user'
+    google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
 
 services:
     # default configuration for services in *this* file
