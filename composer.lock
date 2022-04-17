@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c63a2ade4a45edcc11f6c3b30301fc5",
+    "content-hash": "fbdf6577059073794b39e495de1f1df7",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1573,6 +1573,66 @@
             "time": "2021-10-11T09:18:27+00:00"
         },
         {
+            "name": "excelwebzone/recaptcha-bundle",
+            "version": "v1.5.34",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/excelwebzone/EWZRecaptchaBundle.git",
+                "reference": "bcacdbe8cf6a313e4b7a5e309e508d660540b0c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/excelwebzone/EWZRecaptchaBundle/zipball/bcacdbe8cf6a313e4b7a5e309e508d660540b0c2",
+                "reference": "bcacdbe8cf6a313e4b7a5e309e508d660540b0c2",
+                "shasum": ""
+            },
+            "require": {
+                "google/recaptcha": "^1.1",
+                "php": "^7.1 || ^8.0",
+                "symfony/form": "^2.8 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
+                "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
+                "symfony/security-bundle": "^2.8 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
+                "symfony/validator": "^2.8 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
+                "symfony/yaml": "^2.8 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
+                "twig/twig": "^1.40 || ^2.9 || ^3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7 || ^8 || ^9.5"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "symfony": {
+                    "allow-contrib": "true"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EWZ\\Bundle\\RecaptchaBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael H. Arieli",
+                    "email": "excelwebzone@gmail.com",
+                    "homepage": "http://excelwebzone.com/"
+                }
+            ],
+            "description": "This bundle provides easy reCAPTCHA form field integration",
+            "homepage": "https://github.com/excelwebzone/EWZRecaptchaBundle",
+            "keywords": [
+                "recaptcha"
+            ],
+            "support": {
+                "issues": "https://github.com/excelwebzone/EWZRecaptchaBundle/issues",
+                "source": "https://github.com/excelwebzone/EWZRecaptchaBundle/tree/v1.5.34"
+            },
+            "time": "2022-04-08T17:25:43+00:00"
+        },
+        {
             "name": "friendsofphp/proxy-manager-lts",
             "version": "v1.0.5",
             "source": {
@@ -1761,6 +1821,58 @@
                 "wiki": "https://github.com/Atlantic18/DoctrineExtensions/tree/main/doc"
             },
             "time": "2022-01-10T21:29:33+00:00"
+        },
+        {
+            "name": "google/recaptcha",
+            "version": "1.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google/recaptcha.git",
+                "reference": "614f25a9038be4f3f2da7cbfd778dc5b357d2419"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google/recaptcha/zipball/614f25a9038be4f3f2da7cbfd778dc5b357d2419",
+                "reference": "614f25a9038be4f3f2da7cbfd778dc5b357d2419",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.2.20|^2.15",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^4.8.36|^5.7.27|^6.59|^7.5.11"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ReCaptcha\\": "src/ReCaptcha"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Client library for reCAPTCHA, a free service that protects websites from spam and abuse.",
+            "homepage": "https://www.google.com/recaptcha/",
+            "keywords": [
+                "Abuse",
+                "captcha",
+                "recaptcha",
+                "spam"
+            ],
+            "support": {
+                "forum": "https://groups.google.com/forum/#!forum/recaptcha",
+                "issues": "https://github.com/google/recaptcha/issues",
+                "source": "https://github.com/google/recaptcha"
+            },
+            "time": "2020-03-31T17:50:54+00:00"
         },
         {
             "name": "gregwar/captcha",
