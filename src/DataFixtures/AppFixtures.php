@@ -148,6 +148,7 @@ class AppFixtures extends Fixture
             ->setDialCode('+33')
             ->setPhoneContact(0700000000)
             ->setNameContact('Nom')
+            ->setLinkWebsite('www.test.com')
             ->setSlug('test-property1')
             ->setCreatedAt(new \DateTimeImmutable())
             ->setCity($city1);
@@ -172,6 +173,7 @@ class AppFixtures extends Fixture
             ->setDialCode('+33')
             ->setPhoneContact(0600000000)
             ->setNameContact('Nom')
+            ->setLinkWebsite('www.test.com')
             ->setSlug('test-property2')
             ->setCreatedAt(new \DateTimeImmutable())
             ->setCity($city2);
@@ -303,6 +305,7 @@ class AppFixtures extends Fixture
                 ->setDialCode('+3'.$i)
                 ->setPhoneContact(0)
                 ->setNameContact($faker->word())
+                ->setLinkWebsite('www.test.com')
                 ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())
                 ->setCreatedAt(new \DateTimeImmutable())
                 ->setCity($city);

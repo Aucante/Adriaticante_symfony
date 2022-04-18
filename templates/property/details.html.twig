@@ -86,9 +86,9 @@
             <div class="row border-bottom">
                 <div>
                     <div>
-                        <p class="fs-5">{% trans %}Price{% endtrans%} : {{ property.price }} €</p>
-                        <p class="fs-5">{% trans %}Area{% endtrans%} : {{ property.area }} {% trans %}sq2{% endtrans%}</p>
-                        <p class="fs-5">{% trans %}Price/Area{% endtrans%} : {{ priceArea|number_format(0) }} {% trans %}€/ sq2{% endtrans%}</p>
+                        <p class="fs-5"><i class="fa-solid fa-euro-sign"></i>&nbsp; {{ property.price }}</p>
+                        <p class="fs-5"><i class="fa-solid fa-ruler-combined"></i>&nbsp; {{ property.area }} {% trans %}sq2{% endtrans%}</p>
+                        <p class="fs-5"><i class="fa-solid fa-calculator"></i>&nbsp; {{ priceArea|number_format(0) }} {% trans %}€/ sq2{% endtrans%}</p>
                     </div>
                 </div>
             </div>
@@ -162,7 +162,35 @@
                     </p>
                 </div>
             </div>
+            <div class="row border-bottom">
+                <div class="my-5">
+                    <h3 class="display-6">{% trans %}Others Features{% endtrans%}</h3>
+                </div>
+                <div class="mb-4 display-6 fs-5">
+                    <div class="row">
+                        <div class="col-4">Rooms : {{ property.totalRooms }}</div>
+                        <div class="col-4">Bedrooms : {{ property.totalBedrooms }}</div>
+                        <div class="col-4">Bathrooms : {{ property.totalBathrooms }}</div>
+                    </div>
+                </div>
+            </div>
             <div id="map" class="mt-5" data-controller="map" data-latitude="{{ property.city.latitude }}" data-longitude="{{ property.city.longitude }}"></div>
+            <div class="row border-bottom">
+                <div class="mt-5 mb-2">
+                    <h3 class="display-6">{% trans %}Contact{% endtrans%}</h3>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card rounded-0 shadow-sm border-0 mb-3">
+                            <div class="card-body">
+                                <p class="card-text display-6 fs-5">{% trans %}Seller{% endtrans%} : {{ property.nameContact }}</p>
+                                <p class="card-text display-6 fs-5">{% trans %}Phone{% endtrans%} : {{ property.phoneContact }}</p>
+                                <p class="card-text display-6 fs-5">{% trans %}Website{% endtrans%} : {{ property.linkWebsite}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="my-5">
                 <h3 class="display-6">{% trans %}More properties ?{% endtrans%}</h3>
             </div>
