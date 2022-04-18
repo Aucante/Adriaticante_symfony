@@ -19,43 +19,50 @@
 
             <div class="row">
                 {% for property in properties %}
+
                     <div
                             class="col-10 offset-1 col-md-6 offset-md-0 col-xl-3 my-4"
                     >
-                        <div class="card rounded-0 shadow border-0">
-                            <img
-                                    src="{{ asset('uploads/property/' ~ property.images.last.name)| imagine_filter('medium') }}"
-                                    class="card-img-top rounded-0"
-                                    style="height: 200px"
-                                    alt="..."
-                            />
-                            <div class="card-body">
-                                <h2 class="card-title text-center cardPropertyTitle fs-4 display-6">{{ property.name|upper }}</h2>
-                                <div class="cardPropertyDescription">
-                                    <p style="color: red">
-                                        {% for f in property.features %}
-                                            {{ f.name }}
-                                        {% endfor %}
-                                    </p>
-                                    <p class="card-text">
-                                        {% trans %}Area{% endtrans%} : {{ property.area }} {% trans %}sq2{% endtrans%}
-                                    </p>
-                                    <p class="card-text">
-                                        {% trans %}Rooms{% endtrans%} : {{ property.totalRooms }}
-                                    </p>
-                                    <p class="card-text">
-                                        {% trans %}Bedrooms{% endtrans%} : {{ property.totalBedrooms }}
-                                    </p>
-                                    <p class="card-text">
-                                        {% trans %}Price{% endtrans%} : {{ property.price }} €
-                                    </p>
+                        <a href="{{ path('properties_details', {'slug': property.slug}) }}">
+                            <div class="card rounded-0 shadow border-0">
+                                <img
+                                        src="{{ asset('uploads/property/' ~ property.images.last.name)| imagine_filter('medium') }}"
+                                        class="card-img-top rounded-0"
+                                        style="height: 200px"
+                                        alt="..."
+                                />
+                                <div class="card-img-overlay">
+                                        <span
+                                                class="badge text-uppercase rounded-0 py-2 display-6 fs-6"
+                                                style="background: linear-gradient(120deg,#c3e1e6 1%,#263238 50%, #c3e1e6 99%)"
+                                        >{{ property.advertType }}</span
+                                        >
                                 </div>
-                                <div class="text-center">
-                                    <a href="{{ path('properties_details', {'slug': property.slug}) }}" class="btn btn-primary rounded-0 text-uppercase">{% trans %}Discover{% endtrans%}</a>
+                                <div class="card-body">
+                                    <h2
+                                            class="card-title text-center cardPropertyTitle fs-2 display-6 pb-3 border-bottom fw-normal"
+                                    >
+                                        {{ property.name }}
+                                    </h2>
+                                    <div class="py-3">
+                                        <p class="card-text text-center display-6 fs-6 fw-normal">
+                                            <i class="fa-solid fa-ruler-combined"></i> {{ property.area }} {% trans %}sq2{% endtrans%}
+                                        </p>
+                                        <p class="card-text text-center display-6 fs-6 fw-normal">
+                                            <i class="fa-solid fa-person-shelter"></i> {{ property.totalRooms }} &nbsp; · &nbsp; <i class="fa-solid fa-bed"></i> {{ property.totalBedrooms }} &nbsp; · &nbsp; <i class="fa-solid fa-shower"></i> {{ property.totalBathrooms }}
+                                        </p>
+                                        <p class="text-center display-6 fs-5">
+                                            {{ property.city.country }} · {{ property.city }}
+                                        </p>
+                                        <p class="card-text text-center display-6 fs-1 fw-bold gradient-property">
+                                            {{ property.price }} €
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
+
                 {% endfor %}
             </div>
         </div>

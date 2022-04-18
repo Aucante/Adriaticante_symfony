@@ -177,9 +177,6 @@ a {
 
 /* PROPERTIES */
 
-.cardPropertyDescription {
-  height: 170px;
-}
 
 .cardPropertyTitle {
   height: 50px;
@@ -220,5 +217,13 @@ a {
   color: red;
 }
 
+.gradient-property {
+  background: linear-gradient(120deg,#263238 25%,#c3e1e6 50%, #263238 60%);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 
 /* End Sign In */
+
