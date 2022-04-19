@@ -174,7 +174,9 @@ class PropertyType extends AbstractType
                 'label' => false,
                 'mapped' => false
             ])
-            ->add('recaptcha', EWZRecaptchaV3Type::class)
+            ->add('recaptcha', EWZRecaptchaV3Type::class, [
+                'action_name' => 'contact',
+            ])
         ;
 
         $formModifier = function (FormInterface $form, Country $country = null) {
