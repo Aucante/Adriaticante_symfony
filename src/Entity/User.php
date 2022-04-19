@@ -79,6 +79,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $company;
 
     /**
+     * @Assert\Valid()
      * @ORM\ManyToOne(targetEntity=Address::class, inversedBy="users", cascade={"persist"})
      */
     private $address;

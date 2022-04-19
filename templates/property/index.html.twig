@@ -55,7 +55,7 @@
                                             {{ property.city.country }} · {{ property.city }}
                                         </p>
                                         <p class="card-text text-center display-6 fs-1 fw-bold gradient-property">
-                                            {{ property.price }} €
+                                            {{ property.price|number_format(0, '.', ',') }} €
                                         </p>
                                     </div>
                                 </div>

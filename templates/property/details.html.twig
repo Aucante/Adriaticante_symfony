@@ -185,7 +185,7 @@
                             <div class="card-body">
                                 <p class="card-text display-6 fs-5">{% trans %}Seller{% endtrans%} : {{ property.nameContact }}</p>
                                 <p class="card-text display-6 fs-5">{% trans %}Phone{% endtrans%} : {{ property.phoneContact }}</p>
-                                <p class="card-text display-6 fs-5">{% trans %}Website{% endtrans%} : {{ property.linkWebsite}}</p>
+                                <p class="card-text display-6 fs-5">{% trans %}Website{% endtrans%} : <a href="{{ property.linkWebsite|external_link }}" target="_blank" class="text-primary">{{ property.linkWebsite}}</a></p>
                             </div>
                         </div>
                     </div>
