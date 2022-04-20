@@ -7,7 +7,6 @@ use App\Entity\Country;
 use App\Entity\Feature;
 use App\Entity\Property;
 use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaV3Type;
-use Gregwar\CaptchaBundle\Type\CaptchaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -53,6 +52,16 @@ class PropertyType extends AbstractType
                     '7' => 7,
                     '8' => 8,
                     '9' => 9,
+                    '10' => 10,
+                    '11' => 11,
+                    '12' => 12,
+                    '13' => 13,
+                    '14' => 14,
+                    '15' => 15,
+                    '16' => 16,
+                    '17' => 17,
+                    '18' => 18,
+                    '19' => 19,
                 ],
                 'label' => 'property.total_rooms.label'
             ])
@@ -83,11 +92,6 @@ class PropertyType extends AbstractType
                     '7' => 7,
                     '8' => 8,
                     '9' => 9,
-                    '10' => 10,
-                    '11' => 11,
-                    '12' => 12,
-                    '13' => 13,
-                    '14' => 14,
                 ],
                 'label' => 'property.total_bathrooms.label'
             ])
@@ -107,8 +111,7 @@ class PropertyType extends AbstractType
             ->add('advertType', ChoiceType::class, [
                 'choices'  => [
                     'Purchase' => 'Purchase',
-                    'Daily Rental' => 'Daily Rental',
-                    'Monthly Rental' => 'Monthly Rental',
+                    'Rental' => 'Rental',
                 ],
                 'label' => 'property.advert_type.label'
             ])
@@ -116,7 +119,7 @@ class PropertyType extends AbstractType
                 'label' => 'property.link_website.label'
             ])
             ->add('dialCode', ChoiceType::class, [
-                'label' => 'Code number',
+                'label' => 'property.dialCode.label',
                 'choices' => [
                     '+33' => '+33 France',
                     '+385' => '+385 Croatia',

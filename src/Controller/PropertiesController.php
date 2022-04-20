@@ -102,7 +102,6 @@ class PropertiesController extends AbstractController
         {
             $property->setUser($user);
             $property->setCreatedAt(new \DateTimeImmutable());
-            $property->setStatus('In Progress');
 
             // Recuperate Files
             $files = $form->get('images')->getData();

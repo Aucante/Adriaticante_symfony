@@ -25,46 +25,49 @@ class Property
 
     /**
      * @Assert\NotBlank(message="Please provide a title")
-     * @Assert\Length(min=5, max=255)
+     * @Assert\Length(min=5, max=50, minMessage="The title must be at least {{ limit }} characters long", maxMessage="The title cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
      * @Assert\NotBlank(message="Please provide a price")
+     * @Assert\Range(min="1", max="99999999", notInRangeMessage="This value should be between {{ min }} and {{ max }}.")
      * @ORM\Column(type="integer")
      */
     private $price;
 
     /**
      * @Assert\NotBlank(message="Please provide a description")
+     * @Assert\Length(min=20, max="1500", minMessage="The description must be at least {{ limit }} characters long", maxMessage="The title cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
      * @Assert\NotBlank(message="Please provide a area")
+     * * @Assert\Range(min="0", max="9999", notInRangeMessage="This value should be between {{ min }} and {{ max }}.")
      * @ORM\Column(type="integer")
      */
     private $area;
 
     /**
      * @Assert\NotBlank(message="Please provide the number of rooms")
-     * @Assert\Range(min="0", max="14", notInRangeMessage="Please provide a value in the range")
+     * @Assert\Range(min="0", max="14", notInRangeMessage="This value should be between {{ min }} and {{ max }}.")
      * @ORM\Column(type="integer")
      */
     private $totalRooms;
 
     /**
      * @Assert\NotBlank(message="Please provide the number of bedrooms")
-     * @Assert\Range(min="0", max="9", notInRangeMessage="Please provide a value in the range")
+     * @Assert\Range(min="0", max="9", notInRangeMessage="This value should be between {{ min }} and {{ max }}.")
      * @ORM\Column(type="integer")
      */
     private $totalBedrooms;
 
     /**
      * @Assert\NotBlank(message="Please provide the number of bathrooms")
-     * @Assert\Range(min="0", max="9", notInRangeMessage="Please provide a value in the range")
+     * @Assert\Range(min="0", max="9", notInRangeMessage="This value should be between {{ min }} and {{ max }}.")
      * @ORM\Column(type="integer")
      */
     private $totalBathrooms;
@@ -89,21 +92,16 @@ class Property
      */
     private $type;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $status;
 
     /**
      * @Assert\NotBlank(message="Please provide the type of the advert")
-     * @Assert\Choice(choices={"Purchase", "Daily Rental", "Monthly Rental"})
+     * @Assert\Choice(choices={"Purchase", "Rental"})
      * @ORM\Column(type="string", length=255)
      */
     private $advertType;
 
     /**
-     * @Assert\NotBlank(message="Please provide the website link")
-     * @Assert\Length(min=8, max=255)
+     * @Assert\Url(message = "The url '{{ value }}' is not a valid url")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $linkWebsite;
@@ -117,15 +115,14 @@ class Property
 
     /**
      * @Assert\NotBlank(message="Please provide the phone number")
-     * @Assert\Length(min=7, max=10)
+     * @Assert\Length(min=5, max=13, minMessage="The phone number must be at least {{ limit }} characters long", maxMessage="The phone number cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="integer")
      */
     private $phoneContact;
 
     /**
-     * @Assert\NotBlank(message="Please provide the name")
-     * @Assert\Length(min=2, max=255)
-     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=2, max=50, minMessage="The name must be at least {{ limit }} characters long", maxMessage="The phone number cannot be longer than {{ limit }} characters")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nameContact;
 
@@ -321,17 +318,6 @@ class Property
         return $this;
     }
 
-    public function getStatus(): ?string
-    {
-        return $this->status;
-    }
-
-    public function setStatus(string $status): self
-    {
-        $this->status = $status;
-
-        return $this;
-    }
 
     public function getAdvertType(): ?string
     {
@@ -492,7 +478,5 @@ class Property
     {
         return $this->name;
     }
-
-
 
 }

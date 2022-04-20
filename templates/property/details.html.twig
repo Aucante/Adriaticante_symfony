@@ -25,7 +25,7 @@
                     {% for image in property.images %}
                         <div class="carousel-item active ratio ratio-16x9">
                             <img
-                                    src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('medium')  }}"
+                                    src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('scale')  }}"
                                     class="d-block w-100"
                                     alt="adriatic"
                             />
@@ -112,7 +112,6 @@
                     {{ form_start(messageForm) }}
                     <div class="row">
                         <div class="col-md-8 col-xxl-6 my-2">
-                            <label for="exampleFormControlInput1" class="form-label">Title</label>
                             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Message from {{ app.user.username }} for {{ property.name }}" disabled>
                         </div>
                     </div>

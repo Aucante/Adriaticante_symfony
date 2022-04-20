@@ -40,15 +40,17 @@
 <div class="text-center my-5 border-bottom">
     <h2 class="display-6">{% trans %}Agency Informations{% endtrans%}</h2>
 </div>
+{% if app.user.professional %}
 <div class="row">
     <div class="col-md-8 offset-md-2">{{ form_row(form.linkWebsite) }}</div>
 </div>
+{% endif %}
 <div class="row">
     <div class="col-md-8 offset-md-2">{{ form_row(form.nameContact) }}</div>
 </div>
 <div class="row">
-    <div class="col-md-2 offset-md-2">{{ form_row(form.dialCode) }}</div>
-    <div class="col-md-6">{{ form_row(form.phoneContact) }}</div>
+    <div class="col-4 col-md-2 offset-md-2">{{ form_row(form.dialCode) }}</div>
+    <div class="col-8 col-md-6">{{ form_row(form.phoneContact) }}</div>
 </div>
 
 <div class="text-center my-5 border-bottom">
@@ -58,7 +60,9 @@
     <p class="text-center display-6 fs-5">Click the button for each new feature</p>
     <button type="button" class="col-md-6 offset-md-3 container text-center btn btn-primary rounded-0 my-4 text-uppercase btn-new" data-collection="#images">{% trans %}Add images{% endtrans%}
     </button>
-    {{ form_errors(form.images) }}
+    <div class="text-center">
+        {{ form_errors(form.images) }}
+    </div>
 </div>
 
 <div class="row">
