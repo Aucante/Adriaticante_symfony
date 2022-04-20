@@ -46,7 +46,7 @@ class AddressType extends AbstractType
                 'required' => false
             ])
             ->add('dialCode', ChoiceType::class, [
-                'label' => 'Code number',
+                'label' => 'address.dialCode.label',
                 'choices' => [
                     '+33' => '+33 France',
                     '+385' => '+385 Croatia',

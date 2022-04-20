@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
@@ -18,6 +19,7 @@ class Image
     private $id;
 
     /**
+     * @Assert\NotBlank(message="This value should not be blank.")
      * @ORM\Column(type="string", length=255)
      */
     private $name;
