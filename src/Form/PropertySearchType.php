@@ -180,10 +180,15 @@ class PropertySearchType extends AbstractType
                     'placeholder' => 'type'
                 ],
                 'choices'  => [
-                    'Purchase' => 'Purchase',
-                    'Daily Rental' => 'Daily Rental',
-                    'Monthly Rental' => 'Monthly Rental',
-                ]
+                    'Villa' => 'Villa',
+                    'House' => 'House',
+                    'Penthouse' => 'Penthouse',
+                    'Apartment' => 'Apartment',
+                    'Condo' => 'Condo',
+                    'New Developments' => 'New Developments',
+                    'Chalets' => 'Chalets',
+                    'Commercial space' => 'Commercial space',
+                ],
             ])
             ->add('advertType', ChoiceType::class, [
                 'label' => false,
@@ -193,8 +198,7 @@ class PropertySearchType extends AbstractType
                 ],
                 'choices'  => [
                     'Purchase' => 'Purchase',
-                    'Daily Rental' => 'Daily Rental',
-                    'Monthly Rental' => 'Monthly Rental',
+                    'Rental' => 'Rental',
                 ],
                 'placeholder' => 'Rent or Purchase'
             ])
