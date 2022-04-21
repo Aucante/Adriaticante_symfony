@@ -21,7 +21,7 @@
                 {% for property in properties %}
 
                     <div
-                            class="col-10 offset-1 col-md-6 offset-md-0 col-xl-3 my-4"
+                            class="col-10 offset-1 col-md-6 offset-md-0 col-xl-4 my-4"
                     >
                         <a href="{{ path('properties_details', {'slug': property.slug}) }}">
                             <div class="card rounded-0 shadow border-0">
@@ -39,11 +39,11 @@
                                         >
                                 </div>
                                 <div class="card-body">
-                                    <h2
-                                            class="card-title text-center cardPropertyTitle fs-2 display-6 pb-3 border-bottom fw-normal"
-                                    >
-                                        {{ property.name }}
-                                    </h2>
+                                        <h2
+                                                class="card-title text-center cardPropertyTitle fs-3 display-6 pb-2 fw-normal border-bottom"
+                                        >
+                                            {{ property.name }}
+                                        </h2>
                                     <div class="py-3">
                                         <p class="card-text text-center display-6 fs-6 fw-normal">
                                             <i class="fa-solid fa-ruler-combined"></i> {{ property.area }} {% trans %}sq2{% endtrans%}
