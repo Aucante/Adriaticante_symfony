@@ -179,6 +179,7 @@ class PropertyType extends AbstractType
             ])
             ->add('recaptcha', EWZRecaptchaV3Type::class, [
                 'action_name' => 'contact',
+
             ])
         ;
 
