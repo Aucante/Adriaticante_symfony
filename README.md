@@ -14,6 +14,7 @@ symfony server:start
 ## Add data tests / Fixtures / PHPFaker
 
 symfony console doctrine:fixtures:load
+symfony console doctrine:fixtures:load --no-interaction (Ignore questions)
 
 ## Tests unitaires
 

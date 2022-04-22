@@ -104,19 +104,6 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            /** @var UploadedFile $file */
-            $file = $form->get('file')->getData();
-            if ($file)
-            {
-                $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                $managePictureService->addImageUser($originalFilename, $file, $user);
-            }else{
-                $user->setFile('adriaticXS.jpg');
-            }
-
-
-
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(

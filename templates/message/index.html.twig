@@ -8,10 +8,12 @@
         <div class="text-center my-5 border-bottom">
             <h1 class="display-3">{% trans %}All Messages{% endtrans%}</h1>
         </div>
+        {% if threads|length > 0 %}
         <div class="text-center my-5">
             <h2 class="display-6">{% trans %}You have{% endtrans%} {{ threads[1]|length }} {% trans %}message{% endtrans %}{% if threads[1]|length > 1 %}s{% endif %} not read.</h2>
             <h2 class="display-6">{% trans %}You have{% endtrans%} {{ total_thread_not_read['totalNotRead'] }} {% trans %}message{% endtrans %}{% if total_thread_not_read['totalNotRead'] > 1 %}s{% endif %} not read.</h2>
         </div>
+        {% endif %}
         <div class="text-center my-4">
             <a class="btn btn-primary text-uppercase rounded-0 shadow-none" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                 {% trans %}Inbox{% endtrans%}

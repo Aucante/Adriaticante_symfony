@@ -42,7 +42,7 @@ class AppFixtures extends Fixture
             ->setStateZipCode('01000')
             ->setCountry('Italy')
             ->setDialCode("+33")
-            ->setPhone(700000000);
+            ->setPhone('700000000');
 
         $manager->persist($address);
 
@@ -56,7 +56,6 @@ class AppFixtures extends Fixture
             ->setCompany('admin')
             ->setAddress($address)
             ->setRoles(['ROLE_ADMIN'])
-            ->setFile('adriaticXS.jpg')
             ->setUpdatedAt(new \DateTimeImmutable())
             ->setProfessional(false);
 
@@ -144,8 +143,9 @@ class AppFixtures extends Fixture
             ->setUser($user1)
             ->setName('testproperty1')
             ->setAdvertType('Purchase')
+            ->setType('Apartment')
             ->setDialCode('+33')
-            ->setPhoneContact(0700000000)
+            ->setPhoneContact('0700000000')
             ->setNameContact('Nom')
             ->setLinkWebsite('www.test.com')
             ->setSlug('test-property1')
@@ -168,8 +168,9 @@ class AppFixtures extends Fixture
             ->setUser($user1)
             ->setName('testproperty2')
             ->setAdvertType('Purchase')
+            ->setType('Villa')
             ->setDialCode('+33')
-            ->setPhoneContact(0600000000)
+            ->setPhoneContact('0600000000')
             ->setNameContact('Nom')
             ->setLinkWebsite('www.test.com')
             ->setSlug('test-property2')
@@ -250,7 +251,7 @@ class AppFixtures extends Fixture
                     ->setStateZipCode('01000')
                     ->setCountry($faker->country())
                     ->setDialCode("+3".$i)
-                    ->setPhone('0' . $faker->numberBetween(600000001, 799999999));
+                    ->setPhone('752323641');
 
             $manager->persist($address);
 
@@ -263,9 +264,8 @@ class AppFixtures extends Fixture
                     ->setCompany($faker->company())
                     ->setAddress($address)
                     ->setRoles(['ROLE_USER'])
-                    ->setFile('adriatic.jpg')
                     ->setUpdatedAt(new \DateTimeImmutable())
-                    ->setProfessional(true);
+                    ->setProfessional(false);
 
             $password = $this->encoder->encodePassword($user, 'password');
             $user->setPassword($password);
@@ -299,8 +299,9 @@ class AppFixtures extends Fixture
                 ->setUser($user)
                 ->setName($faker->text(20))
                 ->setAdvertType('Rental')
+                ->setType('Penthouse')
                 ->setDialCode('+3'.$i)
-                ->setPhoneContact(0)
+                ->setPhoneContact('87412589')
                 ->setNameContact($faker->word())
                 ->setLinkWebsite('www.test.com')
                 ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())

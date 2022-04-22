@@ -7,7 +7,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -28,7 +27,7 @@ class AddressCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')->hideOnForm(),
             IntegerField::new('street_number'),
             TextField::new(('street_address_line_1')),
             TextField::new(('street_address_line_2')),
@@ -37,8 +36,6 @@ class AddressCrudController extends AbstractCrudController
             TextField::new(('country')),
             TextField::new(('county')),
             IntegerField::new(('phone')),
-            IntegerField::new(('longitude')),
-            IntegerField::new(('latitude')),
         ];
     }
 

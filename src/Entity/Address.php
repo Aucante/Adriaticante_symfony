@@ -73,7 +73,7 @@ class Address
     /**
      * @Assert\NotBlank(message="Please provide the phone number")
      * @Assert\Length(min=5, max=13, minMessage="The phone number must be at least {{ limit }} characters long", maxMessage="The phone number cannot be longer than {{ limit }} characters")
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="string", nullable=false)
      */
     private $phone;
 
