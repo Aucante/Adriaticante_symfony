@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
-use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
 
 
 /**
@@ -116,7 +115,7 @@ class Property
     /**
      * @Assert\NotBlank(message="Please provide the phone number")
      * @Assert\Length(min=5, max=13, minMessage="The phone number must be at least {{ limit }} characters long", maxMessage="The phone number cannot be longer than {{ limit }} characters")
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $phoneContact;
 

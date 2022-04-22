@@ -60,23 +60,26 @@ class PropertyCrudController extends AbstractCrudController
             IntegerField::new('total_bedrooms'),
             IntegerField::new('total_bathrooms'),
             ChoiceField::new('type')->setChoices([
-                'Purchase' => 'Purchase',
-                'Daily Rental' => 'Daily Rental',
-                'Monthly Rental' => 'Monthly Rental',
+                'Villa' => 'Villa',
+                'House' => 'House',
+                'Penthouse' => 'Penthouse',
+                'Apartment' => 'Apartment',
+                'Condo' => 'Condo',
+                'New Developments' => 'New Developments',
+                'Chalets' => 'Chalets',
+                'Commercial space' => 'Commercial space',
             ]),
-            TextField::new('status'),
             ChoiceField::new('advert_type')->setChoices([
                 'Purchase' => 'Purchase',
-                'Daily Rental' => 'Daily Rental',
-                'Monthly Rental' => 'Monthly Rental',
+                'Rental' => 'Rental',
             ]),
             TextField::new('link_website'),
             IntegerField::new('phone_contact'),
             TextField::new('name_contact'),
             AssociationField::new('user'),
-            CollectionField::new('features'),
+            CollectionField::new('features')->hideOnForm(),
             SlugField::new('slug')->setTargetFieldName('name'),
-            DateTimeField::new('createdAt')
+            DateTimeField::new('createdAt')->hideOnForm()
         ];
     }
 

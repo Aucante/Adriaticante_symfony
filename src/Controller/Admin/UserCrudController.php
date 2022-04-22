@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Form\ImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -59,10 +60,8 @@ class UserCrudController extends AbstractCrudController
             ArrayField::new('roles'),
             TextField::new('lastname'),
             TextField::new('firstname'),
-            DateTimeField::new('updated_at'),
-            TextField::new('imageFile')
-                ->setFormType(VichImageType::class)
-                ->onlyOnForms(),
+            DateTimeField::new('updated_at')
+                ->hideOnForm(),
             ImageField::new('file')
                 ->setBasePath($this->uploadDir)
                 ->hideOnForm(),

@@ -20,7 +20,7 @@ class Message
 
     /**
      * @Assert\NotBlank(message="Please provide a code country")
-     * @Assert\Length(min=10, max=1500, minMessage="The message must be at least {{ limit }} characters long", maxMessage="The message cannot be longer than {{ limit }} characters")
+     * @Assert\Length(min=2, max=1500, minMessage="The message must be at least {{ limit }} characters long", maxMessage="The message cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="text")
      */
     private $message;
