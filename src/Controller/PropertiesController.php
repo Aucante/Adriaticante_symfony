@@ -49,7 +49,7 @@ class PropertiesController extends AbstractController
         $properties = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            8
+            12
         );
         $properties->setCustomParameters([
             'align' => 'center', # center|right (for template: twitter_bootstrap_v4_pagination and foundation_v6_pagination)

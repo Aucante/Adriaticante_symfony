@@ -154,10 +154,6 @@ class Property
      */
     private $threads;
 
-    /**
-     * @Recaptcha\IsTrueV3
-     */
-    public $recaptcha;
 
 
 

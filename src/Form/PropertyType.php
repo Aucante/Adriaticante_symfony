@@ -7,6 +7,7 @@ use App\Entity\Country;
 use App\Entity\Feature;
 use App\Entity\Property;
 use EWZ\Bundle\RecaptchaBundle\Form\Type\EWZRecaptchaV3Type;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\IsTrueV3;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -21,6 +22,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Count;
 use Symfony\UX\Dropzone\Form\DropzoneType;
 
 class PropertyType extends AbstractType
@@ -152,6 +154,7 @@ class PropertyType extends AbstractType
                 'required' => false,
                 'class' => Feature::class,
                 'multiple' => true,
+                'by_reference' => false,
                 'attr' => [
                     'data-controller' => 'select2'
                 ]
@@ -175,11 +178,24 @@ class PropertyType extends AbstractType
                 'error_bubbling' => false,
                 'required' => false,
                 'label' => false,
-                'mapped' => false
+                'mapped' => false,
+                'constraints' => [
+                    new Count([
+                        'min' => 1,
+                        'max' => 3,
+                        'minMessage' => 'You must specify at least one image',
+                        'maxMessage' => 'You cannot specify more than {{ limit }} images',
+                    ])
+                ],
+                'entry_options' => [
+                    'label' => false
+                ]
             ])
             ->add('recaptcha', EWZRecaptchaV3Type::class, [
-                'action_name' => 'contact',
-
+                'constraints' => [
+                    new IsTrueV3()
+                ],
+                'mapped' => false
             ])
         ;
 

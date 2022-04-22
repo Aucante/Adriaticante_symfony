@@ -1,7 +1,6 @@
-{% form_theme form '@EWZRecaptcha/Form/ewz_recaptcha_widget.html.twig' %}
 
 {{ form_widget(form._token) }}
-        {{ form_errors(form) }}
+       <div class="text-center"> {{ form_errors(form) }}</div>
 
 <div class="row">
     <div class="col-md-4 offset-md-4">{{ form_row(form.advertType) }}</div>
@@ -77,11 +76,8 @@
         {% endfor %}
     </div>
 </div>
-<div class="text-center my-5 border-bottom">
-    <h2 class="display-6">{% trans %}Captcha{% endtrans%}</h2>
-</div>
 <div class="row">
-    <div class="col-8 col-md-4 offset-2 offset-md-4 text-center">{{ form_row(form.recaptcha) }}</div>
+    <div class="col-8 col-md-4 offset-2 offset-md-4 text-center">{{ form_widget(form.recaptcha) }}</div>
 </div>
 
 <div class="text-center my-5 border-bottom">

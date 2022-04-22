@@ -58,7 +58,7 @@ class PropertyRepository extends ServiceEntityRepository
         $query = $this
             ->createQueryBuilder('p')
             ->select('f', 'p')
-            ->join('p.features', 'f');
+            ->leftJoin('p.features', 'f');
 
         if (!empty($search->q))
         {
