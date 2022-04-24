@@ -29,6 +29,7 @@
         "intl-tel-input": "^17.0.16",
         "lightgallery": "^2.4.0",
         "nice-select2": "^2.0.0",
+        "notyf": "^3.10.0",
         "stimulus-lightbox": "^3.0.0"
     }
 }
