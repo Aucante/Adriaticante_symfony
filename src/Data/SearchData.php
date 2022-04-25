@@ -5,6 +5,7 @@ namespace App\Data;
 
 
 use App\Entity\City;
+use App\Entity\Country;
 use App\Entity\Feature;
 
 class SearchData
@@ -73,6 +74,11 @@ class SearchData
      * @var null|string
      */
     public ?string $advertType;
+
+    /**
+     * @var Country
+     */
+    public Country $country;
 
     /**
      * @var City

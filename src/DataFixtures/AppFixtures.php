@@ -114,20 +114,44 @@ class AppFixtures extends Fixture
             ->setLatitude(46.056946)
             ->setLongitude(14.505751);
 
+        $city3 = new City();
+
+        $city3->setName('Dubrovnik')
+            ->setLatitude(46.056947)
+            ->setLongitude(14.505752);
+
         // COUNTRY
 
         $country1 = new Country();
 
         $country1->setName('Italy')
-                ->addCity($city1);
+                ->addCity($city1)
+                ->setFile('triesteM.jpg');
 
         $country2 = new Country();
 
         $country2->setName('Slovenia')
-            ->addCity($city2);
+            ->addCity($city2)
+            ->setFile('ljubljana1.jpg');
+
+        $country3 = new Country();
+
+        $country3->setName('Croatia')
+            ->addCity($city3)
+            ->setFile('dubrovnik1.jpg');
 
         $manager->persist($country1);
         $manager->persist($country2);
+        $manager->persist($country3);
+
+        // COUNTRY
+
+        $country4 = new Country();
+
+        $country4->setName('Montenegro')
+            ->setFile('kotor1.jpg');
+
+        $manager->persist($country4);
 
         // PROPERTY
 
@@ -281,9 +305,7 @@ class AppFixtures extends Fixture
                 ->setLatitude($faker->latitude())
                 ->setLongitude($faker->longitude());
 
-            // COUNTRY
-
-            $country2->addCity($city);
+            $country4->addCity($city);
 
             // PROPERTY
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Data\SearchData;
 use App\Form\PropertySearchType;
+use App\Repository\CountryRepository;
 use App\Repository\PropertyRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +19,7 @@ class HomeController extends AbstractController
      */
     public function index(
         PropertyRepository $propertyRepository,
+        CountryRepository $countryRepository,
         PaginatorInterface $paginator,
         Request $request
     ): Response
@@ -47,7 +49,8 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'property' => $propertyRepository->lastThree(),
-            'formSearch' => $formSearch->createView()
+            'formSearch' => $formSearch->createView(),
+            'countries' => $countryRepository->findAll()
         ]);
     }
 }

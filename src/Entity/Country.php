@@ -27,9 +27,14 @@ class Country
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=City::class, mappedBy="country", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=City::class, mappedBy="country", orphanRemoval=true, cascade={"persist"})
      */
     private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $file;
 
     public function __construct()
     {
@@ -86,5 +91,17 @@ class Country
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getFile(): ?string
+    {
+        return $this->file;
+    }
+
+    public function setFile(string $file): self
+    {
+        $this->file = $file;
+
+        return $this;
     }
 }

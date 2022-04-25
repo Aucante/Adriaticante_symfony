@@ -151,6 +151,14 @@ class PropertyRepository extends ServiceEntityRepository
                 ->setParameter('advertType', "%{$search->advertType}%");
         }
 
+        if (!empty($search->country))
+        {
+            $query = $query
+                ->leftJoin('p.city', 'c')
+                ->andWhere('c.country = :country')
+                ->setParameter('country', $search->country);
+        }
+
         if (!empty($search->city))
         {
             $query = $query
