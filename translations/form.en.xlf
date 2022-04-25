@@ -169,6 +169,27 @@
                 <source>address.dialCode.label</source>
                 <target>Numéro de téléphone</target>
             </trans-unit>
+            <!-- Search Type -->
+            <trans-unit id="AOauVIV" resname="search.search.label">
+                <source>search.search.label</source>
+                <target>Research</target>
+            </trans-unit>
+            <trans-unit id="AObuVIV" resname="search.type.label">
+                <source>search.type.label</source>
+                <target>Type</target>
+            </trans-unit>
+            <trans-unit id="AOeuVIV" resname="search.advertType.label">
+                <source>search.advertType.label</source>
+                <target>Advert Type</target>
+            </trans-unit>
+            <trans-unit id="AOcuVIV" resname="search.city.label">
+                <source>search.city.label</source>
+                <target>City</target>
+            </trans-unit>
+            <trans-unit id="AOduVIV" resname="search.country.label">
+                <source>search.country.label</source>
+                <target>Country</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
