@@ -75,95 +75,32 @@
     <div class="container-fluid my-5">
         <div class="container">
             <div class="row text-uppercase">
+                {% for country in countries %}
                 <div data-aos="fade-right"
                         class="col-10 offset-1 col-lg-6 offset-lg-3 col-xl-4 offset-xl-1 my-4"
                 >
                     <div class="card bg-dark text-white rounded-0 border-0">
                         <div class="inner">
                             <img
-                                    src="{{ asset('build/img/img/dubrovnik1.jpg') | imagine_filter('scale') }}"
+                                    src="{{ asset('build/img/img/' ~ country.file) | imagine_filter('scale') }}"
                                     class="card-img"
                                     style="height: 240px; width: 100%"
                                     alt="..."
                             />
                             <div class="card-img-overlay rounded-0 gradient-custom-4">
                                 <div class="text-center my-4">
-                                    <p class="card-title display-5 text-center">{% trans %}Croatia{% endtrans%}</p>
-                                    <button class="btn btn-outline-info rounded-0 my-4 text-uppercase">
-                                        {% trans %}Discover{% endtrans%}
-                                    </button>
+                                    <p class="card-title display-5 text-center">{{ country.name }}</p>
+                                    <a href="{{ path('property', {'country' : country.id }) }}">
+                                        <button class="btn btn-outline-info rounded-0 my-4 text-uppercase">
+                                            {% trans %}Discover{% endtrans%}
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div data-aos="fade-left"
-                        class="col-10 offset-1 col-lg-6 offset-lg-3 col-xl-4 offset-xl-2 my-4"
-                >
-                    <div class="card bg-dark text-white rounded-0 border-0">
-                        <div class="inner">
-                            <img
-                                    src="{{ asset('build/img/img/ljubljana1.jpg') | imagine_filter('scale') }}"
-                                    class="card-img"
-                                    style="height: 240px; width: 100%"
-                                    alt="..."
-                            />
-                            <div class="card-img-overlay rounded-0 gradient-custom-4">
-                                <div class="text-center my-4">
-                                    <p class="card-title display-5 text-center">{% trans %}Slovenia{% endtrans%}</p>
-                                    <button class="btn btn-outline-info rounded-0 my-4 text-uppercase">
-                                        {% trans %}Discover{% endtrans%}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div data-aos="fade-right"
-                        class="col-10 offset-1 col-lg-6 offset-lg-3 col-xl-4 offset-xl-1 my-4"
-                >
-                    <div class="card bg-dark text-white rounded-0 border-0">
-                        <div class="inner">
-                            <img
-                                    src="{{ asset('build/img/img/triesteM.jpg') | imagine_filter('scale') }}"
-                                    class="card-img"
-                                    style="height: 240px; width: 100%"
-                                    alt="..."
-                            />
-                            <div class="card-img-overlay rounded-0 gradient-custom-4">
-                                <div class="text-center my-4">
-                                    <p class="card-title display-5 text-center">{% trans %}Italy{% endtrans%}</p>
-                                    <button class="btn btn-outline-info rounded-0 my-4 text-uppercase">
-                                        {% trans %}Discover{% endtrans%}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div data-aos="fade-left"
-                        class="col-10 offset-1 col-lg-6 offset-lg-3 col-xl-4 offset-xl-2 my-4"
-                >
-                    <div class="card bg-dark text-white rounded-0 border-0">
-                        <div class="inner">
-                            <img
-                                    src="{{ asset('build/img/img/kotor1.jpg') | imagine_filter('scale') }}"
-                                    class="card-img"
-                                    style="height: 240px; width: 100%"
-                                    alt="..."
-                            />
-                            <div class="card-img-overlay rounded-0 gradient-custom-4">
-                                <div class="text-center my-4">
-                                    <p class="card-title display-5 text-center">{% trans %}Montenegro{% endtrans%}</p>
-                                    <button class="btn btn-outline-info rounded-0 my-4 text-uppercase">
-                                        {% trans %}Discover{% endtrans%}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
     </div>

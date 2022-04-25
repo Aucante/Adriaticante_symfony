@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ChangePasswordFormType extends AbstractType
 {
@@ -23,12 +24,10 @@ class ChangePasswordFormType extends AbstractType
                         new NotBlank([
                             'message' => 'Please enter a password',
                         ]),
-                        new Length([
-                            'min' => 6,
-                            'minMessage' => 'Your password should be at least {{ limit }} characters',
-                            // max length allowed by Symfony for security reasons
-                            'max' => 4096,
-                        ]),
+                        new Regex([
+                            'pattern' => "/^(?=.*[a-z])(?=.*\\d).{6,}$/i",
+                            'message' => "The password is required to be minimum 6 chars in length and to include at least one letter and one number."
+                        ])
                     ],
                     'label' => 'New password',
                 ],

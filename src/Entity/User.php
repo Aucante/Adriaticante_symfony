@@ -41,7 +41,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     /**
-     * @Assert\Regex(pattern="/^(?=.*[a-z])(?=.*\\d).{6,}$/i", message="The password is required to be minimum 6 chars in length and to include at least one letter and one number.")
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
@@ -81,7 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $address;
 
     /**
-     * @ORM\OneToMany(targetEntity=Property::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Property::class, mappedBy="user", cascade={"remove"})
      */
     private $properties;
 

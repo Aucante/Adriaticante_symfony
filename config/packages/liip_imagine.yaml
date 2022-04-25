@@ -19,6 +19,12 @@ liip_imagine:
             filters:
                 scale:
                     dim: [1000, 700]
+        property:
+            filters:
+            # use and setup the "crop" filter
+                crop:
+                    # set the size of the cropping area
+                    size: [ 1000, 700 ]
         background:
             quality: 75
             filters:

@@ -1,79 +1,52 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
     <div class="container-fluid my-5">
         <div class="container">
-            <div
-                    id="carouselExampleIndicators"
-                    class="carousel slide"
-                    data-bs-ride="carousel"
-            >
-                <div class="carousel-indicators">
-                    {% for image in property.images %}
-                    <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="0"
-                            class="active"
-                            aria-current="true"
-                            aria-label="Slide 1"
-                    ></button>
-                    {% endfor %}
-                </div>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     {% for image in property.images %}
-                        <div class="carousel-item active ratio ratio-16x9">
-                            <img
-                                    src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('scale')  }}"
-                                    class="d-block w-100"
-                                    alt="adriatic"
-                            />
+                        <div class="carousel-item {% if loop.index == 1 %} active {% endif %}" id="slide{{ loop.index }}">
+                            <img src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('property')  }}" class="d-block w-100" alt="{{ image.name }}">
                         </div>
                     {% endfor %}
                 </div>
-                <button
-                        class="carousel-control-prev"
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="prev"
-                >
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button
-                        class="carousel-control-next"
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide="next"
-                >
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </div>
     </div>
+
+
     <div class="container-fluid">
         <div class="container">
             <div class="row">
-                {% for image in property.images %}
                 <div class="col-2 my-1">
-                    <div class="ratio ratio-16x9" data-controller="lightbox">
-                        {% for image in property.images|sort|reverse %}
+                    <div class="ratio ratio-16x9" data-controller="lightbox" data-lightbox-options-value='{"index": 1}'>
+                        {% for image in property.images %}
                             <a href="{{ asset('uploads/property/' ~ image.name) }}">
-                                <img
-                                        alt="{{ image.id }}"
-                                        src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('medium') }}"
-                                        class="imageProperty img-thumbnail rounded-0"
-                                />
+                                    <img
+                                            alt="{{ image.id }}"
+                                            src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('property') }}"
+                                            class="img-thumbnail rounded-0 d-none"
+                                    />
+                                    <div style="background: rgb(2,0,36); background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);">
+                                        <p>Plus di'mages</p>
+                                    </div>
                             </a>
                         {% endfor %}
                     </div>
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>
+
 
 
 
@@ -183,7 +156,7 @@
                         <div class="card rounded-0 shadow-sm border-0 mb-3">
                             <div class="card-body">
                                 <p class="card-text display-6 fs-5">{% trans %}Seller{% endtrans%} : {{ property.nameContact }}</p>
-                                <p class="card-text display-6 fs-5">{% trans %}Phone{% endtrans%} : {{ property.phoneContact }}</p>
+                                <p class="card-text display-6 fs-5">{% trans %}Phone{% endtrans%} : {{ property.dialCode }} {{ property.phoneContact }}</p>
                                 <p class="card-text display-6 fs-5">{% trans %}Website{% endtrans%} : <a href="{{ property.linkWebsite|external_link }}" target="_blank" class="text-primary">{{ property.linkWebsite}}</a></p>
                             </div>
                         </div>

@@ -23,6 +23,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Count;
+use Symfony\Component\Validator\Constraints\Image;
 use Symfony\UX\Dropzone\Form\DropzoneType;
 
 class PropertyType extends AbstractType
@@ -123,22 +124,22 @@ class PropertyType extends AbstractType
             ->add('dialCode', ChoiceType::class, [
                 'label' => 'property.dialCode.label',
                 'choices' => [
-                    '+33' => '+33 France',
-                    '+385' => '+385 Croatia',
-                    '+386' => '+386 Slovenia',
-                    '+382' => '+382 Montenegro',
-                    '+44' => '+44 UK',
-                    '+49' => '+49 Germany',
-                    '+41' => '+41 Switzerland',
-                    '+34' => '+34 Spain',
-                    '+351' => '+351 Portugal',
-                    '+31' => '+31 Netherlands',
-                    '+45' => '+45 Denmark',
-                    '+46' => '+46 Sweden',
-                    '+358' => '+358 Finland',
-                    '+32' => '+32 Belgium',
-                    '+381' => '+381 Serbia',
-                    '+1' => '+1 USA/Canada',
+                    '+33 France' => '+33 France',
+                    '+385 Croatia' => '+385',
+                    '+386 Slovenia' => '+386',
+                    '+382 Montenegro' => '+382',
+                    '+44 UK' => '+44',
+                    '+49 Germany' => '+49',
+                    '+41 Switzerland' => '+41',
+                    '+34 Spain' => '+34',
+                    '+351 Portugal' => '+351',
+                    '+31 Netherlands' => '+31',
+                    '+45 Denmark' => '+45',
+                    '+46 Sweden' => '+46',
+                    '+358 Finland' => '+358',
+                    '+32 Belgium' => '+32',
+                    '+381 Serbia' => '+381',
+                    '+1 USA/Canada' => '+1',
                 ]
             ])
             ->add('phoneContact', TelType::class, [
@@ -182,13 +183,21 @@ class PropertyType extends AbstractType
                 'constraints' => [
                     new Count([
                         'min' => 1,
-                        'max' => 3,
+                        'max' => 10,
                         'minMessage' => 'You must specify at least one image',
                         'maxMessage' => 'You cannot specify more than {{ limit }} images',
                     ])
                 ],
                 'entry_options' => [
-                    'label' => false
+                    'label' => false,
+                    'constraints' => [
+                        new Image([
+                            'minHeight' => 700,
+                            'minHeightMessage' => 'The image height is too small ({{ height }}px). Minimum height expected is {{ min_height }}px.',
+                            'minWidth' => 1000,
+                            'minWidthMessage' => 'The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px',
+                        ])
+                    ]
                 ]
             ])
             ->add('recaptcha', EWZRecaptchaV3Type::class, [
