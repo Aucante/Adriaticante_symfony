@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PropertySearchType extends AbstractType
@@ -25,7 +28,7 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Research'
+                    'placeholder' => 'search.search.label'
                 ]
             ])
             ->add('priceMax', IntegerType::class, [
@@ -177,8 +180,9 @@ class PropertySearchType extends AbstractType
             ->add('type', ChoiceType::class, [
                 'label' => false,
                 'required' => false,
+                'placeholder' => 'search.type.label',
                 'attr' => [
-                    'placeholder' => 'type'
+                    'placeholder' => 'search.type.label'
                 ],
                 'choices'  => [
                     'Villa' => 'Villa',
@@ -201,18 +205,20 @@ class PropertySearchType extends AbstractType
                     'Purchase' => 'Purchase',
                     'Rental' => 'Rental',
                 ],
-                'placeholder' => 'Rent or Purchase'
+                'placeholder' => 'search.advertType.label'
             ])
             ->add('country', EntityType::class, [
+                'mapped' => false,
                 'class' => Country::class,
+                'choice_label' => 'name',
                 'label' => false,
-                'placeholder' => 'Country',
+                'placeholder' => 'search.country.label',
                 'required' => false
             ])
             ->add('city', EntityType::class, [
                 'class' => City::class,
                 'label' => false,
-                'placeholder' => 'City',
+                'placeholder' => 'search.city.label',
                 'required' => false
             ])
             ->add('features', EntityType::class, [
@@ -225,14 +231,36 @@ class PropertySearchType extends AbstractType
                 ]
             ])
         ;
+        $formModifier = function (FormInterface $form, Country $country = null) {
+            $cities = (null === $country) ? [] : $country->getCity();
+
+            $form->add('city', EntityType::class, [
+                'class' => City::class,
+                'choices' => $cities,
+                'choice_label' => 'name',
+                'placeholder' => 'search.city.label',
+                'label' => false,
+                'required' => false
+            ]);
+        };
+
+        $builder->get('country')->addEventListener(
+            FormEvents::POST_SUBMIT,
+            function (FormEvent $event) use ($formModifier)
+            {
+                $country = $event->getForm()->getData();
+                $formModifier($event->getForm()->getParent(), $country);
+            }
+        );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => SearchData::class,
-            'method' => 'GET',
-            'csrf_protection' => false
+            'method' => 'POST',
+            'csrf_protection' => false,
+            'translation_domain' => 'form'
         ]);
     }
 
