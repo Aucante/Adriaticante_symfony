@@ -9,13 +9,12 @@
             <div class="col-8">
                 <div class="text-end">
                     <a
-                            class=""
                             data-bs-toggle="offcanvas"
                             href="#offcanvasNavbar"
                             role="button"
                             aria-controls="offcanvasNavbar"
                     >
-                        <img src="{{ asset('build/img/icon/MenuK.png') }}" alt="menu" height="40" />
+                        <img src="{{ asset('build/img/icon/menu.jpg') }}" alt="menu" height="42" />
                     </a>
                     {% if is_granted('ROLE_USER') %}
                         <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 text-uppercase shadow-none buttonNav"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button></a>
