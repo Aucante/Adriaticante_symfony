@@ -32,4 +32,8 @@ composer run-script phpstan
 
 composer check-all (tests + phpstan)
 
+## Php-cs-fixer / PSR
+
+php-cs-fixer fix src --verbose --rules=@Symfony
+
 

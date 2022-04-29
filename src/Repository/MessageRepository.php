@@ -60,7 +60,6 @@ class MessageRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-
     /**
      * @return Message[]
      */
@@ -74,7 +73,6 @@ class MessageRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-
 
     public function updateRecipientMessageNotRead($thread, $recipient): int
     {

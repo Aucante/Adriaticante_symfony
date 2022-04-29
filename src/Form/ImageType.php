@@ -31,13 +31,13 @@ class ImageType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/jpg',
-                            'image/png'
+                            'image/png',
                         ],
                         'mimeTypesMessage' => 'Expected jpeg / jpg or png.',
                         'maxSize' => '20M',
-                        'maxSizeMessage' => 'The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.'
-                    ])
-                ]
+                        'maxSizeMessage' => 'The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.',
+                    ]),
+                ],
             ])
         ;
     }

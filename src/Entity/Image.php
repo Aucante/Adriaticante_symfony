@@ -24,14 +24,11 @@ class Image
      */
     private $name;
 
-
     /**
      * @ORM\ManyToOne(targetEntity=Property::class, inversedBy="files")
      * @ORM\JoinColumn(nullable=false)
      */
     private $property;
-
-
 
     public function getId(): ?int
     {
@@ -66,6 +63,4 @@ class Image
     {
         return $this->name;
     }
-
-
 }

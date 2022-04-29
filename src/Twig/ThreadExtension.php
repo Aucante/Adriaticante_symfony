@@ -4,14 +4,11 @@ namespace App\Twig;
 
 use App\Entity\User;
 use App\Repository\ThreadRepository;
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class ThreadExtension extends AbstractExtension
 {
-
     private ?array $result = null;
 
     private ThreadRepository $threadRepository;
@@ -30,19 +27,18 @@ class ThreadExtension extends AbstractExtension
 
     public function getThreadsNotRead(?User $user): array
     {
-        if ($this->result != null)
-        {
+        if (null != $this->result) {
             return $this->result;
         }
         $threads = $this->threadRepository->findSenderAndRecipientThread($user);
         $threadsNotRead = array_filter($threads, function ($thread) {
-            return $thread[1] == 1;
+            return 1 == $thread[1];
         });
         $this->result = [
         'totalNotRead' => count($threadsNotRead),
         'total' => count($threads),
         ];
+
         return $this->result;
     }
-
 }

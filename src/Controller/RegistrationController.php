@@ -8,18 +8,15 @@ use App\Security\AppAuthenticator;
 use App\Service\ManagePictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 class RegistrationController extends AbstractController
 {
-
     /**
      * @Route("/registration", name="app_register")
      */
@@ -39,19 +36,16 @@ class RegistrationController extends AbstractController
         AppAuthenticator $authenticator,
         EntityManagerInterface $entityManager,
         ManagePictureService $managePictureService
-    ): Response
-    {
+    ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
         $user->setFile('adriaticante.png');
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $file */
             $file = $form->get('file')->getData();
-            if ($file)
-            {
+            if ($file) {
                 $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $managePictureService->addImageUser($originalFilename, $file, $user);
@@ -66,7 +60,7 @@ class RegistrationController extends AbstractController
             );
             $user->setProfessional(true);
             $user->setUpdatedAt(new \DateTimeImmutable());
-            $user->setRoles((array)['ROLE_USER']);
+            $user->setRoles((array) ['ROLE_USER']);
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -77,8 +71,6 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 $request
             );
-
-
         }
 
         return $this->render('registration/registerProfessional.html.twig', [
@@ -96,14 +88,12 @@ class RegistrationController extends AbstractController
         AppAuthenticator $authenticator,
         EntityManagerInterface $entityManager,
         ManagePictureService $managePictureService
-    ): Response
-    {
+    ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid())
-        {
+        if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -112,9 +102,9 @@ class RegistrationController extends AbstractController
                 )
             );
             $user->setProfessional(false);
-            $user->setCompany('N/A'. ' ' . uniqid());
+            $user->setCompany('N/A'.' '.uniqid());
             $user->setUpdatedAt(new \DateTimeImmutable());
-            $user->setRoles((array)['ROLE_USER']);
+            $user->setRoles((array) ['ROLE_USER']);
             dump($user);
 
             $entityManager->persist($user);
@@ -126,8 +116,6 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 $request
             );
-
-
         }
 
         return $this->render('registration/registerParticular.html.twig', [

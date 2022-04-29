@@ -13,7 +13,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\IsTrue;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\UX\Dropzone\Form\DropzoneType;
@@ -24,33 +23,33 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('company', TextType::class, [
-                'label' => 'registration.company.label'
+                'label' => 'registration.company.label',
             ])
             ->add('email', EmailType::class, [
-                'label' => 'registration.email.label'
+                'label' => 'registration.email.label',
             ])
             ->add('username', TextType::class, [
-                'label' => 'registration.username.label'
+                'label' => 'registration.username.label',
             ])
             ->add('lastname', TextType::class, [
-                'label' => 'registration.lastname.label'
+                'label' => 'registration.lastname.label',
             ])
             ->add('firstname', TextType::class, [
-                'label' => 'registration.firstname.label'
+                'label' => 'registration.firstname.label',
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'registration.password.label'],
+                'first_options' => ['label' => 'registration.password.label'],
                 'second_options' => ['label' => 'registration.password_repeat.label'],
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new Regex([
-                        'pattern' => "/^(?=.*[a-z])(?=.*\\d).{6,}$/i",
-                        'message' => "The password is required to be minimum 6 chars in length and to include at least one letter and one number."
+                        'pattern' => '/^(?=.*[a-z])(?=.*\\d).{6,}$/i',
+                        'message' => 'The password is required to be minimum 6 chars in length and to include at least one letter and one number.',
                     ]),
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -87,13 +86,13 @@ class RegistrationFormType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/jpg',
-                            'image/png'
+                            'image/png',
                         ],
                         'mimeTypesMessage' => 'Expected jpeg / jpg or png.',
                         'maxSize' => '20M',
-                        'maxSizeMessage' => 'The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.'
-                    ])
-                ]
+                        'maxSizeMessage' => 'The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.',
+                    ]),
+                ],
             ])
             ->add('address', AddressType::class)
         ;
@@ -103,7 +102,7 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'translation_domain' => 'form'
+            'translation_domain' => 'form',
         ]);
     }
 }

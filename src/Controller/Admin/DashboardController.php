@@ -20,7 +20,6 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-
         return $this->render('admin/dashboard.html.twig', [
         ]);
     }
@@ -46,5 +45,4 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToRoute('Return to website', 'fas fa-arrow-left', 'home');
         yield MenuItem::linkToLogout('Logout', 'fa fa-sign-out');
     }
-
 }

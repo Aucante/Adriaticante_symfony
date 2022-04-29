@@ -13,7 +13,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
@@ -41,12 +40,10 @@ class PropertyCrudController extends AbstractCrudController
             ->add('createdAt');
     }
 
-
     public function configureActions(Actions $actions): Actions
     {
         return $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
     }
-
 
     public function configureFields(string $pageName): iterable
     {
@@ -79,7 +76,7 @@ class PropertyCrudController extends AbstractCrudController
             AssociationField::new('user'),
             CollectionField::new('features')->hideOnForm(),
             SlugField::new('slug')->setTargetFieldName('name'),
-            DateTimeField::new('createdAt')->hideOnForm()
+            DateTimeField::new('createdAt')->hideOnForm(),
         ];
     }
 

@@ -25,7 +25,6 @@ class ProfileType extends AbstractType
                 'label' => 'registration.company.label',
             ])
             ->add('file', DropzoneType::class, [
-
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
                 'label' => 'registration.file.label',
@@ -44,13 +43,13 @@ class ProfileType extends AbstractType
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/jpg',
-                            'image/png'
+                            'image/png',
                         ],
                         'mimeTypesMessage' => 'Expected jpeg / jpg or png.',
                         'maxSize' => '20M',
-                        'maxSizeMessage' => 'The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.'
-                    ])
-                ]
+                        'maxSizeMessage' => 'The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.',
+                    ]),
+                ],
             ])
             ->add('address', AddressType::class)
         ;
@@ -60,7 +59,7 @@ class ProfileType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'translation_domain' => 'form'
+            'translation_domain' => 'form',
         ]);
     }
 }

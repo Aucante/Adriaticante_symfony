@@ -69,7 +69,6 @@ class Address
      */
     private $dialCode;
 
-
     /**
      * @Assert\NotBlank(message="Please provide the phone number")
      * @Assert\Length(min=5, max=13, minMessage="The phone number must be at least {{ limit }} characters long", maxMessage="The phone number cannot be longer than {{ limit }} characters")
@@ -81,8 +80,6 @@ class Address
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="address")
      */
     private $users;
-
-
 
     public function __construct()
     {
@@ -232,14 +229,12 @@ class Address
         return $this;
     }
 
-
-
     public function __toString(): string
     {
-        if(is_null($this->city)) {
+        if (is_null($this->city)) {
             return 'NULL';
         }
+
         return $this->city;
     }
-
 }

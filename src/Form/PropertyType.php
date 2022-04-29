@@ -35,16 +35,16 @@ class PropertyType extends AbstractType
                 'label' => 'property.name.label',
             ])
             ->add('price', IntegerType::class, [
-                'label' => 'property.price.label'
+                'label' => 'property.price.label',
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'property.description.label'
+                'label' => 'property.description.label',
             ])
             ->add('area', IntegerType::class, [
-                'label' => 'property.area.label'
+                'label' => 'property.area.label',
             ])
             ->add('totalRooms', ChoiceType::class, [
-                'choices'  => [
+                'choices' => [
                     '0' => 0,
                     '1' => 1,
                     '2' => 2,
@@ -66,10 +66,10 @@ class PropertyType extends AbstractType
                     '18' => 18,
                     '19' => 19,
                 ],
-                'label' => 'property.total_rooms.label'
+                'label' => 'property.total_rooms.label',
             ])
             ->add('totalBedrooms', ChoiceType::class, [
-                'choices'  => [
+                'choices' => [
                     '0' => 0,
                     '1' => 1,
                     '2' => 2,
@@ -81,10 +81,10 @@ class PropertyType extends AbstractType
                     '8' => 8,
                     '9' => 9,
                 ],
-                'label' => 'property.total_bedrooms.label'
+                'label' => 'property.total_bedrooms.label',
             ])
             ->add('totalBathrooms', ChoiceType::class, [
-                'choices'  => [
+                'choices' => [
                     '0' => 0,
                     '1' => 1,
                     '2' => 2,
@@ -96,10 +96,10 @@ class PropertyType extends AbstractType
                     '8' => 8,
                     '9' => 9,
                 ],
-                'label' => 'property.total_bathrooms.label'
+                'label' => 'property.total_bathrooms.label',
             ])
             ->add('type', ChoiceType::class, [
-                'choices'  => [
+                'choices' => [
                     'Villa' => 'Villa',
                     'House' => 'House',
                     'Penthouse' => 'Penthouse',
@@ -109,17 +109,17 @@ class PropertyType extends AbstractType
                     'Chalets' => 'Chalets',
                     'Commercial space' => 'Commercial space',
                 ],
-                'label' => 'property.type.label'
+                'label' => 'property.type.label',
             ])
             ->add('advertType', ChoiceType::class, [
-                'choices'  => [
+                'choices' => [
                     'Purchase' => 'Purchase',
                     'Rental' => 'Rental',
                 ],
-                'label' => 'property.advert_type.label'
+                'label' => 'property.advert_type.label',
             ])
             ->add('linkWebsite', UrlType::class, [
-                'label' => 'property.link_website.label'
+                'label' => 'property.link_website.label',
             ])
             ->add('dialCode', ChoiceType::class, [
                 'label' => 'property.dialCode.label',
@@ -140,7 +140,7 @@ class PropertyType extends AbstractType
                     '+32 Belgium' => '+32',
                     '+381 Serbia' => '+381',
                     '+1 USA/Canada' => '+1',
-                ]
+                ],
             ])
             ->add('phoneContact', TelType::class, [
                 'label' => 'property.phone_contact.label',
@@ -148,7 +148,7 @@ class PropertyType extends AbstractType
                // 'attr' => ['data-intl-target' => 'input'],
             ])
             ->add('nameContact', TextType::class, [
-                'label' => 'property.name_contact.label'
+                'label' => 'property.name_contact.label',
             ])
             ->add('features', EntityType::class, [
                 'label' => false,
@@ -157,15 +157,15 @@ class PropertyType extends AbstractType
                 'multiple' => true,
                 'by_reference' => false,
                 'attr' => [
-                    'data-controller' => 'select2'
-                ]
+                    'data-controller' => 'select2',
+                ],
             ])
             ->add('country', EntityType::class, [
                 'mapped' => false,
                 'class' => Country::class,
                 'choice_label' => 'name',
                 'placeholder' => 'Choose Country',
-                'label' => 'property.country.label'
+                'label' => 'property.country.label',
             ])
             ->add('city', ChoiceType::class, [
                 'label' => 'property.city.label',
@@ -186,7 +186,7 @@ class PropertyType extends AbstractType
                         'max' => 10,
                         'minMessage' => 'You must specify at least one image',
                         'maxMessage' => 'You cannot specify more than {{ limit }} images',
-                    ])
+                    ]),
                 ],
                 'entry_options' => [
                     'label' => false,
@@ -196,15 +196,15 @@ class PropertyType extends AbstractType
                             'minHeightMessage' => 'The image height is too small ({{ height }}px). Minimum height expected is {{ min_height }}px.',
                             'minWidth' => 1000,
                             'minWidthMessage' => 'The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px',
-                        ])
-                    ]
-                ]
+                        ]),
+                    ],
+                ],
             ])
             ->add('recaptcha', EWZRecaptchaV3Type::class, [
                 'constraints' => [
-                    new IsTrueV3()
+                    new IsTrueV3(),
                 ],
-                'mapped' => false
+                'mapped' => false,
             ])
         ;
 
@@ -222,8 +222,7 @@ class PropertyType extends AbstractType
 
         $builder->get('country')->addEventListener(
             FormEvents::POST_SUBMIT,
-            function (FormEvent $event) use ($formModifier)
-            {
+            function (FormEvent $event) use ($formModifier) {
                 $country = $event->getForm()->getData();
                 $formModifier($event->getForm()->getParent(), $country);
             }
@@ -234,7 +233,7 @@ class PropertyType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Property::class,
-            'translation_domain' => 'form'
+            'translation_domain' => 'form',
         ]);
     }
 }

@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
  */
@@ -70,14 +69,12 @@ class Property
      * @ORM\Column(type="integer")
      */
     private $totalBathrooms;
-    
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="property")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
-
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="property", cascade={"persist"}, orphanRemoval=true)
@@ -90,7 +87,6 @@ class Property
      * @ORM\Column(type="string", length=255)
      */
     private $type;
-
 
     /**
      * @Assert\NotBlank(message="Please provide the type of the advert")
@@ -153,18 +149,12 @@ class Property
      */
     private $threads;
 
-
-
-
-
     public function __construct()
     {
         $this->features = new ArrayCollection();
         $this->images = new ArrayCollection();
         $this->threads = new ArrayCollection();
     }
-
-
 
     public function getId(): ?int
     {
@@ -255,8 +245,6 @@ class Property
         return $this;
     }
 
-
-
     public function getUser(): ?User
     {
         return $this->user;
@@ -268,8 +256,6 @@ class Property
 
         return $this;
     }
-
-
 
     /**
      * @return Collection|Image[]
@@ -312,7 +298,6 @@ class Property
 
         return $this;
     }
-
 
     public function getAdvertType(): ?string
     {
@@ -401,7 +386,6 @@ class Property
         return $this;
     }
 
-
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
@@ -425,7 +409,6 @@ class Property
 
         return $this;
     }
-
 
     public function getCity(): ?City
     {
@@ -473,5 +456,4 @@ class Property
     {
         return $this->name;
     }
-
 }

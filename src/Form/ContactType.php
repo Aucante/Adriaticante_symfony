@@ -15,19 +15,19 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('firstname', TextType::class, [
-                'label' => 'contact.firstname.label'
+                'label' => 'contact.firstname.label',
             ])
             ->add('lastname', TextType::class, [
-                'label' => 'contact.lastname.label'
+                'label' => 'contact.lastname.label',
             ])
             ->add('email', TextType::class, [
-                'label' => 'contact.email.label'
+                'label' => 'contact.email.label',
             ])
             ->add('phone', TextType::class, [
-                'label' => 'contact.phone.label'
+                'label' => 'contact.phone.label',
             ])
             ->add('message', TextareaType::class, [
-                'label' => 'contact.message.label'
+                'label' => 'contact.message.label',
             ])
         ;
     }
@@ -36,7 +36,7 @@ class ContactType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Contact::class,
-            'translation_domain' => 'form'
+            'translation_domain' => 'form',
         ]);
     }
 }
