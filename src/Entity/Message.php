@@ -58,7 +58,6 @@ class Message
         $this->createdAt = new \DateTimeImmutable();
     }
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -140,5 +139,4 @@ class Message
     {
         return $this->message;
     }
-
 }

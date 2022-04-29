@@ -9,16 +9,16 @@ class ExternalLinkFilter extends AbstractExtension
 {
     public function getFilters(): array
     {
-        return array(
-            new TwigFilter('external_link', array($this, 'externalLinkFilter')),
-        );
+        return [
+            new TwigFilter('external_link', [$this, 'externalLinkFilter']),
+        ];
     }
 
     /* source: http://stackoverflow.com/a/2762083/3924118 */
     public function externalLinkFilter($url)
     {
-        if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
-            $url = "http://" . $url;
+        if (!preg_match('~^(?:f|ht)tps?://~i', $url)) {
+            $url = 'http://'.$url;
         }
 
         return $url;
@@ -29,5 +29,3 @@ class ExternalLinkFilter extends AbstractExtension
         return 'external_link_filter';
     }
 }
-
-?>

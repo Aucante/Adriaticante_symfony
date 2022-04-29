@@ -41,7 +41,6 @@ class ThreadRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-
     /**
      * @return Thread[]
      */
@@ -105,7 +104,6 @@ class ThreadRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Thread|null
      * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function findThreadWithTheseSenderAndRecipient(User $sender, int $idProperty): ?Thread
@@ -119,6 +117,4 @@ class ThreadRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
-
-
 }

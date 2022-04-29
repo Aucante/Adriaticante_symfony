@@ -10,9 +10,7 @@ use App\Entity\Feature;
 use App\Entity\Image;
 use App\Entity\Message;
 use App\Entity\Property;
-use App\Entity\Status;
 use App\Entity\Thread;
-use App\Entity\Type;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -41,7 +39,7 @@ class AppFixtures extends Fixture
             ->setCity('Trieste')
             ->setStateZipCode('01000')
             ->setCountry('Italy')
-            ->setDialCode("+33")
+            ->setDialCode('+33')
             ->setPhone('700000000');
 
         $manager->persist($address);
@@ -64,7 +62,7 @@ class AppFixtures extends Fixture
 
         $manager->persist($admin);
 
-        //USER
+        // USER
         $user1 = new User();
         $user1->setEmail('usertest@test.com')
             ->setUsername('testusername')
@@ -82,8 +80,7 @@ class AppFixtures extends Fixture
 
         $manager->persist($user1);
 
-
-        //USER
+        // USER
         $user2 = new User();
         $user2->setEmail('usertest2@test.com')
             ->setUsername('testusername2')
@@ -203,50 +200,44 @@ class AppFixtures extends Fixture
 
         $manager->persist($property2);
 
+        // FEATURE
 
-            // FEATURE
+        $feature = new feature();
+        $feature->setName('balcony');
+        $manager->persist($feature);
+        $property1->addfeature($feature);
+        $property2->addfeature($feature);
 
-            $feature = new feature();
-            $feature->setName('balcony');
-            $manager->persist($feature);
-            $property1->addfeature($feature);
-            $property2->addfeature($feature);
+        $manager->persist($feature);
+        $manager->persist($property1);
+        $manager->persist($property2);
 
-            $manager->persist($feature);
-            $manager->persist($property1);
-            $manager->persist($property2);
+        // THREAD
 
-            // THREAD
-
-            $thread1 = new Thread();
-            $thread1->setTitle('contact1')
+        $thread1 = new Thread();
+        $thread1->setTitle('contact1')
                 ->setSender($user1)
                 ->setProperty($property2);
 
-            $manager->persist($thread1);
+        $manager->persist($thread1);
 
-            // MESSAGE
+        // MESSAGE
 
-            $message1 = new Message();
-            $message1->setSender($user1)
+        $message1 = new Message();
+        $message1->setSender($user1)
                 ->setRecipient($user2)
                 ->setMessage('message1')
                 ->setThread($thread1);
 
-            $manager->persist($message1);
+        $manager->persist($message1);
 
-            $message2 = new Message();
-            $message2->setSender($user2)
+        $message2 = new Message();
+        $message2->setSender($user2)
                 ->setRecipient($user1)
                 ->setMessage('message2')
                 ->setThread($thread1);
 
-            $manager->persist($message2);
-
-
-
-
-
+        $manager->persist($message2);
 
         // FILE
 
@@ -262,11 +253,8 @@ class AppFixtures extends Fixture
         $file2->setProperty($property2);
         $manager->persist($file2);
 
-
-
         // ADDRESS
-        for ($i = 0; $i < 10; $i++)
-        {
+        for ($i = 0; $i < 10; ++$i) {
             $address = new Address();
 
             $address->setStreetNumber($faker->numberBetween(1, 99))
@@ -274,14 +262,14 @@ class AppFixtures extends Fixture
                     ->setCity($faker->city())
                     ->setStateZipCode('01000')
                     ->setCountry($faker->country())
-                    ->setDialCode("+3".$i)
+                    ->setDialCode('+3'.$i)
                     ->setPhone('752323641');
 
             $manager->persist($address);
 
-            //USER
+            // USER
             $user = new User();
-            $user->setEmail('user' . $i .'@test.com')
+            $user->setEmail('user'.$i.'@test.com')
                     ->setUsername($faker->userName())
                     ->setLastname($faker->lastName())
                     ->setFirstname($faker->firstName())
@@ -295,7 +283,6 @@ class AppFixtures extends Fixture
             $user->setPassword($password);
 
             $manager->persist($user);
-
 
             // CITY
 
@@ -326,14 +313,13 @@ class AppFixtures extends Fixture
                 ->setPhoneContact('87412589')
                 ->setNameContact($faker->word())
                 ->setLinkWebsite('www.test.com')
-                ->setSlug($faker->word() . '-' . $faker->word() . '-' . $faker->word())
+                ->setSlug($faker->word().'-'.$faker->word().'-'.$faker->word())
                 ->setCreatedAt(new \DateTimeImmutable())
                 ->setCity($city);
 
             $manager->persist($property);
 
-            for ($k = 0; $k < 5; $k++)
-            {
+            for ($k = 0; $k < 5; ++$k) {
                 // asset
 
                 $feature = new feature();
@@ -370,7 +356,6 @@ class AppFixtures extends Fixture
                 ->setThread($thread);
 
             $manager->persist($message);
-
         }
 
         $manager->flush();

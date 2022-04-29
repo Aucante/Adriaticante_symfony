@@ -26,7 +26,6 @@ class Feature
      */
     private $name;
 
-
     /**
      * @ORM\ManyToMany(targetEntity=Property::class, inversedBy="features", cascade={"persist"})
      */
@@ -53,7 +52,6 @@ class Feature
 
         return $this;
     }
-
 
     /**
      * @return Collection|Property[]

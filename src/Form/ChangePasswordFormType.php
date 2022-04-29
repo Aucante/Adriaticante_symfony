@@ -7,7 +7,6 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 
@@ -25,9 +24,9 @@ class ChangePasswordFormType extends AbstractType
                             'message' => 'Please enter a password',
                         ]),
                         new Regex([
-                            'pattern' => "/^(?=.*[a-z])(?=.*\\d).{6,}$/i",
-                            'message' => "The password is required to be minimum 6 chars in length and to include at least one letter and one number."
-                        ])
+                            'pattern' => '/^(?=.*[a-z])(?=.*\\d).{6,}$/i',
+                            'message' => 'The password is required to be minimum 6 chars in length and to include at least one letter and one number.',
+                        ]),
                     ],
                     'label' => 'New password',
                 ],

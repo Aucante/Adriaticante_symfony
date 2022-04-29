@@ -7,13 +7,10 @@ use App\Service\ManagePictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 class UserController extends AbstractController
 {
@@ -22,16 +19,13 @@ class UserController extends AbstractController
      */
     public function profile(
         EntityManagerInterface $entityManager
-    ): Response
-    {
+    ): Response {
         $user = $this->getUser();
 
-
         return $this->render('/user/profile.html.twig', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
-
 
     /**
      * @Route("/profile/edit", name="profile_update")
@@ -40,15 +34,13 @@ class UserController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         ManagePictureService $managePictureService
-    ): Response
-    {
+    ): Response {
         $user = $this->getUser();
 
         $profileForm = $this->createForm(ProfileType::class, $user);
         $profileForm->handleRequest($request);
 
-        if ($profileForm->isSubmitted() && $profileForm->isValid())
-        {
+        if ($profileForm->isSubmitted() && $profileForm->isValid()) {
             /** @var UploadedFile $file */
             $file = $profileForm->get('file')->getData();
             if ($file) {
@@ -63,12 +55,13 @@ class UserController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'The profile was updated.');
+
             return $this->redirectToRoute('profile');
         }
 
         return $this->render('/user/profileUpdate.html.twig', [
             'profileForm' => $profileForm->createView(),
-            'user' => $user
+            'user' => $user,
         ]);
     }
 }

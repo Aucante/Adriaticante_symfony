@@ -86,10 +86,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      * @var string|null
      */
     private $file;
-
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -115,10 +115,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="boolean")
      */
     private $professional;
-
-
-
-    
 
     public function __construct()
     {
@@ -313,7 +309,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {

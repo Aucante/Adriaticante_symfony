@@ -3,7 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
-use App\Form\ImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -11,14 +10,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -28,7 +22,6 @@ class UserCrudController extends AbstractCrudController
     {
         $this->uploadDir = $uploadDir;
     }
-
 
     public static function getEntityFqcn(): string
     {
@@ -50,7 +43,6 @@ class UserCrudController extends AbstractCrudController
             ->add('firstname');
     }
 
-
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -68,5 +60,4 @@ class UserCrudController extends AbstractCrudController
             AssociationField::new('address'),
         ];
     }
-
 }

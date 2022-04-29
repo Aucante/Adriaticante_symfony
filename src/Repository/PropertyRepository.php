@@ -4,9 +4,7 @@ namespace App\Repository;
 
 use App\Data\SearchData;
 use App\Entity\Property;
-use App\Entity\PropertySearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,8 +19,6 @@ class PropertyRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Property::class);
     }
-
-
 
     /**
      * @return Property[]
@@ -50,7 +46,8 @@ class PropertyRepository extends ServiceEntityRepository
     }
 
     /**
-     * Call property with filter
+     * Call property with filter.
+     *
      * @return Property[]
      */
     public function findSearch(SearchData $search): array
@@ -60,115 +57,98 @@ class PropertyRepository extends ServiceEntityRepository
             ->select('f', 'p')
             ->leftJoin('p.features', 'f');
 
-        if (!empty($search->q))
-        {
+        if (!empty($search->q)) {
             $query = $query
                 ->andWhere('p.name LIKE :q')
                 ->setParameter('q', "%{$search->q}%");
         }
 
-        if (!empty($search->priceMin))
-        {
+        if (!empty($search->priceMin)) {
             $query = $query
                 ->andWhere('p.price >= :minPrice')
                 ->setParameter('minPrice', $search->priceMin);
         }
 
-        if (!empty($search->priceMax))
-        {
+        if (!empty($search->priceMax)) {
             $query = $query
                 ->andWhere('p.price <= :maxPrice')
                 ->setParameter('maxPrice', $search->priceMax);
         }
 
-        if (!empty($search->areaMin))
-        {
+        if (!empty($search->areaMin)) {
             $query = $query
                 ->andWhere('p.area >= :minArea')
                 ->setParameter('minArea', $search->areaMin);
         }
 
-        if (!empty($search->areaMax))
-        {
+        if (!empty($search->areaMax)) {
             $query = $query
                 ->andWhere('p.area <= :maxArea')
                 ->setParameter('maxArea', $search->areaMax);
         }
 
-        if (!empty($search->roomsMin))
-        {
+        if (!empty($search->roomsMin)) {
             $query = $query
                 ->andWhere('p.totalRooms >= :minRoom')
                 ->setParameter('minRoom', $search->roomsMin);
         }
 
-        if (!empty($search->roomsMax))
-        {
+        if (!empty($search->roomsMax)) {
             $query = $query
                 ->andWhere('p.totalRooms <= :maxRoom')
                 ->setParameter('maxRoom', $search->roomsMax);
         }
 
-        if (!empty($search->bedroomsMin))
-        {
+        if (!empty($search->bedroomsMin)) {
             $query = $query
                 ->andWhere('p.totalBedrooms >= :minBedroom')
                 ->setParameter('minBedroom', $search->bedroomsMin);
         }
 
-        if (!empty($search->bedroomsMax))
-        {
+        if (!empty($search->bedroomsMax)) {
             $query = $query
                 ->andWhere('p.totalBedrooms <= :maxBedroom')
                 ->setParameter('maxBedroom', $search->bedroomsMax);
         }
 
-        if (!empty($search->bathroomsMin))
-        {
+        if (!empty($search->bathroomsMin)) {
             $query = $query
                 ->andWhere('p.totalBathrooms >= :minBathroom')
                 ->setParameter('minBathroom', $search->bathroomsMin);
         }
 
-        if (!empty($search->bathroomsMax))
-        {
+        if (!empty($search->bathroomsMax)) {
             $query = $query
                 ->andWhere('p.totalBathrooms <= :maxBathroom')
                 ->setParameter('maxBathroom', $search->bathroomsMax);
         }
 
-        if (!empty($search->type))
-        {
+        if (!empty($search->type)) {
             $query = $query
                 ->andWhere('p.type LIKE :type')
                 ->setParameter('type', "%{$search->type}%");
         }
 
-        if (!empty($search->advertType))
-        {
+        if (!empty($search->advertType)) {
             $query = $query
                 ->andWhere('p.advertType LIKE :advertType')
                 ->setParameter('advertType', "%{$search->advertType}%");
         }
 
-        if (!empty($search->country))
-        {
+        if (!empty($search->country)) {
             $query = $query
                 ->leftJoin('p.city', 'c')
                 ->andWhere('c.country = :country')
                 ->setParameter('country', $search->country);
         }
 
-        if (!empty($search->city))
-        {
+        if (!empty($search->city)) {
             $query = $query
                 ->andWhere('p.city = :city')
                 ->setParameter('city', $search->city);
         }
 
-
-        if (!empty($search->features))
-        {
+        if (!empty($search->features)) {
             $query = $query
                 ->andWhere('f.id IN (:features)')
                 ->setParameter('features', $search->features);

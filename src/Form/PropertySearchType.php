@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Data\SearchData;
-use App\Entity\Asset;
 use App\Entity\City;
 use App\Entity\Country;
 use App\Entity\Feature;
@@ -12,7 +11,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -28,42 +26,42 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'search.search.label'
-                ]
+                    'placeholder' => 'search.search.label',
+                ],
             ])
             ->add('priceMax', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Max'
-                ]
+                    'placeholder' => 'Max',
+                ],
             ])
             ->add('priceMin', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Min'
-                ]
+                    'placeholder' => 'Min',
+                ],
             ])
             ->add('areaMax', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Max'
-                ]
+                    'placeholder' => 'Max',
+                ],
             ])
             ->add('areaMin', IntegerType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Min'
-                ]
+                    'placeholder' => 'Min',
+                ],
             ])
             ->add('roomsMax', ChoiceType::class, [
                 'label' => false,
                 'required' => false,
                 'placeholder' => 'Max',
-                'choices'  => [
+                'choices' => [
                     '0' => '0',
                     '1' => '1',
                     '2' => '2',
@@ -86,7 +84,7 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'placeholder' => 'Min',
-                'choices'  => [
+                'choices' => [
                     '0' => '0',
                     '1' => '1',
                     '2' => '2',
@@ -109,7 +107,7 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'placeholder' => 'Max',
-                'choices'  => [
+                'choices' => [
                     '0' => '0',
                     '1' => '1',
                     '2' => '2',
@@ -127,7 +125,7 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'placeholder' => 'Min',
-                'choices'  => [
+                'choices' => [
                     '0' => '0',
                     '1' => '1',
                     '2' => '2',
@@ -145,7 +143,7 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'placeholder' => 'Max',
-                'choices'  => [
+                'choices' => [
                     '0' => '0',
                     '1' => '1',
                     '2' => '2',
@@ -163,7 +161,7 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'placeholder' => 'Min',
-                'choices'  => [
+                'choices' => [
                     '0' => '0',
                     '1' => '1',
                     '2' => '2',
@@ -182,9 +180,9 @@ class PropertySearchType extends AbstractType
                 'required' => false,
                 'placeholder' => 'search.type.label',
                 'attr' => [
-                    'placeholder' => 'search.type.label'
+                    'placeholder' => 'search.type.label',
                 ],
-                'choices'  => [
+                'choices' => [
                     'Villa' => 'Villa',
                     'House' => 'House',
                     'Penthouse' => 'Penthouse',
@@ -199,26 +197,26 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'advertType'
+                    'placeholder' => 'advertType',
                 ],
-                'choices'  => [
+                'choices' => [
                     'Purchase' => 'Purchase',
                     'Rental' => 'Rental',
                 ],
-                'placeholder' => 'search.advertType.label'
+                'placeholder' => 'search.advertType.label',
             ])
             ->add('country', EntityType::class, [
                 'class' => Country::class,
                 'choice_label' => 'name',
                 'label' => false,
                 'placeholder' => 'search.country.label',
-                'required' => false
+                'required' => false,
             ])
             ->add('city', EntityType::class, [
                 'class' => City::class,
                 'label' => false,
                 'placeholder' => 'search.city.label',
-                'required' => false
+                'required' => false,
             ])
             ->add('features', EntityType::class, [
                 'label' => false,
@@ -226,8 +224,8 @@ class PropertySearchType extends AbstractType
                 'class' => Feature::class,
                 'multiple' => true,
                 'attr' => [
-                    'data-controller' => 'select2'
-                ]
+                    'data-controller' => 'select2',
+                ],
             ])
         ;
         $formModifier = function (FormInterface $form, Country $country = null) {
@@ -239,14 +237,13 @@ class PropertySearchType extends AbstractType
                 'choice_label' => 'name',
                 'placeholder' => 'search.city.label',
                 'label' => false,
-                'required' => false
+                'required' => false,
             ]);
         };
 
         $builder->get('country')->addEventListener(
             FormEvents::POST_SUBMIT,
-            function (FormEvent $event) use ($formModifier)
-            {
+            function (FormEvent $event) use ($formModifier) {
                 $country = $event->getForm()->getData();
                 $formModifier($event->getForm()->getParent(), $country);
             }
@@ -259,7 +256,7 @@ class PropertySearchType extends AbstractType
             'data_class' => SearchData::class,
             'method' => 'GET',
             'csrf_protection' => false,
-            'translation_domain' => 'form'
+            'translation_domain' => 'form',
         ]);
     }
 

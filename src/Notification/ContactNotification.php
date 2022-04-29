@@ -1,15 +1,14 @@
 <?php
+
 namespace App\Notification;
 
 use App\Entity\Contact;
 use App\Entity\User;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
-use Symfony\Component\Mime\Message;
 
-class ContactNotification {
-
+class ContactNotification
+{
     protected MailerInterface $mailer;
 
     public function __construct(MailerInterface $mailer)
@@ -17,18 +16,17 @@ class ContactNotification {
         $this->mailer = $mailer;
     }
 
-
     public function notifyPropertyPage(Contact $contact, User $user): void
     {
         $email = (new TemplatedEmail());
         $email->from($contact->getEmail())
             ->to($user->getEmail())
-            ->subject('New message from Adriaticante for : ' . $contact->getProperty()->getName())
+            ->subject('New message from Adriaticante for : '.$contact->getProperty()->getName())
             ->htmlTemplate('emails/contact_property.html.twig')
             ->context([
                 'property' => $contact->getProperty()->getName(),
                 'mail' => $contact->getEmail(),
-                'message' => $contact->getMessage()
+                'message' => $contact->getMessage(),
             ]);
         $this->mailer->send($email);
     }
@@ -38,7 +36,7 @@ class ContactNotification {
         $email = (new TemplatedEmail());
         $email->from($contact->getEmail())
             ->to('contact@adriaticante.com')
-            ->subject('New message from contact page' )
+            ->subject('New message from contact page')
             ->htmlTemplate('emails/contact_page.html.twig')
             ->context([
                 'mail' => $contact->getEmail(),
@@ -48,5 +46,4 @@ class ContactNotification {
             ]);
         $this->mailer->send($email);
     }
-
 }

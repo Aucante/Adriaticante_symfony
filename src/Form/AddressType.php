@@ -19,31 +19,31 @@ class AddressType extends AbstractType
         $builder
             ->add('street_number', IntegerType::class, [
             'label' => 'address.street_number.label',
-                'required' => true
+                'required' => true,
             ])
             ->add('street_address_line_1', TextType::class, [
                 'label' => 'address.street_address_line_1.label',
-                'required' => true
+                'required' => true,
             ])
             ->add('street_address_line_2', TextType::class, [
                 'label' => 'address.street_address_line_2.label',
-                'required' => false
+                'required' => false,
             ])
             ->add('city', TextType::class, [
                 'label' => 'address.city.label',
-                'required' => true
+                'required' => true,
             ])
             ->add('state_zip_code', IntegerType::class, [
                 'label' => 'address.state_zip_code.label',
-                'required' => true
+                'required' => true,
             ])
             ->add('country', CountryType::class, [
                 'label' => 'address.country.label',
-                'required' => true
+                'required' => true,
             ])
             ->add('county', TextType::class, [
                 'label' => 'address.county.label',
-                'required' => false
+                'required' => false,
             ])
             ->add('dialCode', ChoiceType::class, [
                 'label' => 'address.dialCode.label',
@@ -64,11 +64,11 @@ class AddressType extends AbstractType
                     '+32' => '+32 Belgium',
                     '+381' => '+381 Serbia',
                     '+1' => '+1 USA/Canada',
-                ]
+                ],
             ])
             ->add('phone', TelType::class, [
                 'label' => 'address.phone.label',
-                'required' => true
+                'required' => true,
             ])
         ;
     }
@@ -77,7 +77,7 @@ class AddressType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Address::class,
-            'translation_domain' => 'form'
+            'translation_domain' => 'form',
         ]);
     }
 }

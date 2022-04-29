@@ -21,11 +21,9 @@ class MessageController extends AbstractController
      */
     public function index(
         ThreadRepository $threadRepository
-    ): Response
-    {
+    ): Response {
         $user = $this->getUser();
         $threads = $threadRepository->findSenderAndRecipientThread($user);
-
 
         return $this->render('message/index.html.twig', [
             'threads' => $threads,
@@ -37,13 +35,12 @@ class MessageController extends AbstractController
      */
     public function threadOnlyFromSeller(
         ThreadRepository $threadRepository
-    ): Response
-    {
+    ): Response {
         $user = $this->getUser();
         $threads = $threadRepository->findThreadAsSender($user);
 
         return $this->render('message/messagesFromSeller.html.twig', [
-            'threads' => $threads
+            'threads' => $threads,
         ]);
     }
 
@@ -52,17 +49,14 @@ class MessageController extends AbstractController
      */
     public function threadOnlyFromPurchaser(
         ThreadRepository $threadRepository
-    ): Response
-    {
+    ): Response {
         $user = $this->getUser();
         $threads = $threadRepository->findThreadAsRecipient($user);
 
         return $this->render('message/messagesFromPurchaser.html.twig', [
-            'threads' => $threads
+            'threads' => $threads,
         ]);
     }
-
-
 
     /**
      * @Route("/thread/messages/{title}", name="messages_thread")
@@ -73,19 +67,17 @@ class MessageController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManager,
         TranslatorInterface $translator
-    ): Response
-    {
+    ): Response {
         $user = $this->getUser();
 
         $messageRepository->updateRecipientMessageNotRead($thread, $user);
 
         $messages = $thread->getMessages();
 
-        if ($this->getUser() === $thread->getSender())
-        {
+        if ($this->getUser() === $thread->getSender()) {
             $recipient = $thread->getProperty()->getUser();
             $messagesNotRead = $messageRepository->findSenderMessageNotRead($user);
-        }else{
+        } else {
             $recipient = $thread->getSender();
             $messagesNotRead = $messageRepository->findRecipientMessageNotRead($user);
         }
@@ -94,8 +86,7 @@ class MessageController extends AbstractController
         $answerForm = $this->createForm(MessageType::class, $answer);
         $answerForm->handleRequest($request);
 
-        if ($answerForm->isSubmitted() && $answerForm->isValid())
-        {
+        if ($answerForm->isSubmitted() && $answerForm->isValid()) {
             $answer->setThread($thread);
             $answer->setSender($user);
             $answer->setRecipient($recipient);
@@ -105,7 +96,6 @@ class MessageController extends AbstractController
             $messageFlash = $translator->trans('Your message was sent successfully.');
             $this->addFlash('success', $messageFlash);
             $this->redirectToRoute('messages_thread', ['title' => $thread->getTitle()]);
-
         }
         $entityManager->flush();
 
@@ -113,7 +103,7 @@ class MessageController extends AbstractController
             'messageNotRead' => $messagesNotRead,
             'messages' => $messages,
             'thread' => $thread,
-            'answerForm' => $answerForm->createView()
+            'answerForm' => $answerForm->createView(),
         ]);
     }
 }

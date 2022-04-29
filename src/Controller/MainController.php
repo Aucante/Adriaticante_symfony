@@ -15,8 +15,7 @@ class MainController extends AbstractController
     public function changeLocale(
         $locale,
         Request $request
-    ): Response
-    {
+    ): Response {
         $request->getSession()->set('_locale', $locale);
 
         return $this->redirect($request->headers->get('referer'));

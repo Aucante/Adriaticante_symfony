@@ -20,14 +20,12 @@ class ContactController extends AbstractController
         Request $request,
         ContactNotification $contactNotification,
         TranslatorInterface $translator
-    ): Response
-    {
+    ): Response {
         $contact = new Contact();
         $contactForm = $this->createForm(ContactType::class, $contact);
         $contactForm->handleRequest($request);
 
-        if ($contactForm->isSubmitted() && $contactForm->isValid())
-        {
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
             $contactNotification->notifyContactPage($contact);
             $messageFlash = $translator->trans('Your message has been sent successfully.');
             $this->addFlash('success', $messageFlash);
@@ -35,7 +33,7 @@ class ContactController extends AbstractController
         }
 
         return $this->render('contact/index.html.twig', [
-            'contactForm' => $contactForm->createView()
+            'contactForm' => $contactForm->createView(),
         ]);
     }
 }

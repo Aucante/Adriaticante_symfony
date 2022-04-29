@@ -22,15 +22,13 @@ class HomeController extends AbstractController
         CountryRepository $countryRepository,
         PaginatorInterface $paginator,
         Request $request
-    ): Response
-    {
+    ): Response {
         // Filter search
         $search = new SearchData();
         $formSearch = $this->createForm(PropertySearchType::class, $search);
         $formSearch->handleRequest($request);
 
-        if ($formSearch->isSubmitted())
-        {
+        if ($formSearch->isSubmitted()) {
             $data = $propertyRepository->findSearch($search);
             $properties = $paginator->paginate(
                 $data,
@@ -38,8 +36,8 @@ class HomeController extends AbstractController
                 8
             );
             $properties->setCustomParameters([
-                'align' => 'center', # center|right (for template: twitter_bootstrap_v4_pagination and foundation_v6_pagination)
-                'size' => '', # small|large (for template: twitter_bootstrap_v4_pagination)
+                'align' => 'center', // center|right (for template: twitter_bootstrap_v4_pagination and foundation_v6_pagination)
+                'size' => '', // small|large (for template: twitter_bootstrap_v4_pagination)
                 'rounded' => true,
                 'span_class' => 'whatever',
             ]);
@@ -50,7 +48,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'property' => $propertyRepository->lastThree(),
             'formSearch' => $formSearch->createView(),
-            'countries' => $countryRepository->findAll()
+            'countries' => $countryRepository->findAll(),
         ]);
     }
 }
