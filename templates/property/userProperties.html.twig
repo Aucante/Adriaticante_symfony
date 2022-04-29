@@ -20,11 +20,11 @@
                                     <p class="card-title text-center text-uppercase display-6 fs-5 fw-normal pb-1">{{ property.name }}</p>
                                     <div class="text-center">
                                         <a href="{{ path('properties_details', {'slug': property.slug}) }}"><button class="btn btn-primary btn-sm rounded-0 text-uppercase">{% trans %}Check{% endtrans%}</button></a>
-                                        <button type="button" class="btn btn-danger btn-sm rounded-0 text-uppercase" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                        <button type="button" class="btn btn-danger btn-sm rounded-0 text-uppercase" data-bs-toggle="modal" data-bs-target="#deleteModal{{ property.id }}">
                                             {% trans %}Delete{% endtrans%}
                                         </button>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="deleteModal{{ property.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">

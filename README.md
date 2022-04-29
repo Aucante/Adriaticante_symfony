@@ -28,3 +28,8 @@ php bin/phpunit --testdox (more precision)
 
 composer run-script phpstan
 
+## Check code quality
+
+composer check-all (tests + phpstan)
+
+
