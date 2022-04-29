@@ -28,7 +28,6 @@ class PropertyUnitTest extends TestCase
             ->setTotalBedrooms(1)
             ->setTotalBathrooms(1)
             ->setUser($user)
-            ->setStatus('true')
             ->setType('true')
             ->setAdvertType('true')
             ->setLinkWebsite('true')
@@ -47,7 +46,6 @@ class PropertyUnitTest extends TestCase
         $this->assertTrue($property->getTotalBedrooms() === 1);
         $this->assertTrue($property->getTotalBathrooms() === 1);
         $this->assertTrue($property->getUser() === $user);
-        $this->assertTrue($property->getStatus() === 'true');
         $this->assertTrue($property->getType() === 'true');
         $this->assertTrue($property->getAdvertType() === 'true');
         $this->assertTrue($property->getLinkWebsite() === 'true');
@@ -74,7 +72,6 @@ class PropertyUnitTest extends TestCase
             ->setTotalBedrooms(1)
             ->setTotalBathrooms(1)
             ->setUser($user)
-            ->setStatus('true')
             ->setType('true')
             ->setAdvertType('true')
             ->setLinkWebsite('true')
@@ -93,7 +90,6 @@ class PropertyUnitTest extends TestCase
         $this->assertFalse($property->getTotalBedrooms() === 2);
         $this->assertFalse($property->getTotalBathrooms() === 2);
         $this->assertFalse($property->getUser() === new User());
-        $this->assertFalse($property->getStatus() === 'false');
         $this->assertFalse($property->getType() === 'false');
         $this->assertFalse($property->getAdvertType() === 'false');
         $this->assertFalse($property->getLinkWebsite() === 'false');
@@ -119,7 +115,6 @@ class PropertyUnitTest extends TestCase
         $this->assertEmpty($property->getTotalBathrooms());
         $this->assertEmpty($property->getId());
         $this->assertEmpty($property->getUser());
-        $this->assertEmpty($property->getStatus());
         $this->assertEmpty($property->getType());
         $this->assertEmpty($property->getAdvertType());
         $this->assertEmpty($property->getLinkWebsite());

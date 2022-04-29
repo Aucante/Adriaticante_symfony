@@ -124,7 +124,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->properties = new ArrayCollection();
         $this->threads = new ArrayCollection();
-        $this->messages = new ArrayCollection();
         $this->sent = new ArrayCollection();
         $this->received = new ArrayCollection();
     }
