@@ -208,7 +208,6 @@ class PropertySearchType extends AbstractType
                 'placeholder' => 'search.advertType.label'
             ])
             ->add('country', EntityType::class, [
-                'mapped' => false,
                 'class' => Country::class,
                 'choice_label' => 'name',
                 'label' => false,
@@ -258,7 +257,7 @@ class PropertySearchType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => SearchData::class,
-            'method' => 'POST',
+            'method' => 'GET',
             'csrf_protection' => false,
             'translation_domain' => 'form'
         ]);
