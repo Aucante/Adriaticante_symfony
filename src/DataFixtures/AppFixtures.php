@@ -254,7 +254,7 @@ class AppFixtures extends Fixture
         $manager->persist($file2);
 
         // ADDRESS
-        for ($i = 0; $i < 10; ++$i) {
+        for ($i = 0; $i < 11; ++$i) {
             $address = new Address();
 
             $address->setStreetNumber($faker->numberBetween(1, 99))

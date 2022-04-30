@@ -13,7 +13,7 @@
                     <div class="card mb-3 rounded-0 shadow-sm border-0">
                         <div class="row g-0">
                             <div class="col-6 col-md-5">
-                                <img src="{{ asset('uploads/property/' ~ property.images.last) | imagine_filter('scale') }}" class="img-fluid " alt="{{ property.name }}">
+                                <img src="{{ asset('uploads/property/' ~ property.images.last) | imagine_filter('medium') }}" class="img-fluid " alt="{{ property.name }}" style="height: 200px; width: 400px">
                             </div>
                             <div class="d-flex align-items-center col-6 col-md-7">
                                 <div class="card-body">
