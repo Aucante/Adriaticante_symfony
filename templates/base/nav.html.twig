@@ -14,7 +14,7 @@
                             role="button"
                             aria-controls="offcanvasNavbar"
                     >
-                        <img src="{{ asset('build/img/icon/menu.jpg') }}" alt="menu" height="42" />
+                        <img class="me-2" src="{{ asset('build/img/icon/menu.png') }}" alt="menu" height="32" />
                     </a>
                     {% if is_granted('ROLE_USER') %}
                         <a href="{{ path('properties_create') }}"><button class="btn btn-primary rounded-0 text-uppercase shadow-none buttonNav"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button></a>
