@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Notification\MailjetNotification;
 use App\Security\AppAuthenticator;
 use App\Service\ManagePictureService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -35,7 +37,8 @@ class RegistrationController extends AbstractController
         UserAuthenticatorInterface $userAuthenticator,
         AppAuthenticator $authenticator,
         EntityManagerInterface $entityManager,
-        ManagePictureService $managePictureService
+        ManagePictureService $managePictureService,
+        MailjetNotification $mailjetNotification
     ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -64,7 +67,28 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+            // Email notification
+
+            // Variables mail
+            $emailFrom = 'adriaticante.pro@gmail.com';
+            $nameFrom = 'Adriaticante';
+            $subject = 'Welcome ' . $user->getFirstname() . '.';
+            $templateId = 3906679;
+
+            $mailjetNotification->send(
+                $emailFrom,
+                $nameFrom,
+                $user->getEmail(),
+                $user->getLastname() . ' ' . $user->getFirstname(),
+                $templateId,
+                $subject,
+                $user->getFirstname(),
+                "",
+                "",
+                "",
+                ""
+            );
+
 
             return $userAuthenticator->authenticateUser(
                 $user,
@@ -87,7 +111,8 @@ class RegistrationController extends AbstractController
         UserAuthenticatorInterface $userAuthenticator,
         AppAuthenticator $authenticator,
         EntityManagerInterface $entityManager,
-        ManagePictureService $managePictureService
+        ManagePictureService $managePictureService,
+        MailjetNotification $mailjetNotification
     ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -109,7 +134,26 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
+
+            // Variables mail
+            $emailFrom = 'adriaticante.pro@gmail.com';
+            $nameFrom = 'Adriaticante';
+            $subject = 'Welcome ' . $user->getFirstname() . '.';
+            $templateId = 3906679;
+
+            $mailjetNotification->send(
+                $emailFrom,
+                $nameFrom,
+                $user->getEmail(),
+                $user->getLastname() . ' ' . $user->getFirstname(),
+                $templateId,
+                $subject,
+                $user->getFirstname(),
+                "",
+                "",
+                "",
+                ""
+            );
 
             return $userAuthenticator->authenticateUser(
                 $user,
