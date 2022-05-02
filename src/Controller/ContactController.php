@@ -23,17 +23,32 @@ class ContactController extends AbstractController
         MailjetNotification $mailjetNotification,
         TranslatorInterface $translator
     ): Response {
+
         $contact = new Contact();
         $contactForm = $this->createForm(ContactType::class, $contact);
         $contactForm->handleRequest($request);
 
+        // Variables mail
+        $emailFrom = 'adriaticante.pro@gmail.com';
+        $nameFrom = 'Adriaticante';
+        $subject = 'Contact from ' . $contact->getLastname() . ' ' . $contact->getFirstname() . ' (Standard form). ';
+        $templateId = 3906681;
+
+
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
 //            $contactNotification->notifyContactPage($contact);
             $mailjetNotification->send(
-                'adriaticante.pro@gmail.com',
-                'test',
-                'sujet',
-                'contenu'
+                $emailFrom,
+                $nameFrom,
+                $contact->getEmail(),
+                $contact->getLastname() . ' ' . $contact->getFirstname(),
+                $templateId,
+                $subject,
+                $contact->getLastname(),
+                $contact->getFirstname(),
+                $contact->getPhone(),
+                $contact->getEmail(),
+                $contact->getMessage(),
             );
             $messageFlash = $translator->trans('Your message has been sent successfully.');
             $this->addFlash('success', $messageFlash);
