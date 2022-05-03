@@ -136,14 +136,10 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // Variables mail
-            $emailFrom = 'adriaticante.pro@gmail.com';
-            $nameFrom = 'Adriaticante';
             $subject = 'Welcome ' . $user->getFirstname() . '.';
             $templateId = 3906679;
 
             $mailjetNotification->send(
-                $emailFrom,
-                $nameFrom,
                 $user->getEmail(),
                 $user->getLastname() . ' ' . $user->getFirstname(),
                 $templateId,

@@ -29,27 +29,41 @@ class ContactController extends AbstractController
         $contactForm->handleRequest($request);
 
         // Variables mail
-        $emailFrom = 'adriaticante.pro@gmail.com';
-        $nameFrom = 'Adriaticante';
-        $subject = 'Contact from ' . $contact->getLastname() . ' ' . $contact->getFirstname() . ' (Standard form). ';
-        $templateId = 3906681;
+        $emailAdmin = 'contact@adriaticante.com';
+        $nameToAdmin = 'Adriaticante';
+        $subjectUser = 'Your message has been sent successfully.';
+        $subjectAdmin = 'Contact from ' . $contact->getLastname() . ' ' . $contact->getFirstname() . ' (Standard form). ';
+        $templateIdUser = 3906681;
+        $templateIdAdmin = 3909576;
 
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
 //            $contactNotification->notifyContactPage($contact);
+            // Mail for user
             $mailjetNotification->send(
-                $emailFrom,
-                $nameFrom,
                 $contact->getEmail(),
                 $contact->getLastname() . ' ' . $contact->getFirstname(),
-                $templateId,
-                $subject,
+                $templateIdUser,
+                $subjectUser,
                 $contact->getLastname(),
                 $contact->getFirstname(),
                 $contact->getPhone(),
                 $contact->getEmail(),
                 $contact->getMessage(),
             );
+            // Mail for adriaticante
+            $mailjetNotification->send(
+                $emailAdmin,
+                $nameToAdmin,
+                $templateIdAdmin,
+                $subjectAdmin,
+                $contact->getLastname(),
+                $contact->getFirstname(),
+                $contact->getPhone(),
+                $contact->getEmail(),
+                $contact->getMessage(),
+            );
+
             $messageFlash = $translator->trans('Your message has been sent successfully.');
             $this->addFlash('success', $messageFlash);
             $this->redirectToRoute('contact');

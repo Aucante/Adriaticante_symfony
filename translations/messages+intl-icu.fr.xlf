@@ -337,6 +337,240 @@
         <source>Do you want edit your address ? Click here</source>
         <target>Vous souhaitez modifier votre adresse ? Cliquez-ici</target>
       </trans-unit>
+      <trans-unit id="uKySgFj" resname="Your message has been sent successfully.">
+        <source>Your message has been sent successfully.</source>
+        <target>Votre message a été envoyé correctement.</target>
+      </trans-unit>
+      <trans-unit id="mNrRvKQ" resname="Your message was sent successfully.">
+        <source>Your message was sent successfully.</source>
+        <target>Votre message a été envoyé correctement.</target>
+      </trans-unit>
+      <trans-unit id="4iGBfbj" resname="Message has been sent successfully.">
+        <source>Message has been sent successfully.</source>
+        <target>Votre message a été envoyé correctement.</target>
+      </trans-unit>
+      <trans-unit id="khDzts0" resname="Ads">
+        <source>Ads</source>
+        <target>Annonces</target>
+      </trans-unit>
+      <trans-unit id="wRRs07B" resname="new real estate">
+        <source>new real estate</source>
+        <target>nouvelle annonce</target>
+      </trans-unit>
+      <trans-unit id="Z7aWRoY" resname="Dashboard">
+        <source>Dashboard</source>
+        <target>Tableau de bord</target>
+      </trans-unit>
+      <trans-unit id="t6IM3kP" resname="My Real Estate">
+        <source>My Real Estate</source>
+        <target>Mes annonces</target>
+      </trans-unit>
+      <trans-unit id="BNe0gzk" resname="Messages">
+        <source>Messages</source>
+        <target>Messages</target>
+      </trans-unit>
+      <trans-unit id="D_BXH6z" resname="Send Message">
+        <source>Send Message</source>
+        <target>Envoyer Message</target>
+      </trans-unit>
+      <trans-unit id="TL5Zph3" resname="Discover real estate investment opportunities">
+        <source>Discover real estate investment opportunities</source>
+        <target>Découvrez les opportunités d'investissement</target>
+      </trans-unit>
+      <trans-unit id="O3OQC40" resname="Explore">
+        <source>Explore</source>
+        <target>Explorer</target>
+      </trans-unit>
+      <trans-unit id="B2URuaX" resname="Explore the different rental offers">
+        <source>Explore the different rental offers</source>
+        <target>Explorez les différentes offres de location</target>
+      </trans-unit>
+      <trans-unit id="d8tsfN6" resname="Contact the seller · purchaser here">
+        <source>Contact the seller · purchaser here</source>
+        <target>Contactez le vendeur · acheteur ici</target>
+      </trans-unit>
+      <trans-unit id="ScJmuqq" resname="Search">
+        <source>Search</source>
+        <target>Rechercher</target>
+      </trans-unit>
+      <trans-unit id="x.k3g29" resname="Choose">
+        <source>Choose</source>
+        <target>Choisir</target>
+      </trans-unit>
+      <trans-unit id="Ag3ATVN" resname="All Messages">
+        <source>All Messages</source>
+        <target>Tout Les Messages</target>
+      </trans-unit>
+      <trans-unit id="rz8S4WH" resname="You have">
+        <source>You have</source>
+        <target>Vous avez</target>
+      </trans-unit>
+      <trans-unit id="q1MKE_R" resname="message">
+        <source>message</source>
+        <target>message</target>
+      </trans-unit>
+      <trans-unit id="lINeovz" resname="Inbox">
+        <source>Inbox</source>
+        <target>Boîte de réception</target>
+      </trans-unit>
+      <trans-unit id="sdiqW74" resname="Messages as seller">
+        <source>Messages as seller</source>
+        <target>Messages en tant que vendeur</target>
+      </trans-unit>
+      <trans-unit id="PDybWKG" resname="Messages as purchaser">
+        <source>Messages as purchaser</source>
+        <target>Messages en tant qu'acheteur</target>
+      </trans-unit>
+      <trans-unit id="U3PH_KW" resname="Thread">
+        <source>Thread</source>
+        <target>Conversation</target>
+      </trans-unit>
+      <trans-unit id="UoPpGMJ" resname="All Inboxes">
+        <source>All Inboxes</source>
+        <target>Toutes les boîtes</target>
+      </trans-unit>
+      <trans-unit id="OnhpU4i" resname="Home">
+        <source>Home</source>
+        <target>Accueil</target>
+      </trans-unit>
+      <trans-unit id="uBXyjwK" resname="As seller">
+        <source>As seller</source>
+        <target>En tant que vendeur</target>
+      </trans-unit>
+      <trans-unit id="fEpTSLy" resname="As purchaser">
+        <source>As purchaser</source>
+        <target>En tant qu'acheteur</target>
+      </trans-unit>
+      <trans-unit id="awFD0Dh" resname="Return">
+        <source>Return</source>
+        <target>Retour</target>
+      </trans-unit>
+      <trans-unit id="Nb1tGNg" resname="New Real estate">
+        <source>New Real estate</source>
+        <target>Nouvelle annonce</target>
+      </trans-unit>
+      <trans-unit id="zR3rPZs" resname="You must be logged in to send a message.">
+        <source>You must be logged in to send a message.</source>
+        <target>Vous devez être connecté pour envoyer un message.</target>
+      </trans-unit>
+      <trans-unit id="5i7jPj5" resname="Others Features">
+        <source>Others Features</source>
+        <target>Autres caractéristiques</target>
+      </trans-unit>
+      <trans-unit id="AUmPox1" resname="Seller">
+        <source>Seller</source>
+        <target>Vendeur</target>
+      </trans-unit>
+      <trans-unit id="Y9zriAC" resname="Phone">
+        <source>Phone</source>
+        <target>Téléphone</target>
+      </trans-unit>
+      <trans-unit id="taIprIv" resname="Website">
+        <source>Website</source>
+        <target>Site web</target>
+      </trans-unit>
+      <trans-unit id="_usciCI" resname="FILTER">
+        <source>FILTER</source>
+        <target>FILTRE</target>
+      </trans-unit>
+      <trans-unit id="G8xOvbJ" resname="Advert Type">
+        <source>Advert Type</source>
+        <target>Type d'annonce</target>
+      </trans-unit>
+      <trans-unit id="uq3fcPt" resname="Type">
+        <source>Type</source>
+        <target>Type</target>
+      </trans-unit>
+      <trans-unit id="kR6onEP" resname="Room">
+        <source>Room</source>
+        <target>Pièce</target>
+      </trans-unit>
+      <trans-unit id="hTTFJ8j" resname="Bedroom">
+        <source>Bedroom</source>
+        <target>Chambre</target>
+      </trans-unit>
+      <trans-unit id="WDTj3iU" resname="Bathroom">
+        <source>Bathroom</source>
+        <target>Salle de bain</target>
+      </trans-unit>
+      <trans-unit id="y7PEMH6" resname="Real Estate Informations">
+        <source>Real Estate Informations</source>
+        <target>Information du bien</target>
+      </trans-unit>
+      <trans-unit id="mQV4zyO" resname="Upload Files">
+        <source>Upload Files</source>
+        <target>Fichiers Téléchargés</target>
+      </trans-unit>
+      <trans-unit id="iaisK.z" resname="Add images">
+        <source>Add images</source>
+        <target>Ajouter des images</target>
+      </trans-unit>
+      <trans-unit id="CIWnYcn" resname="Create an particular account">
+        <source>Create an particular account</source>
+        <target>Créer un compte particulier</target>
+      </trans-unit>
+      <trans-unit id="FcQ.Z3H" resname="Personal details">
+        <source>Personal details</source>
+        <target>Coordonnées personnel</target>
+      </trans-unit>
+      <trans-unit id="0shXzTN" resname="Create an professional account">
+        <source>Create an professional account</source>
+        <target>Créer un compte professionnel</target>
+      </trans-unit>
+      <trans-unit id="U28cTzJ" resname="Password Reset Email Sent">
+        <source>Password Reset Email Sent</source>
+        <target>Email de réinitialisation de mot de passe envoyé</target>
+      </trans-unit>
+      <trans-unit id="5qzysIQ" resname="If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.&#10;                This link will expire in">
+        <source>If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.
+                This link will expire in</source>
+        <target>Si un compte correspond à votre email, alors un email contenant un lien de réinitialisation vient d'être envoyé. Le lien expire dans</target>
+      </trans-unit>
+      <trans-unit id="bs9avOq" resname="If you don't receive an email please check your spam folder or">
+        <source>If you don't receive an email please check your spam folder or</source>
+        <target>Si vous ne recevez pas d'email, veuillez vérifiez dans vos spam ou</target>
+      </trans-unit>
+      <trans-unit id="W13t7jL" resname="try again">
+        <source>try again</source>
+        <target>Veuillez réessayer</target>
+      </trans-unit>
+      <trans-unit id="WfpDeb4" resname="Reset your password">
+        <source>Reset your password</source>
+        <target>Réinitialiser votre mot de passe</target>
+      </trans-unit>
+      <trans-unit id="woTj8wg" resname="Enter your email address and we will send you a&#10;                    link to reset your password.">
+        <source>Enter your email address and we will send you a
+                    link to reset your password.</source>
+        <target>Entrez votre adresse email et nous vous enverrons un lien de réinitialisation pour votre mot de passe.</target>
+      </trans-unit>
+      <trans-unit id="y2XxXvP" resname="Send password reset email">
+        <source>Send password reset email</source>
+        <target>__Send password reset email</target>
+      </trans-unit>
+      <trans-unit id="4O3_s6c" resname="Reset password">
+        <source>Reset password</source>
+        <target>__Reset password</target>
+      </trans-unit>
+      <trans-unit id="dWBqAOK" resname="SIGN IN">
+        <source>SIGN IN</source>
+        <target>__SIGN IN</target>
+      </trans-unit>
+      <trans-unit id="24Z8XDD" resname="First time ?">
+        <source>First time ?</source>
+        <target>__First time ?</target>
+      </trans-unit>
+      <trans-unit id="FCcu3hw" resname="Register here">
+        <source>Register here</source>
+        <target>__Register here</target>
+      </trans-unit>
+      <trans-unit id="kPxSyKi" resname="Have you forgot your password ?">
+        <source>Have you forgot your password ?</source>
+        <target>__Have you forgot your password ?</target>
+      </trans-unit>
+      <trans-unit id="YtygB6C" resname="Click here">
+        <source>Click here</source>
+        <target>__Click here</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
