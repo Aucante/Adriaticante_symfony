@@ -36,4 +36,12 @@ composer check-all (tests + phpstan)
 
 php-cs-fixer fix src --verbose --rules=@Symfony
 
+## Translation
+
+php bin/console translation:extract --dump-messages fr 
+(show all messages that should be translated for FR)
+
+php bin/console translation:extract --force fr
+(updates FR files with missing strings)
+
 

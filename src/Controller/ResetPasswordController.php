@@ -170,16 +170,12 @@ class ResetPasswordController extends AbstractController
         }
 
         // Variables mail
-        $emailFrom = 'adriaticante.pro@gmail.com';
-        $nameFrom = 'Adriaticante';
-        $subject = 'Link ';
+        $subject = 'Link to reset your password';
         $templateId = 3906684;
         $link = 'http://127.0.0.1:8000/reset-password/reset/' . $resetToken->getToken();
 
 
         $mailjetNotification->send(
-            $emailFrom,
-            $nameFrom,
             $emailFormData,
             $emailFormData,
             $templateId,

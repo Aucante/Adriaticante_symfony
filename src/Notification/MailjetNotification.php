@@ -14,9 +14,7 @@ class MailjetNotification
     private $apikey = "e0feab9c252926313e402845d34b41bd";
     private $apisecret = "2755614c9a0b3a04fdcc52de5cfe4148";
 
-    public function send($emailFrom,
-                         $nameFrom,
-                         $emailTo,
+    public function send($emailTo,
                          $nameTo,
                          $templateId,
                          $subject,
@@ -33,8 +31,8 @@ class MailjetNotification
             'Messages' => [
                 [
                     'From' => [
-                        'Email' => $emailFrom,
-                        'Name' => $nameFrom
+                        'Email' => 'no-reply@adriaticante.com',
+                        'Name' => 'Adriaticante'
                     ],
                     'To' => [
                         [
