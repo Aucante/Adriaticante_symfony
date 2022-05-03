@@ -545,31 +545,43 @@
       </trans-unit>
       <trans-unit id="y2XxXvP" resname="Send password reset email">
         <source>Send password reset email</source>
-        <target>__Send password reset email</target>
+        <target>Envoyer un mot de passe réinitialisé</target>
       </trans-unit>
       <trans-unit id="4O3_s6c" resname="Reset password">
         <source>Reset password</source>
-        <target>__Reset password</target>
+        <target>Réinitialisation mot de passe</target>
       </trans-unit>
       <trans-unit id="dWBqAOK" resname="SIGN IN">
         <source>SIGN IN</source>
-        <target>__SIGN IN</target>
+        <target>CONNEXION</target>
       </trans-unit>
       <trans-unit id="24Z8XDD" resname="First time ?">
         <source>First time ?</source>
-        <target>__First time ?</target>
+        <target>Première fois ?</target>
       </trans-unit>
       <trans-unit id="FCcu3hw" resname="Register here">
         <source>Register here</source>
-        <target>__Register here</target>
+        <target>Inscrivez-vous ici</target>
       </trans-unit>
       <trans-unit id="kPxSyKi" resname="Have you forgot your password ?">
         <source>Have you forgot your password ?</source>
-        <target>__Have you forgot your password ?</target>
+        <target>Avez-vous oublié votre mot de passe ?</target>
       </trans-unit>
       <trans-unit id="YtygB6C" resname="Click here">
         <source>Click here</source>
-        <target>__Click here</target>
+        <target>Cliquez-ici</target>
+      </trans-unit>
+      <trans-unit id="bTXmjV1" resname="Discover your home">
+        <source>Discover your home</source>
+        <target>Redécouvrez votre propriété</target>
+      </trans-unit>
+      <trans-unit id="uMdG36V" resname="Sell your real estate">
+        <source>Sell your real estate</source>
+        <target>Vendez votre bien</target>
+      </trans-unit>
+      <trans-unit id="kAlaWFN" resname="Choose your country">
+        <source>Choose your country</source>
+        <target>Choisissez votre pays</target>
       </trans-unit>
     </body>
   </file>
