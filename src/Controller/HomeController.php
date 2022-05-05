@@ -46,7 +46,6 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home/index.html.twig', [
-            'property' => $propertyRepository->lastThree(),
             'formSearch' => $formSearch->createView(),
             'countries' => $countryRepository->findAll(),
         ]);

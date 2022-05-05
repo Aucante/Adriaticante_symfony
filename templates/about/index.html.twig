@@ -126,4 +126,66 @@
             </div>
         </div>
     </div>
+
+    <!-- Carousel Last Properties -->
+    <div class="text-center my-5 pt-5">
+        <h2 class="display-5 text-uppercase">{% trans %}Discover the latest real estates{% endtrans%}</h2>
+    </div>
+    <div class="container text-center my-5 py-3">
+        <div class="row mx-auto my-auto justify-content-center">
+            <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    {% for property in properties %}
+                    <div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <a href="{{ path('properties_details', {'slug': property.slug}) }}">
+                                <div class="card px-2 pt-2 rounded-0">
+                                    <img
+                                            src="{{ asset('uploads/property/' ~ property.images.last.name)| imagine_filter('medium') }}"
+                                            class="card-img-top rounded-0"
+                                            alt="{{ property.images.last.name }}"
+                                            style="height: 200px"
+                                    >
+                                    <div class="card-body">
+                                        <div class="py-3">
+                                            <p class="card-text text-center display-6 fs-6 fw-normal">
+                                                <i class="fa-solid fa-ruler-combined"></i> {{ property.area }} {% trans %}sq2{% endtrans%}
+                                            </p>
+                                            <p class="card-text text-center display-6 fs-6 fw-normal">
+                                                <i class="fa-solid fa-person-shelter"></i> {{ property.totalRooms }} &nbsp; · &nbsp; <i class="fa-solid fa-bed"></i> {{ property.totalBedrooms }} &nbsp; · &nbsp; <i class="fa-solid fa-shower"></i> {{ property.totalBathrooms }}
+                                            </p>
+                                            <p class="text-center display-6 fs-5">
+                                                {{ property.city.country }} · {{ property.city }}
+                                            </p>
+                                            <p class="card-text text-center display-6 fs-1 fw-bold gradient-property">
+                                                {{ property.price|number_format(0, '.', ',') }} €
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('carousel-multiitems') }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('carousel-multiitems') }}
 {% endblock %}
