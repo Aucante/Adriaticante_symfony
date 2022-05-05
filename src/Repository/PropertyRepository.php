@@ -23,11 +23,11 @@ class PropertyRepository extends ServiceEntityRepository
     /**
      * @return Property[]
      */
-    public function lastThree(): array
+    public function lastFive(): array
     {
         return $this->createQueryBuilder('p')
             ->orderBy('p.id', 'DESC')
-            ->setMaxResults(3)
+            ->setMaxResults(5)
             ->getQuery()
             ->getResult();
     }
