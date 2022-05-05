@@ -40,64 +40,64 @@
                         {% if is_granted('ROLE_ADMIN') %}
                             <ul class="list-group list-group-flush">
                                 <a class="fs-6" href="{{ path('admin') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}Dashboard{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}Dashboard{% endtrans%}</li>
                                 </a>
                                 <a class="fs-6" href="{{ path('user_properties') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}My Real Estate{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}My Real Estate{% endtrans%}</li>
                                 </a>
                                 <a class="fs-6" href="{{ path('profile') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}Profile{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}Profile{% endtrans%}</li>
                                 </a>
                                 <a class="fs-6" href="{{ path('messages') }}">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 display-6 fs-6 text-uppercase">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 display-6 fs-6 text-uppercase fw-normal">
                                         {% trans %}Messages{% endtrans%}
                                         {% if total_thread_not_read['totalNotRead']|length > 0 %}
                                             <span class="badge bg-secondary rounded-3 text-primary">{{ total_thread_not_read['totalNotRead'] }}</span>
                                         {% endif %}
                                     </li></a>
                                 <a class="fs-6" href="{{ path('app_logout') }}">
-                                    <li class="list-group-item list-group-item-action text-danger border-0 display-6 fs-6 fw-normal text-uppercase">{% trans %}Logout{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action text-danger border-0 display-6 fs-6 fw-normal text-uppercase fw-normal">{% trans %}Logout{% endtrans%}</li>
                                 </a>
                             </ul>
                             <ul class="list-group list-group-flush mt-4">
                                 <a class="fs-6" href="{{ path('property') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}Real Estate{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}Real Estate{% endtrans%}</li>
                                 </a>
                                 <a class="fs-6" href="{{ path('about') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}About{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}About{% endtrans%}</li>
                                 </a>
                                 <a class="fs-6" href="{{ path('contact') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}Contact{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}Contact{% endtrans%}</li>
                                 </a>
                                 <div class="text-center">
                                     <a href="{{ path('properties_create') }}">
-                                        <button class="btn btn-primary rounded-0 mt-4 text-uppercase shadow-none"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button>
+                                        <button class="btn btn-primary rounded-0 mt-4 text-uppercase shadow-none fw-normal"><i class="fa-regular fa-square-plus"></i>&ensp;{% trans %}new real estate{% endtrans%}</button>
                                     </a>
                                 </div>
                             </ul>
                         {% elseif is_granted('ROLE_USER') %}
                             <ul class="list-group list-group-flush">
                                 <a class="fs-6" href="{{ path('profile') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}Profile{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}Profile{% endtrans%}</li>
                                 </a>
                                 <a class="fs-6" href="{{ path('user_properties') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}My Real Estate{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}My Real Estate{% endtrans%}</li>
                                 </a>
                                 <a class="fs-6" href="{{ path('messages') }}">
-                                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-0 display-6 fs-6 text-uppercase">{% trans %}Messages{% endtrans%}{% if total_thread_not_read['totalNotRead']|length > 0 %}
+                                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}Messages{% endtrans%}{% if total_thread_not_read['totalNotRead']|length > 0 %}
                                         <span class="badge bg-primary rounded-3">{{ total_thread_not_read['totalNotRead'] }}</span>
                                         {% endif %}</li>
                                 </a>
                             </ul>
                             <ul class="list-group list-group-flush my-4">
                                 <a class="fs-6" href="{{ path('property') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}Real Estate{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}Real Estate{% endtrans%}</li>
                                 </a>
                                 <a class="fs-6" href="{{ path('about') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}About{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}About{% endtrans%}</li>
                                 </a>
                                 <a class="fs-6" href="{{ path('contact') }}">
-                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}Contact{% endtrans%}</li>
+                                    <li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}Contact{% endtrans%}</li>
                                 </a>
                                 <a class="fs-6" href="{{ path('app_logout') }}"><li class="list-group-item list-group-item-action text-danger border-0 display-6 fs-6 fw-normal text-uppercase">{% trans %}Logout{% endtrans%}</li></a>
 
@@ -108,9 +108,9 @@
                             </div>
                         {% else %}
                             <ul class="list-group list-group-flush">
-                                <a class="fs-6" href="{{ path('property') }}"><li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}Real Estate{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('about') }}"><li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}About{% endtrans%}</li></a>
-                                <a class="fs-6" href="{{ path('contact') }}"><li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase">{% trans %}Contact{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('property') }}"><li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}Real Estate{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('about') }}"><li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}About{% endtrans%}</li></a>
+                                <a class="fs-6" href="{{ path('contact') }}"><li class="list-group-item list-group-item-action border-0 display-6 fs-6 text-uppercase fw-normal">{% trans %}Contact{% endtrans%}</li></a>
                             </ul>
                             <div class="text-center">
                                 <a href="{{ path('app_login') }}"><button class="btn btn-primary rounded-0 mt-4 text-uppercase shadow-none">{% trans %}Sign in{% endtrans%}</button></a>
