@@ -46,6 +46,8 @@
     }
 }
 
+
+
 .nice-select:after{
   display: none;
 }
@@ -55,7 +57,13 @@
 }
 
 
-
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 
 a {
@@ -215,6 +223,10 @@ a {
 .backgroundNewsletter {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../public/img/img/adriatic1.jpg');
   height: 400px;
+}
+
+.padding-main {
+  padding-top: 15%;
 }
 
 /* PROPERTIES */
