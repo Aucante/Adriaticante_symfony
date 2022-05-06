@@ -29,8 +29,12 @@ liip_imagine:
         background:
             quality: 75
             filters:
-                scale:
-                    dim: [ 1200, 1200 ]
+
+                # use and setup the "relative_resize" filter
+                relative_resize:
+
+                    # given 50x40px, output 125x100px using "scale" option
+                    scale: 1
         medium:
             quality: 75
             filters:
