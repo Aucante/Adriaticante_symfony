@@ -165,7 +165,7 @@
                         <div class="card rounded-0 shadow-sm border-0 mb-3">
                             <div class="card-body">
                                 <p class="card-text display-6 fs-5">{% trans %}Seller{% endtrans%} : {{ property.nameContact }}</p>
-                                <p class="card-text display-6 fs-5">{% trans %}Phone{% endtrans%} : {{ property.dialCode }} {{ property.phoneContact }}</p>
+                                <p class="card-text display-6 fs-5">{% trans %}Phone{% endtrans%} : {% if property.phoneContact %}{{ property.dialCode }} {{ property.phoneContact }}{% else %}Hidden{% endif %}</p>
                                 <p class="card-text display-6 fs-5">{% trans %}Website{% endtrans%} : <a href="{{ property.linkWebsite|external_link }}" target="_blank" class="text-primary">{{ property.linkWebsite}}</a></p>
                             </div>
                         </div>
