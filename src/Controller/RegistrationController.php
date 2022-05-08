@@ -48,7 +48,7 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $file */
             $file = $form->get('file')->getData();
-            if ($file) {
+            if ($file != false) {
                 $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $managePictureService->addImageUser($originalFilename, $file, $user);
@@ -76,8 +76,6 @@ class RegistrationController extends AbstractController
             $templateId = 3906679;
 
             $mailjetNotification->send(
-                $emailFrom,
-                $nameFrom,
                 $user->getEmail(),
                 $user->getLastname() . ' ' . $user->getFirstname(),
                 $templateId,
@@ -111,7 +109,6 @@ class RegistrationController extends AbstractController
         UserAuthenticatorInterface $userAuthenticator,
         AppAuthenticator $authenticator,
         EntityManagerInterface $entityManager,
-        ManagePictureService $managePictureService,
         MailjetNotification $mailjetNotification
     ): Response {
         $user = new User();

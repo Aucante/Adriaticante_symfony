@@ -37,10 +37,10 @@ class AppFixtures extends Fixture
         $address->setStreetNumber(1)
             ->setStreetAddressLine1('rue de Trieste')
             ->setCity('Trieste')
-            ->setStateZipCode('01000')
+            ->setStateZipCode(01000)
             ->setCountry('Italy')
             ->setDialCode('+33')
-            ->setPhone('700000000');
+            ->setPhone(700000000);
 
         $manager->persist($address);
 
@@ -102,20 +102,20 @@ class AppFixtures extends Fixture
         $city1 = new City();
 
         $city1->setName('Trieste')
-            ->setLatitude(42.430000)
-            ->setLongitude(18.700000);
+            ->setLatitude('42.430000')
+            ->setLongitude('18.700000');
 
         $city2 = new City();
 
         $city2->setName('Ljubljana')
-            ->setLatitude(46.056946)
-            ->setLongitude(14.505751);
+            ->setLatitude('46.056946')
+            ->setLongitude('14.505751');
 
         $city3 = new City();
 
         $city3->setName('Dubrovnik')
-            ->setLatitude(46.056947)
-            ->setLongitude(14.505752);
+            ->setLatitude('46.056947')
+            ->setLongitude('14.505752');
 
         // COUNTRY
 
@@ -166,7 +166,7 @@ class AppFixtures extends Fixture
             ->setAdvertType('Purchase')
             ->setType('Apartment')
             ->setDialCode('+33')
-            ->setPhoneContact('0700000000')
+            ->setPhoneContact(0700000000)
             ->setNameContact('Nom')
             ->setLinkWebsite('www.test.com')
             ->setSlug('test-property1')
@@ -191,7 +191,7 @@ class AppFixtures extends Fixture
             ->setAdvertType('Purchase')
             ->setType('Villa')
             ->setDialCode('+33')
-            ->setPhoneContact('0600000000')
+            ->setPhoneContact(0600000000)
             ->setNameContact('Nom')
             ->setLinkWebsite('www.test.com')
             ->setSlug('test-property2')
@@ -260,10 +260,10 @@ class AppFixtures extends Fixture
             $address->setStreetNumber($faker->numberBetween(1, 99))
                     ->setStreetAddressLine1($faker->streetAddress)
                     ->setCity($faker->city())
-                    ->setStateZipCode('01000')
+                    ->setStateZipCode(01000)
                     ->setCountry($faker->country())
                     ->setDialCode('+3'.$i)
-                    ->setPhone('752323641');
+                    ->setPhone(752323641);
 
             $manager->persist($address);
 
@@ -289,8 +289,8 @@ class AppFixtures extends Fixture
             $city = new City();
 
             $city->setName($faker->city())
-                ->setLatitude($faker->latitude())
-                ->setLongitude($faker->longitude());
+                ->setLatitude('42.430000')
+                ->setLongitude('18.700000');
 
             $country4->addCity($city);
 
@@ -310,7 +310,7 @@ class AppFixtures extends Fixture
                 ->setAdvertType('Rental')
                 ->setType('Penthouse')
                 ->setDialCode('+3'.$i)
-                ->setPhoneContact('87412589')
+                ->setPhoneContact(87412589)
                 ->setNameContact($faker->word())
                 ->setLinkWebsite('www.test.com')
                 ->setSlug($faker->word().'-'.$faker->word().'-'.$faker->word())
