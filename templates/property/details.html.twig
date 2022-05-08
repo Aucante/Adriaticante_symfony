@@ -7,7 +7,7 @@
                 <div class="carousel-inner">
                     {% for image in property.images %}
                         <div class="carousel-item {% if loop.index == 1 %} active {% endif %}" id="slide{{ loop.index }}">
-                            <img src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('property')  }}" class="d-block w-100" alt="{{ image.name }}">
+                            <img src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('scale')  }}" class="d-block w-100" alt="{{ image.name }}">
                         </div>
                     {% endfor %}
                 </div>
@@ -33,7 +33,7 @@
                             <a href="{{ asset('uploads/property/' ~ image.name) }}">
                                 <img
                                         alt="{{ image.id }}"
-                                        src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('property') }}"
+                                        src="{{ asset('uploads/property/' ~ image.name) | imagine_filter('thumb') }}"
                                         class="img-thumbnail rounded-0 d-none"
                                 />
                                 <div>

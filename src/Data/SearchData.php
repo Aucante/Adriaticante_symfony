@@ -11,7 +11,7 @@ class SearchData
     /**
      * @var string|null
      */
-    public string $q;
+    public ?string $q;
 
     public ?int $priceMin;
 

@@ -218,9 +218,9 @@ class PropertiesController extends AbstractController
     public function addPhotos(Request $request, Property $property, KernelInterface $kernel, EntityManagerInterface $entityManager): Response
     {
         foreach ($request->files as $currentFile) {
-            /** @var $currentFile UploadedFile */
+            /** @var UploadedFile $currentFile */
             $fileName = $property->getName().uniqid('_', true).'.'.$currentFile->getClientOriginalExtension();
-            if ($fileName) {
+            if ($fileName != false) {
                 try {
                     $currentFile->move($kernel->getProjectDir().'/public/uploads/property', $fileName);
                     $file = new Image();

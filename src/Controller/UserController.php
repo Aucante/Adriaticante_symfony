@@ -35,7 +35,7 @@ class UserController extends AbstractController
         EntityManagerInterface $entityManager,
         ManagePictureService $managePictureService
     ): Response {
-        $user = $this->getUser();
+        $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $profileForm = $this->createForm(ProfileType::class, $user);
         $profileForm->handleRequest($request);
@@ -43,7 +43,7 @@ class UserController extends AbstractController
         if ($profileForm->isSubmitted() && $profileForm->isValid()) {
             /** @var UploadedFile $file */
             $file = $profileForm->get('file')->getData();
-            if ($file) {
+            if ($file != false) {
                 $fileToDelete = $user->getFile();
                 $fileSystem = new Filesystem();
                 $path = $this->getParameter('file_user_directory').$fileToDelete;
