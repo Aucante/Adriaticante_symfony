@@ -28,15 +28,15 @@
                                         <span
                                                 class="badge text-uppercase rounded-0 py-2 display-6 fs-6 fw-normal"
                                                 style="background: linear-gradient(120deg,#c3e1e6 1%,#263238 50%, #c3e1e6 99%)"
-                                        >{% if countMessages != 0 %}Not read{% endif %}</span
+                                        >{% if countMessages != 0 %}{% trans %}Not read{% endtrans%}{% endif %}</span
                                         >
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center c col-8">
                                     <div class="card-body">
-                                        <h5 class="card-title pb-3">Name : {{ thread.property.name }} {{ thread.id }}</h5>
-                                        <p>From : {{  thread.property.user.username }}</p>
-                                        <p class="card-text">Description : {{ thread.property.description|u.truncate(100, ' ...') }}</p>
+                                        <h5 class="card-title pb-3">{% trans %}Name{% endtrans%} : {{ thread.property.name }} {{ thread.id }}</h5>
+                                        <p>{% trans %}From{% endtrans%} : {{  thread.property.user.username }}</p>
+                                        <p class="card-text">{% trans %}Description{% endtrans%} : {{ thread.property.description|u.truncate(100, ' ...') }}</p>
                                         <p class="card-text"><small class="text-muted">{{ date }}</small></p>
                                     </div>
                                 </div>

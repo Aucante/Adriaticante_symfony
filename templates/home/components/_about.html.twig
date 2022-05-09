@@ -15,12 +15,14 @@
                 <div
                         class="card-body d-flex align-items-center justify-content-center py-4"
                 >
-                    <button
-                            type="button"
-                            class="btn btn-outline-light rounded-0 mt-3 fw-bold text-uppercase"
-                    >
-                        {% trans %}About{% endtrans%}
-                    </button>
+                    <a href="{{ path('about') }}">
+                        <button
+                                type="button"
+                                class="btn btn-outline-light rounded-0 mt-3 fw-bold text-uppercase"
+                        >
+                            {% trans %}About{% endtrans%}
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

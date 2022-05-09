@@ -11,7 +11,7 @@
         </div>
         {% if threads|length > 0 %}
         <div class="text-center my-5">
-            <h2 class="display-6">{% trans %}You have{% endtrans%} {{ total_thread_not_read['totalNotRead'] }} {% trans %}message{% endtrans %}{% if total_thread_not_read['totalNotRead'] > 1 %}s{% endif %} not read.</h2>
+            <h2 class="display-6">{% trans %}You have{% endtrans%} {{ total_thread_not_read['totalNotRead'] }} {% trans %}message{% endtrans %}{% if total_thread_not_read['totalNotRead'] > 1 %}s{% endif %} {% trans %}not read.{% endtrans %}</h2>
         </div>
         {% endif %}
         <div class="text-center my-4">
@@ -35,20 +35,20 @@
                                         <span
                                                 class="badge text-uppercase rounded-0 py-2 display-6 fs-6 fw-normal"
                                                 style="background: linear-gradient(120deg,#c3e1e6 1%,#263238 50%, #c3e1e6 99%)"
-                                        >{% if countMessages != 0 %}Not read {% endif %}</span
+                                        >{% if countMessages != 0 %}{% trans %}Not read{% endtrans %}{% endif %}</span
                                         >
                                 </div>
                             </div>
                             <div class="d-flex align-items-center col-6 col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title pb-3">Name : {{ thread.property.name }}</h5>
+                                    <h5 class="card-title pb-3">{% trans %}Name{% endtrans%} : {{ thread.property.name }}</h5>
                                     {% if thread.sender is not same as app.user %}
-                                    <p>From : {{ thread.sender.username }}</p>
+                                    <p>{% trans %}From{% endtrans%} : {{ thread.sender.username }}</p>
                                     {% endif %}
                                     {%if thread.property.user is not same as app.user %}
-                                    <p>From : {{  thread.property.user.username }}</p>
+                                    <p>{% trans %}From{% endtrans%} : {{  thread.property.user.username }}</p>
                                     {% endif %}
-                                    <p class="card-text">Description : {{ thread.property.description|u.truncate(100, ' ...') }}</p>
+                                    <p class="card-text">{% trans %}Description{% endtrans%} : {{ thread.property.description|u.truncate(100, ' ...') }}</p>
                                     <p class="card-text"><small class="text-muted">{{ date }}</small></p>
                                 </div>
                             </div>

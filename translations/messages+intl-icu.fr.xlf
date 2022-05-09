@@ -291,7 +291,7 @@
       </trans-unit>
       <trans-unit id="qn64xMn" resname="Your address">
         <source>Your address</source>
-        <target>Votre addresse</target>
+        <target>Votre adresse</target>
       </trans-unit>
       <trans-unit id="LZiB.BI" resname="Street number">
         <source>Street number</source>
@@ -582,6 +582,90 @@
       <trans-unit id="kAlaWFN" resname="Choose your country">
         <source>Choose your country</source>
         <target>Choisissez votre pays</target>
+      </trans-unit>
+      <trans-unit id="uM37zm_" resname="Adriaticante is a solution allowing the relationship between seller and buyer of real estate.&#10;                            This makes it possible to promote real estate in the Adriatic zone for private or professional investors.&#10;                            The countries concerned are Italy, Slovenia, Croatia and Montenegro (only available cities bordering the Adriatic Sea)">
+        <source>Adriaticante is a solution allowing the relationship between seller and buyer of real estate.
+                            This makes it possible to promote real estate in the Adriatic zone for private or professional investors.
+                            The countries concerned are Italy, Slovenia, Croatia and Montenegro (only available cities bordering the Adriatic Sea)</source>
+        <target>Adriaticante est une solution permettant la relation entre le vendeur et l'acheteur de biens immobiliers.
+          Cela permet de promouvoir le secteur de l'immobilier dans la zone Adriatique pour les investisseurs particuliers ou professionnels.
+          Les pays concernés sont l'Italie, la Slovénie, la Croatie et le Monténégro (uniquement les villes disponibles bordant la mer Adriatique)</target>
+      </trans-unit>
+      <trans-unit id="R2cSarb" resname="Discover the properties offered in 4 countries located in the Adriatic Sea.&#10;                                Filter your search with the essential information you want for your new real estate.">
+        <source>Discover the properties offered in 4 countries located in the Adriatic Sea.
+                                Filter your search with the essential information you want for your new real estate.</source>
+        <target>Découvrez les propriétés proposées dans 4 pays bordant la mer Adriatique.
+          Filtrez votre recherche avec les informations essentielles que vous souhaitez pour votre nouveau bien immobilier.</target>
+      </trans-unit>
+      <trans-unit id="LsHigVl" resname="Sell">
+        <source>Sell</source>
+        <target>Vendre</target>
+      </trans-unit>
+      <trans-unit id="hCGPOJT" resname="Put your real estate up for sale to find buyers. You can provide your phone number and your ad link if you have a website. (for professionals)&#10;                                Fill in the main information of your real estate.">
+        <source>Put your real estate up for sale to find buyers. You can provide your phone number and your ad link if you have a website. (for professionals)
+                                Fill in the main information of your real estate.</source>
+        <target>Mettez votre bien immobilier en vente pour trouver des acquéreurs. Vous pouvez fournir votre numéro de téléphone et le lien de votre annonce si vous avez un site Web. (pour les professionnels)
+          Remplissez les informations principales de votre bien immobilier.</target>
+      </trans-unit>
+      <trans-unit id="Q3W8QSs" resname="Communicate">
+        <source>Communicate</source>
+        <target>Communiquez</target>
+      </trans-unit>
+      <trans-unit id="oRShvcQ" resname="Use internal messaging to facilitate discussions between you and your interlocutor.">
+        <source>Use internal messaging to facilitate discussions between you and your interlocutor.</source>
+        <target>Utilisez la messagerie interne pour faciliter les échanges entre vous et votre interlocuteur.</target>
+      </trans-unit>
+      <trans-unit id="r7Dpioj" resname="Discover the latest real estates">
+        <source>Discover the latest real estates</source>
+        <target>Découvrez les dernières offres</target>
+      </trans-unit>
+      <trans-unit id="K.8RAvn" resname="Manage cookies">
+        <source>Manage cookies</source>
+        <target>Configurez les cookies</target>
+      </trans-unit>
+      <trans-unit id="b5u0qpE" resname="We use cookies to offer you a better browsing experience, analyze site traffic, personalize content, and serve targeted advertisements. Read about this message how we use cookies. If you continue to use this site, you consent to our use of cookies or reject them.">
+        <source>We use cookies to offer you a better browsing experience, analyze site traffic, personalize content, and serve targeted advertisements. Read about this message how we use cookies. If you continue to use this site, you consent to our use of cookies or reject them.</source>
+        <target>Nous utilisons des cookies pour vous offrir une meilleure expérience de navigation, analyser le trafic du site, personnaliser le contenu et diffuser des publicités ciblées. Lisez à propos de ce message comment nous utilisons les cookies. Si vous continuez à utiliser ce site, vous consentez à notre utilisation des cookies.</target>
+      </trans-unit>
+      <trans-unit id="PoaxcjC" resname="Accept All">
+        <source>Accept All</source>
+        <target>Tout accepter</target>
+      </trans-unit>
+      <trans-unit id="sDHIg7H" resname="Accept Only Non Essentials">
+        <source>Accept Only Non Essentials</source>
+        <target>Accepter seulement les essentiels</target>
+      </trans-unit>
+      <trans-unit id="jPppRnC" resname="Don't hesitate to send a message if you are a professional in order to be able to deposit a significant number of announcements or for other reasons.">
+        <source>Don't hesitate to send a message if you are a professional in order to be able to deposit a significant number of announcements or for other reasons.</source>
+        <target>N'hésitez pas à envoyer un message si vous êtes un professionnel afin de pouvoir déposer un nombre important d'annonces ou pour d'autres raisons.</target>
+      </trans-unit>
+      <trans-unit id="77zWdLT" resname="Parts">
+        <source>Parts</source>
+        <target>Pièces</target>
+      </trans-unit>
+      <trans-unit id="dpAPG.0" resname="Back">
+        <source>Back</source>
+        <target>Retour</target>
+      </trans-unit>
+      <trans-unit id=".zym6Qz" resname="not read.">
+        <source>not read.</source>
+        <target>non lus.</target>
+      </trans-unit>
+      <trans-unit id="Y5d6Mhs" resname="Not read">
+        <source>Not read</source>
+        <target>Non lu</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="IYGXaTQ" resname="From">
+        <source>From</source>
+        <target>De</target>
+      </trans-unit>
+      <trans-unit id="o.6kTvL" resname="Purchaser">
+        <source>Purchaser</source>
+        <target>Acheteur</target>
       </trans-unit>
     </body>
   </file>
