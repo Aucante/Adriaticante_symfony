@@ -15,6 +15,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -37,7 +38,8 @@ class PropertyCrudController extends AbstractCrudController
             ->add('totalBathrooms')
             ->add('type')
             ->add('advertType')
-            ->add('createdAt');
+            ->add('createdAt')
+            ->add('city');
     }
 
     public function configureActions(Actions $actions): Actions
@@ -71,12 +73,14 @@ class PropertyCrudController extends AbstractCrudController
                 'Rental' => 'Rental',
             ]),
             TextField::new('link_website'),
-            IntegerField::new('phone_contact'),
+            TextField::new('dial_code'),
+            NumberField::new('phone_contact'),
             TextField::new('name_contact'),
             AssociationField::new('user'),
             CollectionField::new('features')->hideOnForm(),
             SlugField::new('slug')->setTargetFieldName('name'),
-            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('createdAt'),
+            AssociationField::new('city'),
         ];
     }
 

@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Address;
+use App\Entity\City;
+use App\Entity\Country;
 use App\Entity\Feature;
 use App\Entity\Image;
 use App\Entity\Property;
@@ -39,6 +41,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Image', 'far fa-file', Image::class);
         yield MenuItem::linkToCrud('Address', 'fas fa-globe-europe', Address::class);
         yield MenuItem::linkToCrud('Feature', 'fas fa-sliders-h', Feature::class);
+        yield MenuItem::section('Location');
+        yield MenuItem::linkToCrud('City', 'fas fa-thumbtack', City::class);
+        yield MenuItem::linkToCrud('Country', 'fas fa-map', Country::class);
         yield MenuItem::section('User');
         yield MenuItem::linkToCrud('User', 'fas fa-user', User::class);
         yield MenuItem::section('Redirection');
