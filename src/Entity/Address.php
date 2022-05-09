@@ -231,10 +231,10 @@ class Address
 
     public function __toString(): string
     {
-        if (is_null($this->city)) {
+        if (is_null($this->id)) {
             return 'NULL';
         }
 
-        return $this->city;
+        return $this->id;
     }
 }
