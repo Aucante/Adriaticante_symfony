@@ -95,7 +95,7 @@ class MessageController extends AbstractController
 
             $messageFlash = $translator->trans('Your message was sent successfully.');
             $this->addFlash('success', $messageFlash);
-            $this->redirectToRoute('messages_thread', ['title' => $thread->getTitle()]);
+            $this->redirectToRoute('messages');
         }
         $entityManager->flush();
 

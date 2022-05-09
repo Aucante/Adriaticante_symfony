@@ -1,5 +1,5 @@
 <!-- Toast -->
-<div class="navbar show fixed-bottom bg-white border" data-controller="cookies">
+<div class="navbar d-none fixed-bottom bg-white border" data-controller="cookies">
     <div class="toast-header">
         {% trans %}Manage cookies{% endtrans %}
     </div>
@@ -7,7 +7,6 @@
         {% trans %}We use cookies to offer you a better browsing experience, analyze site traffic, personalize content, and serve targeted advertisements. Read about this message how we use cookies. If you continue to use this site, you consent to our use of cookies or reject them.{% endtrans %}
     </div>
     <div class="toast-footer pe-3 pb-2">
-        <button id="texte" style="color:red" class="btn btn-primary btn-sm rounded-0 me-2 text-uppercase">{% trans %}Accept{% endtrans%}</button>
-        <button class="btn btn-danger btn-sm rounded-0 me-2 text-uppercase">{% trans %}Reject{% endtrans%}</button>
+        <button id="texte" style="color:red" class="btn btn-primary btn-sm rounded-0 me-2 text-uppercase" data-action="click->cookies#accept">{% trans %}Accept{% endtrans%}</button>
     </div>
 </div>

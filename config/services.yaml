@@ -30,3 +30,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    Mailjet\Client:
+        class: Mailjet\Client
+        arguments:
+            - '%env(MAILJET)%'
+            - '%env(MAILJET_SECRET)%'
+            - true
+            - {version: v3.1}

@@ -8,9 +8,6 @@ use App\Entity\Feature;
 
 class SearchData
 {
-    /**
-     * @var string|null
-     */
     public ?string $q;
 
     public ?int $priceMin;

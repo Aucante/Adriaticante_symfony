@@ -23,15 +23,20 @@
                         <div class="card my-3">
                             <div class="row g-0">
                                 <div class="col-4">
-                                    <img src="{{ asset('uploads/property/' ~ thread.property.images.last) | imagine_filter('medium')  }}" class="img-fluid rounded-start" alt="{{ thread.property.images.last }}">
+                                    <img src="{{ asset('uploads/property/' ~ thread.property.images.last) | imagine_filter('medium')  }}" class="img-fluid rounded-start" alt="{{ thread.property.images.last }}" style="height: 250px">
+                                    <div class="card-img-overlay">
+                                        <span
+                                                class="badge text-uppercase rounded-0 py-2 display-6 fs-6 fw-normal"
+                                                style="background: linear-gradient(120deg,#c3e1e6 1%,#263238 50%, #c3e1e6 99%)"
+                                        >{% if countMessages != 0 %}Not read{% endif %}</span
+                                        >
+                                    </div>
                                 </div>
-                                <div class="col-8">
+                                <div class="d-flex align-items-center c col-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ thread.property.name }}</h5>
-                                        <p>ID : {{ thread.id }}, Message read : {% if countMessages == 0 %}yes{% else %}no{% endif %}</p>
-                                        <p>Purchaser : {{ thread.sender.username }}</p>
-                                        <p>Owner : {{  thread.property.user.username }}</p>
-                                        <p class="card-text">{{ thread.property.description|u.truncate(100, ' ...') }}</p>
+                                        <h5 class="card-title">Name : {{ thread.property.name }} {{ thread.id }}</h5>
+                                        <p>From : {{  thread.property.user.username }}</p>
+                                        <p class="card-text">Description : {{ thread.property.description|u.truncate(100, ' ...') }}</p>
                                         <p class="card-text"><small class="text-muted">{{ date }}</small></p>
                                     </div>
                                 </div>

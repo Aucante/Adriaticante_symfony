@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -48,7 +47,7 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $file */
             $file = $form->get('file')->getData();
-            if ($file != false) {
+            if (false != $file) {
                 $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $managePictureService->addImageUser($originalFilename, $file, $user);
@@ -72,21 +71,20 @@ class RegistrationController extends AbstractController
             // Variables mail
             $emailFrom = 'adriaticante.pro@gmail.com';
             $nameFrom = 'Adriaticante';
-            $subject = 'Welcome ' . $user->getFirstname() . '.';
+            $subject = 'Welcome '.$user->getFirstname().'.';
             $templateId = 3906679;
 
             $mailjetNotification->send(
                 $user->getEmail(),
-                $user->getLastname() . ' ' . $user->getFirstname(),
+                $user->getLastname().' '.$user->getFirstname(),
                 $templateId,
                 $subject,
                 $user->getFirstname(),
-                "",
-                "",
-                "",
-                ""
+                '',
+                '',
+                '',
+                ''
             );
-
 
             return $userAuthenticator->authenticateUser(
                 $user,
@@ -133,19 +131,19 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // Variables mail
-            $subject = 'Welcome ' . $user->getFirstname() . '.';
+            $subject = 'Welcome '.$user->getFirstname().'.';
             $templateId = 3906679;
 
             $mailjetNotification->send(
                 $user->getEmail(),
-                $user->getLastname() . ' ' . $user->getFirstname(),
+                $user->getLastname().' '.$user->getFirstname(),
                 $templateId,
                 $subject,
                 $user->getFirstname(),
-                "",
-                "",
-                "",
-                ""
+                '',
+                '',
+                '',
+                ''
             );
 
             return $userAuthenticator->authenticateUser(
