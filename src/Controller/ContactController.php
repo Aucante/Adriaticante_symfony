@@ -19,11 +19,9 @@ class ContactController extends AbstractController
      */
     public function index(
         Request $request,
-        ContactNotification $contactNotification,
         MailjetNotification $mailjetNotification,
         TranslatorInterface $translator
     ): Response {
-
         $contact = new Contact();
         $contactForm = $this->createForm(ContactType::class, $contact);
         $contactForm->handleRequest($request);
@@ -32,17 +30,16 @@ class ContactController extends AbstractController
         $emailAdmin = 'contact@adriaticante.com';
         $nameToAdmin = 'Adriaticante';
         $subjectUser = 'Your message has been sent successfully.';
-        $subjectAdmin = 'Contact from ' . $contact->getLastname() . ' ' . $contact->getFirstname() . ' (Standard form). ';
+        $subjectAdmin = 'Contact from '.$contact->getLastname().' '.$contact->getFirstname().' (Standard form). ';
         $templateIdUser = 3906681;
         $templateIdAdmin = 3909576;
-
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
 //            $contactNotification->notifyContactPage($contact);
             // Mail for user
             $mailjetNotification->send(
                 $contact->getEmail(),
-                $contact->getLastname() . ' ' . $contact->getFirstname(),
+                $contact->getLastname().' '.$contact->getFirstname(),
                 $templateIdUser,
                 $subjectUser,
                 $contact->getLastname(),
@@ -66,7 +63,7 @@ class ContactController extends AbstractController
 
             $messageFlash = $translator->trans('Your message has been sent successfully.');
             $this->addFlash('success', $messageFlash);
-            $this->redirectToRoute('contact');
+            return $this->redirectToRoute('contact');
         }
 
         return $this->render('contact/index.html.twig', [

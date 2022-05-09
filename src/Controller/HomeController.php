@@ -25,7 +25,10 @@ class HomeController extends AbstractController
     ): Response {
         // Filter search
         $search = new SearchData();
-        $formSearch = $this->createForm(PropertySearchType::class, $search);
+        $formSearch = $this->createForm(
+            PropertySearchType::class,
+            $search,
+            ['action' => $this->generateUrl('property')]);
         $formSearch->handleRequest($request);
 
         if ($formSearch->isSubmitted()) {

@@ -87,7 +87,7 @@
                 let form = this.closest("form");
                 let data = this.name + "=" + this.value;
 
-                fetch(form.action + '&' + new URLSearchParams(data), {
+                fetch(form.action + '?' + new URLSearchParams(data), {
                     method: form.getAttribute("method"),
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded; charset: UTF-8"

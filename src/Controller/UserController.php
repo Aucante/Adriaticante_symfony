@@ -43,7 +43,7 @@ class UserController extends AbstractController
         if ($profileForm->isSubmitted() && $profileForm->isValid()) {
             /** @var UploadedFile $file */
             $file = $profileForm->get('file')->getData();
-            if ($file != false) {
+            if (false != $file) {
                 $fileToDelete = $user->getFile();
                 $fileSystem = new Filesystem();
                 $path = $this->getParameter('file_user_directory').$fileToDelete;

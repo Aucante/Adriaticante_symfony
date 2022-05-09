@@ -159,6 +159,14 @@ class PropertyType extends AbstractType
                 'attr' => [
                     'data-controller' => 'select2',
                 ],
+                'constraints' => [
+                    new Count([
+                        'min' => 1,
+                        'max' => 9,
+                        'minMessage' => 'You must specify at least one feature',
+                        'maxMessage' => 'You cannot specify more than {{ limit }} features',
+                    ]),
+                ],
             ])
             ->add('country', EntityType::class, [
                 'mapped' => false,
@@ -192,9 +200,9 @@ class PropertyType extends AbstractType
                     'label' => false,
                     'constraints' => [
                         new Image([
-                            'minHeight' => 700,
+                            'minHeight' => 350,
                             'minHeightMessage' => 'The image height is too small ({{ height }}px). Minimum height expected is {{ min_height }}px.',
-                            'minWidth' => 1000,
+                            'minWidth' => 500,
                             'minWidthMessage' => 'The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px',
                         ]),
                     ],

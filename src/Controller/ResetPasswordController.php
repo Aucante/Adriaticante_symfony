@@ -7,16 +7,13 @@ use App\Form\ChangePasswordFormType;
 use App\Form\ResetPasswordRequestFormType;
 use App\Notification\MailjetNotification;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
@@ -45,13 +42,11 @@ class ResetPasswordController extends AbstractController
     public function request(
         Request $request,
         MailjetNotification $mailjetNotification
-    ): Response
-    {
+    ): Response {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             return $this->processSendingPasswordResetEmail(
                 $form->get('email')->getData(),
                 $mailjetNotification
@@ -143,8 +138,7 @@ class ResetPasswordController extends AbstractController
     private function processSendingPasswordResetEmail(
         string $emailFormData,
         MailjetNotification $mailjetNotification
-    ): RedirectResponse
-    {
+    ): RedirectResponse {
         $user = $this->entityManager->getRepository(User::class)->findOneBy([
             'email' => $emailFormData,
         ]);
@@ -172,8 +166,7 @@ class ResetPasswordController extends AbstractController
         // Variables mail
         $subject = 'Link to reset your password';
         $templateId = 3906684;
-        $link = 'http://127.0.0.1:8000/reset-password/reset/' . $resetToken->getToken();
-
+        $link = 'http://127.0.0.1:8000/reset-password/reset/'.$resetToken->getToken();
 
         $mailjetNotification->send(
             $emailFormData,
@@ -181,12 +174,11 @@ class ResetPasswordController extends AbstractController
             $templateId,
             $subject,
             $link,
-            "",
-            "",
-            "",
-            ""
+            '',
+            '',
+            '',
+            ''
         );
-
 
         // Store the token object in session for retrieval in check-email route.
         $this->setTokenObjectInSession($resetToken);

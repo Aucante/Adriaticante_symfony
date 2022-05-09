@@ -19,7 +19,7 @@
                     {% for message in messages %}
                         {% if app.user is same as message.sender %}
                             <div class="row my-4">
-                                <div class="col-6 offset-6">
+                                <div class="col-9 offset-3 col-md-6 offset-md-6">
                                     <div class="container bg-secondary shadow">
                                         <div class="row border-bottom py-3">
                                             {% if app.user.file is not null %}
@@ -47,7 +47,7 @@
                             </div>
                         {% else %}
                             <div class="row my-4">
-                                <div class="col-6">
+                                <div class="col-9 col-md-6">
                                     <div class="container bg-light shadow">
                                         <div class="row border-bottom py-3">
                                             {% if message.sender.file is not null %}

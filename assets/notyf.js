@@ -6,7 +6,7 @@ const notyf = new Notyf({
     duration: 15000,
     position: {
         x: 'right',
-        y: 'top'
+        y: 'bottom'
     },
     types: [
         {

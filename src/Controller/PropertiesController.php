@@ -220,7 +220,7 @@ class PropertiesController extends AbstractController
         foreach ($request->files as $currentFile) {
             /** @var UploadedFile $currentFile */
             $fileName = $property->getName().uniqid('_', true).'.'.$currentFile->getClientOriginalExtension();
-            if ($fileName != false) {
+            if (false != $fileName) {
                 try {
                     $currentFile->move($kernel->getProjectDir().'/public/uploads/property', $fileName);
                     $file = new Image();
