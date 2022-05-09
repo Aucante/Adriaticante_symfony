@@ -22,10 +22,10 @@
                         <div class="card bg-dark text-white rounded-0 border-0">
                             <div class="inner">
                                 <img
-                                        src="{{ asset('build/img/img/' ~ country.file) | imagine_filter('scale') }}"
+                                        src="{{ asset('build/img/img/country/' ~ country.file) | imagine_filter('scale') }}"
                                         class="card-img"
                                         style="height: 240px; width: 100%"
-                                        alt="..."
+                                        alt="{{ country.name }}"
                                 />
                                 <div class="d-flex align-items-center justify-content-center card-img-overlay rounded-0 gradient-custom-4">
                                     <div class="text-center my-4">

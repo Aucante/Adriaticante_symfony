@@ -123,19 +123,19 @@ class AppFixtures extends Fixture
 
         $country1->setName('Italy')
                 ->addCity($city1)
-                ->setFile('triesteM.jpg');
+                ->setFile('italy.jpg');
 
         $country2 = new Country();
 
         $country2->setName('Slovenia')
             ->addCity($city2)
-            ->setFile('ljubljana1.jpg');
+            ->setFile('slovenia.jpg');
 
         $country3 = new Country();
 
         $country3->setName('Croatia')
             ->addCity($city3)
-            ->setFile('dubrovnik1.jpg');
+            ->setFile('dubrovnik.jpg');
 
         $manager->persist($country1);
         $manager->persist($country2);
@@ -146,7 +146,7 @@ class AppFixtures extends Fixture
         $country4 = new Country();
 
         $country4->setName('Montenegro')
-            ->setFile('kotor1.jpg');
+            ->setFile('kotor.jpg');
 
         $manager->persist($country4);
 

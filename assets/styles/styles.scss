@@ -39,6 +39,12 @@
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .hide-form-type {
+    display: none;
+  }
+}
+
 
 @media only screen and (min-width: 1197px) {
     .borderItemContact {
