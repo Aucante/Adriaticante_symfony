@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
-use App\Notification\ContactNotification;
 use App\Notification\MailjetNotification;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -63,6 +62,7 @@ class ContactController extends AbstractController
 
             $messageFlash = $translator->trans('Your message has been sent successfully.');
             $this->addFlash('success', $messageFlash);
+
             return $this->redirectToRoute('contact');
         }
 

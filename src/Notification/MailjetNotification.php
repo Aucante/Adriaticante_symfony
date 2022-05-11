@@ -11,13 +11,11 @@ use Mailjet\Resources;
 
 class MailjetNotification
 {
-
     private Client $client;
 
     public function __construct(
         Client $client
-    )
-    {
+    ) {
         $this->client = $client;
     }
 
@@ -31,7 +29,6 @@ class MailjetNotification
                          $var4,
                          $var5
                          ) {
-
         $body = [
             'Messages' => [
                 [
