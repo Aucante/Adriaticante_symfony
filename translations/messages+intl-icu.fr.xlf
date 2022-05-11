@@ -31,7 +31,7 @@
       </trans-unit>
       <trans-unit id="EzqMEtE" resname="Real estate">
         <source>Real estate</source>
-        <target>Biens immobiliers</target>
+        <target>Annonces</target>
       </trans-unit>
       <trans-unit id="tLWAqa2" resname="About us">
         <source>About us</source>
@@ -75,7 +75,7 @@
       </trans-unit>
       <trans-unit id="OZGoA3B" resname="More properties ?">
         <source>More properties ?</source>
-        <target>Plus de biens immobiliers ?</target>
+        <target>Plus d'annonces' ?</target>
       </trans-unit>
       <trans-unit id="CQruTLW" resname="Our services">
         <source>Our services</source>
@@ -587,7 +587,7 @@
         <source>Adriaticante is a solution allowing the relationship between seller and buyer of real estate.
                             This makes it possible to promote real estate in the Adriatic zone for private or professional investors.
                             The countries concerned are Italy, Slovenia, Croatia and Montenegro (only available cities bordering the Adriatic Sea)</source>
-        <target>Adriaticante est une solution permettant la relation entre le vendeur et l'acheteur de biens immobiliers.
+        <target>Adriaticante est une solution permettant la relation entre le vendeur et l'acheteur du bien.
           Cela permet de promouvoir le secteur de l'immobilier dans la zone Adriatique pour les investisseurs particuliers ou professionnels.
           Les pays concernés sont l'Italie, la Slovénie, la Croatie et le Monténégro (uniquement les villes disponibles bordant la mer Adriatique)</target>
       </trans-unit>
