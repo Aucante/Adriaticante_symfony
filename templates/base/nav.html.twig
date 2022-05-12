@@ -27,8 +27,9 @@
                         aria-labelledby="offcanvasNavbarLabel"
                 >
                     <div class="offcanvas-header">
-                        <img src="{{ asset('build/img/logo/Logo.svg') }}" alt="logo" width="180" height="44"
-                        />
+                        <a class="navbar-brand" href="{{ path('home') }}">
+                            <img src="{{ asset('build/img/logo/Logo.svg') }}" alt="logo" width="180" height="44"/>
+                        </a>
                         <button
                                 type="button"
                                 class="btn-close text-reset shadow-none"
