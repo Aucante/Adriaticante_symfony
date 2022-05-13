@@ -44,4 +44,6 @@ php bin/console translation:extract --dump-messages fr
 php bin/console translation:extract --force fr
 (updates FR files with missing strings)
 
+## Prod
 
+php composer.phar install

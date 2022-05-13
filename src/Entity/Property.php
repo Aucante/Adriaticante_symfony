@@ -23,7 +23,7 @@ class Property
 
     /**
      * @Assert\NotBlank(message="Please provide a title")
-     * @Assert\Length(min=5, max=25, minMessage="The title must be at least {{ limit }} characters long", maxMessage="The title cannot be longer than {{ limit }} characters")
+     * @Assert\Length(min=5, max=40, minMessage="The title must be at least {{ limit }} characters long", maxMessage="The title cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="string", length=255)
      */
     private $name;

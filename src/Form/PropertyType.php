@@ -120,26 +120,27 @@ class PropertyType extends AbstractType
             ])
             ->add('linkWebsite', UrlType::class, [
                 'label' => 'property.link_website.label',
+                'required' => false
             ])
             ->add('dialCode', ChoiceType::class, [
                 'label' => 'property.dialCode.label',
                 'choices' => [
-                    '+1' => '+1 USA/Canada',
-                    '+31' => '+31 Netherlands',
-                    '+32' => '+32 Belgium',
-                    '+33' => '+33 France',
-                    '+34' => '+34 Spain',
-                    '+351' => '+351 Portugal',
-                    '+358' => '+358 Finland',
-                    '+381' => '+381 Serbia',
-                    '+382' => '+382 Montenegro',
-                    '+385' => '+385 Croatia',
-                    '+386' => '+386 Slovenia',
-                    '+41' => '+41 Switzerland',
-                    '+44' => '+44 UK',
-                    '+45' => '+45 Denmark',
-                    '+46' => '+46 Sweden',
-                    '+49' => '+49 Germany',
+                    '+1' => 'USA/Canada +1',
+                    '+31' => 'Netherlands +3',
+                    '+32' => 'Belgium +32',
+                    '+33' => 'France +33',
+                    '+34' => 'Spain +34',
+                    '+351' => 'Portugal +351',
+                    '+358' => 'Finland +358',
+                    '+381' => 'Serbia +381',
+                    '+382' => 'Montenegro +382',
+                    '+385' => 'Croatia +385',
+                    '+386' => 'Slovenia +386',
+                    '+41' => 'Switzerland +41',
+                    '+44' => 'UK +44',
+                    '+45' => 'Denmark +45',
+                    '+46' => 'Sweden +46',
+                    '+49' => 'Germany +49',
                     '+ X' => 'Other',
                 ],
             ])
@@ -150,6 +151,7 @@ class PropertyType extends AbstractType
             ])
             ->add('nameContact', TextType::class, [
                 'label' => 'property.name_contact.label',
+                'required' => false
             ])
             ->add('features', EntityType::class, [
                 'label' => false,
