@@ -155,7 +155,7 @@
       </trans-unit>
       <trans-unit id="ToRSPwU" resname="address.dialCode.label">
         <source>address.dialCode.label</source>
-        <target>Numéro de téléphone</target>
+        <target>Code</target>
       </trans-unit>
       <trans-unit id="KRoAjgc" resname="search.search.label">
         <source>search.search.label</source>

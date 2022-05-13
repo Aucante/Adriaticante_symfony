@@ -75,7 +75,7 @@
       </trans-unit>
       <trans-unit id="OZGoA3B" resname="More properties ?">
         <source>More properties ?</source>
-        <target>Plus d'annonces' ?</target>
+        <target>Plus d'annonces ?</target>
       </trans-unit>
       <trans-unit id="CQruTLW" resname="Our services">
         <source>Our services</source>
@@ -666,6 +666,18 @@
       <trans-unit id="o.6kTvL" resname="Purchaser">
         <source>Purchaser</source>
         <target>Acheteur</target>
+      </trans-unit>
+      <trans-unit id="v_nNzqo" resname="DELETE AD">
+        <source>DELETE AD</source>
+        <target>EFFACER</target>
+      </trans-unit>
+      <trans-unit id="5xBl0Go" resname="Are you sure you want to permanently delete this ad?">
+        <source>Are you sure you want to permanently delete this ad?</source>
+        <target>Etes-vous sûr d'effacer définitvement cette annonce?</target>
+      </trans-unit>
+      <trans-unit id="r9gMWhu" resname="Posted">
+        <source>Posted</source>
+        <target>Posté</target>
       </trans-unit>
     </body>
   </file>

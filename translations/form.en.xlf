@@ -167,7 +167,7 @@
             </trans-unit>
             <trans-unit id="TQzuIIZ" resname="address.dialCode.label">
                 <source>address.dialCode.label</source>
-                <target>Numéro de téléphone</target>
+                <target>Code</target>
             </trans-unit>
             <!-- Search Type -->
             <trans-unit id="AOauVIV" resname="search.search.label">

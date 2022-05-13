@@ -26,10 +26,10 @@
                         <a href="{{ path('properties_details', {'slug': property.slug}) }}">
                             <div class="card rounded-0 shadow border-0">
                                 <img
-                                        src="{{ asset('uploads/property/' ~ property.images.last.name)| imagine_filter('medium') }}"
+                                        src="{{ asset('uploads/property/' ~ property.images.first.name)| imagine_filter('medium') }}"
                                         class="card-img-top rounded-0"
                                         style="height: 200px"
-                                        alt="{{ property.images.last.name }}"
+                                        alt="{{ property.images.first.name }}"
                                 />
                                 <div class="card-img-overlay">
                                         <span

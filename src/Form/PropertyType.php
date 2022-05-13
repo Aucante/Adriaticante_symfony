@@ -45,7 +45,6 @@ class PropertyType extends AbstractType
             ])
             ->add('totalRooms', ChoiceType::class, [
                 'choices' => [
-                    '0' => 0,
                     '1' => 1,
                     '2' => 2,
                     '3' => 3,
@@ -85,7 +84,6 @@ class PropertyType extends AbstractType
             ])
             ->add('totalBathrooms', ChoiceType::class, [
                 'choices' => [
-                    '0' => 0,
                     '1' => 1,
                     '2' => 2,
                     '3' => 3,
