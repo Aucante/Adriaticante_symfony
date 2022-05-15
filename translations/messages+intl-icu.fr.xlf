@@ -469,9 +469,9 @@
         <source>Website</source>
         <target>Site web</target>
       </trans-unit>
-      <trans-unit id="_usciCI" resname="FILTER">
-        <source>FILTER</source>
-        <target>FILTRE</target>
+      <trans-unit id="_usciCI" resname="FILTERS">
+        <source>FILTERS</source>
+        <target>FILTRES</target>
       </trans-unit>
       <trans-unit id="G8xOvbJ" resname="Advert Type">
         <source>Advert Type</source>

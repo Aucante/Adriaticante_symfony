@@ -12,9 +12,9 @@
                             <a href="{{ path('properties_details', {'slug': property.slug}) }}">
                                 <div class="card px-2 pt-2 rounded-0">
                                     <img
-                                            src="{{ asset('uploads/property/' ~ property.images.last.name)| imagine_filter('medium') }}"
+                                            src="{{ asset('uploads/property/' ~ property.images.first.name)| imagine_filter('medium') }}"
                                             class="card-img-top rounded-0"
-                                            alt="{{ property.images.last.name }}"
+                                            alt="{{ property.images.first.name }}"
                                             style="height: 200px"
                                     >
                                     <div class="card-body">

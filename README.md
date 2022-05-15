@@ -48,6 +48,6 @@ php bin/console translation:extract --force fr
 
 npm run build (before update public_html/build)
 
-git pull + FTP for changes in public (i.e: build)
+git pull (only git pull if Folder Public has no changes)  + FTP for changes in public (i.e: build)
 
-php composer.phar install (if you have changed files)
+php composer.phar install (if you have changed files for Hostinger)
