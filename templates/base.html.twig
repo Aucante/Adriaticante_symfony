@@ -21,7 +21,7 @@
         {% endblock %}
     </head>
 
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         <header>
             {% include('base/nav.html.twig') %}
         </header>
@@ -42,7 +42,7 @@
 
         {% block body %}{% endblock %}
 
-        <footer>
+        <footer  class="mt-auto">
             {% include('component/_cookies.html.twig') %}
             {% include('base/footer.html.twig') %}
         </footer>
