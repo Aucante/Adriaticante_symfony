@@ -2,7 +2,7 @@
 
 {% block title %}Messages{% endblock %}
 
-{% block body %}{% dump(threads) %}
+{% block body %}
 
     {% set total_thread_not_read = threads_not_read(app.user) %}
     <div class="container my-4">
