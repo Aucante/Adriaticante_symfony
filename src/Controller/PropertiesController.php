@@ -109,6 +109,12 @@ class PropertiesController extends AbstractController
                 $image->setName($fileUploaded);
                 $property->addImage($image);
             }
+
+            // Description
+
+            $description = nl2br($form->get('description')->getData());
+            $property->setDescription($description);
+
             $entityManager->persist($property);
             $entityManager->flush();
 
