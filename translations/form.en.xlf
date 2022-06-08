@@ -118,7 +118,7 @@
             </trans-unit>
             <trans-unit id="EQsuVIZ" resname="registration.file.label">
                 <source>registration.file.label</source>
-                <target>Logo File</target>
+                <target>IMPORT LOGO</target>
             </trans-unit>
             <trans-unit id="EQauVIZ" resname="registration.password.label">
                 <source>registration.password.label</source>
@@ -130,7 +130,7 @@
             </trans-unit>
             <trans-unit id="EQkuVIZ" resname="registration.agree_terms.label">
                 <source>registration.agree_terms.label</source>
-                <target>TODO confirm agree terms</target>
+                <target>By ticking, you are confirming that you agree to Adriaticante terms and conditions</target>
             </trans-unit>
             <!-- Address Type -->
             <trans-unit id="AOsuIII" resname="address.street_number.label">

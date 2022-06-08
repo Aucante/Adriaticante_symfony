@@ -111,7 +111,7 @@
       </trans-unit>
       <trans-unit id="L03iPoa" resname="registration.file.label">
         <source>registration.file.label</source>
-        <target>Photo Logo</target>
+        <target>IMPORTER LOGO</target>
       </trans-unit>
       <trans-unit id="Ug0NCp1" resname="registration.password.label">
         <source>registration.password.label</source>
@@ -123,7 +123,7 @@
       </trans-unit>
       <trans-unit id="mtQ..ke" resname="registration.agree_terms.label">
         <source>registration.agree_terms.label</source>
-        <target>TODO Vous confirmez les règles RGPD etc</target>
+        <target>En cliquant, vous confirmez accepter les règles et conditions d'utilisation d'Adriaticante</target>
       </trans-unit>
       <trans-unit id="hAOEq2v" resname="address.street_number.label">
         <source>address.street_number.label</source>
