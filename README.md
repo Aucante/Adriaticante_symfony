@@ -1,53 +1,100 @@
+
+# ADRIATICANTE
+
 ## Requirements
+PHP 7.4  
+Composer  
+Symfony CLI  
+NODEJS + yarn  
+Launch develpment environment  
 
-* PHP 7.4
-* Composer
-* Symfony CLI
-* NODEJS + yarn
+## Installation
+```bash
+composer install 
+```
+OR
 
-## Launch develpment environment
+```bash
+composer update
+```
 
-composer install or composer update /
-yarn install /
-symfony server:start
+AND 
 
-## Add data tests / Fixtures / PHPFaker
+```bash
+npm install
+```
+```bash
+symfony server:start  
+```
+## Fixtures
 
-symfony console doctrine:fixtures:load
+```bash
+symfony console doctrine:fixtures:load  
+```
+```bash
+symfony console doctrine:fixtures:load --env=test 
+```
+(test func)  
+```bash
+symfony console doctrine:fixtures:load --no-interaction 
+```
+(Ignore questions)  
 
-symfony console doctrine:fixtures:load --env=test (test func)
+## Tests unitaires  
 
-symfony console doctrine:fixtures:load --no-interaction (Ignore questions)
+```bash
+php bin/phpunit
+```
 
-## Tests unitaires
+OR
 
-php bin/phpunit /
-php bin/phpunit --testdox (more precision)
+```bash
+php bin/phpunit --testdox 
+```
+(more precision)  
 
-## Phpstan
+## Phpstan / Php-cs-fixer
 
-composer run-script phpstan
+```bash
+composer run-script phpstan  
+```
 
-## Check code quality
+Check code quality
 
-composer check-all (tests + phpstan)
+```bash
+composer check-all 
+``` 
+(tests + phpstan)
 
-## Php-cs-fixer / PSR
+Php-cs-fixer / PSR
 
+```bash
 php-cs-fixer fix src --verbose --rules=@Symfony
+```
 
-## Translation
+## Translation  
 
+```bash
 php bin/console translation:extract --dump-messages fr 
+```
 (show all messages that should be translated for FR)
-
-php bin/console translation:extract --force fr
+```bash
+php bin/console translation:extract --force fr 
+```
 (updates FR files with missing strings)
 
 ## Prod
 
-npm run build (before update public_html/build)
+```bash
+npm run build 
+```
+(before update public_html/build)
 
-git pull (only git pull if Folder Public has no changes)  + FTP for changes in public (i.e: build)
-
-php composer.phar install (if you have changed files for Hostinger)
+```bash
+git pull 
+```
+(only git pull if Folder Public has no changes) + FTP for changes in public (i.e: build)
+```bash
+php composer.phar install 
+```
+(if you have changed files for Hostinger)
