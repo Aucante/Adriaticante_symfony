@@ -9,20 +9,30 @@ NODEJS + yarn
 Launch develpment environment  
 
 ## Installation
+
+### Clone project (HTTPS)
+```bash
+git clone https://github.com/Aucante/Adriaticante_symfony.git
+```
+or
+
+Clone project (SSH)
+```bash
+git clone git@github.com:Aucante/Adriaticante_symfony.git
+```
+
+### Update dependencies
+
 ```bash
 composer install 
 ```
-OR
-
-```bash
-composer update
-```
-
-AND 
+and
 
 ```bash
 npm install
 ```
+
+### Launch symfony server
 ```bash
 symfony server:start  
 ```
@@ -31,14 +41,15 @@ symfony server:start
 ```bash
 symfony console doctrine:fixtures:load  
 ```
+Fixtures for functionnal test database
 ```bash
 symfony console doctrine:fixtures:load --env=test 
 ```
-(test func)  
+
+If you want ignore questions
 ```bash
 symfony console doctrine:fixtures:load --no-interaction 
 ```
-(Ignore questions)  
 
 ## Tests unitaires  
 
@@ -46,12 +57,12 @@ symfony console doctrine:fixtures:load --no-interaction
 php bin/phpunit
 ```
 
-OR
+or
 
+for more precisions
 ```bash
 php bin/phpunit --testdox 
 ```
-(more precision)  
 
 ## Phpstan / Php-cs-fixer
 
@@ -61,10 +72,10 @@ composer run-script phpstan
 
 Check code quality
 
+Run tests with phpunit and phpstan 
 ```bash
 composer check-all 
 ``` 
-(tests + phpstan)
 
 Php-cs-fixer / PSR
 
@@ -74,27 +85,28 @@ php-cs-fixer fix src --verbose --rules=@Symfony
 
 ## Translation  
 
+For show all messages that should be translated for FR
 ```bash
 php bin/console translation:extract --dump-messages fr 
 ```
-(show all messages that should be translated for FR)
+
+For updates FR files with missing strings
 ```bash
 php bin/console translation:extract --force fr 
 ```
-(updates FR files with missing strings)
 
 ## Prod
 
+Run it before updating public_html/build
 ```bash
 npm run build 
 ```
-(before update public_html/build)
 
+Use it if  public folder has no changes + FTP for changes in public (i.e: build)
 ```bash
 git pull 
 ```
-(only git pull if Folder Public has no changes) + FTP for changes in public (i.e: build)
+Use it if you have changed files for Hostinger
 ```bash
 php composer.phar install 
 ```
-(if you have changed files for Hostinger)
