@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -32,6 +33,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * pattern = "/^[a-z0-9_-]{3,16}+$/i",
      * htmlPattern = "^[a-zA-Z0-9_-]{3,16}+$",
      * message="Your name must contain only letter or numbers. (length of 3 to 16 characters).")
+     * @Groups("property:read")
      */
     private $username;
 
@@ -113,6 +115,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("property:read")
      */
     private $professional;
 

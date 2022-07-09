@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -25,6 +26,7 @@ class Property
      * @Assert\NotBlank(message="Please provide a title")
      * @Assert\Length(min=5, max=40, minMessage="The title must be at least {{ limit }} characters long", maxMessage="The title cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="string", length=255)
+     * @Groups("property:read")
      */
     private $name;
 
@@ -32,6 +34,7 @@ class Property
      * @Assert\NotBlank(message="Please provide a price")
      * @Assert\Range(min="1", max="99999999", notInRangeMessage="This value should be between {{ min }} and {{ max }}.")
      * @ORM\Column(type="integer")
+     * @Groups("property:read")
      */
     private $price;
 
@@ -39,6 +42,7 @@ class Property
      * @Assert\NotBlank(message="Please provide a description")
      * @Assert\Length(min=20, max="1500", minMessage="The description must be at least {{ limit }} characters long", maxMessage="The title cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="text")
+     * @Groups("property:read")
      */
     private $description;
 
@@ -46,6 +50,7 @@ class Property
      * @Assert\NotBlank(message="Please provide a area")
      * * @Assert\Range(min="0", max="9999", notInRangeMessage="This value should be between {{ min }} and {{ max }}.")
      * @ORM\Column(type="integer")
+     * @Groups("property:read")
      */
     private $area;
 
@@ -53,6 +58,7 @@ class Property
      * @Assert\NotBlank(message="Please provide the number of rooms")
      * @Assert\Range(min="0", max="14", notInRangeMessage="This value should be between {{ min }} and {{ max }}.")
      * @ORM\Column(type="integer")
+     * @Groups("property:read")
      */
     private $totalRooms;
 
@@ -60,6 +66,7 @@ class Property
      * @Assert\NotBlank(message="Please provide the number of bedrooms")
      * @Assert\Range(min="0", max="9", notInRangeMessage="This value should be between {{ min }} and {{ max }}.")
      * @ORM\Column(type="integer")
+     * @Groups("property:read")
      */
     private $totalBedrooms;
 
@@ -67,12 +74,14 @@ class Property
      * @Assert\NotBlank(message="Please provide the number of bathrooms")
      * @Assert\Range(min="0", max="9", notInRangeMessage="This value should be between {{ min }} and {{ max }}.")
      * @ORM\Column(type="integer")
+     * @Groups("property:read")
      */
     private $totalBathrooms;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="property")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("property:read")
      */
     private $user;
 
@@ -85,6 +94,7 @@ class Property
      * @Assert\NotBlank(message="Please provide the type")
      * @Assert\Choice(choices={"Villa", "House", "Penthouse", "Apartment", "Condo", "New Developments", "Chalets", "Commercial space"})
      * @ORM\Column(type="string", length=255)
+     * @Groups("property:read")
      */
     private $type;
 
@@ -92,12 +102,14 @@ class Property
      * @Assert\NotBlank(message="Please provide the type of the advert")
      * @Assert\Choice(choices={"Purchase", "Rental"})
      * @ORM\Column(type="string", length=255)
+     * @Groups("property:read")
      */
     private $advertType;
 
     /**
      * @Assert\Url(message = "The url '{{ value }}' is not a valid url")
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("property:read")
      */
     private $linkWebsite;
 
@@ -105,6 +117,7 @@ class Property
      * @Assert\NotBlank(message="Please provide a code country")
      * @Assert\Length(min=2, max=15)
      * @ORM\Column(type="string", length=255)
+     * @Groups("property:read")
      */
     private $dialCode;
 
@@ -112,22 +125,26 @@ class Property
      * @Assert\NotBlank(message="Please provide the phone number")
      * @Assert\Length(min=5, max=13, minMessage="The phone number must be at least {{ limit }} characters long", maxMessage="The phone number cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="string")
+     * @Groups("property:read")
      */
     private $phoneContact;
 
     /**
      * @Assert\Length(min=2, max=50, minMessage="The name must be at least {{ limit }} characters long", maxMessage="The phone number cannot be longer than {{ limit }} characters")
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("property:read")
      */
     private $nameContact;
 
     /**
      * @ORM\ManyToMany(targetEntity=Feature::class, mappedBy="property", cascade={"persist"})
+     * @Groups("property:read")
      */
     private $features;
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Groups("property:read")
      */
     private $createdAt;
 
@@ -141,6 +158,7 @@ class Property
     /**
      * @ORM\ManyToOne(targetEntity=City::class, inversedBy="property", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("property:read")
      */
     private $city;
 
