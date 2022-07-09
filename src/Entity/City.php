@@ -6,6 +6,7 @@ use App\Repository\CityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -24,6 +25,7 @@ class City
      * @Assert\NotBlank(message="Please provide the city's name.")
      * @Assert\Length(min=2, max=50)
      * @ORM\Column(type="string", length=255)
+     * @Groups("property:read")
      */
     private $name;
 
@@ -47,6 +49,7 @@ class City
     /**
      * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="city")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("property:read")
      */
     private $country;
 
