@@ -32,11 +32,25 @@ and
 npm install
 ```
 
-### Launch symfony server
+### Manage database
+
+Create BDD - Créer BDD
+
 ```bash
-symfony server:start  
+  php bin/console doctrine:database:create
 ```
-## Fixtures
+
+Migrate BDD - Migrer BDD
+
+```bash
+  php bin/console make:migration
+```
+
+```bash
+  php bin/console doctrine:migrations:migrate
+```
+
+### Fixtures
 
 ```bash
 symfony console doctrine:fixtures:load  
@@ -51,7 +65,13 @@ If you want ignore questions
 symfony console doctrine:fixtures:load --no-interaction 
 ```
 
-## Tests unitaires  
+### Launch symfony server
+```bash
+symfony server:start  
+```
+
+
+## Unit and functionnal tests 
 
 ```bash
 php bin/phpunit
