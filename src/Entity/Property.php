@@ -19,6 +19,7 @@ class Property
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("property:read")
      */
     private $id;
 
@@ -87,6 +88,7 @@ class Property
 
     /**
      * @ORM\OneToMany(targetEntity=Image::class, mappedBy="property", cascade={"persist"}, orphanRemoval=true)
+     * @Groups("property:read")
      */
     private $images;
 
@@ -152,6 +154,7 @@ class Property
      * @var string
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=255)
+     * @Groups("property:read")
      */
     private $slug;
 

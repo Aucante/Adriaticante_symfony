@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -21,6 +22,7 @@ class Image
     /**
      * @Assert\NotBlank(message="This value should not be blank.")
      * @ORM\Column(type="string", length=255)
+     * @Groups("property:read")
      */
     private $name;
 
