@@ -26,9 +26,9 @@ class ContactController extends AbstractController
         $contactForm->handleRequest($request);
 
         // Variables mail
-        $emailAdmin = 'contact@adriaticante.com';
-        $nameToAdmin = 'Adriaticante';
-        $subjectUser = 'Your message has been sent successfully.';
+        $emailAdmin = $this->getParameter('app.contact_email');
+        $nameToAdmin = $this->getParameter('app.name');
+        $subjectUser = $this->getParameter('app.message_sent_successfully');
         $subjectAdmin = 'Contact from '.$contact->getLastname().' '.$contact->getFirstname().' (Standard form). ';
         $templateIdUser = 3906681;
         $templateIdAdmin = 3909576;

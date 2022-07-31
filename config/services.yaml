@@ -9,6 +9,9 @@ parameters:
     app.locales: [en, fr]
     upload_dir: '/uploads/user'
     google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
+    app.name: 'Adriaticante'
+    app.contact_email: 'contact@adriaticante.com'
+    app.message_sent_successfully: 'Your message has been sent successfully.'
 
 services:
     # default configuration for services in *this* file
