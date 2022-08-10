@@ -12,11 +12,13 @@ use Mailjet\Resources;
 class MailjetNotification
 {
     private Client $client;
+    private string $noReplyMail;
 
     public function __construct(
-        Client $client
+        Client $client, string $noReplyMail
     ) {
         $this->client = $client;
+        $this->noReplyMail = $noReplyMail;
     }
 
     public function send($emailTo,
@@ -33,7 +35,7 @@ class MailjetNotification
             'Messages' => [
                 [
                     'From' => [
-                        'Email' => 'no-reply@adriaticante.com',
+                        'Email' => $this->noReplyMail,
                         'Name' => 'Adriaticante',
                     ],
                     'To' => [

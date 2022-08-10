@@ -12,6 +12,7 @@ use App\Form\PropertySearchType;
 use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
 use App\Repository\ThreadRepository;
+use App\Service\ManagePictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -79,7 +80,8 @@ class PropertiesController extends AbstractController
      */
     public function create(
         Request $request,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        ManagePictureService $managePictureService
     ): Response {
         $property = new Property();
         $user = $this->getUser();
@@ -98,16 +100,7 @@ class PropertiesController extends AbstractController
                 // Generate new files name
                 $fileUploaded = md5(uniqid()).'.'.$file->guessExtension();
 
-                // Copy file in upload folder
-                $file->move(
-                    $this->getParameter('file_property_directory'),
-                    $fileUploaded
-                );
-
-                // Persist file in database
-                $image = new Image();
-                $image->setName($fileUploaded);
-                $property->addImage($image);
+                $managePictureService->addImageProperty($fileUploaded, $file,$property);
             }
 
             // Description
