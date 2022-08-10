@@ -44,3 +44,4 @@ services:
     App\Notification\MailjetNotification:
         arguments:
             $noReplyMail: 'no-reply@adriaticante.com'
+            $name: 'Adriaticante'

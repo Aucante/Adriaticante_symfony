@@ -13,12 +13,16 @@ class MailjetNotification
 {
     private Client $client;
     private string $noReplyMail;
+    private string $name;
 
     public function __construct(
-        Client $client, string $noReplyMail
+        Client $client,
+        string $noReplyMail,
+        string $name
     ) {
         $this->client = $client;
         $this->noReplyMail = $noReplyMail;
+        $this->name = $name;
     }
 
     public function send($emailTo,
@@ -36,7 +40,7 @@ class MailjetNotification
                 [
                     'From' => [
                         'Email' => $this->noReplyMail,
-                        'Name' => 'Adriaticante',
+                        'Name' => $this->name,
                     ],
                     'To' => [
                         [
