@@ -40,3 +40,7 @@ services:
             - '%env(MAILJET_SECRET)%'
             - true
             - {version: v3.1}
+
+    App\Notification\MailjetNotification:
+        arguments:
+            $noReplyMail: 'no-reply@adriaticante.com'

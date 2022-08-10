@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use App\Entity\Image;
+use App\Entity\Property;
 use App\Entity\User;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -29,4 +31,21 @@ class ManagePictureService
 
         $user->setFile($newFilename);
     }
+
+
+    public function addImageProperty(string $originalFilename, UploadedFile $file, Property $property)
+    {
+        $safeFilename = $this->slugger->slug($originalFilename);
+        $newFilename = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+
+        $file->move(
+            $this->params->get('file_property_directory'),
+            $newFilename);
+
+        $image = new Image();
+        $image->setName($newFilename);
+
+        $property->addImage($image);
+    }
+
 }
